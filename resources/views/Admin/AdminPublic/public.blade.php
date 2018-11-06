@@ -83,14 +83,10 @@
                         <li><a href="horizontal_menu.html"> Horizontal Menu</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>UI Elements</span></a>
+                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>分类管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="general.html"> General</a></li>
-                        <li><a href="buttons.html"> Buttons</a></li>
-                        <li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>
-                        <li><a href="typography.html"> Typography</a></li>
-                        <li><a href="slider.html"> Slider</a></li>
-                        <li><a href="panels.html"> Panels</a></li>
+                        <li><a href="/admincates">分类列表</a></li>
+                        <li><a href="/admincates/create">添加分类</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>
@@ -320,7 +316,7 @@
 
         <!--footer section start-->
         <footer>
-            2014 &copy; AdminEx by <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+            2018 &copy; &nbsp;<a href="http://www.mycodes.net/" target="_blank">还可以拯救一下团队制作</a>
         </footer>
         <!--footer section end-->
 

@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::resource('/admins','Admin\AdminController');
 
+Route::resource('/admincates','Admin\CateController');
+
 // 路由组（项目里推荐）
 // login中间件规则名 可以和kernel.php里的中间件做匹配，匹配到的话，直接调用中间件类
 // 中间件结合路由使用（项目里推荐使用）
