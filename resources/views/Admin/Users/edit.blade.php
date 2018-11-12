@@ -32,7 +32,7 @@
       <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">状态:</label>
       <div class="col-md-3 col-xs-9"> 
           <select class="form-control m-bot15" name="status">
-            <option value="0" @if($user->status == 0) selected @endif>启用1</option>
+            <option value="0" @if($user->status == 0) selected @endif>启用</option>
             <option value="1" @if($user->status == 1) selected @endif>禁用</option> 
             </select> 
       </div> 
