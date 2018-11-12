@@ -16,54 +16,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/admins','Admin\AdminController');
 
-// 路由组（项目里推荐）
-// login中间件规则名 可以和kernel.php里的中间件做匹配，匹配到的话，直接调用中间件类
-// 中间件结合路由使用（项目里推荐使用）
-// Route::group(['middleware'=>'login'],function(){
-
-//     // 子路由
-//     Route::get('/adminorder',function(){
-//         echo '这是后台订单界面';
-//     });
-
-//     Route::get('/adminlist',function(){
-//         echo '这是后台友情链接管理';
-//     });
-// });
-
-// 加载后台模板广告模板
-// Route::get('/adminads',function(){
-//     echo '这是后台的广告模板';
-// })->middleware('login');
-
-// 登录界面
-// Route::get('/login',function(){
-    // return view('login');
-// });
-
-// 普通控制器使用
-// Route::get('/userindex','Admin\UserController@index');
-
-// Route::get('/useradd','Admin\UserController@add');
-// // 执行添加
-// Route::post('/userinsert','Admin\UserController@insert');
-
-// // 带有参数的控制器
-// Route::get('/userdelete/{id}','Admin\UserController@delete');
-
-// // 普通控制器结合中间件方法一
-// Route::get('/useredit','Admin\UserController@edit')->middleware('login');
-// // 普通控制器结合路由组使用中间件
-// Route::group(['middleware'=>'login'],function(){
-//     // 子路由
-//     Route::get('/userinfo','Admin\UserController@info');
-//     // 子路由二
-//     Route::get('/useraddress','Admin\UserController@address');
-// });
-
-// // 资源控制器（项目里推荐用法） 控制器里方法都可以统统交给同一个资源路由去处理
-// Route::resource('/adminshop','Admin\UsersController');
-
-// Route::get('/adminshopindex1','Admin\UsersController@index1');
+//后台登录管理
+Route::resource('/adminlogin',"Admin\AdminLoginController");
+Route::group(["middleware"=>'login'],function(){
+	//首页
+	Route::resource('/admins','Admin\AdminController');
+	//管理员管理
+	Route::resource('/adminsuser','Admin\AdminuserController');
+	//ajax删除
+	Route::get('/adminsuserdel','Admin\AdminuserController@del');
+	//分配角色
+	Route::get('/adminusersrolelist/{id}','Admin\AdminuserController@rolelist');
+	//保存角色
+	Route::post("/saverole","Admin\AdminuserController@saverole");
+	//角色管理
+	Route::resource("/role","Admin\RolelistController");
+	//角色管理Ajax删除
+	Route::get("/roles","Admin\RolelistController@del");
+	//权限分配
+	Route::get("/authrole/{id}","Admin\RolelistController@auth");
+	//保存权限
+	Route::post("/saveauth","Admin\RolelistController@saveauth");
+	//权限管理
+	Route::resource("/authlist","Admin\AuthlistController");
+	//权限管理Ajax删除
+	Route::get("/authlists","Admin\AuthlistController@del");
+	//用户管理
+	Route::resource('/adminusers','Admin\UsersController');
+	//用户列表收货地址
+	Route::get('/adminusersaddres/{id}','Admin\UsersController@addres');
+	
+});

@@ -26,9 +26,6 @@
   <link href="/Admin/css/style.css" rel="stylesheet">
   <link href="/Admin/css/style-responsive.css" rel="stylesheet">
 
-
-
-
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="/Admin/js/html5shiv.js"></script>
@@ -75,24 +72,28 @@
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
                 <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
+
+
+                 <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>管理员管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/adminsuser">管理员列表</a></li>
+                        <li><a href="/adminsuser/create">管理员添加</a></li>
+                        <li><a href="/role">角色列表</a></li>
+                        <li><a href="/role/create">角色添加</a></li>
+                        <li><a href="/authlist">权限列表</a></li>
+                        <li><a href="/authlist/create">权限添加</a></li>
+                    </ul>
+                </li>
+
                 <li class="menu-list"><a href=""><i class="fa fa-user"></i> <span>用户管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="blank_page.html">用户列表</a></li>
-                        <li><a href="boxed_view.html"> Boxed Page</a></li>
-                        <li><a href="leftmenu_collapsed_view.html"> Sidebar Collapsed</a></li>
-                        <li><a href="horizontal_menu.html"> Horizontal Menu</a></li>
+                        <li><a href="/adminusers">用户列表</a></li>
+                      
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>UI Elements</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="general.html"> General</a></li>
-                        <li><a href="buttons.html"> Buttons</a></li>
-                        <li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>
-                        <li><a href="typography.html"> Typography</a></li>
-                        <li><a href="slider.html"> Slider</a></li>
-                        <li><a href="panels.html"> Panels</a></li>
-                    </ul>
-                </li>
+
+
+
                 <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="grids.html"> Grids</a></li>
@@ -294,19 +295,53 @@
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <img src="/Admin/images/photos/user-avatar.png" alt="" />
-                            John Doe
+                            Admin
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i>  设置</a></li>
+                            <li><a href="/adminlogin"><i class="fa fa-sign-out"></i>退出</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <!--notification menu end -->
         </div>
+
+         <!-- 添加失败样式 -->
+        @if (count($errors) > 0)
+        <div class="alert alert-warning fade in">
+            <button type="button" class="close close-sm" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            @foreach ($errors->all() as $error)
+                <strong>{{ $error }}</strong>
+            @endforeach
+        </div>
+        @endif
+        <!-- 添加失败样式结束 -->
+        @if(session('success'))
+        <!-- 添加成功样式 -->
+        <div class="alert alert-success alert-block fade in">
+            <button class="close close-sm" type="button" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <h4>
+                {{session('success')}}
+            </h4>
+        </div>
+        <!-- 添加成功样式结束 -->
+        @endif
+        @if(session('error'))
+        <!-- 添加失败样式 -->
+        <div class="alert alert-block alert-danger fade in">
+            <button class="close close-sm" type="button" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <strong>{{session('error')}}</strong>
+        </div>
+        <!-- 添加失败样式结束 -->
+        @endif
         <!-- 主体内容开始 -->
         @section('main')
         @show
@@ -314,17 +349,7 @@
         <!-- header section end-->
     </div>
 
-            
-             
-        <!--body wrapper end-->
-
-        <!--footer section start-->
-        <footer>
-            2014 &copy; AdminEx by <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
-        </footer>
-        <!--footer section end-->
-
-
+   
     </div>
     <!-- main content end-->
 </section>
@@ -356,14 +381,14 @@
 
 
 <!--Morris Chart-->
-<script src="/Admin/js/morris-chart/morris.js"></script>
+<script src="/Admin/js/morris.js"></script>
 <script src="/Admin/js/morris-chart/raphael-min.js"></script>
 
 <!--Calendar-->
 <script src="/Admin/js/calendar/clndr.js"></script>
 <script src="/Admin/js/calendar/evnt.calendar.init.js"></script>
 <script src="/Admin/js/calendar/moment-2.2.1.js"></script>
-<script src="/Admin/http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="/Admin/js/underscore-min.js"></script>
 
 <!--common scripts for all pages-->
 <script src="/Admin/js/scripts.js"></script>
