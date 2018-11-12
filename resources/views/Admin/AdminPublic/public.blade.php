@@ -89,6 +89,10 @@
                     <ul class="sub-menu-list">
                         <li><a href="/adminusers">用户列表</a></li>
                       
+                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>分类管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/admincates">分类列表</a></li>
+                        <li><a href="/admincates/create">添加分类</a></li>
                     </ul>
                 </li>
 
@@ -349,7 +353,7 @@
         <!-- header section end-->
     </div>
 
-   
+
     </div>
     <!-- main content end-->
 </section>

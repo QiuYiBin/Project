@@ -16,7 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 //后台登录管理
 Route::resource('/adminlogin',"Admin\AdminLoginController");
 Route::group(["middleware"=>'login'],function(){
@@ -46,5 +45,5 @@ Route::group(["middleware"=>'login'],function(){
 	Route::resource('/adminusers','Admin\UsersController');
 	//用户列表收货地址
 	Route::get('/adminusersaddres/{id}','Admin\UsersController@addres');
-	
 });
+
