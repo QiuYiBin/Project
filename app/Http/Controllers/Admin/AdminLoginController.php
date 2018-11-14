@@ -42,11 +42,12 @@ class AdminLoginController extends Controller
      */
     public function store(AdminLogin $request)
     {
+        $request->flashOnly('name');
         //根据输入的用户名获取用户信息
         //检测用户名是有有误
         $info=DB::table("bro_users")->where("name",'=',$request->input('name'))->first();
         //检测是否被禁用
-        if($info->status==1){
+        if($info->status==0){
         	//检测密码
             	if(Hash::check($request->input('password'),$info->password)){	
                 //把用户信息写入session
@@ -56,7 +57,6 @@ class AdminLoginController extends Controller
                     $sql="select n.name,n.mname,n.aname from bro_user_role as ur,bro_role_node as rn,bro_node as n  where ur.rid=rn.rid and rn.nid=n.id and uid={$info->id}";
                     //执行sql
                     $list=DB::select($sql);
-                    // dd($list);
                     // echo "<pre>";
                     // var_dump($list);exit;
                     //2.初始化权限 
@@ -79,9 +79,9 @@ class AdminLoginController extends Controller
                 // var_dump($nodelist);exit;
                  //3.把所有权限信息 存储在session里
                 session(['nodelist'=>$nodelist]);
-        		return redirect("/admins")->with('success','登录成功');
+        		  return redirect("/admins")->with('success','登录成功');
         		}else{	
-        			return back()->with('error','密码错误');
+        		  return back()->with('error','密码错误');
         		}
         }else{	
         	return back()->with('error','你的管理员身份被禁用，请联系超级管理员');

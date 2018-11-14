@@ -18,8 +18,8 @@ class GoodsController extends Controller
     {
         $name = $request->input('name');
         $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(1);
-
-        return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all());
+        $count = DB::table('bro_goods')->count();
+        return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all())->with('count',$count);
     }
 
     /**
@@ -177,5 +177,17 @@ class GoodsController extends Controller
             $request->file('Filedata')->move('./Uploads/Goods/',$newFile);
             echo $newFile;
         }
+    }
+
+    // 添加商品规格
+    public function spec($id)
+    {
+        return view('Admin.AdminGoods.spec');
+    }
+
+    // 商品规格提交
+    public function addspec(Request $request)
+    {
+        dd($request);
     }
 }

@@ -8,7 +8,6 @@
         }
     </style> 
  </head>
- <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script> 
  <body> 
   <div class="wrapper" style="margin-top: 30px"> 
    <div class="row"> 
@@ -50,7 +49,8 @@
          </table>
          <div style="float: right">
           
-         </div> 
+         </div>
+         <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div> 
         </div> 
        </div> 
       </div> 

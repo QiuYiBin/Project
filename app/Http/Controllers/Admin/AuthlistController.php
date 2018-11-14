@@ -22,8 +22,8 @@ class AuthlistController extends Controller
         //return view("Admin.Authlist.index",['auth'=>$auth]);
         // 获取总条数
         $tot=DB::table("bro_node")->count();
-        //每页显示数据条数5
-        $rev=5;
+        //每页显示数据条数
+        $rev = 10;
         //获取最大页
         $maxpage=ceil($tot/$rev);
         // echo $maxpage;
@@ -54,7 +54,7 @@ class AuthlistController extends Controller
         // echo "<pre>";
         // var_dump($pp);
 
-        return view("Admin.Authlist.index",['pp'=>$pp,'data'=>$data]);
+        return view("Admin.Authlist.index",['pp'=>$pp,'data'=>$data])->with('tot',$tot);
     }
 
     /**

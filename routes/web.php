@@ -59,9 +59,32 @@ Route::group(['middleware'=>'login'],function(){
 	Route::any('/admingoods/upload','Admin\GoodsController@upload');
 	// 后台轮播图AJAX删除
 	Route::get('/sliderdel','Admin\SliderController@ajaxdel');
+	// 公告模块管理
+	Route::resource('/adminarticle','Admin\AdminarticleController');
+	// 公告批量删除
+	Route::get('/articledel','Admin\AdminarticleController@del');
+	// 友情链接
+	Route::resource("/link","Admin\LinkController");
+	// 友情链接ajax删除
+	Route::get("/linkajax","Admin\LinkController@del");
+	// 订单列表
+	Route::resource("/crder","Admin\CrderController");
+	// 订单ajax删除
+	Route::get("/crderajax","Admin\CrderController@del");
+	// 关联商品详情
+	Route::get("/details/{id}","Admin\CrderController@details");
+	// 订单详情表
+	Route::resource("/crderinfo","Admin\CrderinfoController");
+	// 优惠券
+	Route::resource("/coupon","Admin\CouponController");
+	// 优惠券ajax删除
+	Route::get("/couponajax","Admin\CouponController@del");
+	// 添加商品规格
+	Route::get('/goodsspec/{id}','Admin\GoodsController@spec');
 });
 
 
 // 前台首页
 Route::resource('/homeindex','Home\IndexController');
 
+Route::resource('/homecates','Home\CatesController');

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -24,7 +23,7 @@ class UsersController extends Controller
         // 获取搜索关键词
         $k = $request->input('keywords'); 
     	//获取数据总条数
-    	$tot=DB::table("bro_user")->count();
+    	$tot = DB::table("bro_user")->count();
     	//规定下每页显示的数据条数
     	$rev = 5;
     	//获取总页数 
@@ -38,9 +37,7 @@ class UsersController extends Controller
     	//偏移量
     	$offset = ($page-1) * $rev;
     	//准备sql语句
-        // if($k == ''){
-        $sql = "select * from bro_user ORDER BY id ASC limit $offset,$rev";
-            // $sql = "select * from bro_user where username LIKE '%".$k."%'";
+       	$sql = "select * from bro_user ORDER BY id ASC limit $offset,$rev";
     	//执行sql语句
     	$data = DB::select($sql);
     	//判断是否是ajax请求
@@ -55,7 +52,7 @@ class UsersController extends Controller
         $data = Users::where("username",'like',"%".$k."%")->orderBY('id','asc')->paginate(5);
       
         //导入列表页
-       	return view("Admin.Users.users",['data'=>$data,'request'=>$request->all()],['pp'=>$pp,'data'=>$data])->with('k',$k);
+       	return view("Admin.Users.users",['data'=>$data,'request'=>$request->all()],['pp'=>$pp,'data'=>$data])->with('k',$k)->with('tot',$tot);
     }
 
     /**
@@ -131,10 +128,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        // echo $id;
-        //获取需要修改的数据
+        // 获取需要修改的数据
         $user=DB::table("bro_user")->where("id","=",$id)->first();
-        //加载模板 分配数据
+        // 加载模板 分配数据
         return view("Admin.Users.edit",['user'=>$user]);
     }
 
@@ -147,8 +143,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-       // echo $id;
-        // //获取参数
+        //获取参数
         $data=$request->except(['_token','_method']);
         // dd($data);
         if(DB::table("bro_user")->where("id","=",$id)->update($data)){
@@ -166,12 +161,5 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        // $id=$id;
-        // // echo $id;
-        // if(DB::table("bro_user")->where("id",'=',$id)->delete()){
-        //     return redirect("/adminusers")->with('success','删除成功');
-        // }else{
-        //     return redirect("/adminusers")->with('error','删除失败');
-        // }
     }
 }

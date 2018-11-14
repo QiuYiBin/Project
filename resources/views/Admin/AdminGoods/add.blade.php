@@ -121,8 +121,12 @@
    // 当所有html代码加载完毕
     $(function() {
       // 调用百度编辑器
-      var ue = UE.getEditor('editor');
-      var ues = UE.getEditor('editors');
+      var ue = UE.getEditor('editor',{
+        autoFloatEnabled:false
+      });
+      var ues = UE.getEditor('editors',{
+        autoFloatEnabled:false
+      });
       // 声明字符串
       var imgs = '';
       $('#uploads').uploadify({
