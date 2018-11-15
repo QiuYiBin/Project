@@ -1,5 +1,6 @@
 ﻿@extends('Home.Indexpublic.public')
 @section('main')
+<div class="offcanvas-container" id="mobile-menu">
 <!-- Start Mobile Menu -->
     <a class="account-link" href="#">
         <div class="user-ava">
@@ -515,5 +516,7 @@
         </div>
     </section>
     <!-- End Services -->
+</div>
+</div>
 @endsection
 @section('title','首页')

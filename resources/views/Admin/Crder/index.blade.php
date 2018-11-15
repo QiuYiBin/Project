@@ -22,7 +22,7 @@
        <div class="dataTables_wrapper form-inline" id="dynamic-table_wrapper" role="grid"> 
         <div class="row-fluid"> 
          <div class="span6"> 
-          <form action="/admincates" method="get"> 
+          <form action="/crder" method="get"> 
            <div class="dataTables_filter" id="dynamic-table_filter"> 
             收件人：<input class="form-control" aria-controls="dynamic-table" name="keywords" type="text" value="" placeholder="在此输入收件人" /> 
             订单号：<input class="form-control" aria-controls="dynamic-table" name="keywordss" type="text" value="" placeholder="在此输入订单号" /> 

@@ -36,9 +36,9 @@ class AuthlistController extends Controller
         }
         $offset=($page-1)*$rev;
 
-        $sql="select * from bro_node limit {$offset},{$rev}";
+        $sql="select * from bro_node ORDER BY id ASC limit {$offset},{$rev}";
         //执行sql语句
-        $data=DB::select($sql);
+        $data = DB::select($sql);
 
         // $request->ajax() 判断请求是否为Ajax true 是 否则否
         if($request->ajax()){
