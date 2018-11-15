@@ -32,25 +32,19 @@
             <div class="col-md-6">
                 <div class="product-gallery">
                     <div class="gallery-wrapper">
-                        <div class="gallery-item active"><a href="/Home/images/shop/single/01.jpg" data-hash="one" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/02.jpg" data-hash="two" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/03.jpg" data-hash="three" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/04.jpg" data-hash="four" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/05.jpg" data-hash="five" data-size="1000x667"></a></div>
+                    	@foreach($imgs as $key=>$value)
+                        <div class="gallery-item active"><a href="/Uploads/Goods/{{$value}}" data-hash="one{{$key}}" data-size="1000x667"></a></div>
+                        @endforeach
                     </div>
                     <div class="product-carousel owl-carousel">
-                        <div data-hash="one"><img src="/Home/images/shop/single/01.jpg" alt="Product"></div>
-                        <div data-hash="two"><img src="/Home/images/shop/single/02.jpg" alt="Product"></div>
-                        <div data-hash="three"><img src="/Home/images/shop/single/03.jpg" alt="Product"></div>
-                        <div data-hash="four"><img src="/Home/images/shop/single/04.jpg" alt="Product"></div>
-                        <div data-hash="five"><img src="/Home/images/shop/single/05.jpg" alt="Product"></div>
+                    	@foreach($imgs as $key=>$value)
+                        <div data-hash="one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product"></div>
+                        @endforeach
                     </div>
                     <ul class="product-thumbnails">
-                        <li class="active"><a href="#one"><img src="/Home/images/shop/single/th01.jpg" alt="Product"></a></li>
-                        <li><a href="#two"><img src="/Home/images/shop/single/th02.jpg" alt="Product"></a></li>
-                        <li><a href="#three"><img src="/Home/images/shop/single/th03.jpg" alt="Product"></a></li>
-                        <li><a href="#four"><img src="/Home/images/shop/single/th04.jpg" alt="Product"></a></li>
-                        <li><a href="#five"><img src="/Home/images/shop/single/th05.jpg" alt="Product"></a></li>
+                    	@foreach($imgs as $key=>$value)
+                        <li class="active"><a href="#one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product"></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -58,7 +52,7 @@
             <!-- Start Product Info -->
             <div class="col-md-6 single-shop">
                 <h2 class="padding-top-1x text-normal with-side">{{$data->name}}</h2>
-                <span class="h2 d-block with-side">￥{{$data->price}}</span>
+                <span class="h2 d-block with-side">{{$data->price}}</span>
                 <p>{{$data->descr}}</p>
             </div>
             <div class="col-md-12">

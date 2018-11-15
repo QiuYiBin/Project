@@ -19,10 +19,12 @@ class SingleController extends Controller
         // 查看商品详情
         $data = DB::table('bro_goods')->where('id','=',$id)->first();
         // 查看商品多图片
-        $img = DB::table('bro_goodsimg')->where('gid','=',$data->id)->get();
+        // dd($data);
+        $imgs = explode(',',$data->imgs);
+        // dd($imgs);
         $array = array(
             'data' => $data,
-            'img' => $img
+            'imgs' => $imgs
         );
         return view('Home.Single.Single')->with($array);
     }

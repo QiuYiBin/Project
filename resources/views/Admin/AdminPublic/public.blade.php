@@ -39,12 +39,10 @@
 <section>
     <!-- left side start-->
     <div class="left-side sticky-left-side">
-
         <!--logo and iconic logo start-->
         <div class="logo">
             <a href="index.html"><img src="/Admin/images/logo.png" alt=""></a>
         </div>
-
         <div class="logo-icon text-center">
             <a href="index.html"><img src="/Admin/images/logo_icon.png" alt=""></a>
         </div>
@@ -278,57 +276,52 @@
             </div>
             <!--notification menu end -->
         </div>
-        @if (count($errors) > 0)
-          <div class="alert alert-danger">
-          <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-          </ul>
-          </div>
-        @endif
-        @if(session('success'))
-        <!-- 添加成功样式 -->
-        <div class="alert alert-success alert-block fade in">
-            <button class="close close-sm" type="button" data-dismiss="alert">
-                <i class="fa fa-times"></i>
-            </button>
-            <h4>
-                {{session('success')}}
-            </h4>
-        </div>
-        <!-- 添加成功样式结束 -->
-        @endif
-        @if(session('error'))
-        <!-- 添加失败样式 -->
-        <div class="alert alert-block alert-danger fade in">
-            <button class="close close-sm" type="button" data-dismiss="alert">
-                <i class="fa fa-times"></i>
-            </button>
-            <strong>{{session('error')}}</strong>
-        </div>
-        <!-- 添加失败样式结束 -->
-        @endif
-        <!-- 主体内容开始 -->
-        @section('main')
-        @show
-        <!-- 主体内容结束 -->
         <!-- header section end-->
-    </div>
-
-            
-             
+        <!--body wrapper start-->
+        <div class="wrapper">
+            @if (count($errors) > 0)
+              <div class="alert alert-danger">
+              <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+              </ul>
+              </div>
+            @endif
+            @if(session('success'))
+            <!-- 添加成功样式 -->
+            <div class="alert alert-success alert-block fade in">
+                <button class="close close-sm" type="button" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4>
+                    {{session('success')}}
+                </h4>
+            </div>
+            <!-- 添加成功样式结束 -->
+            @endif
+            @if(session('error'))
+            <!-- 添加失败样式 -->
+            <div class="alert alert-block alert-danger fade in">
+                <button class="close close-sm" type="button" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <strong>{{session('error')}}</strong>
+            </div>
+            <!-- 添加失败样式结束 -->
+            @endif
+            <!-- 主体内容开始 -->
+            @section('main')
+            @show
+            <!-- 主体内容结束 -->
+        </div>
         <!--body wrapper end-->
-
+    </div>
         <!--footer section start-->
         <footer>
             2018 &copy; &nbsp;<a href="http://www.mycodes.net/" target="_blank">还可以拯救一下团队制作</a>
         </footer>
         <!--footer section end-->
-
-
-    </div>
-    <!-- main content end-->
 </section>
 
     <script src="/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
