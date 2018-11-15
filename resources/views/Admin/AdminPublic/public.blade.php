@@ -116,6 +116,11 @@
                         <li><a href="/admingoods/create">添加商品</a></li>
                     </ul>
                 </li>
+                <li class="menu-list"><a href=""><i class="fa fa-thumbs-up"></i> <span>评论管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/comment">评论列表</a></li>
+                    </ul>
+                </li>
                 <li class="menu-list"><a href="/slider"><i class="fa fa-video-camera"></i> <span>轮播图管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/slider">轮播图列表</a></li>
@@ -364,8 +369,8 @@
     <!--Dashboard Charts-->
     <script src="/Admin/js/dashboard-chart-init.js"></script>
 
-@section('js')
-@show
+    @section('js')
+    @show
 
-</body>
+    </body>
 </html>
