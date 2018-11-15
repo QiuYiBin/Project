@@ -11,13 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-	// 加载模板
-    return view('welcome');
-});
-
-
-
 // 后台登录管理
 Route::resource('/adminlogin','Admin\AdminLoginController');
 Route::group(['middleware'=>'login'],function(){
@@ -85,6 +78,6 @@ Route::group(['middleware'=>'login'],function(){
 
 
 // 前台首页
-Route::resource('/homeindex','Home\IndexController');
-
-Route::resource('/homecates','Home\CatesController');
+Route::resource('/','Home\IndexController');
+// 商品详情
+Route::get('/shopsingle/{id}','Home\SingleController@index');

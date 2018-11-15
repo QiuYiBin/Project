@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use App\Http\Requests\Coupon;
 class CouponController extends Controller
 {
     /**
@@ -41,31 +42,11 @@ class CouponController extends Controller
      * @return \Illuminate\Http\Response
      */
     //处理添加数据
-    public function store(Request $request)
+    public function store(Coupon $request)
     {
-        //获取当前时间 是字符串类型
-        $ntime = Carbon::now()->toDateString();
 
         $data = $request->except(['_token']);
-
-        if($data['start_time'] == '' || $data['end_time'] == ''){
-
-            return back()->with('error','开始和结束时间不能为空');
-
-        }elseif($data['end_time'] == $data['start_time']){
-
-            return back()->with('error','开始和结束时间不能相同');
-
-        }elseif($data['start_time'] > $data['end_time']){
-
-            return back()->with('error','开始时间不能大于结束时间');
-
-        }elseif($data['start_time'] < $ntime || $data['end_time'] < $ntime){
-
-            return back()->with('error','开始和结束时间不能小于当前时间');
-
-        }
-
+        
         if(DB::table("bro_coupon")->insert($data)){
             return redirect('/coupon')->with('success','添加成功');
         }else{

@@ -5,25 +5,26 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class CatesController extends Controller
+class SingleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 首页方法
-    public function index()
+    // 
+    public function index($id)
     {
-        $cate = $this->getCatesBypid(0);
-        // 获取轮播图
-        $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
+        // dd($id);
+        // 查看商品详情
+        $data = DB::table('bro_goods')->where('id','=',$id)->first();
+        // 查看商品多图片
+        $img = DB::table('bro_goodsimg')->where('gid','=',$data->id)->get();
         $array = array(
-            'cate' => $cate,
-            'Slider' => $Slider,
+            'data' => $data,
+            'img' => $img
         );
-        // dd($array);
-        return view('Home.Index.index')->with($array);
+        return view('Home.Single.Single')->with($array);
     }
 
     /**

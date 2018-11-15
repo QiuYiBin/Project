@@ -7,19 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 class IndexController extends Controller
 {
-    // 获取分类方法
-    public function getCatesBypid($pid)
-    {
-        $res = DB::table('bro_cates')->where('pid','=',$pid)->get();
-        // 遍历
-        $data = [];
-        foreach ($res as $value) {
-            $value->dev = $this->getCatesBypid($value->id);
-            $data[] = $value;
-        }
-        return $data;
-    }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -28,11 +16,9 @@ class IndexController extends Controller
     // 首页方法
     public function index()
     {
-        $cate = $this->getCatesBypid(0);
         // 获取轮播图
         $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
         $array = array(
-            'cate' => $cate,
             'Slider' => $Slider,
         );
         // dd($array);

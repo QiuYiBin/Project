@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 // 表单验证
 use App\Http\Requests\Goods;
+use App\Http\Requests\GoodsEdit;
 class GoodsController extends Controller
 {
     /**
@@ -118,7 +119,7 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoodsEdit $request, $id)
     {
         $data = $request->except('_token','_method');
         if($data['pic'] == null){
