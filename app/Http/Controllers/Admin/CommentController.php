@@ -1,37 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class SingleController extends Controller
+//导入校验类
+use App\Models\Comment;
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 
-    public function index($id)
+    public function index()
     {
-        // 查看商品详情
-        $data = DB::table('bro_goods')->where('id','=',$id)->first();
-        // 查看商品多图片
-        $imgs = explode(',',$data->imgs);
-        // dd($imgs);
+        //获取所有评论
         $comment = \DB::table("bro_comment")
                     ->select("bro_comment.*","bro_goods.name","bro_goods.pic","bro_user.username")
                     ->join("bro_user","bro_user.id",'=','bro_comment.uid')
                     ->join("bro_goods","bro_goods.id",'=',"bro_comment.gid")
                     ->get();
         // dd($comment);
-        $array = array(
-            'data' => $data,
-            'imgs' => $imgs,
-            'comment' => $comment
-        );
-        return view('Home.Single.Single')->with($array);
+        //加载模板
+        return view("Admin.Comment.index",['comment'=>$comment]);
+       
     }
 
     /**
@@ -41,7 +35,8 @@ class SingleController extends Controller
      */
     public function create()
     {
-        //
+        //加载模板
+        return view("Admin.Comment.add");
     }
 
     /**
@@ -74,7 +69,13 @@ class SingleController extends Controller
      */
     public function edit($id)
     {
-        //
+        //获取需要修改的数据
+        $user=DB::table("bro_comment")->where("id","=",$id)->first();
+        if($user == null){
+            return redirect('/comment')->with('error','不要瞎改');
+        }
+        //加载模板 分配数据
+        return view("Admin.Comment.comment",['user'=>$user]);
     }
 
     /**
@@ -86,7 +87,14 @@ class SingleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         //获取参数
+        $data=$request->except(['_token','_method']);
+        // dd($data);
+        if(DB::table("bro_comment")->where("id","=",$id)->update($data)){
+            return redirect("/comment")->with('success',"回复成功");
+        }else{
+            return  back()->with('error',"回复失败",'id',$id);
+        }
     }
 
     /**

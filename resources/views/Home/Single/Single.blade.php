@@ -15,7 +15,7 @@
             </div>
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="/">家</a></li>
+                    <li><a href="/">首页</a></li>
                     <li class="separator">&nbsp;</li>
                     <li><a href="shop-grid-3.html">商品分类</a></li>
                     <li class="separator">&nbsp;</li>
@@ -43,7 +43,7 @@
                     </div>
                     <ul class="product-thumbnails">
                     	@foreach($imgs as $key=>$value)
-                        <li class="active"><a href="#one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product"></a></li>
+                        <li class="active"><a href="#one{{$key}}"><img src="/Uploads/Goods/{{$value}}"alt="Product"></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -51,8 +51,15 @@
             <!-- End Product Gallery -->
             <!-- Start Product Info -->
             <div class="col-md-6 single-shop">
+            	<div class="rating-stars">
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                </div>
                 <h2 class="padding-top-1x text-normal with-side">{{$data->name}}</h2>
-                <span class="h2 d-block with-side">{{$data->price}}</span>
+                <span class="h2 d-block with-side">¥{{$data->price}}</span>
                 <p>{{$data->descr}}</p>
             </div>
             <div class="col-md-12">
@@ -97,51 +104,27 @@
                     {!!$data->text!!}
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel">
+                	@if(!empty($comment))
+					@foreach($comment as $value)
                     <!-- Start Review #1 -->
                     <div class="comment">
                         <div class="comment-author-ava"><img src="/Home/images/reviews/01.jpg" alt="Review Author"></div>
                         <div class="comment-body">
                             <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
+                                <!-- <h4 class="comment-title">Lorem存有简直是虚拟</h4> -->
                                 <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
+                                    <div class="rating-stars" style="color:#ffb74f">{{str_repeat("★",$value->start)}}{{str_repeat("☆",5-$value->start)}}</div>
                                 </div>
                             </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊滚</span></div>
+                            <p class="comment-text">{{$value->text}}</p>
+                            <div class="comment-footer"><span class="comment-meta">{{$value->username}}</span></div>
                         </div>
                     </div>
+                    @endforeach
+                    @else
+                    <center>暂无评价哦~~~</center>
+                    @endif
                     <!-- End Review #1 -->
-                    <!-- Start Review #2 -->
-                    <div class="comment">
-                        <div class="comment-author-ava"><img src="/Home/images/reviews/02.jpg" alt="Review Author"></div>
-                        <div class="comment-body">
-                            <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
-                                <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
-                                </div>
-                            </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊杰</span></div>
-                        </div>
-                    </div>
-                    <!-- End Review #2 -->
-                    <!-- Start Review #3 -->
-                    <div class="comment">
-                        <div class="comment-author-ava"><img src="/Home/images/reviews/03.jpg" alt="Review Author"></div>
-                        <div class="comment-body">
-                            <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
-                                <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
-                                </div>
-                            </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊斌</span></div>
-                        </div>
-                    </div>
-                    <!-- End Review #3 -->
                     <!-- Start Review Form -->
                     <h5 class="mb-30 padding-top-1x">离开评论</h5>
                     <form class="row" method="post">
