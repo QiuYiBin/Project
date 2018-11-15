@@ -72,8 +72,6 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource("/coupon","Admin\CouponController");
 	// 优惠券ajax删除
 	Route::get("/couponajax","Admin\CouponController@del");
-	// 添加商品规格
-	Route::get('/goodsspec/{id}','Admin\GoodsController@spec');
 });
 
 

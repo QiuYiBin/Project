@@ -76,25 +76,17 @@
                 <div id="mains" >
 
                 </div> 
-                <input type="hidden" name="picdouble" id="imgss"> 
+                <input type="hidden" name="imgs" id="imgss"> 
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">详细信息</label> 
               <div class="col-md-3 col-xs-9">
                 <script id="editor" type="text/plain" name="text" style="width:800px;height:500px;">
-                  {{$data->text}}
+                  {!!$data->text!!}
                 </script>
               </div> 
-          </div> 
-          <div class="form-group" style="margin-top: 40px"> 
-            <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">配置信息</label> 
-              <div class="col-md-3 col-xs-9">
-                <script id="editors" type="text/plain" name="config" style="width:800px;height:500px;">
-                  {{$data->config}}
-                </script>
-              </div> 
-          </div>    
+          </div>     
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">描述</label> 
               <div class="col-md-3 col-xs-9">
@@ -132,7 +124,7 @@
         },
         // 上传的flash动画
         'swf' : '/Uploadify/uploadify.swf',
-        'auto': true,
+        // 'auto': true,
         // 文件上传的地址(路由)
         'uploader' : '/admingoods/upload',
         // 设置文件上传格式
