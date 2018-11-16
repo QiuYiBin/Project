@@ -72,19 +72,20 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource("/coupon","Admin\CouponController");
 	// 优惠券ajax删除
 	Route::get("/couponajax","Admin\CouponController@del");
-	// 添加商品规格
-	Route::get('/goodsspec/{id}','Admin\GoodsController@spec');
-	//广告管理
-	Route::resource('/advert','Admin\AdvertController');
-	//Ajax删除
-	Route::get('/del','Admin\AdvertController@del');
-	//文章管理
-	Route::resource('/word','Admin\WordController');
+	// 评论管理
+	Route::resource("/comment","Admin\CommentController");
 });
+
 
 // 前台首页
 Route::resource('/','Home\IndexController');
-//商品列表
-Route::resource('/goods/{id}','Home\GoodsController');
 // 商品详情
-Route::resource('/shopsingle/{id}','Home\SingleController');
+Route::get('/shopsingle/{id}','Home\SingleController@index');
+//个人中心
+Route::Resource('/homepersonal','Home\PersonalController');
+// 我的订单
+Route::Resource('/homeorder','Home\OrderController');
+// 我的地址
+Route::Resource('/homeaddres','Home\AddresController');
+// 添加地址发送请求
+Route::get('/homeaddress','Home\AddresController@ajax');
