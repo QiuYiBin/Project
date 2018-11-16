@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use DB;
 // 表单验证
 use App\Http\Requests\Goods;
-use App\Http\Requests\GoodsEdit;
 class GoodsController extends Controller
 {
     /**
@@ -19,8 +18,8 @@ class GoodsController extends Controller
     {
         $name = $request->input('name');
         $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(1);
-        $count = DB::table('bro_goods')->count();
-        return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all())->with('count',$count);
+
+        return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all());
     }
 
     /**
@@ -119,7 +118,7 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GoodsEdit $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->except('_token','_method');
         if($data['pic'] == null){
@@ -178,17 +177,5 @@ class GoodsController extends Controller
             $request->file('Filedata')->move('./Uploads/Goods/',$newFile);
             echo $newFile;
         }
-    }
-
-    // 添加商品规格
-    public function spec($id)
-    {
-        return view('Admin.AdminGoods.spec');
-    }
-
-    // 商品规格提交
-    public function addspec(Request $request)
-    {
-        dd($request);
     }
 }

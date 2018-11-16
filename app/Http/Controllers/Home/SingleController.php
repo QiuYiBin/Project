@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 class SingleController extends Controller
 {
     /**
@@ -12,9 +13,26 @@ class SingleController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 
-    public function index()
+    public function index($id)
     {
-        return view('Home.Single.Single');
+        // 查看商品详情
+        $data = DB::table('bro_goods')->where('id','=',$id)->first();
+        // 查看商品多图片
+        //dd($data);
+        $imgs = explode(',',$data->imgs);
+        // dd($imgs);
+        $comment = \DB::table("bro_comment")
+                    ->select("bro_comment.*","bro_goods.name","bro_goods.pic","bro_user.username")
+                    ->join("bro_user","bro_user.id",'=','bro_comment.uid')
+                    ->join("bro_goods","bro_goods.id",'=',"bro_comment.gid")
+                    ->get();
+        // dd($comment);
+        $array = array(
+            'data' => $data,
+            'imgs' => $imgs,
+            'comment' => $comment
+        );
+        return view('Home.Single.Single')->with($array);
     }
 
     /**

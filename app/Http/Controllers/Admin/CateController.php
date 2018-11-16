@@ -18,8 +18,6 @@ class CateController extends Controller
         $name = $request->input('name');
         // 获取列表数据
         $cate = DB::table('bro_cates')->select(DB::raw('*,concat(path,",",id) as paths'))->where('name','like','%'.$name.'%')->orderBy('paths')->paginate(5);
-        $count = DB::table('bro_cates')->count();
-        
         foreach ($cate as $key => $value) {
             // 转换为数组
             $arr = explode(',',$value->path);
@@ -28,7 +26,7 @@ class CateController extends Controller
             // 重复字符串函数
             $cate[$key]->name = str_repeat('--',$len).$value->name;
         }
-        return view('Admin.AdminCate.index',['cate'=>$cate,'request'=>$request->all()])->with('count',$count);
+        return view('Admin.AdminCate.index',['cate'=>$cate,'request'=>$request->all()]);
 
     }
 

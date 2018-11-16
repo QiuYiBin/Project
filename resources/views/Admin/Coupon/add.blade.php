@@ -44,7 +44,7 @@
       <div class="form-group"> 
        <label class="control-label col-md-3">开始时间</label> 
        <div class="col-md-4 col-xs-11"> 
-        <div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="2018-11-10" class="input-append date dpYears"> 
+        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears"> 
          <input type="text" readonly="" value="" size="16" class="form-control" name="start_time" /> 
          <span class="input-group-btn add-on"> <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button> </span> 
         </div>  
@@ -53,7 +53,7 @@
       <div class="form-group"> 
        <label class="control-label col-md-3">结束时间</label> 
        <div class="col-md-4 col-xs-11"> 
-        <div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="2018-11-10" class="input-append date dpYears"> 
+        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears"> 
          <input type="text" readonly="" value="" size="16" class="form-control" name="end_time" /> 
          <span class="input-group-btn add-on"> <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button> </span> 
         </div>  

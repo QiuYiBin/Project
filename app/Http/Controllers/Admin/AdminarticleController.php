@@ -17,9 +17,8 @@ class AdminarticleController extends Controller
     public function index(Request $request)
     {
         //加载模块 分配数据
-        $article = DB::table("bro_article")->orderBY('id','asc')->paginate(5);
-        $count = DB::table("bro_article")->count();
-        return view("Admin.Article.index",['article'=>$article])->with('count',$count);
+        $article=DB::table("bro_article")->orderBY('id','asc')->paginate(3);
+        return view("Admin.Article.index",['article'=>$article]);
     }
 
    	public function del(Request $request)
@@ -61,7 +60,7 @@ class AdminarticleController extends Controller
         $data=$request->only(['title','descr']);
         $res= Articles::create($data);
         if($res){
-        	return redirect("/adminarticle")->with('success','添加时间');
+        	return redirect("/adminarticle")->with('success','添加成功');
         }
     }
 

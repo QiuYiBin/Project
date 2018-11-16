@@ -59,12 +59,10 @@
          <td class="">{{$value->sales}}</td> 
          <td class=""><a href="/admingoods/{{$value->id}}/edit" class="btn btn-warning">修改</a>|
           <form action="/admingoods/{{$value->id}}" method="post" class="form-group">
-            <button class="btn btn-danger">删除</button>|
+            <button class="btn btn-danger">删除</button>
             {{csrf_field()}}
             {{method_field('DELETE')}}
-          </form>
-          <a href="/goodsspec/{{$value->id}}" class="btn btn-success">添加规格</a>
-        </td> 
+          </form> 
         </tr>
         @endforeach
        </tbody>
@@ -74,8 +72,7 @@
         {{$data->appends($request)->render()}}
        </div>
       </div>
-     </div>
-     <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div>   
+     </div> 
     </div> 
    </div> 
   </section>

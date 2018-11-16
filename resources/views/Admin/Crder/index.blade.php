@@ -1,13 +1,7 @@
 @extends('Admin.AdminPublic.public')
 @section('main')
 <html>
- <head>
-   <style type="text/css" media="screen">
-        td{
-            vertical-align: middle !important;
-        }
-    </style>
- </head>
+ <head></head>
  <body>
   <div class="wrapper" style="margin-top: 30px;">
   <div class="row"> 
@@ -22,7 +16,7 @@
        <div class="dataTables_wrapper form-inline" id="dynamic-table_wrapper" role="grid"> 
         <div class="row-fluid"> 
          <div class="span6"> 
-          <form action="/crder" method="get"> 
+          <form action="/admincates" method="get"> 
            <div class="dataTables_filter" id="dynamic-table_filter"> 
             收件人：<input class="form-control" aria-controls="dynamic-table" name="keywords" type="text" value="" placeholder="在此输入收件人" /> 
             订单号：<input class="form-control" aria-controls="dynamic-table" name="keywordss" type="text" value="" placeholder="在此输入订单号" /> 
@@ -73,11 +67,10 @@
          </tbody> 
         </table> 
         <div style="float: right;"> 
-          {{$data->appends($request)->render()}}
+         
         </div> 
        </div> 
-      </div>
-      <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div> 
+      </div> 
      </div> 
     </section> 
    </div> 

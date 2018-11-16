@@ -15,9 +15,9 @@
             </div>
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="index-1.html">家</a></li>
+                    <li><a href="/">首页</a></li>
                     <li class="separator">&nbsp;</li>
-                    <li><a href="shop-grid-3.html">Shop Grid No Sidebar</a></li>
+                    <li><a href="shop-grid-3.html">商品分类</a></li>
                     <li class="separator">&nbsp;</li>
                     <li>商品详情</li>
                 </ul>
@@ -30,90 +30,38 @@
         <div class="row">
             <!-- Start Product Gallery -->
             <div class="col-md-6">
-                <div class="product-gallery"><span class="product-badge text-danger">20% Off</span>
+                <div class="product-gallery">
                     <div class="gallery-wrapper">
-                        <div class="gallery-item active"><a href="/Home/images/shop/single/01.jpg" data-hash="one" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/02.jpg" data-hash="two" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/03.jpg" data-hash="three" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/04.jpg" data-hash="four" data-size="1000x667"></a></div>
-                        <div class="gallery-item"><a href="/Home/images/shop/single/05.jpg" data-hash="five" data-size="1000x667"></a></div>
+                    	@foreach($imgs as $key=>$value)
+                        <div class="gallery-item active"><a href="/Uploads/Goods/{{$value}}" data-hash="one{{$key}}" data-size="1000x667"></a></div>
+                        @endforeach
                     </div>
                     <div class="product-carousel owl-carousel">
-                        <div data-hash="one"><img src="/Home/images/shop/single/01.jpg" alt="Product"></div>
-                        <div data-hash="two"><img src="/Home/images/shop/single/02.jpg" alt="Product"></div>
-                        <div data-hash="three"><img src="/Home/images/shop/single/03.jpg" alt="Product"></div>
-                        <div data-hash="four"><img src="/Home/images/shop/single/04.jpg" alt="Product"></div>
-                        <div data-hash="five"><img src="/Home/images/shop/single/05.jpg" alt="Product"></div>
+                    	@foreach($imgs as $key=>$value)
+                        <div data-hash="one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product"></div>
+                        @endforeach
                     </div>
                     <ul class="product-thumbnails">
-                        <li class="active"><a href="#one"><img src="/Home/images/shop/single/th01.jpg" alt="Product"></a></li>
-                        <li><a href="#two"><img src="/Home/images/shop/single/th02.jpg" alt="Product"></a></li>
-                        <li><a href="#three"><img src="/Home/images/shop/single/th03.jpg" alt="Product"></a></li>
-                        <li><a href="#four"><img src="/Home/images/shop/single/th04.jpg" alt="Product"></a></li>
-                        <li><a href="#five"><img src="/Home/images/shop/single/th05.jpg" alt="Product"></a></li>
+                    	@foreach($imgs as $key=>$value)
+                        <li class="active"><a href="#one{{$key}}"><img src="/Uploads/Goods/{{$value}}"alt="Product"></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <!-- End Product Gallery -->
             <!-- Start Product Info -->
+            <form class="row" method="post" action="/homecart">
             <div class="col-md-6 single-shop">
-                <div class="hidden-md-up"></div>
-                <div class="rating-stars">
+            	<div class="rating-stars">
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
                 </div>
-                <span class="text-muted align-middle">&nbsp;&nbsp;5 | 13 Customer Reviews</span>
-                <h2 class="padding-top-1x text-normal with-side">iPhone X Gold 128GB</h2>
-                <span class="h2 d-block with-side"><del class="text-muted text-normal">$899.00</del>&nbsp; $749.60</span>
-                <p>Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个......</p>
-                <p>Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个......</p>
-                <div class="row margin-top-1x">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="size">内存大小</label>
-                            <select class="form-control" id="size">
-                                <option>嘻哈大小</option>
-                                <option>16GB</option>
-                                <option>32GB</option>
-                                <option>64GB</option>
-                                <option>128GB</option>
-                                <option>256GB</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <label for="color">选择颜色</label>
-                            <select class="form-control" id="color">
-                                <option>白色 / 红色 / 蓝色</option>
-                                <option>Black / Orange / Green</option>
-                                <option>Gray / Purple / White</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="quantity">数量</label>
-                            <select class="form-control" id="quantity">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-1 mb-2"><span class="text-medium">SKU:</span> #17685932</div>
-                <div class="padding-bottom-1x mb-2">
-                    <span class="text-medium">分类:&nbsp;</span>
-                    <a class="navi-link" href="#">Apple,</a>
-                    <a class="navi-link" href="#"> 智能手机,</a>
-                    <a class="navi-link" href="#"> 手机</a>
-                </div>
+                <h2 class="padding-top-1x text-normal with-side">{{$data->name}}</h2>
+                <span class="h2 d-block with-side">¥{{$data->price}}</span>
+                <p>{{$data->descr}}</p>
             </div>
             <div class="col-md-12">
                 <hr class="mt-30 mb-30">
@@ -140,68 +88,48 @@
                             <i class="icon-heart"></i>
                         </button>
                         <button class="btn btn-primary" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i> 添加购物车</button>
+                        <input type="hidden" name="name" value="{{$data->name}}">
+                        <input type="hidden" name="id" value="{{$data->id}}">
                     </div>
                 </div>
             </div>
+            {{csrf_field()}}
+           </form>
             <!-- End Product Info -->
         </div>
         <!-- Start Product Tabs -->
         <div class="col-md-12">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item"><a class="nav-link active" href="#description" data-toggle="tab" role="tab">描述</a></li>
-                <li class="nav-item"><a class="nav-link" href="#reviews" data-toggle="tab" role="tab">测评</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#description" data-toggle="tab" role="tab">商品描述</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reviews" data-toggle="tab" role="tab">评论</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="description" role="tabpanel">
-                    <p>Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存在了五个世纪，而且还延续了电子排版，基本保持不变。</p>
-                    <p class="mb-30">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存在了五个世纪，而且还延续了电子排版，基本保持不变。</p>
+
+                <div class="tab-pane fade show active" id="description" role="tabpanel" style="margin: 0 auto">
+                    {!!$data->text!!}
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel">
+                	@if(!empty($comment))
+					@foreach($comment as $value)
                     <!-- Start Review #1 -->
                     <div class="comment">
                         <div class="comment-author-ava"><img src="/Home/images/reviews/01.jpg" alt="Review Author"></div>
                         <div class="comment-body">
                             <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
+                                <!-- <h4 class="comment-title">Lorem存有简直是虚拟</h4> -->
                                 <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
+                                    <div class="rating-stars" style="color:#ffb74f">{{str_repeat("★",$value->start)}}{{str_repeat("☆",5-$value->start)}}</div>
                                 </div>
                             </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊滚</span></div>
+                            <p class="comment-text">{{$value->text}}</p>
+                            <div class="comment-footer"><span class="comment-meta">{{$value->username}}</span></div>
                         </div>
                     </div>
+                    @endforeach
+                    @else
+                    <center>暂无评价哦~~~</center>
+                    @endif
                     <!-- End Review #1 -->
-                    <!-- Start Review #2 -->
-                    <div class="comment">
-                        <div class="comment-author-ava"><img src="/Home/images/reviews/02.jpg" alt="Review Author"></div>
-                        <div class="comment-body">
-                            <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
-                                <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
-                                </div>
-                            </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊杰</span></div>
-                        </div>
-                    </div>
-                    <!-- End Review #2 -->
-                    <!-- Start Review #3 -->
-                    <div class="comment">
-                        <div class="comment-author-ava"><img src="/Home/images/reviews/03.jpg" alt="Review Author"></div>
-                        <div class="comment-body">
-                            <div class="comment-header d-flex flex-wrap justify-content-between">
-                                <h4 class="comment-title">Lorem存有简直是虚拟</h4>
-                                <div class="mb-2">
-                                    <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i></div>
-                                </div>
-                            </div>
-                            <p class="comment-text">Lorem Ipsum只是印刷和排版行业的虚拟文本。自16世纪以来，Lorem Ipsum一直是业界标准的虚拟文本，当时一台未知的打印机采用了类型的厨房并将其拼凑成一本类型的样本。它不仅存活了五个世纪。</p>
-                            <div class="comment-footer"><span class="comment-meta">啊斌</span></div>
-                        </div>
-                    </div>
-                    <!-- End Review #3 -->
                     <!-- Start Review Form -->
                     <h5 class="mb-30 padding-top-1x">离开评论</h5>
                     <form class="row" method="post">

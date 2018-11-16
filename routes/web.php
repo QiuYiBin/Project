@@ -11,6 +11,9 @@
 |
 */
 
+
+
+
 // 后台登录管理
 Route::resource('/adminlogin','Admin\AdminLoginController');
 Route::group(['middleware'=>'login'],function(){
@@ -72,19 +75,34 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource("/coupon","Admin\CouponController");
 	// 优惠券ajax删除
 	Route::get("/couponajax","Admin\CouponController@del");
-	// 添加商品规格
-	Route::get('/goodsspec/{id}','Admin\GoodsController@spec');
-	//广告管理
-	Route::resource('/advert','Admin\AdvertController');
-	//Ajax删除
-	Route::get('/del','Admin\AdvertController@del');
-	//文章管理
-	Route::resource('/word','Admin\WordController');
 });
+
 
 // 前台首页
 Route::resource('/','Home\IndexController');
-//商品列表
-Route::resource('/goods/{id}','Home\GoodsController');
+//前台注册
+Route::resource('/homeregister','Home\RegisterController');
+//测试邮件发送
+Route::get('/send','Home\RegisterController@send');
+//测试邮件发送2
+//Route::get('/sendmail','Home\RegisterController@sendmail');
+//验证码路由
+Route::get("/code","Home\RegisterController@code");
+//激活用户路由
+Route::get("/jihuo","Home\RegisterController@jihuo");
+//登录路由
+Route::resource("/homelogin","Home\LoginController");
+//忘记密码
+//Route::get("/forget","Home\LoginController@forget");
+//Route::post("/doforget","Home\LoginController@doforget");
+//重置密码路由
+//Route::get("/reset","Home\LoginController@reset");
+//前台公告路由
+Route::resource("/article","Home\ArticleController");
+//前台商品详情路由
 // 商品详情
-Route::resource('/shopsingle/{id}','Home\SingleController');
+Route::get('/shopsingle/{id}','Home\SingleController@index');
+//前台购物车路由
+Route::resource('/homecart','Home\CartController');
+
+

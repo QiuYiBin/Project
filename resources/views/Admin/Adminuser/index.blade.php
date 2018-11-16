@@ -8,6 +8,7 @@
         }
     </style> 
  </head>
+ <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script> 
  <body> 
   <div class="wrapper" style="margin-top: 30px"> 
    <div class="row"> 

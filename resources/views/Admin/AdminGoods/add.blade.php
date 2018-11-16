@@ -14,6 +14,15 @@
     <script type="text/javascript" charset="utf-8" src="/Ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
   <body>
+    @if (count($errors) > 0)
+      <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+      </div>
+    @endif
     <div class="col-lg-12">
     <section class="panel" style="margin-top: 45px;"> 
       <header class="panel-heading">
@@ -112,12 +121,8 @@
    // 当所有html代码加载完毕
     $(function() {
       // 调用百度编辑器
-      var ue = UE.getEditor('editor',{
-        autoFloatEnabled:false
-      });
-      var ues = UE.getEditor('editors',{
-        autoFloatEnabled:false
-      });
+      var ue = UE.getEditor('editor');
+      var ues = UE.getEditor('editors');
       // 声明字符串
       var imgs = '';
       $('#uploads').uploadify({
