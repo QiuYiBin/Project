@@ -76,7 +76,7 @@
                 <div id="mains" >
 
                 </div> 
-                <input type="hidden" name="imgs" id="imgss"> 
+                <input type="hidden" name="picdouble" id="imgss"> 
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
@@ -84,7 +84,13 @@
               <div class="col-md-3 col-xs-9">
                 <script id="editor" type="text/plain" name="text" style="width:800px;height:500px;"></script>
               </div> 
-          </div>     
+          </div> 
+          <div class="form-group" style="margin-top: 40px"> 
+            <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">配置信息</label> 
+              <div class="col-md-3 col-xs-9">
+                <script id="editors" type="text/plain" name="config" style="width:800px;height:500px;"></script>
+              </div> 
+          </div>    
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">描述</label> 
               <div class="col-md-3 col-xs-9">

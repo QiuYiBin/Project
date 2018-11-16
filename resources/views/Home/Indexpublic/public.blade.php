@@ -92,16 +92,16 @@
                 
             </li>
             <li>
-                <a href="#"><span>购物</span></a>
+                <a href="/goods"><span>购物</span></a>
                 <ul class="sub-menu">
                     @if(count($cate))
                     @foreach($cate as $value)
                     <li class="has-children">
-                        <a href="#"><span>{{$value->name}}</span></a>
+                        <a href="/goods/{{$value->id}}"><span>{{$value->name}}</span></a>
                         @if(count($value->dev))
                         <ul class="sub-menu">
                             @foreach($value->dev as $rows)
-                            <li><a href="shop-categories-1.html">{{$rows->name}}</a></li>
+                            <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                             @endforeach
                         </ul>
                          @endif

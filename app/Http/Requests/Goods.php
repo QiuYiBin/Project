@@ -32,8 +32,9 @@ class Goods extends FormRequest
             'price' => 'required|regex:/^[0-9]*$/|max:10',
             'store' => 'required|regex:/^[0-9]*$/|max:10',
             'pic' => 'required',
-            'imgs' => 'required',
+            'picdouble' => 'required',
             'text' => 'required',
+            'config' => 'required',
             'descr' => 'required|max:255'
         ];
     }
@@ -52,8 +53,9 @@ class Goods extends FormRequest
             'store.regex' => '库存不能为空',
             'store.max' => '库存长度不正确',
             'pic.required' => '封面图不能为空',
-            'imgs.required' => '小图不能为空',
+            'picdouble.required' => '小图不能为空',
             'text.required' => '描述不能为空',
+            'config.required' => '配置不能为空',
             'descr.required' => '描述不能为空',
             'descr.max' => '描述长度不正确'
         ];
