@@ -68,7 +68,8 @@
           <a href="javascript:void(0)" class="btn btn-success" onclick="page({{$v}})">{{$v}}</a>
         @endforeach
         @endif
-         </div> 
+         </div>
+         <div class="dataTables_info" id="editable-sample_info">共{{$tot}}条数据</div> 
         </div> 
        </div> 
       </div> 

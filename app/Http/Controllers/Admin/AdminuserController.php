@@ -18,12 +18,13 @@ class AdminuserController extends Controller
      */
     public function index(Request $request)
     {
-
+        // dd();
         //获取数据 
         $admin = DB::table('bro_users')->join('bro_user_role','bro_user_role.uid','=','bro_users.id')->join('bro_role','bro_user_role.rid','=','bro_role.id')->select('bro_user_role.*','bro_role.name as rname','bro_users.*')->get();
         // dd($admin);
+        $count = count($admin);
         //分配数据 加载模板
-        return view("Admin.Adminuser.index")->with('admin',$admin);
+        return view("Admin.Adminuser.index")->with('admin',$admin)->with('count',$count);
 
     }
 
@@ -75,7 +76,7 @@ class AdminuserController extends Controller
             DB::table("bro_user_role")->insert($data);
         }
 
-        return redirect("/adminsuser")->with('success','角色分配成功');
+        return redirect("/adminusers")->with('success','角色分配成功');
 
     }
     /**
@@ -85,8 +86,10 @@ class AdminuserController extends Controller
      */
     public function create()
     {
+        // 查询所有角色
+        $res = \DB::table('bro_role')->get();
         //加载添加模块
-        return view("Admin.Adminuser.add");
+        return view("Admin.Adminuser.add")->with('res',$res);
     }
 
     /**
@@ -97,19 +100,25 @@ class AdminuserController extends Controller
      */
     public function store(AdminUsers $request)
     {
-        //执行管理员用户添加
+        $request->flashOnly('name');
         //获取所有数据
-        // dd($request->except(['passwords','_token']));
-        $data=$request->except(['passwords','_token']);
+        $data = $request->except(['passwords','_token']);
         // //密码加密
-        $data['password']=Hash::make($data['password']);
+        $data['password'] = Hash::make($data['password']);
         $data['status'] = 0;
-
-        if(DB::table("bro_users")->insert($data)){
+        // 创建新数组放置rid和uid
+        $res = array();
+        $res['rid'] = $data['rid'];
+        unset($data['rid']);
+        // var_dump($res);
+        // dd($data);
+        if($id = DB::table("bro_users")->insertGetId($data)){
             //设置提示信息 存储在session里 with 可以设置session信息
-            return redirect('/adminsuser')->with('success','添加成功');
+            $res['uid'] = $id;
+            \DB::table('bro_user_role')->insert($res);
+            return redirect('/adminusers')->with('success','添加成功');
         }else{
-            return redirect('/adminsuser/create')->with('error','添加失败');
+            return redirect('/adminusers/create')->with('error','添加失败');
         }
 
     }
@@ -137,7 +146,7 @@ class AdminuserController extends Controller
         $admin=DB::table("bro_users")->where("id","=",$id)->first();
        
         if($admin == null){
-            return redirect('/adminsuser')->with('error','不要瞎改');
+            return redirect('/adminusers')->with('error','不要瞎改');
         }
         //加载模板 分配数据
         return view("Admin.Adminuser.edit",['admin'=>$admin]);
@@ -161,7 +170,7 @@ class AdminuserController extends Controller
         //dd($data);
         //执行修改操作
         if(DB::table("bro_users")->where("id","=",$id)->update($data)){
-   			return redirect("/adminsuser")->with('success','修改成功');
+   			return redirect("/adminusers")->with('success','修改成功');
         }else{	
         	return back()->with('error',"修改失败",'id',$id);
         }
@@ -177,8 +186,6 @@ class AdminuserController extends Controller
     public function destroy($id)
     {
         // 执行删除操作
-        // 获取需要删除的id
-        $id=$id;
         //echo $id;
         if(DB::table("bro_users")->where("id","=",$id)->delete()){
         	return redirect("/adminsuser")->with('success','删除成功');

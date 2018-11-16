@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-	// 加载模板
-    return view('welcome');
-});
+// Route::get('/', function () {
+// 	// 加载模板
+//     // return view('welcome');
+// });
 
 
 
@@ -59,9 +59,46 @@ Route::group(['middleware'=>'login'],function(){
 	Route::any('/admingoods/upload','Admin\GoodsController@upload');
 	// 后台轮播图AJAX删除
 	Route::get('/sliderdel','Admin\SliderController@ajaxdel');
+	// 公告模块管理
+	Route::resource('/adminarticle','Admin\AdminarticleController');
+	// 公告批量删除
+	Route::get('/articledel','Admin\AdminarticleController@del');
+	// 友情链接
+	Route::resource("/link","Admin\LinkController");
+	// 友情链接ajax删除
+	Route::get("/linkajax","Admin\LinkController@del");
+	// 订单列表
+	Route::resource("/crder","Admin\CrderController");
+	// 订单ajax删除
+	Route::get("/crderajax","Admin\CrderController@del");
+	// 关联商品详情
+	Route::get("/details/{id}","Admin\CrderController@details");
+	// 订单详情表
+	Route::resource("/crderinfo","Admin\CrderinfoController");
+	// 优惠券
+	Route::resource("/coupon","Admin\CouponController");
+	// 优惠券ajax删除
+	Route::get("/couponajax","Admin\CouponController@del");
 });
 
 
 // 前台首页
-Route::resource('/homeindex','Home\IndexController');
-
+Route::resource('/','Home\IndexController');
+//注册
+Route::resource('/register','Home\RegisterController');
+//验证码
+Route::get("/code","Home\RegisterController@code");
+//激活用户
+Route::get("/activation","Home\RegisterController@activation");
+//登陆
+Route::resource("/login","Home\LoginController");
+//激活成功
+Route::get("/logindex","Home\LoginController@index");
+//
+Route::get("/logintion","Home\LoginController@activation");
+//找回密码
+Route::resource("/retrieve","Home\RetrieveController");
+//
+Route::get("/rtion","Home\RetrieveController@activation");
+//
+Route::post("/doreset","Home\RetrieveController@doreset");

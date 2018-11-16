@@ -50,7 +50,8 @@
          </table>
          <div style="float: right">
           
-         </div> 
+         </div>
+         <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div> 
         </div> 
        </div> 
       </div> 

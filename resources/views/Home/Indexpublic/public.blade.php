@@ -64,7 +64,20 @@
         <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
+
     </div>
+     
+    @if(session('username'))
+       <div> 
+        <a href="#">欢迎{{session('username')}}</a>
+        <a href="login/create"></i>退出</a>
+        </div>
+        @else
+        <div>
+        <a href="/login">登陆</a>
+        <a href="/register">注册</a>
+        </div>
+        @endif
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->
@@ -208,9 +221,10 @@
     <!-- End Toolbar -->
 </header>
 <!-- End NavBar -->
-<div class="offcanvas-container" id="mobile-menu">
 @section('main')
 @show
+<div class="offcanvas-container" id="mobile-menu">
+
 <!-- Start Footer -->
     <footer class="site-footer">
         <div class="container">
@@ -300,6 +314,92 @@
     </footer>
 </div>
     <!-- End Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <!-- Start Footer Info -->
+            <div class="row">
+                <!-- Start Contact Info -->
+                <div class="col-lg-3 col-md-6">
+                    <section class="widget widget-light-skin">
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inspina联系信息</font></font></h3>
+                        <p class="text-white"><i class="fa fa-phone"></i> +1 888 888 8888</p>
+                        <p class="text-white"><i class="fa fa-envelope-o"></i> info@yoursite.com</p>
+                        <p class="text-white"><i class="fa fa-map-marker"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广东省广州市天河</font></font></p>
+                        <ul class="list-unstyled text-sm text-white">
+                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周一至周五：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 09：00-18 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00</font></font></li>
+                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周六至周日：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 10 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00-15：00</font></font></li>
+                        </ul>
+                        <a class="social-button shape-circle sb-facebook sb-light-skin" href="#">
+                            <i class="socicon-facebook"></i>
+                        </a>
+                        <a class="social-button shape-circle sb-twitter sb-light-skin" href="#">
+                            <i class="socicon-twitter"></i>
+                        </a>
+                        <a class="social-button shape-circle sb-instagram sb-light-skin" href="#">
+                            <i class="socicon-googleplus"></i>
+                        </a>
+                        <a class="social-button shape-circle sb-instagram sb-light-skin" href="#">
+                            <i class="socicon-instagram"></i>
+                        </a>
+                    </section>
+                </div>
+                <!-- End Contact Info -->
+                <!-- Start Mobile Apps -->
+                <div class="col-lg-3 col-md-6">
+                    <section class="widget widget-links widget-light-skin">
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">合作模块</font></font></h3>
+                        <ul>
+                            <li><a href="#"><font style="vertical-align: inherit;">友情链接<font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
+                        </ul>
+                    </section>
+                </div>
+                <!-- End Mobile Apps -->
+                <!-- Start About Us -->
+                <div class="col-lg-3 col-md-6">
+                    <section class="widget widget-links widget-light-skin">
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></h3>
+                        <ul>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们公司</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的队伍</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的产品</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的客户</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的推荐</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全天候支持</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a></li>
+                        </ul>
+                    </section>
+                </div>
+                <!-- End About Us -->
+                <!-- Start Account Info -->
+                <div class="col-lg-3 col-md-6">
+                    <section class="widget widget-links widget-light-skin">
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐户信息</font></font></h3>
+                        <ul>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的购物车</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的收藏</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的简历</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的门票</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单跟踪</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单票</font></font></a></li>
+                        </ul>
+                    </section>
+                </div>
+                <!-- End Account Info -->
+            </div>
+            <!-- End Footer Info -->
+            <hr class="hr-light">
+            <!-- Start Copyright -->
+            <p class="footer-copyright text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©2018 我们还能抢救一下 | </font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;">保留</font></a><font style="vertical-align: inherit;">所有权利</font></font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;"></font></a></p>
+            <!-- End Copyright -->
+        </div>
+    </footer>
 <!-- Start Back To Top -->
 <a class="scroll-to-top-btn" href="#">
     <i class="icon-arrow-up"></i>

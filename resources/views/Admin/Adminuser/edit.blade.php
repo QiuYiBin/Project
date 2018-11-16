@@ -9,7 +9,7 @@
      管理员修改 
    </header>
    <div class="panel-body"> 
-    <form class="form-horizontal" role="form" action="/adminsuser/{{$admin->id}}" method="post"> 
+    <form class="form-horizontal" role="form" action="/adminusers/{{$admin->id}}" method="post"> 
      <div class="form-group" style="margin-top: 40px"> 
       <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">用户名：</label> 
       <div class="col-md-3 col-xs-9"> 
@@ -20,8 +20,8 @@
       <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">状态:</label>
       <div class="col-md-3 col-xs-9"> 
           <select class="form-control m-bot15" name="status">
-            <option value="0">启用</option>
-            <option value="1" selected="">禁用</option> 
+            <option value="0" @if($admin->status == 0) selected @endif>启用</option>
+            <option value="1" @if($admin->status == 1) selected @endif>禁用</option> 
             </select> 
       </div> 
       </div>
