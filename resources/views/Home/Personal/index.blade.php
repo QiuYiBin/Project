@@ -9,7 +9,8 @@
          <label for="account-fn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名字</font></font></label> 
          <input class="form-control" type="text" name="name" id="account-fn" value="" required="" /> 
         </div>
-       </div> 
+       </div>
+       <p>99999</p> 
        <div class="col-md-6"> 
         <div class="form-group"> 
          <label for="account-ln"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">姓别</font></font></label> 

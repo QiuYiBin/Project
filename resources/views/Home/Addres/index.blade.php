@@ -1,4 +1,4 @@
-﻿@extends('Home.Personal.public')
+@extends('Home.Personal.public')
 
 <div class="modal fade" id="mymodal">
     <div class="modal-dialog">
@@ -36,7 +36,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    alert($);
     // 第一级别获取
     $.get('./address.php',{upid:0},function(result){
       // console.log(result);
