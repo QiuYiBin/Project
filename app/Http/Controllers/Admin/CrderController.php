@@ -20,6 +20,7 @@ class CrderController extends Controller
         $k=$request->input("keywords");
         $k1=$request->input("keywordss");
 
+
         $data= Crder::where("linkname",'like',"%".$k."%")->where('orderid','like',"%".$k1."%")->paginate(10);
         $count = DB::table('bro_crder')->count();
         return view("Admin.Crder.index",['data'=>$data,'request'=>$request->all()])->with('count',$count);

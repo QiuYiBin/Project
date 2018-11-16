@@ -79,6 +79,24 @@ Route::group(['middleware'=>'login'],function(){
 
 // 前台首页
 Route::resource('/','Home\IndexController');
+//注册
+Route::resource('/register','Home\RegisterController');
+//验证码
+Route::get("/code","Home\RegisterController@code");
+//激活用户
+Route::get("/activation","Home\RegisterController@activation");
+//登陆
+Route::resource("/login","Home\LoginController");
+//激活成功
+Route::get("/logindex","Home\LoginController@index");
+//
+Route::get("/logintion","Home\LoginController@activation");
+//找回密码
+Route::resource("/retrieve","Home\RetrieveController");
+//
+Route::get("/rtion","Home\RetrieveController@activation");
+//
+Route::post("/doreset","Home\RetrieveController@doreset");
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 个人中心

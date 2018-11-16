@@ -26,7 +26,9 @@
   <link href="/Admin/css/style.css" rel="stylesheet">
   <link href="/Admin/css/style-responsive.css" rel="stylesheet">
     <!-- Placed js at the end of the document so the pages load faster -->
+
   <script src="/Admin/js/jquery-1.10.2.min.js"></script>
+
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="/Admin/js/html5shiv.js"></script>
@@ -126,16 +128,19 @@
                         <li><a href="/slider">轮播图列表</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href="#"><i class="fa fa-jpy"></i> <span>订单管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/crder">订单列表</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href=""><i class="fa fa-paperclip"></i> <span>友情链接</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/link">链接详情</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href="#"><i class="fa fa-bookmark-o"></i> <span>优惠券</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/coupon/create">添加优惠券</a></li>
@@ -368,6 +373,7 @@
 
     <!--Dashboard Charts-->
     <script src="/Admin/js/dashboard-chart-init.js"></script>
+
 
     @section('js')
     @show

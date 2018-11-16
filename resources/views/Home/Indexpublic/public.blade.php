@@ -61,7 +61,20 @@
         <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
+
     </div>
+     
+    @if(session('username'))
+       <div> 
+        <a href="#">欢迎{{session('username')}}</a>
+        <a href="login/create"></i>退出</a>
+        </div>
+        @else
+        <div>
+        <a href="/login">登陆</a>
+        <a href="/register">注册</a>
+        </div>
+        @endif
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->
@@ -205,6 +218,7 @@
     </div>
     <!-- End Toolbar -->
 </header>
+
 @section('main')
 @show
 <!-- End NavBar -->
