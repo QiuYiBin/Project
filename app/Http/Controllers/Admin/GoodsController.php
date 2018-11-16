@@ -18,7 +18,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $name = $request->input('name');
-        $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(10);
+        $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(1);
         $count = DB::table('bro_goods')->count();
         return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all())->with('count',$count);
     }
@@ -49,14 +49,26 @@ class GoodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Goods $request)
-    {        
+    {
+        // 获取多图
+        $imgs = $request->input('picdouble');
+        
         // 移除不需要的字段
-        $data = $request->except('_token');
+        $data = $request->except('_token','picdouble');
         // dd($data);
         if($data['cates_id'] == '0'){
             return back()->with('error','请选择分类');
-        } 
-        if(DB::table('bro_goods')->insert($data)){
+        }
+        // var_dump($imgs);
+        $arr = explode(',',$imgs);
+        // 创新新数组存储小图片
+        $array = array();    
+        if($gid = DB::table('bro_goods')->insertGetId($data)){
+            foreach ($arr as $key => $value) {
+               $array['pic'] = $value;
+               $array['gid'] = $gid;
+               \DB::table('bro_goodsimg')->insert($array);
+            }
             return redirect('/admingoods')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
@@ -110,25 +122,12 @@ class GoodsController extends Controller
     public function update(GoodsEdit $request, $id)
     {
         $data = $request->except('_token','_method');
-
         if($data['pic'] == null){
             unset($data['pic']);
-        }else{
-            $pic = DB::table('bro_goods')->select('bro_goods.pic')->where('id','=',$id)->first();
-            unlink('./Uploads/Goods/'.$pic->pic);
         }
-
-        if($data['imgs'] == null){
-            unset($data['imgs']);
-        }else{
-            // 先获取之前的小图片
-            $imgs = DB::table('bro_goods')->where('id','=',$id)->first();
-            $del = explode(',',$imgs->imgs);
-            foreach($del as $value){
-                unlink('./Uploads/Goods/'.$value);
-            }
+        if($data['picdouble'] == null){
+            unset($data['picdouble']);
         }
-        
         if(DB::table('bro_goods')->where('id','=',$id)->update($data)) {
             return redirect('/admingoods')->with('success','修改成功');
         }else{
@@ -145,14 +144,15 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         // 获取要删除的图片名
-        $pic = DB::table('bro_goods')->select('bro_goods.pic','bro_goods.imgs')->where('id','=',$id)->first();
+        $pic = DB::table('bro_goods')->select('bro_goods.pic')->where('id','=',$id)->first();
         // 获取要删除的小图片
-        $imgs = explode(',',$pic->imgs);
+        $imgs = DB::table('bro_goodsimg')->where('gid','=',$id)->get();
         if(DB::table('bro_goods')->where('id','=',$id)->delete()){
             unlink('./Uploads/Goods/'.$pic->pic);
             foreach ($imgs as $value) {
-                unlink('./Uploads/Goods/'.$value);     
+                unlink('./Uploads/Goods/'.$value->pic);     
             }
+            DB::table('bro_goodsimg')->where('gid','=',$id)->delete();
             return redirect('/admingoods')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
@@ -180,4 +180,15 @@ class GoodsController extends Controller
         }
     }
 
+    // 添加商品规格
+    public function spec($id)
+    {
+        return view('Admin.AdminGoods.spec');
+    }
+
+    // 商品规格提交
+    public function addspec(Request $request)
+    {
+        dd($request);
+    }
 }
