@@ -17,8 +17,9 @@ class AdminarticleController extends Controller
     public function index(Request $request)
     {
         //加载模块 分配数据
-        $article=DB::table("bro_article")->orderBY('id','asc')->paginate(3);
-        return view("Admin.Article.index",['article'=>$article]);
+        $article = DB::table("bro_article")->orderBY('id','asc')->paginate(5);
+        $count = DB::table("bro_article")->count();
+        return view("Admin.Article.index",['article'=>$article])->with('count',$count);
     }
 
    	public function del(Request $request)

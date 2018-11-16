@@ -26,10 +26,8 @@
   <link href="/Admin/css/style.css" rel="stylesheet">
   <link href="/Admin/css/style-responsive.css" rel="stylesheet">
     <!-- Placed js at the end of the document so the pages load faster -->
-    <script src="/Admin/js/jquery-1.10.2.min.js"></script>
 
-
-
+  <script src="/Admin/js/jquery-1.10.2.min.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -43,12 +41,10 @@
 <section>
     <!-- left side start-->
     <div class="left-side sticky-left-side">
-
         <!--logo and iconic logo start-->
         <div class="logo">
             <a href="index.html"><img src="/Admin/images/logo.png" alt=""></a>
         </div>
-
         <div class="logo-icon text-center">
             <a href="index.html"><img src="/Admin/images/logo_icon.png" alt=""></a>
         </div>
@@ -116,34 +112,42 @@
                     </ul>
                 </li>
 
-                <li class="menu-list"><a href=""><i class="fa fa-tasks"></i> <span>商品管理</span></a>
+                <li class="menu-list"><a href=""><i class="fa fa-thumbs-up"></i> <span>商品管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/admingoods">商品列表</a></li>
                         <li><a href="/admingoods/create">添加商品</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href="/slider"><i class="fa fa-bar-chart-o"></i> <span>轮播图管理</span></a>
+                <li class="menu-list"><a href=""><i class="fa fa-thumbs-up"></i> <span>评论管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/comment">评论列表</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="/slider"><i class="fa fa-video-camera"></i> <span>轮播图管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/slider">轮播图列表</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href="#"><i class="fa fa-map-marker"></i> <span>订单管理</span></a>
+
+                <li class="menu-list"><a href="#"><i class="fa fa-jpy"></i> <span>订单管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/crder">订单列表</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>友情链接</span></a>
+
+                <li class="menu-list"><a href=""><i class="fa fa-paperclip"></i> <span>友情链接</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/link">链接详情</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href="#"><i class="fa fa-map-marker"></i> <span>优惠券</span></a>
+
+                <li class="menu-list"><a href="#"><i class="fa fa-bookmark-o"></i> <span>优惠券</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/coupon/create">添加优惠券</a></li>
                         <li><a href="/coupon">优惠券详情表</a></li>
                     </ul>
                 </li>
-                <li><a href="/adminlogin"><i class="fa fa-sign-in"></i> <span>注销</span></a></li>
+                <li><a href="/adminlogin"><i class="fa fa-power-off"></i> <span>注销</span></a></li>
             </ul>
             <!--sidebar nav end-->
         </div>
@@ -282,92 +286,97 @@
             </div>
             <!--notification menu end -->
         </div>
-        @if(session('success'))
-        <!-- 添加成功样式 -->
-        <div class="alert alert-success alert-block fade in">
-            <button class="close close-sm" type="button" data-dismiss="alert">
-                <i class="fa fa-times"></i>
-            </button>
-            <h4>
-                {{session('success')}}
-            </h4>
-        </div>
-        <!-- 添加成功样式结束 -->
-        @endif
-        @if(session('error'))
-        <!-- 添加失败样式 -->
-        <div class="alert alert-block alert-danger fade in">
-            <button class="close close-sm" type="button" data-dismiss="alert">
-                <i class="fa fa-times"></i>
-            </button>
-            <strong>{{session('error')}}</strong>
-        </div>
-        <!-- 添加失败样式结束 -->
-        @endif
-        <!-- 主体内容开始 -->
-        @section('main')
-        @show
-        <!-- 主体内容结束 -->
         <!-- header section end-->
-    </div>
-
-            
-             
+        <!--body wrapper start-->
+        <div class="wrapper">
+            @if (count($errors) > 0)
+              <div class="alert alert-danger">
+              <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+              </ul>
+              </div>
+            @endif
+            @if(session('success'))
+            <!-- 添加成功样式 -->
+            <div class="alert alert-success alert-block fade in">
+                <button class="close close-sm" type="button" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4>
+                    {{session('success')}}
+                </h4>
+            </div>
+            <!-- 添加成功样式结束 -->
+            @endif
+            @if(session('error'))
+            <!-- 添加失败样式 -->
+            <div class="alert alert-block alert-danger fade in">
+                <button class="close close-sm" type="button" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <strong>{{session('error')}}</strong>
+            </div>
+            <!-- 添加失败样式结束 -->
+            @endif
+            <!-- 主体内容开始 -->
+            @section('main')
+            @show
+            <!-- 主体内容结束 -->
+        </div>
         <!--body wrapper end-->
-
+    </div>
         <!--footer section start-->
         <footer>
             2018 &copy; &nbsp;<a href="http://www.mycodes.net/" target="_blank">还可以拯救一下团队制作</a>
         </footer>
         <!--footer section end-->
-
-
-    </div>
-    <!-- main content end-->
 </section>
 
-<script src="/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="/Admin/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/Admin/js/bootstrap.min.js"></script>
-<script src="/Admin/js/modernizr.min.js"></script>
-<script src="/Admin/js/jquery.nicescroll.js"></script>
+    <script src="/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/Admin/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/Admin/js/bootstrap.min.js"></script>
+    <script src="/Admin/js/modernizr.min.js"></script>
+    <script src="/Admin/js/jquery.nicescroll.js"></script>
 
-<!--easy pie chart-->
-<script src="/Admin/js/easypiechart/jquery.easypiechart.js"></script>
-<script src="/Admin/js/easypiechart/easypiechart-init.js"></script>
+    <!--easy pie chart-->
+    <script src="/Admin/js/easypiechart/jquery.easypiechart.js"></script>
+    <script src="/Admin/js/easypiechart/easypiechart-init.js"></script>
 
-<!--Sparkline Chart-->
-<script src="/Admin/js/sparkline/jquery.sparkline.js"></script>
-<script src="/Admin/js/sparkline/sparkline-init.js"></script>
+    <!--Sparkline Chart-->
+    <script src="/Admin/js/sparkline/jquery.sparkline.js"></script>
+    <script src="/Admin/js/sparkline/sparkline-init.js"></script>
 
-<!--icheck -->
-<script src="/Admin/js/iCheck/jquery.icheck.js"></script>
-<script src="/Admin/js/icheck-init.js"></script>
+    <!--icheck -->
+    <script src="/Admin/js/iCheck/jquery.icheck.js"></script>
+    <script src="/Admin/js/icheck-init.js"></script>
 
-<!-- jQuery Flot Chart-->
-<script src="/Admin/js/flot-chart/jquery.flot.js"></script>
-<script src="/Admin/js/flot-chart/jquery.flot.tooltip.js"></script>
-<script src="/Admin/js/flot-chart/jquery.flot.resize.js"></script>
+    <!-- jQuery Flot Chart-->
+    <script src="/Admin/js/flot-chart/jquery.flot.js"></script>
+    <script src="/Admin/js/flot-chart/jquery.flot.tooltip.js"></script>
+    <script src="/Admin/js/flot-chart/jquery.flot.resize.js"></script>
 
 
-<!--Morris Chart-->
-<script src="/Admin/js/morris-chart/morris.js"></script>
-<script src="/Admin/js/morris-chart/raphael-min.js"></script>
+    <!--Morris Chart-->
+    <script src="/js/morris.js"></script>
+    <script src="/Admin/js/morris-chart/raphael-min.js"></script>
 
-<!--Calendar-->
-<script src="/Admin/js/calendar/clndr.js"></script>  
-<script src="/Admin/js/calendar/evnt.calendar.init.js"></script>
-<script src="/Admin/js/calendar/moment-2.2.1.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <!--Calendar-->
+    <script src="/Admin/js/calendar/clndr.js"></script>  
+    <script src="/Admin/js/calendar/evnt.calendar.init.js"></script>
+    <script src="/Admin/js/calendar/moment-2.2.1.js"></script>
+    <script src="/js/underscore-min.js"></script>
 
-<!--common scripts for all pages-->
-<script src="/Admin/js/scripts.js"></script>
+    <!--common scripts for all pages-->
+    <script src="/Admin/js/scripts.js"></script>
 
-<!--Dashboard Charts-->
-<script src="/Admin/js/dashboard-chart-init.js"></script>
+    <!--Dashboard Charts-->
+    <script src="/Admin/js/dashboard-chart-init.js"></script>
 
-@section('js')
-@show
 
-</body>
+    @section('js')
+    @show
+
+    </body>
 </html>

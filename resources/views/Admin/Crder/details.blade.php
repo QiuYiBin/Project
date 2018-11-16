@@ -1,7 +1,13 @@
 @extends('Admin.AdminPublic.public')
 @section('main')
 <html>
- <head></head>
+ <head>
+   <style type="text/css" media="screen">
+        td{
+            vertical-align: middle !important;
+        }
+    </style>
+ </head>
  <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
  <body>
   <div class="wrapper" style="margin-top: 30px"> 

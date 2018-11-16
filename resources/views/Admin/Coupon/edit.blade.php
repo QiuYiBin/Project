@@ -38,7 +38,7 @@
       <div class="form-group"> 
        <label class="control-label col-md-3">开始时间</label> 
        <div class="col-md-4 col-xs-11"> 
-        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears"> 
+        <div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="2018-11-10" class="input-append date dpYears"> 
          <input type="text" readonly="" value="{{$link->start_time}}" size="16" class="form-control" name="start_time" /> 
          <span class="input-group-btn add-on"> <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button> </span> 
         </div>  
@@ -47,7 +47,7 @@
       <div class="form-group"> 
        <label class="control-label col-md-3">结束时间</label> 
        <div class="col-md-4 col-xs-11"> 
-        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears"> 
+        <div data-date-viewmode="years" data-date-format="yyyy-mm-dd" data-date="2018-11-10" class="input-append date dpYears"> 
          <input type="text" readonly="" value="{{$link->end_time}}" size="16" class="form-control" name="end_time" /> 
          <span class="input-group-btn add-on"> <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button> </span> 
         </div>  
@@ -66,8 +66,13 @@
 
               <button class="btn btn-info" type="submit">修改</button>
             </div> 
-          </div> 
-     </form> 
+      </div> 
+     </form>
+     <header class="panel-heading" style="border-bottom: hidden; margin-top: 70px;">
+        <div>
+          <a href="/coupon" class="btn btn-warning"><<优惠券列表</a>
+        </div>
+    </header> 
     </div> 
    </section> 
   </div>

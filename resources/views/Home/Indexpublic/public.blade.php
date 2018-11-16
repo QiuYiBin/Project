@@ -28,8 +28,6 @@
     <link rel="stylesheet" media="screen" href="/Home/css/style.css">
 </head>
 <body>
-
-
 <!-- Start Shop Category Menu -->
 <div class="offcanvas-container" id="shop-categories">
     <div class="offcanvas-header">
@@ -57,7 +55,6 @@
     </nav>
 </div>
 <!-- End Shop Category Menu -->
-
 <!-- Start TopBar -->
 <div class="topbar" style="margin-top: -20px">
     <div class="topbar-column">
@@ -104,28 +101,30 @@
     <nav class="site-menu">
         <ul>
             <li class="active">
-                <a href="#"><span>首页</span></a>
+                <a href="/"><span>首页</span></a>
                 
             </li>
             <li>
                 <a href="#"><span>购物</span></a>
                 <ul class="sub-menu">
+                    @if(count($cate))
                     @foreach($cate as $value)
                     <li class="has-children">
                         <a href="#"><span>{{$value->name}}</span></a>
+                        @if(count($value->dev))
                         <ul class="sub-menu">
-                            @if(count($value->dev))
                             @foreach($value->dev as $rows)
                             <li><a href="shop-categories-1.html">{{$rows->name}}</a></li>
                             @endforeach
-                            @endif
                         </ul>
+                         @endif
                     </li>
                     @endforeach
+                    @endif
                 </ul>
             </li>
             <li>
-                <a href="#"><span>友情链接</span></a>
+                <a href="/homecates"><span>友情链接</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
@@ -139,7 +138,7 @@
             <div class="tools">
                 <div class="search"><i class="icon-search"></i></div>
                 <!-- Start Account -->
-                <div class="account">
+<div class="account">
                     <a href="#"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">
@@ -147,17 +146,16 @@
                                 <img src="/Home/images/account/user-ava-sm.jpg" alt="Tony Stark">
                             </div>
                             <div class="user-info">
-                                <h6 class="user-name">Tony Stark</h6>
-                                <span class="text-xs text-muted">530 Reward Points</span>
+                                <h6 class="user-name">Admin</h6>
                             </div>
                         </li>
-                        <li><a href="account-profile.html">My Profile</a></li>
-                        <li><a href="account-orders.html">My Orders</a></li>
-                        <li><a href="account-wishlist.html">My Wishlist</a></li>
+                        <li><a href="/homepersonal">个人中心</a></li>
+                        <li><a href="/homeorder">我的订单</a></li>
+                        <li><a href="/homeorder/create">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Sign Out</a></li>
+                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
-                </div>
+                </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
                 <div class="cart">
@@ -220,13 +218,12 @@
     </div>
     <!-- End Toolbar -->
 </header>
-<!-- End NavBar -->
+
 @section('main')
 @show
-<div class="offcanvas-container" id="mobile-menu">
-
+<!-- End NavBar -->
 <!-- Start Footer -->
-    <footer class="site-footer">
+<footer class="site-footer">
         <div class="container">
             <!-- Start Footer Info -->
             <div class="row">
@@ -312,127 +309,40 @@
             <!-- End Copyright -->
         </div>
     </footer>
-</div>
     <!-- End Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <!-- Start Footer Info -->
-            <div class="row">
-                <!-- Start Contact Info -->
-                <div class="col-lg-3 col-md-6">
-                    <section class="widget widget-light-skin">
-                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inspina联系信息</font></font></h3>
-                        <p class="text-white"><i class="fa fa-phone"></i> +1 888 888 8888</p>
-                        <p class="text-white"><i class="fa fa-envelope-o"></i> info@yoursite.com</p>
-                        <p class="text-white"><i class="fa fa-map-marker"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广东省广州市天河</font></font></p>
-                        <ul class="list-unstyled text-sm text-white">
-                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周一至周五：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 09：00-18 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00</font></font></li>
-                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周六至周日：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 10 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00-15：00</font></font></li>
-                        </ul>
-                        <a class="social-button shape-circle sb-facebook sb-light-skin" href="#">
-                            <i class="socicon-facebook"></i>
-                        </a>
-                        <a class="social-button shape-circle sb-twitter sb-light-skin" href="#">
-                            <i class="socicon-twitter"></i>
-                        </a>
-                        <a class="social-button shape-circle sb-instagram sb-light-skin" href="#">
-                            <i class="socicon-googleplus"></i>
-                        </a>
-                        <a class="social-button shape-circle sb-instagram sb-light-skin" href="#">
-                            <i class="socicon-instagram"></i>
-                        </a>
-                    </section>
-                </div>
-                <!-- End Contact Info -->
-                <!-- Start Mobile Apps -->
-                <div class="col-lg-3 col-md-6">
-                    <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">合作模块</font></font></h3>
-                        <ul>
-                            <li><a href="#"><font style="vertical-align: inherit;">友情链接<font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a></li>
-                        </ul>
-                    </section>
-                </div>
-                <!-- End Mobile Apps -->
-                <!-- Start About Us -->
-                <div class="col-lg-3 col-md-6">
-                    <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></h3>
-                        <ul>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们公司</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的队伍</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的产品</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的客户</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的推荐</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全天候支持</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a></li>
-                        </ul>
-                    </section>
-                </div>
-                <!-- End About Us -->
-                <!-- Start Account Info -->
-                <div class="col-lg-3 col-md-6">
-                    <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐户信息</font></font></h3>
-                        <ul>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的购物车</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的收藏</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的简历</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的门票</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单跟踪</font></font></a></li>
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单票</font></font></a></li>
-                        </ul>
-                    </section>
-                </div>
-                <!-- End Account Info -->
-            </div>
-            <!-- End Footer Info -->
-            <hr class="hr-light">
-            <!-- Start Copyright -->
-            <p class="footer-copyright text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©2018 我们还能抢救一下 | </font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;">保留</font></a><font style="vertical-align: inherit;">所有权利</font></font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;"></font></a></p>
-            <!-- End Copyright -->
-        </div>
-    </footer>
-<!-- Start Back To Top -->
-<a class="scroll-to-top-btn" href="#">
-    <i class="icon-arrow-up"></i>
-</a>
-<!-- End Back To Top -->
-<div class="site-backdrop"></div>
-<!-- Modernizr JS -->
-<script src="/Home/js/modernizr.min.js"></script>
-<!-- JQuery JS -->
-<script src="/Home/js/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="/Home/js/popper.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="/Home/js/bootstrap.min.js"></script>
-<!-- CountDown JS -->
-<script src="/Home/js/count.min.js"></script>
-<!-- Gmap JS -->
-<script src="/Home/js/gmap.min.js"></script>
-<!-- ImageLoader JS -->
-<script src="/Home/js/imageloader.min.js"></script>
-<!-- Isotope JS -->
-<script src="/Home/js/isotope.min.js"></script>
-<!-- NouiSlider JS -->
-<script src="/Home/js/nouislider.min.js"></script>
-<!-- OwlCarousel JS -->
-<script src="/Home/js/owl.carousel.min.js"></script>
-<!-- PhotoSwipe UI JS -->
-<script src="/Home/js/photoswipe-ui-default.min.js"></script>
-<!-- PhotoSwipe JS -->
-<script src="/Home/js/photoswipe.min.js"></script>
-<!-- Velocity JS -->
-<script src="/Home/js/velocity.min.js"></script>
-<!-- Main JS -->
-<script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
+    <!-- Start Back To Top -->
+    <a class="scroll-to-top-btn" href="#">
+        <i class="icon-arrow-up"></i>
+    </a>
+    <!-- End Back To Top -->
+    <div class="site-backdrop"></div>
+    <!-- Modernizr JS -->
+    <script src="/Home/js/modernizr.min.js"></script>
+    <!-- JQuery JS -->
+    <script src="/Home/js/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="/Home/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="/Home/js/bootstrap.min.js"></script>
+    <!-- CountDown JS -->
+    <script src="/Home/js/count.min.js"></script>
+    <!-- Gmap JS -->
+    <script src="/Home/js/gmap.min.js"></script>
+    <!-- ImageLoader JS -->
+    <script src="/Home/js/imageloader.min.js"></script>
+    <!-- Isotope JS -->
+    <script src="/Home/js/isotope.min.js"></script>
+    <!-- NouiSlider JS -->
+    <script src="/Home/js/nouislider.min.js"></script>
+    <!-- OwlCarousel JS -->
+    <script src="/Home/js/owl.carousel.min.js"></script>
+    <!-- PhotoSwipe UI JS -->
+    <script src="/Home/js/photoswipe-ui-default.min.js"></script>
+    <!-- PhotoSwipe JS -->
+    <script src="/Home/js/photoswipe.min.js"></script>
+    <!-- Velocity JS -->
+    <script src="/Home/js/velocity.min.js"></script>
+    <!-- Main JS -->
+    <script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
 </body>
 </html>

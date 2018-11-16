@@ -11,6 +11,7 @@
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.2",
         "gregwar/captcha": "1.*"
+
     },
     "require-dev": {
         "filp/whoops": "~2.0",

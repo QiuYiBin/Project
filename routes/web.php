@@ -11,13 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-// 	// 加载模板
-//     // return view('welcome');
-// });
-
-
-
 // 后台登录管理
 Route::resource('/adminlogin','Admin\AdminLoginController');
 Route::group(['middleware'=>'login'],function(){
@@ -79,6 +72,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource("/coupon","Admin\CouponController");
 	// 优惠券ajax删除
 	Route::get("/couponajax","Admin\CouponController@del");
+	// 评论管理
+	Route::resource("/comment","Admin\CommentController");
 });
 
 
@@ -102,3 +97,15 @@ Route::resource("/retrieve","Home\RetrieveController");
 Route::get("/rtion","Home\RetrieveController@activation");
 //
 Route::post("/doreset","Home\RetrieveController@doreset");
+// 商品详情
+Route::get('/shopsingle/{id}','Home\SingleController@index');
+// 个人中心
+Route::Resource('/homepersonal','Home\PersonalController');
+// 我的订单
+Route::Resource('/homeorder','Home\OrderController');
+// 我的地址
+Route::Resource('/homeaddres','Home\AddresController');
+// 添加地址发送请求
+Route::get('/homeaddress','Home\AddresController@ajax');
+// 我的优惠卷
+Route::Resource('/homecoupon','Home\CouponController');

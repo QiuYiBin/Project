@@ -47,12 +47,14 @@
            <td class="">{{$row->name}}</td> 
            <td class="">{{$row->pid}}</td> 
            <td class="">{{$row->path}}</td> 
-           <td class=""><a href="/admincates/{{$row->id}}/edit" class="btn btn-warning">修改</a>|
-			<form action="/admincates/{{$row->id}}" class="form-group" method="post">
-				<button type="submit" class="btn btn-danger">删除</button>
-				{{csrf_field()}}
-				{{method_field('DELETE')}}
-			</form>
+           <td class="">
+              <a href="/admincates/{{$row->id}}/edit" class="btn btn-warning">修改</a>|
+			        <form action="/admincates/{{$row->id}}" class="form-group" method="post">
+				      <button type="submit" class="btn btn-danger">删除</button>
+				        {{csrf_field()}}
+				        {{method_field('DELETE')}}
+			       </form>
+            </td>
           </tr>
           @endforeach
          </tbody>
@@ -60,12 +62,11 @@
         <div style="float: right;">
         	{{$cate->appends($request)->render()}}
         </div>
-       </div> 
-      </div> 
-     </div> 
-    </section> 
-   </div> 
+       </div>
+        <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div>
+    </section>  
   </div>
+</div>
 </div>
  </body>
 </html>

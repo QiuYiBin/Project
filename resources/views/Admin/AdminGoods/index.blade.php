@@ -62,7 +62,8 @@
             <button class="btn btn-danger">删除</button>
             {{csrf_field()}}
             {{method_field('DELETE')}}
-          </form> 
+          </form>
+        </td> 
         </tr>
         @endforeach
        </tbody>
@@ -72,7 +73,8 @@
         {{$data->appends($request)->render()}}
        </div>
       </div>
-     </div> 
+     </div>
+     <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div>   
     </div> 
    </div> 
   </section>
