@@ -81,3 +81,9 @@ Route::group(['middleware'=>'login'],function(){
 Route::resource('/','Home\IndexController');
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
+//个人中心
+Route::Resource('/homepersonal','Home\PersonalController');
+//我的订单
+Route::Resource('/homeorder','Home\OrderController');
+//我的地址
+Route::Resource('/homeaddres','Home\AddresController');
