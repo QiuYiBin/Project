@@ -160,7 +160,7 @@ class SliderController extends Controller
     // Ajax删除
     public function ajaxdel(Request $request)
     {
-        // var_dump($request);
+        
         $id = $request->input('id');
         // echo $id;
         if(DB::table('bro_carousel')->where('id','=',$id)->delete()){

@@ -142,7 +142,7 @@
                         <li class="sub-menu-separator"></li>
                         <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
-                </div>
+                </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
                 <div class="cart">

@@ -13,19 +13,25 @@
           <form action="/homeaddres" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>收货人:</label>
-              <input type="text" class="form-control">
+              <input type="text"  name="name" class="form-control">
             </div>
             <div class="form-group">
               <label>电话:</label>
-              <input type="text" class="form-control">
+              <input type="text" name="phone" class="form-control">
             </div>
             <div class="form-group">
               <label>地址:</label>
               <select id="sid">
-                <option value=""  class="ss">--请选择--</option>
+                <option  class="ss">--请选择--</option>
               </select>
-              <input type="hidden" name="city">
+              <input type="hidden" name="huo">
             </div>
+             <div class="form-group">
+              <label>详细地址:</label>
+              <input type="text" name="adds" class="form-control">
+            </div>
+             <input type="hidden" name="user_id" value="{{$id}}" class="form-control">
+            {{csrf_field()}}
             <button type="submit" class="btn btn-success">提交</button>
           </form>
         </div>
@@ -36,10 +42,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    // alert($);
     // 第一级别获取
-    $.get('/homeaddres',{upid:0},function(result){
-      // console.log(result);
+    $.get('/homeaddress',{upid:0},function(result){
+      console.log(result);
       // 禁止请选择选中
       $('.ss').attr('disabled','true');
 
@@ -64,7 +69,7 @@
       // 清除所有其他的select
       obj.nextAll('select').remove();
 
-      $.getJSON('/homeaddres',{upid:id},function(result){
+      $.getJSON('/homeaddress',{upid:id},function(result){
         if(result != ''){
           // 创建一个select标签对象
           var select = $('<select></select>');
@@ -100,7 +105,7 @@
         arr.push(opdata);
       })
       // 将得到的数组直接赋值给隐藏域的value值即可
-      $('input[name=city]').val(arr);
+      $('input[name=huo]').val(arr);
     })
   </script>
 @section('right')
@@ -112,16 +117,20 @@
                    
                     <div class="col-12 padding-top-1x">
                         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">收货地址</font></font></h4>
+                        @foreach($data as $value)
                         <hr class="padding-bottom-1x">
+                        
                         <div class="custom-control custom-checkbox d-block">
                             <input class="custom-control-input" type="checkbox" id="same_address" checked="">
-                            <label class="custom-control-label" for="same_address"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与联系地址相同</font></font></label>
+
+                            <label class="custom-control-label" for="same_address"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">收货人：{{$value->name}}收货人电话：{{$value->phone}}收货地址:{{$value->huo}}详细地址：{{$value->adds}}</font></font></label>
+                        
                         </div>
+                        @endforeach
                         <hr class="margin-top-1x margin-bottom-1x">
-                        <div class="text-right">
-                            <button class="btn btn-primary margin-bottom-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Success!" data-toast-message="Your address updated successfuly."><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></button>
-                        </div>
+                       
                     </div>
+                    
                 </form>
             </div>
         </div>
