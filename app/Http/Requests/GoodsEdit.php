@@ -32,6 +32,7 @@ class GoodsEdit extends FormRequest
             'price' => 'required|regex:/^[0-9]*$/|max:10',
             'store' => 'required|regex:/^[0-9]*$/|max:10',
             'text' => 'required',
+            'config' => 'required',
             'descr' => 'required|max:255'
         ];
     }
@@ -50,6 +51,7 @@ class GoodsEdit extends FormRequest
             'store.regex' => '库存不能为空',
             'store.max' => '库存长度不正确',
             'text.required' => '描述不能为空',
+            'config.required' => '配置不能为空',
             'descr.required' => '描述不能为空',
             'descr.max' => '描述长度不正确'
         ];

@@ -39,10 +39,12 @@
 <section>
     <!-- left side start-->
     <div class="left-side sticky-left-side">
+
         <!--logo and iconic logo start-->
         <div class="logo">
             <a href="index.html"><img src="/Admin/images/logo.png" alt=""></a>
         </div>
+
         <div class="logo-icon text-center">
             <a href="index.html"><img src="/Admin/images/logo_icon.png" alt=""></a>
         </div>
@@ -92,14 +94,10 @@
                         <li><a href="/admincates/create">添加分类</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>
+                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>广告管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="grids.html"> Grids</a></li>
-                        <li><a href="gallery.html"> Media Gallery</a></li>
-                        <li><a href="calendar.html"> Calendar</a></li>
-                        <li><a href="tree_view.html"> Tree View</a></li>
-                        <li><a href="nestable.html"> Nestable</a></li>
-
+                        <li><a href="/advert">广告列表</a></li>
+                        <li><a href="/advert/create">广告添加</a></li>
                     </ul>
                 </li>
 
@@ -114,11 +112,6 @@
                     <ul class="sub-menu-list">
                         <li><a href="/admingoods">商品列表</a></li>
                         <li><a href="/admingoods/create">添加商品</a></li>
-                    </ul>
-                </li>
-                <li class="menu-list"><a href=""><i class="fa fa-thumbs-up"></i> <span>评论管理</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="/comment">评论列表</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href="/slider"><i class="fa fa-video-camera"></i> <span>轮播图管理</span></a>
@@ -140,6 +133,12 @@
                     <ul class="sub-menu-list">
                         <li><a href="/coupon/create">添加优惠券</a></li>
                         <li><a href="/coupon">优惠券详情表</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="#"><i class="fa fa-bookmark-o"></i> <span>文章管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/word">文章列表</a></li>   
+                        <li><a href="/word/create">添加文章</a></li>
                     </ul>
                 </li>
                 <li><a href="/adminlogin"><i class="fa fa-power-off"></i> <span>注销</span></a></li>
@@ -281,52 +280,57 @@
             </div>
             <!--notification menu end -->
         </div>
-        <!-- header section end-->
-        <!--body wrapper start-->
-        <div class="wrapper">
-            @if (count($errors) > 0)
-              <div class="alert alert-danger">
-              <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-              </ul>
-              </div>
-            @endif
-            @if(session('success'))
-            <!-- 添加成功样式 -->
-            <div class="alert alert-success alert-block fade in">
-                <button class="close close-sm" type="button" data-dismiss="alert">
-                    <i class="fa fa-times"></i>
-                </button>
-                <h4>
-                    {{session('success')}}
-                </h4>
-            </div>
-            <!-- 添加成功样式结束 -->
-            @endif
-            @if(session('error'))
-            <!-- 添加失败样式 -->
-            <div class="alert alert-block alert-danger fade in">
-                <button class="close close-sm" type="button" data-dismiss="alert">
-                    <i class="fa fa-times"></i>
-                </button>
-                <strong>{{session('error')}}</strong>
-            </div>
-            <!-- 添加失败样式结束 -->
-            @endif
-            <!-- 主体内容开始 -->
-            @section('main')
-            @show
-            <!-- 主体内容结束 -->
+        @if (count($errors) > 0)
+          <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+          </ul>
+          </div>
+        @endif
+        @if(session('success'))
+        <!-- 添加成功样式 -->
+        <div class="alert alert-success alert-block fade in">
+            <button class="close close-sm" type="button" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <h4>
+                {{session('success')}}
+            </h4>
         </div>
-        <!--body wrapper end-->
+        <!-- 添加成功样式结束 -->
+        @endif
+        @if(session('error'))
+        <!-- 添加失败样式 -->
+        <div class="alert alert-block alert-danger fade in">
+            <button class="close close-sm" type="button" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <strong>{{session('error')}}</strong>
+        </div>
+        <!-- 添加失败样式结束 -->
+        @endif
+        <!-- 主体内容开始 -->
+        @section('main')
+        @show
+        <!-- 主体内容结束 -->
+        <!-- header section end-->
     </div>
+
+            
+             
+        <!--body wrapper end-->
+
         <!--footer section start-->
         <footer>
             2018 &copy; &nbsp;<a href="http://www.mycodes.net/" target="_blank">还可以拯救一下团队制作</a>
         </footer>
         <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
 </section>
 
     <script src="/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
@@ -369,8 +373,8 @@
     <!--Dashboard Charts-->
     <script src="/Admin/js/dashboard-chart-init.js"></script>
 
-    @section('js')
-    @show
+@section('js')
+@show
 
-    </body>
+</body>
 </html>
