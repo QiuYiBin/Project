@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@section('title')</title>
+    <title>@yield('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -125,7 +125,7 @@
             <div class="tools">
                 <div class="search"><i class="icon-search"></i></div>
                 <!-- Start Account -->
-                <div class="account">
+<div class="account">
                     <a href="#"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">
@@ -133,17 +133,16 @@
                                 <img src="/Home/images/account/user-ava-sm.jpg" alt="Tony Stark">
                             </div>
                             <div class="user-info">
-                                <h6 class="user-name">Tony Stark</h6>
-                                <span class="text-xs text-muted">530 Reward Points</span>
+                                <h6 class="user-name">Admin</h6>
                             </div>
                         </li>
-                        <li><a href="account-profile.html">My Profile</a></li>
-                        <li><a href="account-orders.html">My Orders</a></li>
-                        <li><a href="account-wishlist.html">My Wishlist</a></li>
+                        <li><a href="/homepersonal">个人中心</a></li>
+                        <li><a href="/homeorder">我的订单</a></li>
+                        <li><a href="/homeorder/create">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Sign Out</a></li>
+                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
-                </div>
+                </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
                 <div class="cart">

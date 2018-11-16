@@ -27,7 +27,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        //加载模版
+        return view('Home.Cart.index');
     }
 
     /**
