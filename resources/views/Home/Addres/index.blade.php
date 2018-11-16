@@ -1,5 +1,5 @@
 @extends('Home.Personal.public')
-
+<script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
 <div class="modal fade" id="mymodal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -10,7 +10,7 @@
           <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="">
+          <form action="/homeaddres" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>收货人:</label>
               <input type="text" class="form-control">
@@ -22,7 +22,7 @@
             <div class="form-group">
               <label>地址:</label>
               <select id="sid">
-                <option value="" class="ss">--请选择--</option>
+                <option value=""  class="ss">--请选择--</option>
               </select>
               <input type="hidden" name="city">
             </div>
@@ -36,8 +36,9 @@
     </div>
 </div>
 <script type="text/javascript">
+    // alert($);
     // 第一级别获取
-    $.get('./address.php',{upid:0},function(result){
+    $.get('/homeaddres',{upid:0},function(result){
       // console.log(result);
       // 禁止请选择选中
       $('.ss').attr('disabled','true');
@@ -63,7 +64,7 @@
       // 清除所有其他的select
       obj.nextAll('select').remove();
 
-      $.getJSON('./address.php',{upid:id},function(result){
+      $.getJSON('/homeaddres',{upid:id},function(result){
         if(result != ''){
           // 创建一个select标签对象
           var select = $('<select></select>');
@@ -125,7 +126,5 @@
             </div>
         </div>
     </div>
-  <button class="btn btn-success" data-toggle="modal" data-target="#mymodal">添加收货地址</button>
- 
 @endsection
 @section('title','收货地址管理')

@@ -12,13 +12,15 @@ class AddresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //获取到id
+    public function index(Request $request)
 
-        //查出用户详情
-        $data = \DB::table('bro_useraddres')->where("user_id",'=',6)->first();
-        // dd($data);
+    {
+        $upid =$request->get('upid');
+        $sql = "SELECT * FROM bro_district WHERE upid = {$upid}";
+        //查出地址表
+        $data = DB::select($sql);
+        dd($data);
+
         //加载模版>
         return view('Home.Addres.index')->with('data',$data);
     }
