@@ -147,6 +147,18 @@
                         <li><a href="/coupon">优惠券详情表</a></li>
                     </ul>
                 </li>
+                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>广告管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/advert">广告列表</a></li>
+                        <li><a href="/advert/create">广告添加</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="#"><i class="fa fa-bookmark-o"></i> <span>文章管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/word">文章列表</a></li>   
+                        <li><a href="/word/create">添加文章</a></li>
+                    </ul>
+                </li>
                 <li><a href="/adminlogin"><i class="fa fa-power-off"></i> <span>注销</span></a></li>
             </ul>
             <!--sidebar nav end-->
