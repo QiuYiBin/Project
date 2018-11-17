@@ -74,6 +74,12 @@ Route::group(['middleware'=>'login'],function(){
 	Route::get("/couponajax","Admin\CouponController@del");
 	// 评论管理
 	Route::resource("/comment","Admin\CommentController");
+	// 广告管理
+	Route::resource('/advert','Admin\AdvertController');
+	// Ajax删除
+	Route::get('/del','Admin\AdvertController@del');
+	// 文章管理
+	Route::resource('/word','Admin\WordController');
 });
 
 
@@ -109,3 +115,5 @@ Route::Resource('/homeaddres','Home\AddresController');
 Route::get('/homeaddress','Home\AddresController@ajax');
 // 我的优惠卷
 Route::Resource('/homecoupon','Home\CouponController');
+// 商品列表
+Route::resource('/goods','Home\GoodsController');
