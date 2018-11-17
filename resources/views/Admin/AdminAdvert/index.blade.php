@@ -68,18 +68,12 @@
        </tbody>
       </table>
      </div>
-      <div class="row" >
-       <div class="col-lg-6">
-        <div class="dataTables_paginate paging_bootstrap pagination">
-         <ul>
-          <!-- <li class="prev disabled"><a href="#">← Prev</a></li> -->
-          @foreach($pp as $row)
+     <div style="float: right;">
+          <ul class="pagination">
+              @foreach($pp as $row)
           <li><a href="javascript:void(0)" onclick="ppt({{$row}})">{{$row}}</a></li>
           @endforeach
-          <!-- <li class="next"><a href="#">Next → </a></li> -->
-         </ul>
-        </div>
-       </div>
+          </ul>
       </div>
      </div>
     </div> 

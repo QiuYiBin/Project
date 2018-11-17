@@ -51,8 +51,9 @@ class AdvertController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminUserinsert $request)
+    public function store(Adver $request)
     {
+        // dd($request);
         $data = $request->except('_token');
         if($request->hasFile('pic')){
             // 获取目录
