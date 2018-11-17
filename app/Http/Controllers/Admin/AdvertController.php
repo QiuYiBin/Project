@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use App\Http\Requests\AdminUserinsert;
+use App\Http\Requests\Adver;
 class AdvertController extends Controller
 {
     /**
