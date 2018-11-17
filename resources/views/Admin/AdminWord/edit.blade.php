@@ -2,11 +2,9 @@
 @section('main')
 <html>
   <head>
-      <script type="text/javascript" charset="utf-8" src="/Admin/baidu/ueditor.config.js"></script>
-
-    <script type="text/javascript" charset="utf-8" src="/Admin/baidu/ueditor.all.min.js"> </script>
-
-    <script type="text/javascript" charset="utf-8" src="/Admin/baidu/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/Ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
   <body>
     <div class="col-lg-12">
