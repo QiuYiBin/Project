@@ -61,12 +61,8 @@
         @endforeach
        </tbody>
       </table>
-      <div class="row">
-       <div class="col-lg-6">
-        <div class="dataTables_paginate paging_bootstrap pagination">
-         {{$data->appends($request)->render()}}
-        </div>
-       </div>
+      <div style="float: right;">
+          {{$data->appends($request)->render()}}
       </div>
      </div> 
     </div> 
