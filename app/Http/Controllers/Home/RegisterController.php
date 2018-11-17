@@ -48,7 +48,7 @@ class RegisterController extends Controller
     public function activation(Request $request)
     {
          //获取id和token
-        $id=$request->input('id');
+        $id = $request->input('id');
         $info=DB::table("bro_user")->where("id",'=',$id)->first();
         $token=$request->input('token');
         // echo $id.":".$token;

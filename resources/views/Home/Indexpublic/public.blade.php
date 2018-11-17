@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -41,7 +41,6 @@
                     <a href="shop-categories-1.html">{{$value->name}}</a>
                     <span class="sub-menu-toggle"></span>
                 </span>
-                
                 <ul class="offcanvas-submenu">
                     @if(count($value->dev))
                     @foreach($value->dev as $rows)
@@ -56,25 +55,23 @@
 </div>
 <!-- End Shop Category Menu -->
 <!-- Start TopBar -->
-<div class="topbar" style="margin-top: -20px">
+<div class="topbar" style="">
     <div class="topbar-column">
         <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
-
     </div>
-     
     @if(session('username'))
-       <div> 
+       <div style="line-height: 39px;float: right;"> 
         <a href="#">欢迎{{session('username')}}</a>
         <a href="login/create"></i>退出</a>
         </div>
-        @else
-        <div>
+    @else
+        <div style="line-height: 39px;float: right;">
         <a href="/login">登陆</a>
         <a href="/register">注册</a>
         </div>
-        @endif
+    @endif
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->

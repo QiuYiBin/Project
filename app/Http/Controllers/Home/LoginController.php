@@ -85,7 +85,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         // 获取验证码
-        $vcode=$request->input('vcode');
+        $vcode = $request->input('vcode');
         // dd($vcode);
         //获取存储在session的验证码
         $fcode=session('fcode');
