@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+//导入校验类
+use App\Http\Requests\Addres;
 class AddresController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class AddresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Addres $request)
     {
         //获取所有数据
         $data=$request->except(['_token']);
@@ -106,5 +108,19 @@ class AddresController extends Controller
         $data = DB::select($sql);
         return $data;
         // return json_decode($data);
+    }
+
+    //Ajax删除
+     public function del(Request $request)
+    {
+        //获取删除的id
+        $id = $request->input('id');
+        //删除操作
+        if(DB::table("bro_useraddres")->where("id","=",$id)->delete()){
+            //json格式
+            return json_encode(['msg'=>1]);;
+        }else{
+            return json_encode(['msg'=>0]);;
+        }
     }
 }

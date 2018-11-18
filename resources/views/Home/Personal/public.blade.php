@@ -7,16 +7,26 @@
      <div class="column"> 
       <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></h1> 
      </div> 
+
      <div class="column"> 
       <ul class="breadcrumbs"> 
-       <li><a href="index-1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a></li> 
+       <li><a href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a></li> 
        <li class="separator">&nbsp;</li> 
        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></li> 
       </ul> 
      </div> 
     </div> 
    </div> 
-   <!-- End Page Title --> 
+   <!-- End Page Title -->
+    <!-- 校验失败提示   -->
+    @if (count($errors) > 0)
+    <div class="alert alert-danger alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
+    @foreach ($errors->all() as $error)
+     <p><i class="fa fa-bell"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $error }}</font></font></p>
+      @endforeach
+    </div>
+     @endif 
+
    <!-- Start My Profile --> 
    <div class="container padding-top-1x padding-bottom-3x"> 
     <div class="row"> 

@@ -87,6 +87,8 @@ Route::Resource('/homepersonal','Home\PersonalController');
 Route::Resource('/homeorder','Home\OrderController');
 // 我的地址
 Route::Resource('/homeaddres','Home\AddresController');
+// 地址Ajax
+Route::get('/homeaddresdel','Home\AddresController@del');
 // 添加地址发送请求
 Route::get('/homeaddress','Home\AddresController@ajax');
 // 我的优惠卷
