@@ -75,7 +75,7 @@
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->
-<header class="navbar navbar-sticky">
+<header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
     <form class="site-search" method="get">
         <input type="text" name="site_search" placeholder="Type to search...">
@@ -102,7 +102,7 @@
                 
             </li>
             <li>
-                <a href="/goods"><span>购物</span></a>
+                <a href="/goods/{{0}}"><span>购物</span></a>
                 <ul class="sub-menu">
                     @if(count($cate))
                     @foreach($cate as $value)
