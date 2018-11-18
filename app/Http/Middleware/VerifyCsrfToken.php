@@ -13,8 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'http://www.project.com/slider/upload',
-        'http://www.project.com/admingoods/upload',
-        'http://www.project.com/admingoods/uploads',
+        'http://www.hmj.com/slider/upload',
+        'http://www.hmj.com/admingoods/upload',
+        'http://www.hmj.com/admingoods/uploads',
     ];
 }

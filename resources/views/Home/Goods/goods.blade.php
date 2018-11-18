@@ -1,20 +1,23 @@
 @extends('Home.Indexpublic.public')
 @section('main')
 <html>
- <head></head>
+ <head>
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+ </head>
+  <script src="/Home/js/jquery-1.8.3.min.js"></script>
  <body>
   <div class="offcanvas-wrapper"> 
    <!-- Start Page Title --> 
    <div class="page-title"> 
     <div class="container"> 
      <div class="column"> 
-      <h1>Shop Grid没有侧边栏</h1> 
+      <h1>商品列表</h1> 
      </div> 
      <div class="column"> 
       <ul class="breadcrumbs"> 
-       <li><a href="index-1.html">家</a> </li> 
-       <li class="separator">&nbsp;</li> 
-       <li>Shop Grid没有侧边栏</li> 
+       <li><a href="/">首页</a></li> 
+       <li class="separator">&nbsp;</li>
+       <li>商品列表</li> 
       </ul> 
      </div> 
     </div> 
@@ -41,8 +44,8 @@
     </div> 
     <!-- End Toolbar --> 
     <!-- Start Products Grid --> 
-    @if($data=='')
-    <div class="isotope-grid cols-4">   
+
+    <div class="isotope-grid cols-4" id="uid">   
      <div class="gutter-sizer"></div> 
      <div class="grid-sizer"></div> 
      <!-- Start Product #1 -->
@@ -50,51 +53,42 @@
      @foreach($data as $row)
      <div class="grid-item"> 
       <div class="product-card"> 
-       <a class="product-thumb" href="#"><img src="/Uploads/Goods/{{$row->pic}}" style="width:200px;height:150px" alt="Product" /> </a> 
+       <a class="product-thumb" href="/shopsingle/{{$row->id}}"><img src="/Uploads/Goods/{{$row->pic}}" style="width:200px;height:150px" alt="Product" /> </a> 
        <h3 class="product-title"><a href="#">{{$row->name}}</a></h3> 
        <h4 class="product-price"> 
         <del>
          {{($row->price)+100}}
-        </del>￥{{$row->price}}</h4> 
+        </del>{{$row->price}}</h4> 
        <div class="product-buttons"> 
         <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"> <i class="icon-heart"></i> </button> 
         <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">添加到购物车</button> 
        </div> 
       </div> 
      </div>
-     @endforeach
-    
+    @endforeach
      <!-- End Product #1 --> 
      <!-- Start Product #2 --> 
      <!-- End Product #12 --> 
-    </div>
-      @else
-        <div style="height:200px;margin-top:50px;text-align:center">
-         <h2>暂无商品哦~~~</h2>
-        </div>
-     @endif 
+      </div>
+
     <!-- End Products Grid --> 
     <!-- Start Pagination --> 
-    <nav class="pagination"> 
-     <div class="column"> 
-      <ul class="pages"> 
-       <li class="active"><a href="#">1</a></li> 
-       <li><a href="#">2</a></li> 
-       <li><a href="#">3</a></li> 
-       <li>...</li> 
-       <li><a href="#">10</a></li> 
-       <li><a href="#">20</a></li> 
-       <li><a href="#">30</a></li> 
-      </ul> 
-     </div> 
-     <div class="column text-right hidden-xs-down"> 
-      <a class="btn btn-outline-secondary btn-sm" href="#">下一页 <i class="icon-arrow-right"></i></a> 
-     </div> 
-    </nav> 
+    <!-- <nav class="pagination">  -->
+      <div style="float:right"> 
+          {{$data->appends($request)->render()}}
+    </div>
+    <!-- </nav>  -->
     <!-- End Pagination --> 
    </div>
   </div>
  </body>
 </html>
+<script>
+    // function fun (page){
+    //   $.get('/goods',{page:page},function(pages){
+    //     $('#uid').html(pages);
+    //   });
+    // }
+</script>
 @endsection
 @section('title','商品列表')

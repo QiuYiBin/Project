@@ -61,7 +61,7 @@
         @endforeach
        </tbody>
       </table>
-      <div style="float: right;">
+      <div style="float: right;" id="pages">
           {{$data->appends($request)->render()}}
       </div>
      </div> 

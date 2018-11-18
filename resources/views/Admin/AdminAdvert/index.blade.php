@@ -2,7 +2,6 @@
 @section('main')
 <html>
  <head>
- <script src="/Admin/js/jquery-1.10.2.min.js"></script>
  	<style type="text/css" media="screen">
  		td{
  			vertical-align: middle !important;
