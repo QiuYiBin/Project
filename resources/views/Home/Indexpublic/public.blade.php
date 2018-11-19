@@ -121,7 +121,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/homecates"><span>友情链接</span></a>
+                <a href="/"><span>友情链接</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
@@ -255,7 +255,7 @@
                     <section class="widget widget-links widget-light-skin">
                         <h3 class="widget-title">Our Services</h3>
                         <ul>
-                            <li><a href="#">Creative Web Design</a></li>
+                            <li><a href="/friendship">友情链接</a></li>
                             <li><a href="#">Full Responsive Front-End</a></li>
                             <li><a href="#">Compatible For All Browsers</a></li>
                             <li><a href="#">W3C Walidated Code</a></li>
