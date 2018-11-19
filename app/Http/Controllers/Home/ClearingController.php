@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class SingleController extends Controller
+class ClearingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,25 +13,23 @@ class SingleController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 
-    public function index($id)
+    public function index()
     {
-        // 查看商品详情
-        $data = DB::table('bro_goods')->where('id','=',$id)->first();
-        // 查看商品多图片
-        $imgs = explode(',',$data->imgs);
-        // 查看评论
-        $comment = \DB::table("bro_comment")
-                    ->select("bro_comment.*","bro_user.username")
-                    ->join("bro_user","bro_user.id",'=','bro_comment.uid')
-                    ->where('bro_comment.gid','=',$id)
-                    ->get();
+        // 获取当前用户id
+        $id = session('id');
+        // 先查询出当前用户拥有的收货地址
+        $addres = DB::table('bro_useraddres')->where('user_id','=',$id)->get();
+        // dd($addres);
+        // if($addres)
+        if ($addres->isEmpty()){
+            $addres = '';
+        }
         // 分配数据
         $array = array(
-            'data' => $data,
-            'imgs' => $imgs,
-            'comment' => $comment
+            'addres' => $addres
         );
-        return view('Home.Single.Single')->with($array);
+        dd($array);
+        return view('Home.Clearing.index')->with($array);
     }
 
     /**

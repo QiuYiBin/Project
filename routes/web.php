@@ -119,9 +119,11 @@ Route::get('/homeaddress','Home\AddresController@ajax');
 Route::Resource('/homecoupon','Home\CouponController');
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
-//友情链接
+// 友情链接
 Route::resource('/friendship','Home\FriendshipController');
-//广告列表
+// 广告列表
 Route::resource('/homeadvert','Home\AdvertController');
 //文章页
 Route::resource('/homeword','Home\WordController');
+// 结算页面
+Route::resource('/Clearing','Home\ClearingController');

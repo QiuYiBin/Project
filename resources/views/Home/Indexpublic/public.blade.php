@@ -122,9 +122,6 @@
                 </ul>
             </li>
             <li>
-                <a href="/"><span>友情链接</span></a>
-            </li>
-            <li>
                 <a href="/homeword"><span>文章管理</span></a>
             </li>
             <li>
