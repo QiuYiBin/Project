@@ -31,73 +31,6 @@
     </div>
     <!-- End Main Slider -->
     <!-- Start Top Categories -->
-    <section class="container padding-top-3x">
-        <h3 class="text-center mb-30">Top Categories</h3>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 home-cat">
-                <div class="card">
-                    <a class="card-img-tiles" href="shop-categories-1.html">
-                        <div class="inner">
-                            <div class="main-img">
-                                <img src="/Home/images/shop/categories/01.jpg" alt="Category">
-                            </div>
-                            <div class="thumblist">
-                                <img src="/Home/images/shop/categories/02.jpg" alt="Category">
-                                <img src="/Home/images/shop/categories/03.jpg" alt="Category">
-                            </div>
-                        </div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Smartphones</h4>
-                        <p class="text-muted">Starting from $149</p>
-                        <a class="btn btn-outline-primary btn-sm" href="#">View Products</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 home-cat">
-                <div class="card">
-                    <a class="card-img-tiles" href="shop-categories-2.html">
-                        <div class="inner">
-                            <div class="main-img">
-                                <img src="/Home/images/shop/categories/04.jpg" alt="Category">
-                            </div>
-                            <div class="thumblist">
-                                <img src="/Home/images/shop/categories/05.jpg" alt="Category">
-                                <img src="/Home/images/shop/categories/06.jpg" alt="Category">
-                            </div>
-                        </div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Laptops</h4>
-                        <p class="text-muted">Starting from $349</p>
-                        <a class="btn btn-outline-primary btn-sm" href="#">View Products</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 horizontal-center home-cat">
-                <div class="card">
-                    <a class="card-img-tiles" href="shop-categories-3.html">
-                        <div class="inner">
-                            <div class="main-img">
-                                <img src="/Home/images/shop/categories/07.jpg" alt="Category">
-                            </div>
-                            <div class="thumblist">
-                                <img src="/Home/images/shop/categories/08.jpg" alt="Category">
-                                <img src="/Home/images/shop/categories/09.jpg" alt="Category">
-                            </div>
-                        </div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Televisions</h4>
-                        <p class="text-muted">Starting from $499</p>
-                        <a class="btn btn-outline-primary btn-sm" href="#">View Products</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Top Categories -->
-    <!-- Start Featured Products -->
     <section class="container padding-top-3x padding-bottom-3x">
         <h3 class="text-center mb-30">Featured Products</h3>
         <div class="owl-carousel"
@@ -224,6 +157,34 @@
                     </div>
                 </div>
             </div>
+            <!-- End Product #6 -->
+        </div>
+    </section>
+    <!-- End Top Categories -->
+    <!-- Start Featured Products -->
+    <section class="container padding-top-3x padding-bottom-3x">
+        <h3 class="text-center mb-30">广告列表</h3>
+        <div class="owl-carousel"
+             data-owl-carousel='{"nav": false, "dots": false, "margin": 30, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }'>
+            <!-- Start Product #1 -->
+            <div class="grid-item">
+                <div class="product-card">
+                    <a class="product-thumb" href="shop-single-3.html">
+                        <img src="/Home/images/shop/products/01.jpg" alt="Product">
+                    </a>
+                    <h3 class="product-title"><a href="shop-single-3.html">iPhone X</a></h3>
+                    <h4 class="product-price">$749.99</h4>
+                    <div class="product-buttons">
+                        <div class="product-buttons">
+                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist">
+                                <i class="icon-heart"></i>
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- End Product #6 -->
         </div>
     </section>
