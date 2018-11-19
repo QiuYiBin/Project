@@ -18,10 +18,11 @@ class IndexController extends Controller
     {
         // 获取轮播图
         $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
+        $advert=DB::table('bro_advertisement')->where('status','=','0')->get();
         $array = array(
             'Slider' => $Slider,
+            'advert' => $advert
         );
-        // dd($array);
         return view('Home.Index.index')->with($array);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class AdvertController extends Controller
 {
@@ -14,7 +15,8 @@ class AdvertController extends Controller
      */
     public function index()
     {
-        //
+        $data=DB::table('bro_advertisement')->get();
+        return view('Home.Index.index',['data'=>$data]);
     }
 
     /**

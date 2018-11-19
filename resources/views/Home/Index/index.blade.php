@@ -162,29 +162,23 @@
     </section>
     <!-- End Top Categories -->
     <!-- Start Featured Products -->
+
     <section class="container padding-top-3x padding-bottom-3x">
         <h3 class="text-center mb-30">广告列表</h3>
-        <div class="owl-carousel"
-             data-owl-carousel='{"nav": false, "dots": false, "margin": 30, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }'>
+        <div class="owl-carousel" data-owl-carousel='{"nav": false, "dots": false, "margin": 30, "loop": true, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }'>
             <!-- Start Product #1 -->
-            <div class="grid-item">
+            @foreach($advert as $row)
+            <div class="grid-item" class="d-block w-110 opacity-75 m-auto">
                 <div class="product-card">
-                    <a class="product-thumb" href="shop-single-3.html">
-                        <img src="/Home/images/shop/products/01.jpg" alt="Product">
+                    <a class="product-thumb" href="{{$row->url}}">
+                        <img src="/Uploads/Advert_img/{{$row->pic}}" alt="Product" style="height:126px">
                     </a>
-                    <h3 class="product-title"><a href="shop-single-3.html">iPhone X</a></h3>
-                    <h4 class="product-price">$749.99</h4>
-                    <div class="product-buttons">
-                        <div class="product-buttons">
-                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist">
-                                <i class="icon-heart"></i>
-                            </button>
-                            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                        </div>
-                    </div>
+                    <h3 class="product-title"><a href="{{$row->url}}">{{$row->name}}</a></h3>
+                    <ladel size="5">广告语:</ladel>
+                    <textarea cols="30" rows="15" style="height:50px;border:0px;font-style:oblique" disabled>{{$row->title}}</textarea>
                 </div>
             </div>
-            
+            @endforeach
             <!-- End Product #6 -->
         </div>
     </section>
@@ -201,6 +195,7 @@
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/05.png" alt="Brands">
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/06.png" alt="Brands">
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/07.png" alt="Brands">
+
             </div>
         </div>
     </section>
