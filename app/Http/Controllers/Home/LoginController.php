@@ -83,7 +83,8 @@ class LoginController extends Controller
 
 
     public function store(Request $request)
-    {
+    {   
+        $request->flashOnly('username');
         // 获取验证码
         $vcode = $request->input('vcode');
         // dd($vcode);
@@ -96,14 +97,11 @@ class LoginController extends Controller
              $username=$request->input('username');
              // dd($username)
              $password=$request->input("password");
-             $email=$request->input("email");
+             // $email=$request->input("email");
              // dd($email);
              
              if(!count($row=DB::table("bro_user")->where("username",'=',$username)->first())){
-              return back()->with('error2','用户不存在');
-
-             }elseif($email != $row->email){
-                  return back()->with('error5','邮箱错误');
+               return back()->with('error2','用户不存在');
              }elseif(Hash::check($password,$row->password)){
                   if($row->status==0){
                     //将会员的信息存储在session里
@@ -112,7 +110,7 @@ class LoginController extends Controller
                     // echo "登陆成功";
                 }else{
                     if($res=$this->sendMail($row->id,$row->token,$row->email)){
-                    echo "用户未激活,请登录邮箱激活用户";
+                    echo '用户未激活,激活用户邮件已经发送,请登录邮箱激活用户,5秒后返回首页!<meta http-equiv="refresh" content="5;url=/">';
                 }
 
                 }
