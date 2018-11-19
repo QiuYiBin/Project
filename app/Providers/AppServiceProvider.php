@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DB;
+use Session;
 class AppServiceProvider extends ServiceProvider
 {
     // 获取分类方法
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         return $data;
     }
 
+   
     /**
      * Bootstrap any application services.
      *
@@ -26,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
         $cate = $this->getCatesBypid(0);
         view()->share('cate',$cate);
     }
@@ -38,6 +39,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 }

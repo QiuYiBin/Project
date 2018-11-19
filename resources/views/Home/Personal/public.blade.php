@@ -36,13 +36,11 @@
         
        </div> 
        <div class="user-info"> 
-        <div class="user-avatar">
-         <label class="edit-avatar file_upload" for="inputEmail1"></label>
-         <img src="/Home/images/account/user-ava.jpg" alt="用户" />
+        <div class="user-avatar" >
+         <img src="/Uploads/User/{{session('userinfo')['pic']}}" style="height: 110px" alt="用户" />
         </div> 
         <div class="user-data"> 
-         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">托尼斯塔克</font></font></h4>
-         <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入2018年2月6日</font></font></span> 
+         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{session('userinfo')['name']}}</font></font></h4>
         </div> 
        </div> 
       </aside> 
