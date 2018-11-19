@@ -123,3 +123,5 @@ Route::resource('/goods','Home\GoodsController');
 Route::resource('/friendship','Home\FriendshipController');
 //广告列表
 Route::resource('/homeadvert','Home\AdvertController');
+//文章页
+Route::resource('/homeword','Home\WordController');

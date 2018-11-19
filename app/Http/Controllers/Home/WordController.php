@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class IndexController extends Controller
+class WordController extends Controller
 {
     
     /**
@@ -13,20 +13,12 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // 首页方法
+    // 文章方法
     public function index()
     {
-        // 获取轮播图
-        $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
-        $advert=DB::table('bro_advertisement')->where('status','=','0')->get();
-        $array = array(
-            'Slider' => $Slider,
-            'advert' => $advert
-        );
-        $sql = "select * from bro_goods order by sales desc limit 0,4";
-        $data = DB::select($sql);
-        // dd($data);
-        return view('Home.Index.index')->with($array)->with('data',$data);
+        $word = DB::table('bro_word')->where("status",'=','0')->get();;
+        // dd($word);
+        return view('Home.Word.index')->with('word',$word);
     }
 
     /**
@@ -58,7 +50,10 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd($id);
+        $data = \DB::table('bro_word')->where('id','=',$id)->first();
+        //分配数据
+        return view('Home.Word.add')->with('data',$data);
     }
 
     /**
