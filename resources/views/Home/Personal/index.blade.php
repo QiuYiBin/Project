@@ -40,12 +40,13 @@
          <input class="form-control" type="text" name="hobby" id="account-confirm-pass" value=""  required=""/> 
         </div> 
        </div> 
-       <div class="col-md-6"> 
+        <div class="col-md-6"> 
         <div class="form-group"> 
          <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">切换头像</font></font></label> 
-         <input class="form-control" type="file" name="img" id="account-confirm-pass" value=""  required=""/> 
+         <br/>
+         <input class="form" type="file" name="pic"  value=""  required=""/> 
         </div> 
-       </div> 
+       </div>  
        <div class="col-12"> 
         <hr class="mt-2 mb-3" /> 
         <div class="d-flex flex-wrap justify-content-between align-items-center"> 
@@ -101,9 +102,9 @@
        </div>
        <div class="col-md-6"> 
         <div class="form-group"> 
-         <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">切换头像</font></font></label> 
+         <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新头像</font></font></label> 
          <br/>
-         <input class="form" type="file" name="img"  value=""  required=""/> 
+         <input class="form" type="file" name="pic"  value=""  required=""/> 
         </div> 
        </div>  
        <div class="col-12"> 

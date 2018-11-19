@@ -16,8 +16,8 @@ class AddresController extends Controller
      */
     public function index(Request $request)
     {
-        //获取到sessre里面id
-        $id = 6;
+        //获取到session里面id
+        $id = session('id');
         //获取所有用户收货地址
         $data = \DB::table('bro_useraddres')->where("user_id",'=',$id)->get();
         // dd($data);
