@@ -27,7 +27,7 @@ class AdvertController extends Controller
             $pp[$i]=$i;
         }
         $offset=($page-1)*$rev;
-        $sql="select * from bro_advertisement limit {$offset},{$rev}";
+        $sql="select * from bro_advertisement  ORDER BY id limit {$offset},{$rev}";
         $data=DB::select($sql);
         if($request->ajax()){
             return view('Admin.AdminAdvert.page',['data'=>$data]);
