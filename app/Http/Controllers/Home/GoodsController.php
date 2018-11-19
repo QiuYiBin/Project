@@ -12,10 +12,28 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data=DB::table('bro_goods')->get();
-       return view('Home.Goods.goods',['data'=>$data]);
+       //  $tal=DB::table('bro_goods')->count();
+       //  $ret=4;
+       //  $num=ceil($tal/$ret);
+       //  for($i=1;$i<=$num;$i++){
+       //      $arr[]=$i;
+       //  }
+       //  $page=$request->input('page');
+
+       //  if(empty($page)){ $page=1;}
+
+       //  $offset=($page-1)*$ret;
+
+       //  $sql="select * from bro_goods limit {$offset},{$ret}";
+       //  $data=DB::select($sql);
+
+       //  if($request->ajax()){
+       //      return view('Home.Goods.page',['data'=>$data]);
+       //  }
+
+       // return view('Home.Goods.goods',['arr'=>$arr,'data'=>$data]);
     }
 
     /**
@@ -45,21 +63,79 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {  
-        
-        $res = DB::table('bro_cates')->where('path','like','0,'.$id)->get();
-        // dd($res);
-        $cates = '';
-        foreach ($res as $key => $value) {
-            $cates[] = $value->id;
 
+        // if($id==0){
+        //      $tal=DB::table('bro_goods')->count();
+        //      $ret=4;
+        //      $num=ceil($tal/$ret);
+        //      for($i=1;$i<=$num;$i++){
+        //           $arr[]=$i;
+        //      }
+        //     $page=$request->input('page');
+
+        //      if(empty($page)){ $page=1;}
+
+        //      $offset=($page-1)*$ret;
+
+        //      $sql="select * from bro_goods limit {$offset},{$ret}";
+        //      $data=DB::select($sql);
+
+        //     if($request->ajax()){
+        //         return view('Home.Goods.page',['data'=>$data]);
+        //      }
+
+        // }else{
+
+        //     $tal=DB::table('bro_goods')->count();
+        //      $ret=4;
+        //      $num=ceil($tal/$ret);
+        //      for($i=1;$i<=$num;$i++){
+        //           $arr[]=$i;
+        //      }
+        //     $page=$request->input('page');
+
+        //      if(empty($page)){ $page=1;}
+
+        //      $offset=($page-1)*$ret;
+
+        //     $res = DB::table('bro_cates')->where('path','like','0,'.$id)->get();
+        //     // dd($res);
+        //      $cates = array();
+        //      foreach ($res as $key => $value) {
+        //          $cates[] = $value->id;
+
+        //      }
+        //      $cates[] = $id;
+        //     // dd($cates);
+        //      $data = DB::table('bro_goods')->whereIn('cates_id',$cates)->offset($offset)->limit($ret)->get();
+        //      if($request->ajax()){
+        //         return view('Home.Goods.page',['data'=>$data]);
+        //      }
+        // }
+        //     return view('Home.Goods.goods',['arr'=>$arr,'data'=>$data]);
+        
+
+        
+        if($id==0){
+            $data=DB::table('bro_goods')->paginate(4);
+
+        }else{
+
+            $res = DB::table('bro_cates')->where('path','like','0,'.$id)->get();
+            // dd($res);
+             $cates = array();
+             foreach ($res as $key => $value) {
+                 $cates[] = $value->id;
+
+             }
+             $cates[] = $id;
+            // dd($cates);
+             $data = DB::table('bro_goods')->whereIn('cates_id',$cates)->paginate(4);
+             
         }
-        $cates[] = $id;
-        // dd($cates);
-        $data = DB::table('bro_goods')->whereIn('cates_id',$cates)->get();
-        // dd($data);
-        return view('Home.Goods.goods',['data'=>$data]);
+            return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]); 
     }
 
     /**

@@ -7,16 +7,26 @@
      <div class="column"> 
       <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></h1> 
      </div> 
+
      <div class="column"> 
       <ul class="breadcrumbs"> 
-       <li><a href="index-1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a></li> 
+       <li><a href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a></li> 
        <li class="separator">&nbsp;</li> 
        <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></li> 
       </ul> 
      </div> 
     </div> 
    </div> 
-   <!-- End Page Title --> 
+   <!-- End Page Title -->
+    <!-- 校验失败提示   -->
+    @if (count($errors) > 0)
+    <div class="alert alert-danger alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
+    @foreach ($errors->all() as $error)
+     <p><i class="fa fa-bell"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $error }}</font></font></p>
+      @endforeach
+    </div>
+     @endif 
+
    <!-- Start My Profile --> 
    <div class="container padding-top-1x padding-bottom-3x"> 
     <div class="row"> 
@@ -26,13 +36,11 @@
         
        </div> 
        <div class="user-info"> 
-        <div class="user-avatar">
-         <label class="edit-avatar file_upload" for="inputEmail1"></label>
-         <img src="/Home/images/account/user-ava.jpg" alt="用户" />
+        <div class="user-avatar" >
+         <img src="/Uploads/User/{{session('userinfo')['pic']}}" style="height: 110px" alt="用户" />
         </div> 
         <div class="user-data"> 
-         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">托尼斯塔克</font></font></h4>
-         <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入2018年2月6日</font></font></span> 
+         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{session('userinfo')['name']}}</font></font></h4>
         </div> 
        </div> 
       </aside> 

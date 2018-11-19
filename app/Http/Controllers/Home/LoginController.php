@@ -105,7 +105,7 @@ class LoginController extends Controller
              }elseif(Hash::check($password,$row->password)){
                   if($row->status==0){
                     //将会员的信息存储在session里
-                    session(['username'=>$row->username]);
+                    session(['id'=>$row->id,'username'=>$row->username]);
                     return redirect("/");
                     // echo "登陆成功";
                 }else{

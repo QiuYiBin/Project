@@ -5,25 +5,18 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class IndexController extends Controller
+
+class AdvertController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 首页方法
     public function index()
     {
-        // 获取轮播图
-        $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
-        $advert=DB::table('bro_advertisement')->where('status','=','0')->get();
-        $array = array(
-            'Slider' => $Slider,
-            'advert' => $advert
-        );
-        return view('Home.Index.index')->with($array);
+        $data=DB::table('bro_advertisement')->get();
+        return view('Home.Index.index',['data'=>$data]);
     }
 
     /**

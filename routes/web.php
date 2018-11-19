@@ -111,6 +111,8 @@ Route::Resource('/homepersonal','Home\PersonalController');
 Route::Resource('/homeorder','Home\OrderController');
 // 我的地址
 Route::Resource('/homeaddres','Home\AddresController');
+// 地址Ajax
+Route::get('/homeaddresdel','Home\AddresController@del');
 // 添加地址发送请求
 Route::get('/homeaddress','Home\AddresController@ajax');
 // 我的优惠卷
@@ -119,3 +121,5 @@ Route::Resource('/homecoupon','Home\CouponController');
 Route::resource('/goods','Home\GoodsController');
 //友情链接
 Route::resource('/friendship','Home\FriendshipController');
+//广告列表
+Route::resource('/homeadvert','Home\AdvertController');

@@ -1,6 +1,7 @@
 @extends('Home.Personal.public')
 <script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
-<div class="modal fade" id="mymodal">
+
+<div class="modal fade" id="mymodal" style="display:none;" >
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- 这是模态框的头 -->
@@ -112,28 +113,49 @@
           <div class="col-lg-8">
                 <div class="padding-top-2x mt-2 hidden-lg-up"></div>
                  <button class="btn btn-success" data-toggle="modal" data-target="#mymodal">+添加收货地址</button>
-                <hr class="padding-bottom-1x">
-                <form class="row">
-                   
+                <div class="row">
                     <div class="col-12 padding-top-1x">
                         <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">收货地址</font></font></h4>
                         @foreach($data as $value)
                         <hr class="padding-bottom-1x">
                         
                         <div class="custom-control custom-checkbox d-block">
-                            <input class="custom-control-input" type="checkbox" id="same_address" checked="">
-
-                            <label class="custom-control-label" for="same_address"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">收货人：{{$value->name}}收货人电话：{{$value->phone}}收货地址:{{$value->huo}}详细地址：{{$value->adds}}</font></font></label>
-                        
-                        </div>
+                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
+                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br/>收货人电话：{{$value->phone}}<br/>收货地址:{{$value->huo}}<!-- <br/>详细地址： -->{{$value->adds}}
+                              </font>
+                            </font>
+                            <div style="float:right;margin-top: -38px; "> 
+                              <input type="hidden" name="id" value="{{$value->id}}">
+                              <input class="btn btn-danger btn-sm del" value="删除">
+                            </div>
+                        </div> 
                         @endforeach
                         <hr class="margin-top-1x margin-bottom-1x">
-                       
                     </div>
-                    
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
+    <script type="text/javascript">
+      // alert($);
+      $(".del").click(function(){
+        //获取id
+        id = $(this).parent("div").find("input:first").val();
+        //获取删除数据所在的tr
+        s = $(this).parent("div").parent("div");
+        // 获取下划线
+        bottom = $(this).parent("div").parent("div").next('hr');
+        //Ajax
+        $.get('/homeaddresdel',{id:id},function(data){
+            // alert(data);
+            if(data.msg == 1){  
+            //移除删除数据所在的tr 
+            s.remove(); 
+            bottom.remove(); 
+        }else{
+          //终止请求动作
+          request.abort();
+        }
+      },'json')
+    });
+    </script>
 @endsection
 @section('title','收货地址管理')

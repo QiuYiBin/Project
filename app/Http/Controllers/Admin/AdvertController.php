@@ -27,7 +27,7 @@ class AdvertController extends Controller
             $pp[$i]=$i;
         }
         $offset=($page-1)*$rev;
-        $sql="select * from bro_advertisement limit {$offset},{$rev}";
+        $sql="select * from bro_advertisement  ORDER BY id limit {$offset},{$rev}";
         $data=DB::select($sql);
         if($request->ajax()){
             return view('Admin.AdminAdvert.page',['data'=>$data]);
@@ -134,15 +134,13 @@ class AdvertController extends Controller
      */
     public function destroy($id)
     {
-        // echo $id;
         $data=DB::table('bro_advertisement')->where('id','=',$id)->get();
-        // dd($data['pic']);
         foreach($data as $row){
             $nameext=$row->pic;
         }
         if(DB::table('bro_advertisement')->where('id','=',$id)->delete()){
             $url="./Uploads/Advert_img/".$nameext;
-            unlink($url);
+            if(file_exists($url)) {unlink($url);}
             return redirect('/advert')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
@@ -151,9 +149,15 @@ class AdvertController extends Controller
 
     public function del(Request $request)
     {
-        $id=$request->input('id');
+        $id = $request->input('id');
+        $data=DB::table('bro_advertisement')->where('id','=',$id)->get();
+        foreach($data as $row){
+            $nameext=$row->pic;
+        }
         $data=DB::table('bro_advertisement')->where("id",'=',$id)->delete();
         if($data){
+            $url="./Uploads/Advert_img/".$nameext;
+            if(file_exists($url)) {unlink($url);}
             echo 1;
         }else{
             echo 0;

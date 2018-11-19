@@ -156,8 +156,7 @@ class AuthlistController extends Controller
      public function del(Request $request){
         //获取参数id
         $id = $request->input('id');
-        
-        
+    
         if(DB::table("bro_node")->where("id","=",$id)->delete()){
             //json格式
             return json_encode(['msg'=>1]);;
