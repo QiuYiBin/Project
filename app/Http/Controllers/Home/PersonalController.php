@@ -19,10 +19,14 @@ class PersonalController extends Controller
         // dd($id);
         //查出用户详情
         $data = \DB::table('bro_username')->where("user_id",'=',$id)->first();
+        // dd($data);
         $userinfo = array();
-        $userinfo['name'] = $data->name;
-        $userinfo['pic'] = $data->pic;
-        session(['userinfo'=>$userinfo]);
+        if (!empty($data)) {
+            $userinfo['name'] = $data->name;
+            $userinfo['pic'] = $data->pic;
+            session(['userinfo'=>$userinfo]);
+        } 
+        
         // dd(session('userinfo'));
         
         return view('Home.Personal.index')->with('data',$data)->with('id',$id);
