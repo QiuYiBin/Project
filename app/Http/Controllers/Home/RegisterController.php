@@ -79,7 +79,7 @@ class RegisterController extends Controller
      */
     public function store(RegisterUserinsert $request)
     { 
-         
+        $request->flashOnly('username','phone','email');
         // 获取验证码
         $vcode=$request->input('vcode');
         //获取存储在session的验证码
@@ -103,7 +103,7 @@ class RegisterController extends Controller
             if($id=DB::table("bro_user")->insertGetId($data)){
 
                if($res=$this->sendMail($id,$data['token'],$data['email'])){
-                    echo "激活用户邮件已经发送,请登录邮箱激活用户";
+                    echo '激活用户邮件已经发送,请登录邮箱激活用户,5秒后返回首页!<meta http-equiv="refresh" content="5;url=/">';
                 }
             }else{
                 return back()->with('error2','注册失败');

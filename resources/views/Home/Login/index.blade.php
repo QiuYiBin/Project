@@ -8,7 +8,7 @@
                 <form class="login-box" action="/login" method="post">
                     <h4 class="margin-bottom-1x">欢迎登陆本网站</h4>
                     <div class="form-group input-group">
-                        <input class="form-control" name="username" placeholder="请填写用户名" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,8}$" oninvalid="setCustomValidity('必须填写4-8位数字和字母');"
+                        <input class="form-control" name="username" value="{{old('username')}}"  placeholder="请填写用户名" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,8}$" oninvalid="setCustomValidity('必须填写4-8位数字和字母');"
                 oninput="setCustomValidity('');" required><span class="input-group-addon"><i class="icon-mail"></i></span>
                  <div class="form-group" style="color:red">
                            @if(session('error2'))
@@ -17,19 +17,11 @@
                          </div>
                     </div>
                     <div class="form-group input-group">
-                        <input class="form-control" type="password" name="password" placeholder="请填写密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
+                        <input class="form-control" type="password"  name="password" placeholder="请填写密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
                 oninput="setCustomValidity('');" required><span class="input-group-addon"><i class="icon-lock"></i></span>
                  <div class="form-group" style="color:red">
                            @if(session('error4'))
                           {{session('error4')}}
-                           @endif
-                         </div>
-                    </div>
-                    <div class="form-group input-group">
-                        <input class="form-control" name="email" placeholder="请填写邮箱" required><span class="input-group-addon"><i class="icon-mail"></i></span>
-                        <div class="form-group" style="color:red">
-                           @if(session('error5'))
-                          {{session('error3')}}
                            @endif
                          </div>
                     </div>
