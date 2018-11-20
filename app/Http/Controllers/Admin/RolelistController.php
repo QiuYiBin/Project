@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 //导入模型类Users
 use App\Models\Rolelist;
+//导入校验类
+use App\Http\Requests\Role;
 class RolelistController extends Controller
 {
     /**
@@ -91,7 +93,7 @@ class RolelistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Role $request)
     {
         //获取所有数据
         // dd($request->except(['_token']));
