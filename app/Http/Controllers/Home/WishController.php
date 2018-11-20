@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class OrderController extends Controller
+//导入模型类
+use App\Models\Wish;
+class WishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        
+        $id = session('id');
+        $data = Wish::where('uid','=',$id)->get();
+        // dd($data);
         //加载模版
-        return view('Home.Order.index');
+        return view('Home.Cart.index')->with('data',$data);
 
    }
 
@@ -27,7 +31,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -47,9 +51,35 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 添加我的收藏
     public function show($id)
     {
-        //
+       $wish = DB::table('bro_wish')->get();
+       foreach ($wish as $key => $value) {
+       }
+       //商品id
+       $gid = $value->gid;
+       // dd($gid);
+       //用户id
+       $uid = $value->uid;
+       dd($uid);
+       if ($gid != $id){
+             // 查看商品详情
+            $data = DB::table('bro_goods')->select('name','id','status','pic','price')->where('id','=',$id)->first();
+            $data->uid = session('id');
+            $data->gid = $data->id;
+            $res = (array)($data);
+            unset($res['id']);
+                // 开始添加操作
+                if(DB::table('bro_wish')->insert($res)){
+                    return redirect('/homewish')->with('success','收藏');
+                }
+
+        }else{
+            return back()->with('error','已收藏');
+        }
+       
+
     }
 
     /**
@@ -85,4 +115,19 @@ class OrderController extends Controller
     {
         //
     }
+
+    //ajax删除
+    public function del(Request $request)
+    {
+        // 获取参数id
+        $id = $request->input('id');
+        // 删除操作
+        if(DB::table("bro_wish")->where("id","=",$id)->delete()){
+            //json 格式
+            return response()->json(['msg'=>1]);
+        }else{  
+            return response()->json(['msg'=>0]);
+        }
+    }
+    
 }
