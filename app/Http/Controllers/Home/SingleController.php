@@ -19,13 +19,13 @@ class SingleController extends Controller
         $data = DB::table('bro_goods')->where('id','=',$id)->first();
         // 查看商品多图片
         $imgs = explode(',',$data->imgs);
-        // dd($imgs);
+        // 查看评论
         $comment = \DB::table("bro_comment")
-                    ->select("bro_comment.*","bro_goods.name","bro_goods.pic","bro_user.username")
+                    ->select("bro_comment.*","bro_user.username")
                     ->join("bro_user","bro_user.id",'=','bro_comment.uid')
-                    ->join("bro_goods","bro_goods.id",'=',"bro_comment.gid")
+                    ->where('bro_comment.gid','=',$id)
                     ->get();
-        // dd($comment);
+        // 分配数据
         $array = array(
             'data' => $data,
             'imgs' => $imgs,

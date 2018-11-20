@@ -1,0 +1,381 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 微软雅黑;
+}
+.cl{
+	clear: both;
+}
+a{
+	background-color: transparent;
+	text-decoration: none;
+	color: #10181f;
+}
+body{
+	line-height: 1.5;
+	font-weight: 300;
+}
+ul li,a{
+	text-decoration: none;
+	list-style-type: none;
+}
+#op-wrap{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #efefef;
+	padding-bottom: 150px;
+}
+#op-aside{
+	position: fixed;
+	background-color: #f2f2f2;
+	width: 450px;
+	height: 100%;
+	overflow: auto;
+	right: -470px;
+	top: 0;
+}
+#op-wrap-mask{
+	width: 100%;
+	height: 0;
+	top: 0;
+	right: 0;
+	position: fixed;
+	z-index: 8;
+	background-color: #000;
+	opacity: 0;
+	transition: opacity .5s,height .1s .5s;
+}
+#op-content{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: all .3s ease;
+}
+.user-hd{
+	margin: 40px auto;
+	text-align: center;
+	max-width: 1200px;
+}
+.my-avatar{
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+	position: relative;
+}
+.user-hd .my-avatar img{
+	border-radius: 50%;
+	width: 100%;
+}
+.user-hd .my-avatar .update-tip{
+	display: block;
+	height: 100%;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,.5);
+	opacity: 0;
+}
+.user-hd .my-avatar .update-tip .i-update-avatar{
+	margin-top: 40px;
+	display: inline-block;
+	background-image: url(./image/icons-sf4c296da45.png);
+	background-repeat: no-repeat;
+	background-position: 0 -355px;
+	width: 18px;
+	height: 24px;
+}
+.my-nickname{
+	padding: 20px 0 0;
+	font-size: 14px;
+}
+.user-bd{
+	width: 1200px;
+	margin: auto auto 120px;
+}
+.user-aside{
+	float: left;
+	width: 20%;
+	max-width: 240px;
+	background-color: #fbfafa;
+	transition: width .2s;
+	padding-bottom: 30px;
+}
+.user-aside .user-menu dt{
+	font-size: 12px;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 30px;
+	color: #666; 
+}
+.user-aside .user-menu dd{
+	margin-bottom: 1px;
+}
+.user-aside .user-menu .active{
+	border-left: 4px solid #eb0028;
+	background-color: #eaeaea;
+	color: #333;
+}
+.user-aside .user-menu a{
+	font-size: 14px;
+	display: block;
+	padding: 8px 0 8px 30px;
+	position: relative;
+}
+.user-aside .user-menu .active i{
+	margin-left: 40px;
+	opacity: 1;
+}
+.user-aside .user-menu .i-my-order{
+	background-position: 0 -386px;
+}
+.user-aside .user-menu .i-my-account, .user-aside .user-menu .i-my-address, .user-aside .user-menu .i-my-change, .user-aside .user-menu .i-my-cunpon, .user-aside .user-menu .i-my-giftcard, .user-aside .user-menu .i-my-insure, .user-aside .user-menu .i-my-inviteCode, .user-aside .user-menu .i-my-order, .user-aside .user-menu .i-my-prize, .user-aside .user-menu .i-my-referral, .user-aside .user-menu .i-my-repair, .user-aside .user-menu .i-my-return{
+	display: inline-block;
+	background-image: url(./image/icons-sbac4c57004.png);
+	background-repeat: no-repeat;
+	width: 24px;
+	height: 24px;
+}
+.user-aside .user-menu i{
+	margin-right: 10px;
+	vertical-align: middle;
+}
+.user-aside .user-menu .i-my-cunpon{
+	background-position: 0 -242px;
+}
+
+.user-aside .user-menu i{
+	margin-left: 30px; 
+	margin-right: 10px;
+	vertical-align: middle;
+	opacity: .3;
+}
+.user-aside .user-menu .i-my-giftcard{
+	background-position: 0 -290px;
+}
+.user-aside .user-menu .i-my-inviteCode{
+	background-position: 0 -362px;
+}
+.user-aside .user-menu .i-my-address{
+	background-position: 0 -194px;
+}
+.user-aside .user-menu .i-my-prize{
+	background-position: 0 -410px;
+}
+.user-aside .user-menu .i-my-referral{
+	background-position: 0 -434px;
+}
+.user-aside .user-menu .i-my-account{
+	background-position: 0 -170px;
+}
+.user-aside .user-menu .i-my-imei{
+	display: inline-block;
+	background-image: url(./image/icons-sbac4c57004.png);
+	background-repeat: no-repeat;
+	background-position: 0 -314px;
+	width: 24px;
+	height: 24px;
+}
+.user-aside .user-menu .i-my-insure{
+	background-position: 0 -338px;
+}
+.user-aside .user-menu .i-my-return{
+	background-position: 0 -482px;
+}
+.user-aside .user-menu .i-my-change{
+	background-position: 0 -218px;
+}
+.user-aside .user-menu .i-my-repair{
+	background-position: 0 -458px;
+}
+.user-bd .user-content{
+	box-sizing: border-box;
+	padding-left: 10px;
+	float: left;
+	width: 80%;
+}
+.user-content .user-back{
+	background-color: #fff;
+	font-size: 14px;
+	text-align: center;
+	height: 45px;
+	line-height: 45px;
+	display: none;
+	box-shadow: 0 2px 2px 0 #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+}
+.user-content .user-back a{
+	float: left;
+	font-size: 12px;
+	text-indent: -99em;
+	background: url(./image/icons-sbac4c57004.png) 0 -687px no-repeat;
+	margin-top: 18px;
+	margin-left: 10px;
+	display: inline-block;
+	width: 13px;
+	height: 12px;
+}
+.has-no-order{
+	text-align: center;
+	font-size: 14px;
+}
+.has-no-order .order-item-hd{
+	height: 60px;
+}
+.order-item-hd{
+	background-color: #f6f6f6;
+	font-size: 14px;
+}
+.order-item-bd{
+	color: #333;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 1.5;
+}
+.has-no-order .no-order-show{
+	padding: 198px 0 290px;
+}
+.has-no-order .i-no-order{
+	display: inline-block;
+	background-image: url(./image/icons-sbac4c57004.png);
+	background-repeat: no-repeat;
+	background-position: 0 -506px;
+	width: 74px;
+	height: 100px;
+}
+.has-no-order p{
+	padding: 13px 0 14px;
+	color: #999;
+}
+.user-bd dd:hover{
+	background-color: #eaeaea;
+}
+.user-content :nth-child(1).order-item{
+	margin-top: 0;
+}
+.user-content .order-item{
+	position: relative;
+	margin-top: 10px;
+}
+.order-item-hd{
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	font-size: 14px;
+}
+.order-item-hd .order-num{
+	float: left;
+	height: 60px;
+	line-height: 60px;
+	padding: 0 20px;
+	cursor: pointer; 
+}
+.order-item-hd .order-num .num{
+	font-size: 18px;
+	font-family: lato;
+	padding-right: 20px; 
+}
+.order-item-hd .order-num .arrow-down{
+	border-color: #333 transparent transparent;
+	vertical-align: middle;
+}
+.order-item-hd .order-num .arrow-down, .order-item-hd .order-num .arrow-up{
+	border-style: solid;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border-width: 6px;
+}
+.order-item-hd .order-operate{
+	float: right;
+	margin-top: 10px;
+}
+/*定义脚部部分*/
+#footer{
+	height: 200px;
+	z-index: 99;
+	background-color: #fcfcfc;
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+.container-text{
+	width: 100%;
+	max-width: 1200px;
+	min-width: 300px;
+	display: block;
+	margin: 0 auto;
+}
+.footer-nav{
+	color: rgba(0,0,0,.8);
+	font-size: 16px;
+	padding-top: 20px;
+	padding-bottom: 20px; 
+}
+.footer-nav dl{
+	border-top: 0;
+	background-color: #fcfcfc;
+	transition: background .2s;
+	width: 20%;
+	float: left;
+}
+.footer-nav dd ul li{
+	color: #828282;
+	padding: 0 20px;
+	height: auto;
+	overflow: hidden;
+	transition: height .3s;
+	padding: 0 20px;
+	font-size: 14px;
+	line-height: 1.7;
+}
+.footer-nav dl dt{
+	padding: 0 20px;
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+	color: #828282;
+}
+.ico-fold{
+	display: none;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 20px;
+	top: 15px;
+}
+.contact-us-cn{
+	margin-top: 10px;
+}
+.one-tel-number{
+	font-size: 20px;
+	text-align: center;
+	color: #828282;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	display: block;
+}
+.one-button{
+	text-align: center;
+	margin: 0 auto;
+	max-width: 240px;
+	color: #828282;
+	display: block;
+	line-height: 50px;
+	height: 50px;
+	font-size: 17px;
+	background-color: transparent;
+	border: 1px solid #101920;
+	transition: .25s; 
+	font-weight: 300;
+	vertical-align: middle;
+}
+.one-button:hover{
+	background-color: #000;
+	color: #fff;
+}
+.one-tel-time{
+	margin-top: 12px;;
+	text-align: center;
+	color: #828282;
+}

@@ -29,7 +29,7 @@ class Addres extends FormRequest
             //required 数据不能为空规则  regex 正则规则  unique唯一规则 bro_user操作的数据表  same一致规则
             'name'=>'required',
             'adds'=>'required',
-            'phone' => 'required|regex:/\q{11}/',
+            'phone' => 'required|regex:/\w{11}/',
             'huo'=>'required',
         ];
     }

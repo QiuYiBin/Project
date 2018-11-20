@@ -1,0 +1,159 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+/*定义导航栏*/
+li{
+  text-decoration: none;
+  list-style: none;
+}
+.cl{
+  clear: both;
+}
+nav{
+  width: 1150px;
+  height: 60px;
+  margin: 0 auto;
+}
+.logo>li>a{
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  display:block;
+  background-position: 5px;
+  float: left;
+  margin-left: 5px;
+}
+.logo>li>a>img{
+  width: 45px;
+  height: 45px;
+  padding-top: 8px;
+}
+.nav-left{
+  margin-left: 250px;
+}
+.nav-left>li>a{
+  width: auto;
+  height: 58px;
+  line-height: 58px;
+  color: #828282;
+  text-align: center;
+  float: left;
+  font-size: 14px;
+  padding: 0px 35px 0 35px; 
+}
+.nav-left>li>a:hover{
+  color: red;
+  border-bottom: 2px solid red;
+}
+/*定义导航栏右边的logo*/
+.nav-right{
+  width: 300px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 1360px;
+}
+.nav-right-ico>a{
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  float: left;
+  display: inline; 
+}
+.nav-right-ico>a>img{
+  width: 25px;
+  height: 25px;
+  padding-top: 20px;
+  padding-left: 15px;
+}
+.nav-right-ico>a:hover{
+  border-bottom: 2px solid rgb(16, 25, 32);
+}
+#footer{
+  height: 200px;
+  z-index: 99;
+  background-color: #fcfcfc;
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+.container-text{
+  width: 100%;
+  max-width: 1200px;
+  min-width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+.footer-nav{
+  color: rgba(0,0,0,.8);
+  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+}
+.footer-nav dl{
+  border-top: 0;
+  background-color: #fcfcfc;
+  transition: background .2s;
+  width: 20%;
+  float: left;
+}
+.footer-nav dd ul li{
+  color: #828282;
+  padding: 0 20px;
+  height: auto;
+  overflow: hidden;
+  transition: height .3s;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.footer-nav dl dt{
+  padding: 0 20px;
+  font-size: 18px;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  color: #828282;
+}
+.ico-fold{
+  display: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+.contact-us-cn{
+  margin-top: 10px;
+}
+.one-tel-number{
+  font-size: 20px;
+  text-align: center;
+  color: #828282;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+}
+.one-buttonx{
+  text-align: center;
+  margin: 0 auto;
+  max-width: 240px;
+  color: #828282;
+  display: block;
+  line-height: 50px;
+  /*height: 50px;*/
+  font-size: 17px;
+  background-color: transparent;
+  border: 1px solid #101920;
+  transition: .25s; 
+  font-weight: 300;
+  vertical-align: middle;
+}
+.one-buttonx:hover{
+  background-color: #fff;
+  color: #fff;
+}
+.one-tel-time{
+  margin-top: 12px;;
+  text-align: center;
+  color: #828282;
+}

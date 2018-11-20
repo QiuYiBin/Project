@@ -18,7 +18,7 @@ class Coupon extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->offsetSet('curr_date',date('Y-m-d'));
+        $this->offsetSet('start_time',date('Y-m-d'));
     }
 
     /**
@@ -34,7 +34,7 @@ class Coupon extends FormRequest
                 'max:50',
                 'regex: /\p{Han}/u'
             ],
-            'start_time' => 'required|date|after_or_equal:curr_date',
+            'start_time' => 'required|date|after_or_equal:start_time',
             'end_time' => 'required|date|after:start_time',
             'num' => 'required|regex:/^[0-9]*$/'
         ];

@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@yield('title')</title>
+    <title>@section('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -122,11 +122,15 @@
                 </ul>
             </li>
             <li>
-                <a href="/homecates"><span>友情链接</span></a>
+                <a href="/homeword"><span>文章管理</span></a>
+            </li>
+            <li>
+                <a href="/article"><span>公告</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
             </li>
+
         </ul>
     </nav>
     <!-- End Nav Menu -->
@@ -158,6 +162,7 @@
                 </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
+                
                 <div class="cart">
                     <a href="#"></a>
                     <i class="icon-bag"></i>
@@ -218,7 +223,6 @@
     </div>
     <!-- End Toolbar -->
 </header>
-
 @section('main')
 @show
 <!-- End NavBar -->
@@ -258,7 +262,7 @@
                     <section class="widget widget-links widget-light-skin">
                         <h3 class="widget-title">Our Services</h3>
                         <ul>
-                            <li><a href="#">Creative Web Design</a></li>
+                            <li><a href="/friendship">友情链接</a></li>
                             <li><a href="#">Full Responsive Front-End</a></li>
                             <li><a href="#">Compatible For All Browsers</a></li>
                             <li><a href="#">W3C Walidated Code</a></li>
