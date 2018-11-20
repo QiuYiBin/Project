@@ -38,13 +38,13 @@
             @foreach($cate as $value)
             <li class="has-children">
                 <span>
-                    <a href="shop-categories-1.html">{{$value->name}}</a>
+                    <a href="/goods/{{$value->id}}">{{$value->name}}</a>
                     <span class="sub-menu-toggle"></span>
                 </span>
                 <ul class="offcanvas-submenu">
                     @if(count($value->dev))
                     @foreach($value->dev as $rows)
-                    <li><a href="shop-grid-1.html">{{$rows->name}}</a></li>
+                    <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                     @endforeach
                     @endif
                 </ul> 
@@ -77,10 +77,11 @@
 <!-- Start NavBar -->
 <header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
-    <form class="site-search" method="get">
-        <input type="text" name="site_search" placeholder="Type to search...">
+    <form class="site-search" action="/goods" method="get">
+        <input type="text" name="search" placeholder="请输入关键词">
         <div class="search-tools">
-            <span class="clear-search">Clear</span>
+            <!-- <button class="close-search">&nbsp;搜索&nbsp;</button> -->
+            <input type="submit" value="搜索">
             <span class="close-search"><i class="icon-cross"></i></span>
         </div>
     </form>
@@ -90,11 +91,10 @@
         <div class="inner">
             <a class="offcanvas-toggle cats-toggle" href="#shop-categories" data-toggle="offcanvas"></a>
             <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
-            <a class="site-logo" href="index-1.html"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
+            <a class="site-logo" href="/"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
         </div>
     </div>
     <!-- End Logo -->
-    
     <!-- Start Nav Menu -->
     <nav class="site-menu">
         <ul>
@@ -138,9 +138,11 @@
     <div class="toolbar">
         <div class="inner">
             <div class="tools">
-                <div class="search"><i class="icon-search"></i></div>
+                <div class="search">
+                    <i class="icon-search"></i>
+                </div>
                 <!-- Start Account -->
-<div class="account">
+                <div class="account">
                     <a href="#"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">

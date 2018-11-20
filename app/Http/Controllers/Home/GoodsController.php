@@ -14,26 +14,18 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-       //  $tal=DB::table('bro_goods')->count();
-       //  $ret=4;
-       //  $num=ceil($tal/$ret);
-       //  for($i=1;$i<=$num;$i++){
-       //      $arr[]=$i;
-       //  }
-       //  $page=$request->input('page');
+        if(empty($request->input('search'))){ return back();}
 
-       //  if(empty($page)){ $page=1;}
+        $a=$request->input('search');
+        $data=DB::table('bro_goods')->where('name','like',"%".$a."%")->where('status','=',0)->paginate(4);
+        if($a){
+            return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]); 
+        }else{
 
-       //  $offset=($page-1)*$ret;
+            $srt="暂无数据";
+            return view('Home.Goods.null',['srt'=>$srt]);
+        }
 
-       //  $sql="select * from bro_goods limit {$offset},{$ret}";
-       //  $data=DB::select($sql);
-
-       //  if($request->ajax()){
-       //      return view('Home.Goods.page',['data'=>$data]);
-       //  }
-
-       // return view('Home.Goods.goods',['arr'=>$arr,'data'=>$data]);
     }
 
     /**

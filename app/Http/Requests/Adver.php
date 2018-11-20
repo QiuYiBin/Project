@@ -28,7 +28,8 @@ class Adver extends FormRequest
             'url'=>'required|url',
             'status'=>'required',
             'pic'=>'required',
-            'title'=>'required'
+            'title'=>'required',
+            'search'=>'required'
         ];
     }
 
@@ -41,7 +42,8 @@ class Adver extends FormRequest
             'url.url'=>'请填写有效的url地址',
             'status.required'=>'请选择状态',
             'pic.required'=>'请选择上传图片',
-            'title.required'=>'请填写广告描述'
+            'title.required'=>'请填写广告描述',
+            'search'=>'请输入要搜索的内容'
             ];
     }
 }
