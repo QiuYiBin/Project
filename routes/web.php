@@ -125,10 +125,12 @@ Route::resource('/goods','Home\GoodsController');
 Route::resource('/friendship','Home\FriendshipController');
 // 广告列表
 Route::resource('/homeadvert','Home\AdvertController');
-//文章页
+// 文章页
 Route::resource('/homeword','Home\WordController');
-//前台购物车路由
+// 前台购物车路由
 Route::resource('/homecart','Home\CartController');
+// 前台公告路由
+Route::resource("/article","Home\ArticleController");
 //加
 //ajax删除
 Route::get("/homecartdel","Home\CartController@del");

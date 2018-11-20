@@ -24,12 +24,8 @@ class ClearingController extends Controller
         if ($addres->isEmpty()){
             $addres = '';
         }
-        // 分配数据
-        $array = array(
-            'addres' => $addres
-        );
         // dd($array);
-        return view('Home.Clearing.index')->with($array);
+        return view('Home.Clearing.index')->with('addres',$addres);
     }
 
     /**

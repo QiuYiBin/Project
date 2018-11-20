@@ -125,6 +125,9 @@
                 <a href="/homeword"><span>文章管理</span></a>
             </li>
             <li>
+                <a href="/article"><span>公告</span></a>
+            </li>
+            <li>
                 <a href="#"><span>关于我们</span></a>
             </li>
 
