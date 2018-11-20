@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+//导入校验类
+use App\Http\Requests\Catee;
 class CateController extends Controller
 {
     /**
@@ -59,7 +61,7 @@ class CateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Catee $request)
     {
         // 获取需要添加的数据
         $data = $request->except('_token');
@@ -125,7 +127,7 @@ class CateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Catee $request, $id)
     {
         // 执行修改
         $data = $request->except('_token','_method');

@@ -139,3 +139,5 @@ Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 // 结算页面
 Route::resource('/Clearing','Home\ClearingController');
+// 订单页
+Route::resource('/homedetail','Home\DetailController');
