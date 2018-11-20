@@ -145,3 +145,8 @@ Route::resource('/Clearing','Home\ClearingController');
 Route::post('/Clearings','Home\ClearingController@order');
 // 订单页
 Route::resource('/homedetail','Home\DetailController');
+Route::get('/curl','Home\IndexController@curl');
+// 我的收藏
+Route::resource('/homewish','Home\WishController');
+// ajax删除收藏
+Route::get('/homewishdel','Home\WishController@del');

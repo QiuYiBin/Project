@@ -28,6 +28,7 @@
             "App\\": "app/"
         },
         "files": [
+            "app/Library/helper.php",
             "app/Library/Upload.php"
         ]
     },

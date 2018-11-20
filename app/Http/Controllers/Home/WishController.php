@@ -5,31 +5,24 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class IndexController extends Controller
+//导入模型类
+use App\Models\Wish;
+class WishController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 首页方法
     public function index()
     {
-        // 获取轮播图
-        $Slider = DB::table('bro_carousel')->orderBY('sort','desc')->where('status','=','0')->get();
-        $advert=DB::table('bro_advertisement')->where('status','=','0')->get();
-        $array = array(
-            'Slider' => $Slider,
-            'advert' => $advert
-        );
-        $sql = "select * from bro_goods order by sales desc limit 0,4";
-        $data = DB::select($sql);
+        $id = session('id');
+        $data = Wish::where('uid','=',$id)->get();
         // dd($data);
-        return view('Home.Index.index')->with($array)->with('data',$data);
-        //
-        
-    }
+        //加载模版
+        return view('Home.Cart.index')->with('data',$data);
+
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +31,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -58,9 +51,34 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 添加我的收藏
     public function show($id)
     {
-        
+       $wish = DB::table('bro_wish')->get();
+       foreach ($wish as $key => $value) {
+       }
+       //商品id
+       $gid = $value->gid;
+       // dd($gid);
+       //用户id
+       $uid = $value->uid;
+       dd($uid);
+       if ($gid != $id){
+             // 查看商品详情
+            $data = DB::table('bro_goods')->select('name','id','status','pic','price')->where('id','=',$id)->first();
+            $data->uid = session('id');
+            $data->gid = $data->id;
+            $res = (array)($data);
+            unset($res['id']);
+                // 开始添加操作
+                if(DB::table('bro_wish')->insert($res)){
+                    return redirect('/homewish')->with('success','收藏');
+                }
+
+        }else{
+            return back()->with('error','已收藏');
+        }
+       
 
     }
 
@@ -72,7 +90,7 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -98,5 +116,18 @@ class IndexController extends Controller
         //
     }
 
+    //ajax删除
+    public function del(Request $request)
+    {
+        // 获取参数id
+        $id = $request->input('id');
+        // 删除操作
+        if(DB::table("bro_wish")->where("id","=",$id)->delete()){
+            //json 格式
+            return response()->json(['msg'=>1]);
+        }else{  
+            return response()->json(['msg'=>0]);
+        }
+    }
     
 }

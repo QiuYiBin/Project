@@ -46,8 +46,8 @@
                     <h4 class="product-price">{{$row->price}}</h4>
                     <div class="product-buttons">
                         <div class="product-buttons">
-                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist">
-                                <i class="icon-heart"></i>
+                            <a href="/homewish/{{$row->id}}"><button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢">
+                                <i class="icon-heart"></i></a>
                             </button>
                             <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">添加到购物车</button>
                         </div>
@@ -66,10 +66,10 @@
             @foreach($advert as $row)
             <div class="grid-item" class="d-block w-110 opacity-75 m-auto">
                 <div class="product-card">
-                    <a class="product-thumb" href="{{$row->url}}">
+                    <a class="product-thumb" href="{{$row->url}}" target="view_window">
                         <img src="/Uploads/Advert_img/{{$row->pic}}" alt="Product" style="height:126px">
                     </a>
-                    <h3 class="product-title"><a href="{{$row->url}}">{{$row->name}}</a></h3>
+                    <h3 class="product-title"><a href="{{$row->url}}" target="_blank">{{$row->name}}</a></h3>
                     <ladel size="5">广告语:</ladel>
                     <textarea cols="30" rows="15" style="height:50px;border:0px;font-style:oblique" disabled>{{$row->title}}</textarea>
                 </div>
