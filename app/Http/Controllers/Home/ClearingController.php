@@ -28,7 +28,7 @@ class ClearingController extends Controller
         $array = array(
             'addres' => $addres
         );
-        dd($array);
+        // dd($array);
         return view('Home.Clearing.index')->with($array);
     }
 

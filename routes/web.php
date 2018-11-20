@@ -44,6 +44,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('/admincates','Admin\CateController');
 	// 商品管理
 	Route::resource('/admingoods','Admin\GoodsController');
+	// 查看商品
+	Route::get('/admingoods/show/{id}','Admin\GoodsController@show');
 	// 轮播图管理
 	Route::resource('/slider','Admin\SliderController');
 	// 轮播图文件上传路由

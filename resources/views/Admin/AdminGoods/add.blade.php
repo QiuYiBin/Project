@@ -19,6 +19,11 @@
       <header class="panel-heading">
         添加商品 
       </header> 
+      <header class="panel-heading" style="border-bottom: hidden; margin-top: 10px;">
+      <div>
+        <a href="/admingoods" class="btn btn-warning">&lt;&lt;商品列表</a>
+      </div>
+      </header>
       <div class="panel-body"> 
         <form class="form-horizontal" role="form" action="/admingoods" method="post" enctype="multipart/form-data"> 
           <div class="form-group" style="margin-top: 40px"> 

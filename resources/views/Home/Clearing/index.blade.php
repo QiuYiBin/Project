@@ -5,7 +5,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="/Home/Clearing/style1503546983737.css">
-	<title>一加商城-订单填写页面</title>
 	<meta name="keywords" content="一加手机，1+手机，一加手机官网商城,一加商城,1+手机商城,1+商城,一加智能手机商城">
 	<meta name="description" content="一加手机官网商城是一加科技旗下面向全国服务的电子商务平台官网，专业提供官方正品一加手机及1+手机配件，品质保证，欢迎在线购买！">
 	<!--[if lte IE 9]>
@@ -57,9 +56,7 @@
                     </div>
                 </div>
                 <div class="mobile-big-title">填写订单</div>
-            </div>
-            {{var_dump($array)}}
-            
+            </div>       
             <div class="main-c order-info">
                 <div class="user-address-panel clearfix">
                     <div class="title">收货人信息</div>
