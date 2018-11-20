@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="topbar-column"><!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -56,11 +56,15 @@
 <!-- End Shop Category Menu -->
 <!-- Start TopBar -->
 <div class="topbar" style="">
+	
+
     <div class="topbar-column">
-        <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
+        <a class="hidden-md-down" href="#"><i class="fa "><h6>温度</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['temperature']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa "><h6>天气</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['weather']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa	"><h6>风级</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['wind']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa	"><h6>出行建议:</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['dressing_advice']}}</a>
     </div>
+    
     @if(session('username'))
        <div style="line-height: 39px;float: right;"> 
         <a href="#">欢迎{{session('username')}}</a>

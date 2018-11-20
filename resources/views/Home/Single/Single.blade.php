@@ -50,7 +50,7 @@
             </div>
             <!-- End Product Gallery -->
             <!-- Start Product Info -->
-            <form class="row" method="post" action="/homecart">
+            <form class="row" method="post" action="/homecart{{$row->id}}">
 
             <div class="col-md-6 single-shop">
             	<div class="rating-stars">
