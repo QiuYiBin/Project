@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@yield('title')</title>
+    <title>@section('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -28,8 +28,6 @@
     <link rel="stylesheet" media="screen" href="/Home/css/style.css">
 </head>
 <body>
-
-
 <!-- Start Shop Category Menu -->
 <div class="offcanvas-container" id="shop-categories">
     <div class="offcanvas-header">
@@ -57,7 +55,6 @@
     </nav>
 </div>
 <!-- End Shop Category Menu -->
-
 <!-- Start TopBar -->
 <div class="topbar" style="margin-top: -20px">
     <div class="topbar-column">
@@ -91,28 +88,30 @@
     <nav class="site-menu">
         <ul>
             <li class="active">
-                <a href="#"><span>首页</span></a>
+                <a href="/"><span>首页</span></a>
                 
             </li>
             <li>
                 <a href="#"><span>购物</span></a>
                 <ul class="sub-menu">
+                    @if(count($cate))
                     @foreach($cate as $value)
                     <li class="has-children">
                         <a href="#"><span>{{$value->name}}</span></a>
+                        @if(count($value->dev))
                         <ul class="sub-menu">
-                            @if(count($value->dev))
                             @foreach($value->dev as $rows)
                             <li><a href="shop-categories-1.html">{{$rows->name}}</a></li>
                             @endforeach
-                            @endif
                         </ul>
+                         @endif
                     </li>
                     @endforeach
+                    @endif
                 </ul>
             </li>
             <li>
-                <a href="#"><span>友情链接</span></a>
+                <a href="/homecates"><span>友情链接</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
@@ -207,12 +206,11 @@
     </div>
     <!-- End Toolbar -->
 </header>
-<!-- End NavBar -->
-<div class="offcanvas-container" id="mobile-menu">
 @section('main')
 @show
+<!-- End NavBar -->
 <!-- Start Footer -->
-    <footer class="site-footer">
+<footer class="site-footer">
         <div class="container">
             <!-- Start Footer Info -->
             <div class="row">
@@ -298,41 +296,40 @@
             <!-- End Copyright -->
         </div>
     </footer>
-</div>
     <!-- End Footer -->
-<!-- Start Back To Top -->
-<a class="scroll-to-top-btn" href="#">
-    <i class="icon-arrow-up"></i>
-</a>
-<!-- End Back To Top -->
-<div class="site-backdrop"></div>
-<!-- Modernizr JS -->
-<script src="/Home/js/modernizr.min.js"></script>
-<!-- JQuery JS -->
-<script src="/Home/js/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="/Home/js/popper.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="/Home/js/bootstrap.min.js"></script>
-<!-- CountDown JS -->
-<script src="/Home/js/count.min.js"></script>
-<!-- Gmap JS -->
-<script src="/Home/js/gmap.min.js"></script>
-<!-- ImageLoader JS -->
-<script src="/Home/js/imageloader.min.js"></script>
-<!-- Isotope JS -->
-<script src="/Home/js/isotope.min.js"></script>
-<!-- NouiSlider JS -->
-<script src="/Home/js/nouislider.min.js"></script>
-<!-- OwlCarousel JS -->
-<script src="/Home/js/owl.carousel.min.js"></script>
-<!-- PhotoSwipe UI JS -->
-<script src="/Home/js/photoswipe-ui-default.min.js"></script>
-<!-- PhotoSwipe JS -->
-<script src="/Home/js/photoswipe.min.js"></script>
-<!-- Velocity JS -->
-<script src="/Home/js/velocity.min.js"></script>
-<!-- Main JS -->
-<script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
+    <!-- Start Back To Top -->
+    <a class="scroll-to-top-btn" href="#">
+        <i class="icon-arrow-up"></i>
+    </a>
+    <!-- End Back To Top -->
+    <div class="site-backdrop"></div>
+    <!-- Modernizr JS -->
+    <script src="/Home/js/modernizr.min.js"></script>
+    <!-- JQuery JS -->
+    <script src="/Home/js/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="/Home/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="/Home/js/bootstrap.min.js"></script>
+    <!-- CountDown JS -->
+    <script src="/Home/js/count.min.js"></script>
+    <!-- Gmap JS -->
+    <script src="/Home/js/gmap.min.js"></script>
+    <!-- ImageLoader JS -->
+    <script src="/Home/js/imageloader.min.js"></script>
+    <!-- Isotope JS -->
+    <script src="/Home/js/isotope.min.js"></script>
+    <!-- NouiSlider JS -->
+    <script src="/Home/js/nouislider.min.js"></script>
+    <!-- OwlCarousel JS -->
+    <script src="/Home/js/owl.carousel.min.js"></script>
+    <!-- PhotoSwipe UI JS -->
+    <script src="/Home/js/photoswipe-ui-default.min.js"></script>
+    <!-- PhotoSwipe JS -->
+    <script src="/Home/js/photoswipe.min.js"></script>
+    <!-- Velocity JS -->
+    <script src="/Home/js/velocity.min.js"></script>
+    <!-- Main JS -->
+    <script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
 </body>
 </html>
