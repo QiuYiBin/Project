@@ -127,5 +127,15 @@ Route::resource('/friendship','Home\FriendshipController');
 Route::resource('/homeadvert','Home\AdvertController');
 //文章页
 Route::resource('/homeword','Home\WordController');
+//前台购物车路由
+Route::resource('/homecart','Home\CartController');
+//加
+//ajax删除
+Route::get("/homecartdel","Home\CartController@del");
+//ajax商品加
+Route::get("/CarAdd","Home\CartController@CarAdd");
+//ajax商品减
+Route::get("/Carjian","Home\CartController@Carjian");
+Route::get("/Carqingkong","Home\CartController@Carqingkong");
 // 结算页面
 Route::resource('/Clearing','Home\ClearingController');

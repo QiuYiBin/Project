@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@yield('title')</title>
+    <title>@section('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -217,7 +217,6 @@
     </div>
     <!-- End Toolbar -->
 </header>
-
 @section('main')
 @show
 <!-- End NavBar -->
