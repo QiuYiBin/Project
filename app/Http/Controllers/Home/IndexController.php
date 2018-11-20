@@ -27,6 +27,8 @@ class IndexController extends Controller
         $data = DB::select($sql);
         // dd($data);
         return view('Home.Index.index')->with($array)->with('data',$data);
+        //
+        
     }
 
     /**
@@ -58,7 +60,8 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        
+
     }
 
     /**

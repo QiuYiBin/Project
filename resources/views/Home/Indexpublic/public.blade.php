@@ -160,6 +160,7 @@
                 </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
+                
                 <div class="cart">
                     <a href="#"></a>
                     <i class="icon-bag"></i>

@@ -235,7 +235,7 @@
 							</ul>
     					</div>
                             <p class="back-buy">
-                                <a href="">
+                                <a href="/homecart">
                                     <span class="arrow-right back-buy-icon"></span><span>返回购物车修改</span>
                                 </a>
                             </p>
