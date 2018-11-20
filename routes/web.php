@@ -44,6 +44,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('/admincates','Admin\CateController');
 	// 商品管理
 	Route::resource('/admingoods','Admin\GoodsController');
+	// 查看商品
+	Route::get('/admingoods/show/{id}','Admin\GoodsController@show');
 	// 轮播图管理
 	Route::resource('/slider','Admin\SliderController');
 	// 轮播图文件上传路由
@@ -119,11 +121,23 @@ Route::get('/homeaddress','Home\AddresController@ajax');
 Route::Resource('/homecoupon','Home\CouponController');
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
-//友情链接
+// 友情链接
 Route::resource('/friendship','Home\FriendshipController');
-//广告列表
+// 广告列表
 Route::resource('/homeadvert','Home\AdvertController');
 //文章页
 Route::resource('/homeword','Home\WordController');
-//订单页
+//前台购物车路由
+Route::resource('/homecart','Home\CartController');
+//加
+//ajax删除
+Route::get("/homecartdel","Home\CartController@del");
+//ajax商品加
+Route::get("/CarAdd","Home\CartController@CarAdd");
+//ajax商品减
+Route::get("/Carjian","Home\CartController@Carjian");
+Route::get("/Carqingkong","Home\CartController@Carqingkong");
+// 结算页面
+Route::resource('/Clearing','Home\ClearingController');
+// 订单页
 Route::resource('/homedetail','Home\DetailController');

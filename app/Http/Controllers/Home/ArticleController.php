@@ -5,33 +5,22 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class SingleController extends Controller
+use Hash;
+
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 
-    public function index($id)
+    public function index()
     {
-        // 查看商品详情
-        $data = DB::table('bro_goods')->where('id','=',$id)->first();
-        // 查看商品多图片
-        $imgs = explode(',',$data->imgs);
-        // 查看评论
-        $comment = \DB::table("bro_comment")
-                    ->select("bro_comment.*","bro_user.username")
-                    ->join("bro_user","bro_user.id",'=','bro_comment.uid')
-                    ->where('bro_comment.gid','=',$id)
-                    ->get();
-        // 分配数据
-        $array = array(
-            'data' => $data,
-            'imgs' => $imgs,
-            'comment' => $comment
-        );
-        return view('Home.Single.Single')->with($array);
+        //分配数据 加载模板
+        $article=DB::table("bro_article")->select('title','descr','id','created_at')->paginate(3);
+        //dd($article);
+        return view("Home.Article.article",['article'=>$article]);
+        
     }
 
     /**
@@ -41,7 +30,8 @@ class SingleController extends Controller
      */
     public function create()
     {
-        //
+        //加载前台公告模块
+        return view("Home.Article.article");
     }
 
     /**

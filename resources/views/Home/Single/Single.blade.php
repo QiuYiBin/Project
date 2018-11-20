@@ -50,6 +50,8 @@
             </div>
             <!-- End Product Gallery -->
             <!-- Start Product Info -->
+            <form class="row" method="post" action="/homecart">
+
             <div class="col-md-6 single-shop">
             	<div class="rating-stars">
                     <i class="icon-star filled"></i>
@@ -87,6 +89,14 @@
                             <i class="icon-heart"></i>
                         </button>
                         <button class="btn btn-primary" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i> 添加购物车</button>
+                     
+                        <input type="hidden" name="id" value="{{$data->id}}">
+                        
+                    </div>
+                </div>
+            </div>
+            {{csrf_field()}}
+           </form>
                     </div>
                 </div>
             </div>

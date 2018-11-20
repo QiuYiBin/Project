@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@yield('title')</title>
+    <title>@section('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -122,9 +122,6 @@
                 </ul>
             </li>
             <li>
-                <a href="/"><span>友情链接</span></a>
-            </li>
-            <li>
                 <a href="/homeword"><span>文章管理</span></a>
             </li>
             <li>
@@ -220,7 +217,6 @@
     </div>
     <!-- End Toolbar -->
 </header>
-
 @section('main')
 @show
 <!-- End NavBar -->
