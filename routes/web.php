@@ -143,6 +143,8 @@ Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::resource('/Clearing','Home\ClearingController');
 // 订单页
 Route::resource('/homedetail','Home\DetailController');
-
-//curl 使用
 Route::get('/curl','Home\IndexController@curl');
+// 我的收藏
+Route::resource('/homewish','Home\WishController');
+// ajax删除收藏
+Route::get('/homewishdel','Home\WishController@del');

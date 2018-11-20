@@ -136,7 +136,7 @@
                             <td>
                                 <div class="product-item">
 
-                                    <a class="product-thumb" href="shop-single-1.html">
+                                    <a class="product-thumb" href="/shopsingle/{{$row->id}}">
                                         <img src="/Uploads/Goods/{{$row->pic}}" alt="Product">
                                     </a>
                                     <div class="product-info">
