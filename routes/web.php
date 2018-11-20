@@ -139,7 +139,9 @@ Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
-// 结算页面
+// 结算路由
 Route::resource('/Clearing','Home\ClearingController');
+// 结算处理路由
+Route::post('/Clearings','Home\ClearingController@order');
 // 订单页
 Route::resource('/homedetail','Home\DetailController');

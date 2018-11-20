@@ -162,7 +162,7 @@
                 <!-- Start Cart -->
                 
                 <div class="cart">
-                    <a href="#"></a>
+                    <a href="/homecart"></a>
                     <i class="icon-bag"></i>
                     <span class="count">3</span>
                     <span class="subtotal">$1920</span>

@@ -34,10 +34,71 @@
 	<!-- <link rel="stylesheet" type="text/css" href="./View/orders/orders/common_pc.css"> -->
 	 <link rel="stylesheet" type="text/css" href="/Home/Clearing/order.css">
 	<link charset="utf-8" rel="stylesheet" href="/Home/Clearing/nc.css" disabled=""><style>@charset "utf-8";
-</style>
+	<style>
+         input[name="address"]{
+            /*display: none;*/
+            opacity: 0;
+            border-radius:0px;
+
+         }
+        input:checked+div{
+        	width: 380px;
+        	height: 100px;
+            border:2px solid rgb(235, 0, 40);
+
+        }
+		
+		input{-webkit-appearance:none;}
+
+	</style>
 </head>
 <body class="account-page" style="visibility: visible;">
-	
+	<!-- 模态框 -->
+	<div class="modal fade" id="mymodal" style="display:none;" >
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <!-- 这是模态框的头 -->
+	        <div class="modal-header">
+	        <!-- 关闭modal框的 data-dismiss -->
+	          <h3>添加收货地址</h3>
+	          <button class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <div class="modal-body">
+	          <form action="/Clearing" method="post" enctype="multipart/form-data">
+	            <div class="form-group">
+	              <label>收件人:</label>
+	              <input type="text"  name="name" class="form-control" placeholder="请输入正常的收件人" >
+	            </div>
+	            <div class="form-group">
+	              <label>电话:</label>
+	              <input type="text" name="phone" class="form-control"  placeholder="请输入正常的联系电话" ">
+	            </div>
+	            <div class="form-group">
+	              <label>邮编:</label>
+	              <input type="text" name="postcode" class="form-control"  placeholder="邮编可以不填" >
+	            </div>
+	            <div class="form-group">
+	              <label>地址:</label>
+	              <select id="sid">
+	                <option class="ss">--请选择--</option>
+	              </select>
+	              <input type="hidden" name="huo">
+	            </div>
+	             <div class="form-group">
+	              <label>详细地址:</label>
+	              <input type="text" name="adds" class="form-control">
+	            </div>
+	            {{csrf_field()}}
+	            <button type="submit" id="tijiao" class="btn btn-success">提交</button>
+	          </form>
+	        </div>
+	        <div class="modal-footer">
+	          <button class="btn  btn-info" data-dismiss="modal">关闭</button>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<!-- 模态框结束 -->
 <div id="op-wrap">
     <div id="op-aside"></div>
     <div id="op-wrap-mask"></div>
@@ -69,7 +130,7 @@
             	<div class="add-address-rectangle hide">
             		<span>增加地址</span>
             	</div>
-           	<form action="" method="post">
+           	<form action="/Clearings" method="post">
            		<!-- 添加收货地址 -->
            		@if(!empty($address))
             	<div class="address-form-panel show-address-form-panel" style="display: block;">
@@ -135,51 +196,11 @@
 
                 </div>
             	@endif
-            	<button class="btn btn-success" data-toggle="modal" data-target="#mymodal">+添加收货地址</button>
-                    <!-- 模态框 -->
-					<div class="modal fade" id="mymodal" style="display:none;" >
-					    <div class="modal-dialog">
-					      <div class="modal-content">
-					        <!-- 这是模态框的头 -->
-					        <div class="modal-header">
-					        <!-- 关闭modal框的 data-dismiss -->
-					          <h3>添加收货地址</h3>
-					          <button class="close" data-dismiss="modal">&times;</button>
-					        </div>
-					        <div class="modal-body">
-					          <form action="" method="post" enctype="multipart/form-data">
-					            <div class="form-group">
-					              <label>收货人:</label>
-					              <input type="text"  name="name" class="form-control">
-					            </div>
-					            <div class="form-group">
-					              <label>电话:</label>
-					              <input type="text" name="phone" class="form-control">
-					            </div>
-					            <div class="form-group">
-					              <label>地址:</label>
-					              <select id="sid">
-					                <option  class="ss">--请选择--</option>
-					              </select>
-					              <input type="hidden" name="huo">
-					            </div>
-					             <div class="form-group">
-					              <label>详细地址:</label>
-					              <input type="text" name="adds" class="form-control">
-					            </div>
-					             <input type="hidden" name="user_id" value="" class="form-control">
-					            {{csrf_field()}}
-					            <button type="submit" class="btn btn-success">提交</button>
-					          </form>
-					        </div>
-					        <div class="modal-footer">
-					          <button class="btn  btn-info" data-dismiss="modal">关闭</button>
-					        </div>
-					      </div>
-					    </div>
-					</div>
-					<!-- 模态框结束 -->
+            	<button class="btn btn-success" data-toggle="modal" data-target="#mymodal" type="button">+添加收货地址</button>
+                    
+					
             </div>
+        </div>
            
                 <!--配送方式-->
                 <div class="send-way clearfix">
@@ -191,8 +212,7 @@
                 <!-- 商品列表 -->
                 <div class="goods-list clearfix">
                     <div class="title">商品清单
-                    	
-                        <span class="m-title-arrow">共 <strong></strong> 件商品<i class="i-arrow" data-btn="show"></i></span>
+                        <span class="m-title-arrow">共 <strong>{{$num}}</strong> 件商品<i class="i-arrow" data-btn="show"></i></span>
                     </div>
                     <div class="info">
                         <div id="shop-list-box">
@@ -206,32 +226,44 @@
 										<li class="tb-total">小计</li>
 									</ul>
 								</li>
-								
+								<?php 
+
+									$money = '';
+
+								?>
+								<!-- 商品开始 -->
+								@foreach($array as $value)
 								<li class="list-body">
 									<div class="main-goods">
 										<ul class="clearfix ">
 											<li class="tb-name">
-												<img class="goods-img" src="../public/goods/">
+												<img class="goods-img" src="/Uploads/Goods/{{$value->pic}}">
 												<span class="name-info">
 													<span>
-														<a href=""></a>
+														<a href="">{{$value->name}}</a>
 														<span class="stock-tip"></span>
 													</span>
 												</span>
 											</li>
 											<li class="tb-price price">
 												<div>
-													<p>¥ </p>
+													<p>¥ {{$value->price}}</p>
 												</div>
 											</li>
 						
-											<li class="tb-number"><span>×</span></li>
-
-											<li class="tb-total">¥ </li>
+											<li class="tb-number"><span>×{{$value->num}}</span></li>
+											<?php
+												// 计算每个商品的小计
+												$total = $value->num * $value->price;
+												// 计算总价格
+												$money += $total; 
+											?>
+											<li class="tb-total">¥ {{$total}}</li>
 										</ul>
 									</div>
 								</li>
-							
+								<!-- 商品结束 -->
+								@endforeach
 							</ul>
     					</div>
                             <p class="back-buy">
@@ -242,7 +274,7 @@
                     </div>
              	</div>
              <!-- 发票 -->
-                <div class="set-invoice clearfix">
+                <div class="set-invoice clearfix" style="margin-top: 20px">
                     <div class="info">
                         <label class="need-invoice">
                             <span>发票</span>
@@ -260,23 +292,26 @@
                         </div>
                     </div>
                 </div>
-        <div class="main-c total-price">
-            <div class="inner">
-                <div class="title">&nbsp;</div>
-                <div class="info clearfix">
-                    <div class="left">
-                        <p>商品总金额：<span class="all-price">¥ </span></p>
-                        <p>优惠金额：<span class="coupon-money">-¥0</span></p>
-                        <p>运费：<span class="ship-price">+¥0</span></p>
-                        <p>支付方式：<span class="pay-way">在线支付</span></p>
-                    </div>
-                    <div class="right">
-                        <p class="total-pay">应付总额：<em>¥ </em></p>
-                        <input type="submit" class="submit-order-btn" value="提交订单">
-                    </div>
-                </div>
-            </div>
-        </div>
+                
+		        <div class="main-c total-price" style="margin-top: 20px">
+		            <div class="inner">
+		                <div class="title">&nbsp;</div>
+		                <div class="info clearfix">
+		                    <div class="left">
+		                        <p>商品总金额：<span class="all-price">¥ {{$money}}</span></p>
+		                        <p>优惠金额：<span class="coupon-money">-¥0</span></p>
+		                        <p>运费：<span class="ship-price">+¥0</span></p>
+		                        <p>支付方式：<span class="pay-way">在线支付</span></p>
+		                    </div>
+		                    <div class="right">
+		                        <p class="total-pay">应付总额：<em>¥ {{$money}}</em></p>
+		                        <button type="submit" class="submit-order-btn">提交订单</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <input type="hidden" name="total" value="{{$money}}">
+		        {{csrf_field()}}
         </form>
     </div>
 </div>
@@ -347,8 +382,16 @@
       // 将得到的数组直接赋值给隐藏域的value值即可
       $('input[name=huo]').val(arr);
     })
+
+
+ //    $('#tijiao').click(function(){
+	// 	$("input[name='address']").click(function(){
+	// 	if($(this).attr("checked")) {
+ //            return false;
+ //        }
+	// 	});
+	// });
   </script>
-</script>
 </html>
 @endsection
 @section('title','订单结算')
