@@ -8,7 +8,6 @@
         }
     </style> 
  </head>
- <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script> 
  <body> 
   <div class="wrapper" style="margin-top: 30px"> 
    <div class="row"> 
@@ -57,8 +56,9 @@
            @endforeach
          </div> 
         </div> 
-       </div> 
-      </div> 
+       </div>
+       <div class="dataTables_info" id="editable-sample_info">共{{$tot}}条数据</div>  
+      </div>
      </section> 
     </div> 
    </div> 
@@ -69,15 +69,17 @@
 // alert($);
  $(".del").click(function(){
  	//获取id
- 	id=$(this).parents("tr").find("td:first").html();
+ 	id = $(this).parents("tr").find("td:first").html();
  	//获取删除数据所在的tr
- 	s=$(this).parents("tr");
+ 	s = $(this).parents("tr");
  	//Ajax
  	$.get("/authlists",{id:id},function(data){
  		if(data.msg == 1){	
  			alert("删除成功");
  			//移除删除数据所在的tr
  			s.remove();
+      // 删除成功局部刷新
+      
  		}else{
       //终止请求动作
     	request.abort();

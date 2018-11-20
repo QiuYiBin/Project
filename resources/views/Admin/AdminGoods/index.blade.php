@@ -12,7 +12,7 @@
   <div class="col-sm-12">
   <section class="panel" style="margin-top: 45px"> 
    <header class="panel-heading">
-     Editable Table 
+     商品管理
     <span class="tools pull-right"> <a class="fa fa-chevron-down" href="javascript:;"></a> <a class="fa fa-times" href="javascript:;"></a> </span> 
    </header> 
    <div class="panel-body"> 
@@ -55,14 +55,17 @@
          <td class="">{{$value->catesname}}</td> 
          <td class="">{{$value->price}}</td> 
          <td class="">{{$value->store}}</td> 
-         <td class="">{{$value->status}}</td> 
+         <td class="">{{$value->status == 0 ? '上架' : '下架' }}</td> 
          <td class="">{{$value->sales}}</td> 
-         <td class=""><a href="/admingoods/{{$value->id}}/edit" class="btn btn-warning">修改</a>|
+         <td class="">
+          <a href="/admingoods/show/{{$value->id}}" class="btn btn-success">查看图片</a>
+          <a href="/admingoods/{{$value->id}}/edit" class="btn btn-warning">修改</a>
           <form action="/admingoods/{{$value->id}}" method="post" class="form-group">
             <button class="btn btn-danger">删除</button>
             {{csrf_field()}}
             {{method_field('DELETE')}}
-          </form> 
+          </form>
+        </td> 
         </tr>
         @endforeach
        </tbody>
@@ -72,7 +75,8 @@
         {{$data->appends($request)->render()}}
        </div>
       </div>
-     </div> 
+     </div>
+     <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div>   
     </div> 
    </div> 
   </section>

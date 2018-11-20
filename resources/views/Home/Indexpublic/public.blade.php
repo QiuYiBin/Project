@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -41,7 +41,6 @@
                     <a href="shop-categories-1.html">{{$value->name}}</a>
                     <span class="sub-menu-toggle"></span>
                 </span>
-                
                 <ul class="offcanvas-submenu">
                     @if(count($value->dev))
                     @foreach($value->dev as $rows)
@@ -56,16 +55,27 @@
 </div>
 <!-- End Shop Category Menu -->
 <!-- Start TopBar -->
-<div class="topbar" style="margin-top: -20px">
+<div class="topbar" style="">
     <div class="topbar-column">
         <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
         <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
     </div>
+    @if(session('username'))
+       <div style="line-height: 39px;float: right;"> 
+        <a href="#">欢迎{{session('username')}}</a>
+        <a href="login/create"></i>退出</a>
+        </div>
+    @else
+        <div style="line-height: 39px;float: right;">
+        <a href="/login">登陆</a>
+        <a href="/register">注册</a>
+        </div>
+    @endif
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->
-<header class="navbar navbar-sticky">
+<header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
     <form class="site-search" method="get">
         <input type="text" name="site_search" placeholder="Type to search...">
@@ -84,6 +94,7 @@
         </div>
     </div>
     <!-- End Logo -->
+    
     <!-- Start Nav Menu -->
     <nav class="site-menu">
         <ul>
@@ -92,16 +103,16 @@
                 
             </li>
             <li>
-                <a href="#"><span>购物</span></a>
+                <a href="/goods/{{0}}"><span>购物</span></a>
                 <ul class="sub-menu">
                     @if(count($cate))
                     @foreach($cate as $value)
                     <li class="has-children">
-                        <a href="#"><span>{{$value->name}}</span></a>
+                        <a href="/goods/{{$value->id}}"><span>{{$value->name}}</span></a>
                         @if(count($value->dev))
                         <ul class="sub-menu">
                             @foreach($value->dev as $rows)
-                            <li><a href="shop-categories-1.html">{{$rows->name}}</a></li>
+                            <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                             @endforeach
                         </ul>
                          @endif
@@ -111,11 +122,12 @@
                 </ul>
             </li>
             <li>
-                <a href="/homecates"><span>友情链接</span></a>
+                <a href="/homeword"><span>文章管理</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
             </li>
+
         </ul>
     </nav>
     <!-- End Nav Menu -->
@@ -125,7 +137,7 @@
             <div class="tools">
                 <div class="search"><i class="icon-search"></i></div>
                 <!-- Start Account -->
-                <div class="account">
+<div class="account">
                     <a href="#"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">
@@ -133,17 +145,16 @@
                                 <img src="/Home/images/account/user-ava-sm.jpg" alt="Tony Stark">
                             </div>
                             <div class="user-info">
-                                <h6 class="user-name">Tony Stark</h6>
-                                <span class="text-xs text-muted">530 Reward Points</span>
+                                <h6 class="user-name">Admin</h6>
                             </div>
                         </li>
-                        <li><a href="account-profile.html">My Profile</a></li>
-                        <li><a href="account-orders.html">My Orders</a></li>
-                        <li><a href="account-wishlist.html">My Wishlist</a></li>
+                        <li><a href="/homepersonal">个人中心</a></li>
+                        <li><a href="/homeorder">我的订单</a></li>
+                        <li><a href="/homeorder/create">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Sign Out</a></li>
+                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
-                </div>
+                </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
                 <div class="cart">
@@ -245,7 +256,7 @@
                     <section class="widget widget-links widget-light-skin">
                         <h3 class="widget-title">Our Services</h3>
                         <ul>
-                            <li><a href="#">Creative Web Design</a></li>
+                            <li><a href="/friendship">友情链接</a></li>
                             <li><a href="#">Full Responsive Front-End</a></li>
                             <li><a href="#">Compatible For All Browsers</a></li>
                             <li><a href="#">W3C Walidated Code</a></li>

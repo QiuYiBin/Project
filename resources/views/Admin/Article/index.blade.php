@@ -74,13 +74,12 @@
     
          </div>
            <div style="float: right"> 
-      	{{$article->render()}}
-      	</div>
+      	     {{$article->render()}}
+      	   </div>
         </div> 
-        
-       </div> 
+       </div>
       </div>
-      
+      <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div>
      </section> 
     </div> 
    </div> 

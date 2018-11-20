@@ -22,8 +22,8 @@ class AuthlistController extends Controller
         //return view("Admin.Authlist.index",['auth'=>$auth]);
         // 获取总条数
         $tot=DB::table("bro_node")->count();
-        //每页显示数据条数5
-        $rev=5;
+        //每页显示数据条数
+        $rev = 10;
         //获取最大页
         $maxpage=ceil($tot/$rev);
         // echo $maxpage;
@@ -36,9 +36,9 @@ class AuthlistController extends Controller
         }
         $offset=($page-1)*$rev;
 
-        $sql="select * from bro_node limit {$offset},{$rev}";
+        $sql="select * from bro_node ORDER BY id ASC limit {$offset},{$rev}";
         //执行sql语句
-        $data=DB::select($sql);
+        $data = DB::select($sql);
 
         // $request->ajax() 判断请求是否为Ajax true 是 否则否
         if($request->ajax()){
@@ -54,7 +54,7 @@ class AuthlistController extends Controller
         // echo "<pre>";
         // var_dump($pp);
 
-        return view("Admin.Authlist.index",['pp'=>$pp,'data'=>$data]);
+        return view("Admin.Authlist.index",['pp'=>$pp,'data'=>$data])->with('tot',$tot);
     }
 
     /**
@@ -156,8 +156,7 @@ class AuthlistController extends Controller
      public function del(Request $request){
         //获取参数id
         $id = $request->input('id');
-        
-        
+    
         if(DB::table("bro_node")->where("id","=",$id)->delete()){
             //json格式
             return json_encode(['msg'=>1]);;

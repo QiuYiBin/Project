@@ -14,19 +14,15 @@
     <script type="text/javascript" charset="utf-8" src="/Ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
   <body>
-    @if (count($errors) > 0)
-      <div class="alert alert-danger">
-      <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-      </ul>
-      </div>
-    @endif
     <div class="col-lg-12">
     <section class="panel" style="margin-top: 45px;"> 
       <header class="panel-heading">
         添加商品 
+      </header>
+      <header class="panel-heading" style="border-bottom: hidden; margin-top: 10px;">
+      <div>
+        <a href="/admingoods" class="btn btn-warning">&lt;&lt;商品列表</a>
+      </div>
       </header> 
       <div class="panel-body"> 
         <form class="form-horizontal" role="form" action="/admingoods/{{$data->id}}" method="post" enctype="multipart/form-data"> 
@@ -64,7 +60,7 @@
             <div class="col-md-3 col-xs-9"> 
               <select class="form-control m-bot15" name="status">
                 <option value="0" @if($data->status == 0) selected @endif>上架</option>
-                <option value="1" @if($data->status == 1) selected @endif>待上架</option>
+                <option value="1" @if($data->status == 1) selected @endif>下架</option>
               </select> 
             </div> 
           </div> 
@@ -85,25 +81,17 @@
                 <div id="mains" >
 
                 </div> 
-                <input type="hidden" name="picdouble" id="imgss"> 
+                <input type="hidden" name="imgs" id="imgss"> 
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">详细信息</label> 
               <div class="col-md-3 col-xs-9">
                 <script id="editor" type="text/plain" name="text" style="width:800px;height:500px;">
-                  {{$data->text}}
+                  {!!$data->text!!}
                 </script>
               </div> 
-          </div> 
-          <div class="form-group" style="margin-top: 40px"> 
-            <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">配置信息</label> 
-              <div class="col-md-3 col-xs-9">
-                <script id="editors" type="text/plain" name="config" style="width:800px;height:500px;">
-                  {{$data->config}}
-                </script>
-              </div> 
-          </div>    
+          </div>     
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">描述</label> 
               <div class="col-md-3 col-xs-9">
@@ -127,6 +115,7 @@
     $(function() {
       // 调用百度编辑器
       var ue = UE.getEditor('editor');
+      
       var ues = UE.getEditor('editors');
       // 声明字符串
       var imgs = '';
@@ -140,7 +129,7 @@
         },
         // 上传的flash动画
         'swf' : '/Uploadify/uploadify.swf',
-        'auto': true,
+        // 'auto': true,
         // 文件上传的地址(路由)
         'uploader' : '/admingoods/upload',
         // 设置文件上传格式

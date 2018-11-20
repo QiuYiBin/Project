@@ -29,26 +29,39 @@
             <h1 class="sign-title">登录</h1>
             <img src="/Admin/images/login-logo.png" alt=""/>
         </div>
+        @if (count($errors) > 0)
+        <div class="alert alert-warning fade in">
+            <button type="button" class="close close-sm" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            @foreach ($errors->all() as $error)
+                <p><strong>{{ $error }}</strong></p>
+            @endforeach
+        </div>
+        @endif
         @if(session('error'))
-    	<div class="alert alert-block alert-danger fade in">
-    		{{session('error')}}
-    	</div>
-    	@endif
+        <div class="alert alert-block alert-danger fade in">
+            {{session('error')}}
+        </div>
+        @endif
         <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="User ID" autofocus name="name">
-            <input type="password" class="form-control" placeholder="Password" name="password">
-
+            <input type="text" class="form-control" placeholder="用户名" autofocus name="name" value="{{old('name')}}">
+            <input type="password" class="form-control" placeholder="密码" name="password">
+            <!-- 验证码 -->
+            <input type="text" class="form-control {{$errors->has('captcha')?'parsley-error':''}}" placeholder="请输入验证码" name="captcha">
+            <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
+            @if($errors->has('captcha'))
+                <div class="col-md-12">
+                    <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+                </div>
+            @endif
+            <!-- 验证码结束 -->
             <button class="btn btn-lg btn-login btn-block" type="submit">
                 <i class="fa fa-check"></i>
             </button>
-            <label class="checkbox">
-                <span class="pull-right">
-                    <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-
-                </span>
-            </label>
 
         </div>
+            
 
         <!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
@@ -69,10 +82,10 @@
                     </div>
                 </div>
             </div>
-            {{csrf_field()}}
+            
         </div>
         <!-- modal -->
-
+        {{csrf_field()}}
     </form>
 
 </div>

@@ -14,20 +14,16 @@
     <script type="text/javascript" charset="utf-8" src="/Ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
   <body>
-    @if (count($errors) > 0)
-      <div class="alert alert-danger">
-      <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-      </ul>
-      </div>
-    @endif
     <div class="col-lg-12">
     <section class="panel" style="margin-top: 45px;"> 
       <header class="panel-heading">
         添加商品 
       </header> 
+      <header class="panel-heading" style="border-bottom: hidden; margin-top: 10px;">
+      <div>
+        <a href="/admingoods" class="btn btn-warning">&lt;&lt;商品列表</a>
+      </div>
+      </header>
       <div class="panel-body"> 
         <form class="form-horizontal" role="form" action="/admingoods" method="post" enctype="multipart/form-data"> 
           <div class="form-group" style="margin-top: 40px"> 
@@ -85,7 +81,7 @@
                 <div id="mains" >
 
                 </div> 
-                <input type="hidden" name="picdouble" id="imgss"> 
+                <input type="hidden" name="imgs" id="imgss"> 
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
@@ -93,13 +89,7 @@
               <div class="col-md-3 col-xs-9">
                 <script id="editor" type="text/plain" name="text" style="width:800px;height:500px;"></script>
               </div> 
-          </div> 
-          <div class="form-group" style="margin-top: 40px"> 
-            <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">配置信息</label> 
-              <div class="col-md-3 col-xs-9">
-                <script id="editors" type="text/plain" name="config" style="width:800px;height:500px;"></script>
-              </div> 
-          </div>    
+          </div>     
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">描述</label> 
               <div class="col-md-3 col-xs-9">
@@ -121,8 +111,12 @@
    // 当所有html代码加载完毕
     $(function() {
       // 调用百度编辑器
-      var ue = UE.getEditor('editor');
-      var ues = UE.getEditor('editors');
+      var ue = UE.getEditor('editor',{
+        autoFloatEnabled:false
+      });
+      var ues = UE.getEditor('editors',{
+        autoFloatEnabled:false
+      });
       // 声明字符串
       var imgs = '';
       $('#uploads').uploadify({

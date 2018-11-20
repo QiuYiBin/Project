@@ -11,9 +11,6 @@
 |
 */
 
-
-
-
 // 后台登录管理
 Route::resource('/adminlogin','Admin\AdminLoginController');
 Route::group(['middleware'=>'login'],function(){
@@ -47,6 +44,8 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('/admincates','Admin\CateController');
 	// 商品管理
 	Route::resource('/admingoods','Admin\GoodsController');
+	// 查看商品
+	Route::get('/admingoods/show/{id}','Admin\GoodsController@show');
 	// 轮播图管理
 	Route::resource('/slider','Admin\SliderController');
 	// 轮播图文件上传路由
@@ -75,13 +74,59 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource("/coupon","Admin\CouponController");
 	// 优惠券ajax删除
 	Route::get("/couponajax","Admin\CouponController@del");
+	// 评论管理
+	Route::resource("/comment","Admin\CommentController");
+	// 广告管理
+	Route::resource('/advert','Admin\AdvertController');
+	// Ajax删除
+	Route::get('/del','Admin\AdvertController@del');
+	// 文章管理
+	Route::resource('/word','Admin\WordController');
 });
 
 
 // 前台首页
 Route::resource('/','Home\IndexController');
+//注册
+Route::resource('/register','Home\RegisterController');
+//验证码
+Route::get("/code","Home\RegisterController@code");
+//激活用户
+Route::get("/activation","Home\RegisterController@activation");
+//登陆
+Route::resource("/login","Home\LoginController");
+//激活成功
+Route::get("/logindex","Home\LoginController@index");
+//
+Route::get("/logintion","Home\LoginController@activation");
+//找回密码
+Route::resource("/retrieve","Home\RetrieveController");
+//
+Route::get("/rtion","Home\RetrieveController@activation");
+//
+Route::post("/doreset","Home\RetrieveController@doreset");
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
+// 个人中心
+Route::Resource('/homepersonal','Home\PersonalController');
+// 我的订单
+Route::Resource('/homeorder','Home\OrderController');
+// 我的地址
+Route::Resource('/homeaddres','Home\AddresController');
+// 地址Ajax
+Route::get('/homeaddresdel','Home\AddresController@del');
+// 添加地址发送请求
+Route::get('/homeaddress','Home\AddresController@ajax');
+// 我的优惠卷
+Route::Resource('/homecoupon','Home\CouponController');
+// 商品列表
+Route::resource('/goods','Home\GoodsController');
+// 友情链接
+Route::resource('/friendship','Home\FriendshipController');
+// 广告列表
+Route::resource('/homeadvert','Home\AdvertController');
+//文章页
+Route::resource('/homeword','Home\WordController');
 //前台购物车路由
 Route::resource('/homecart','Home\CartController');
 //加
@@ -91,7 +136,6 @@ Route::get("/homecartdel","Home\CartController@del");
 Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
-//ajax商品输入框
-Route::get("/Carinput","Home\CartController@Carinput");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
-
+// 结算页面
+Route::resource('/Clearing','Home\ClearingController');
