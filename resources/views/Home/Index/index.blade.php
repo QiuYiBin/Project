@@ -46,8 +46,8 @@
                     <h4 class="product-price">{{$row->price}}</h4>
                     <div class="product-buttons">
                         <div class="product-buttons">
-                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist">
-                                <i class="icon-heart"></i>
+                            <a href="/homewish/{{$row->id}}"><button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢">
+                                <i class="icon-heart"></i></a>
                             </button>
                             <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">添加到购物车</button>
                         </div>
