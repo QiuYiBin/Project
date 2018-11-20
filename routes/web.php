@@ -119,5 +119,4 @@ Route::get('/homeaddress','Home\AddresController@ajax');
 Route::Resource('/homecoupon','Home\CouponController');
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
-//广告列表
-Route::resource('/homeadvert','Home\AdvertController');
+//中文分词

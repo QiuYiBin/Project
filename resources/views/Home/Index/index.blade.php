@@ -170,10 +170,10 @@
             @foreach($advert as $row)
             <div class="grid-item" class="d-block w-110 opacity-75 m-auto">
                 <div class="product-card">
-                    <a class="product-thumb" href="{{$row->url}}">
+                    <a class="product-thumb" href="{{$row->url}}" target="view_window">
                         <img src="/Uploads/Advert_img/{{$row->pic}}" alt="Product" style="height:126px">
                     </a>
-                    <h3 class="product-title"><a href="{{$row->url}}">{{$row->name}}</a></h3>
+                    <h3 class="product-title"><a href="{{$row->url}}" target="_blank">{{$row->name}}</a></h3>
                     <ladel size="5">广告语:</ladel>
                     <textarea cols="30" rows="15" style="height:50px;border:0px;font-style:oblique" disabled>{{$row->title}}</textarea>
                 </div>
