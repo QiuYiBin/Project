@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
 
  	//curl 方法 
     public function curl(){	
-    	$url = "http://v.juhe.cn/weather/index?format=2&cityname=%E8%8B%8F%E5%B7%9E&key=fe022ea332f4c7d3b6301ae534f49097";
+    	$url= "http://v.juhe.cn/offset/index?key=e45f2aca8949224e0460861ff3fcddb2&lat=39.908700982285396&lng=116.3974965092&type=6";
         $method = "get";
         $post = 0;
         $res = curlGet($url,$method,$post);

@@ -90,11 +90,12 @@ Route::resource('/','Home\IndexController');
 //注册
 Route::resource('/register','Home\RegisterController');
 //验证码
-Route::get("/code","Home\RegisterController@code");
+Route::get("/codes","Home\RegisterController@codes");
+
 //激活用户
 Route::get("/activation","Home\RegisterController@activation");
 //登陆
-Route::resource("/login","Home\LoginController");
+Route::resource("/homelogin","Home\LoginController");
 //激活成功
 Route::get("/logindex","Home\LoginController@index");
 //
@@ -105,22 +106,53 @@ Route::resource("/retrieve","Home\RetrieveController");
 Route::get("/rtion","Home\RetrieveController@activation");
 //
 Route::post("/doreset","Home\RetrieveController@doreset");
-// 商品详情
-Route::get('/shopsingle/{id}','Home\SingleController@index');
-// 个人中心
-Route::Resource('/homepersonal','Home\PersonalController');
-// 我的订单
-Route::Resource('/homeorder','Home\OrderController');
-// 我的地址
-Route::Resource('/homeaddres','Home\AddresController');
-// 地址Ajax
-Route::get('/homeaddresdel','Home\AddresController@del');
-// 添加地址发送请求
-Route::get('/homeaddress','Home\AddresController@ajax');
-// 我的优惠卷
-Route::Resource('/homecoupon','Home\CouponController');
+//密码找回之手机找回
+Route::get("/phone","Home\PhoneController@phone");
+//验证手机号是否存在
+Route::get("/demo","Home\PhoneController@demo");
+//验证验证码是否存在
+Route::get("/code","Home\PhoneController@code");
+//button提交的数据处理路由
+Route::resource("/phones","Home\PhoneController");
+//处理重置密码数据
+Route::post("/reset","Home\PhoneController@reset");
+
+//前台中间件
+Route::group(["middleware"=>"home"],function(){
+	
+	// 个人中心
+	Route::Resource('/homepersonal','Home\PersonalController');
+	// 我的订单
+	Route::Resource('/homeorder','Home\OrderController');
+	// 我的地址
+	Route::Resource('/homeaddres','Home\AddresController');
+	// 地址Ajax
+	Route::get('/homeaddresdel','Home\AddresController@del');
+	// 添加地址发送请求
+	Route::get('/homeaddress','Home\AddresController@ajax');
+	// 我的优惠卷
+	Route::Resource('/homecoupon','Home\CouponController');
+	// 结算路由
+	Route::resource('/Clearing','Home\ClearingController');
+	// 结算处理路由
+	Route::post('/Clearings','Home\ClearingController@order');
+	// 订单页
+	Route::resource('/homedetail','Home\DetailController');
+	// 支付路由
+	Route::get('/pays','Home\ClearingController@pay');
+	// 支付成功返回路由
+	Route::get('/returnurl','Home\ClearingController@returnurl');
+	// 我的收藏
+	Route::resource('/homewish','Home\WishController');
+	// ajax删除收藏
+	Route::get('/homewishdel','Home\WishController@del');
+});
+
+
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
+// 商品详情
+Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 友情链接
 Route::resource('/friendship','Home\FriendshipController');
 // 广告列表
@@ -131,23 +163,15 @@ Route::resource('/homeword','Home\WordController');
 Route::resource('/homecart','Home\CartController');
 // 前台公告路由
 Route::resource("/article","Home\ArticleController");
-//加
 //ajax删除
 Route::get("/homecartdel","Home\CartController@del");
 //ajax商品加
 Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
+//ajax商品输入框
+Route::get("/Carinput","Home\CartController@Carinput");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
-// 结算路由
-Route::resource('/Clearing','Home\ClearingController');
-// 结算处理路由
-Route::post('/Clearings','Home\ClearingController@order');
-// 订单页
-Route::resource('/homedetail','Home\DetailController');
 Route::get('/curl','Home\IndexController@curl');
-// 我的收藏
-Route::resource('/homewish','Home\WishController');
-// ajax删除收藏
-Route::get('/homewishdel','Home\WishController@del');
+
 

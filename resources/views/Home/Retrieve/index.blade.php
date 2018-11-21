@@ -310,7 +310,8 @@
                 <form class="card mt-4" action="/retrieve" method="post">
                     <div class="card-body">
                         <div class="form-group">
-                            <input class="form-control" type="text" id="email-for-pass" name="email" placeholder="请填写您的电子邮件地址" required>
+                            <input class="form-control" type="text" id="email-for-pass" name="email" placeholder="请输入你的邮箱" name="email" value="{{old('email')}}" pattern="^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$" oninvalid="setCustomValidity('请填写正确的邮箱');"
+                oninput="setCustomValidity('');" required>
                             {{csrf_field()}}
                         </div>
                     </div>
@@ -321,6 +322,7 @@
             </div>
         </div>
     </div>
+
     <div class="container padding-top-1x padding-bottom-3x">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -330,14 +332,23 @@
                     <li><span class="text-primary text-medium">2. </span>我们会向您发送手机号码发送验证码.</li>
                     <li><span class="text-primary text-medium">3. </span>使用验证码更改密码.</li>
                 </ol>
-                <form class="card mt-4">
+                <form class="card mt-4" id="fr" action="/phones" method="post">
                     <div class="card-body">
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="email-for-pass" placeholder="请填写您的手机号码" required>
+                        <div class="form-inline">
+                            <input class="form-control" type="text" id="phone" placeholder="请输入你的手机号" name="phone" pattern="^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$" oninvalid="setCustomValidity('请输入正确的手机号码');"
+                oninput="setCustomValidity('');" required >
+                            <button class="btn btn-primary" type="button" id="bt">获取验证码</button>
                         </div>
+                        <p id="err_phone" style="font-size:13px"></p>
                     </div>
+                      <div class="controls">
+                        <div class="form-inline">
+                          <input class="form-control" id="codes" name="yzm"  placeholder="请输入验证码" type="text"><p id="err_code" style="font-size:12px"></p>
+                          {{csrf_field()}}
+                        </div>
+                      </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary" type="submit">修改</button>
+                        <button class="btn btn-primary" id="bu" type="submit">修改</button>
                     </div>
                 </form>
             </div>
@@ -374,4 +385,87 @@
 <!-- Main JS -->
 <script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
 </body>
+<script type="text/javascript">
+    // alert($);
+    flag=false;
+    code=false;
+    // 验证手机号码
+    $('#phone').blur(function(){
+        p=$(this);
+        // 获取里面的值
+        phone=$(this).val();
+        // ajax账户验证
+        $.get('/demo',{phone:phone},function(data){
+            // alert(data);
+            if(data != 1){
+                $('#err_phone').css("color",'#f66').html("该账户不存在");
+                flag=false;
+            }else{
+               $('#err_phone').css("color",'#f66').html("该账户可用");
+               flag=true;
+            }
+        });
+    });
+   // 获取校验码点击按钮
+     $('#bt').click(function(){
+        o=$(this);
+        // alert(2);
+        // 获取手机号
+        p = $("input[name='phone']").val();
+        // alert(p);
+        $.get('/phone',{p:p},function(data){
+        // 获取验证码之后
+         //判断
+        if(data.code==000000){
+        //使按钮倒计时
+         m=60;
+        mytime=setInterval(function(){
+         m--;
+        //把m值赋值给按钮
+            o.css('color','#888').html(m+"秒后可重新发送");
+            //禁用按钮
+            o.attr('disabled',true);
+            if(m==0){
+                 //清除定时器
+                clearInterval(mytime);
+                 //重新给按钮赋值
+                o.html("重新发送");
+                //激活按钮
+                o.attr('disabled',false);
+                            }
+                        },1000);
+                    }
+                },'json');
+            });
+
+     //校验验证码是否配对
+     $("#codes").blur(function(){
+         code=$(this).val();
+         oo=$(this);
+         $.get('/code',{code:code},function(data){
+        if(data==1){
+            $("#err_code").css("color",'green').html("校验码正确");
+            code=true;
+        }else if(data==2){
+            $("#err_code").css("color",'#f66').html("校验码有误");
+             code=false;
+        }else if(data==3){
+             $("#err_code").css("color",'#f66').html("校验码不能为空");
+           code=false;
+         } else if(data==4){
+           $("#err_code").css("color",'#f66').html("校验码已经过期,请重按重新发送");
+            code=false;
+                }   
+              },'json');
+            });
+        
+        //表单验证
+        $("#fr").submit(function(){
+          if(flag && code){
+            return true;
+          }else{
+            return false;
+          }
+        });
+</script>
 </html>
