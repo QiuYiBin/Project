@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 //导入公告模型
 use App\Models\Articles;
+use App\Http\Requests\Articlesinsert;
 class AdminarticleController extends Controller
 {
     /**
@@ -55,13 +56,13 @@ class AdminarticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Articlesinsert $request)
     {
         //获取需要添加的数据
         $data=$request->only(['title','descr']);
         $res= Articles::create($data);
         if($res){
-        	return redirect("/adminarticle")->with('success','添加时间');
+        	return redirect("/adminarticle")->with('success','添加成功');
         }
     }
 
@@ -97,7 +98,7 @@ class AdminarticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Articlesinsert $request, $id)
     {
         //执行修改
         //dd($request->all());

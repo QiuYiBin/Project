@@ -20,7 +20,19 @@ class AppServiceProvider extends ServiceProvider
         return $data;
     }
 
-   
+ 	//curl 方法 
+    public function curl(){	
+    	$url = "http://v.juhe.cn/weather/index?format=2&cityname=%E8%8B%8F%E5%B7%9E&key=fe022ea332f4c7d3b6301ae534f49097";
+        $method = "get";
+        $post = 0;
+        $res = curlGet($url,$method,$post);
+        $data1 = json_decode($res,true);
+        //echo "<pre>";
+        //print_r($data);
+        return $data1;
+    }
+
+    
     /**
      * Bootstrap any application services.
      *
@@ -29,7 +41,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $cate = $this->getCatesBypid(0);
+        $data1 = $this->curl();
         view()->share('cate',$cate);
+        view()->share('data1',$data1);
+        
     }
 
     /**

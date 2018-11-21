@@ -63,7 +63,16 @@ class AddresController extends Controller
      */
     public function show($id)
     {
-        //
+        // 获取当前登录用户的id
+        $userid = session('id');
+        $res['status'] = 0;
+        $data['status'] = 1;
+        DB::table('bro_useraddres')->where('user_id','=',$userid)->update($res);
+        if(DB::table('bro_useraddres')->where('id','=',$id)->where('user_id','=',$userid)->update($data)){
+            return redirect('/homeaddres');
+        }else{
+            return redirect('/homeaddres');
+        }
     }
 
     /**

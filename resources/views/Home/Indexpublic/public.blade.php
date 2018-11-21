@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<div class="topbar-column"><!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@yield('title')</title>
+    <title>@section('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -38,13 +38,13 @@
             @foreach($cate as $value)
             <li class="has-children">
                 <span>
-                    <a href="shop-categories-1.html">{{$value->name}}</a>
+                    <a href="/goods/{{$value->id}}">{{$value->name}}</a>
                     <span class="sub-menu-toggle"></span>
                 </span>
                 <ul class="offcanvas-submenu">
                     @if(count($value->dev))
                     @foreach($value->dev as $rows)
-                    <li><a href="shop-grid-1.html">{{$rows->name}}</a></li>
+                    <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                     @endforeach
                     @endif
                 </ul> 
@@ -56,11 +56,15 @@
 <!-- End Shop Category Menu -->
 <!-- Start TopBar -->
 <div class="topbar" style="">
+	
+
     <div class="topbar-column">
-        <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
+        <a class="hidden-md-down" href="#"><i class="fa "><h6>温度</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['temperature']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa "><h6>天气</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['weather']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa	"><h6>风级</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['wind']}}</a>
+        <a class="hidden-md-down" href="#"><i class="fa	"><h6>出行建议:</h6></i>&nbsp;&nbsp;&nbsp;{{$data1['result']['today']['dressing_advice']}}</a>
     </div>
+    
     @if(session('username'))
        <div style="line-height: 39px;float: right;"> 
         <a href="#">欢迎{{session('username')}}</a>
@@ -77,10 +81,11 @@
 <!-- Start NavBar -->
 <header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
-    <form class="site-search" method="get">
-        <input type="text" name="site_search" placeholder="Type to search...">
+    <form class="site-search" action="/goods" method="get">
+        <input type="text" name="search" placeholder="请输入关键词">
         <div class="search-tools">
-            <span class="clear-search">Clear</span>
+            <!-- <button class="close-search">&nbsp;搜索&nbsp;</button> -->
+            <input type="submit" value="搜索">
             <span class="close-search"><i class="icon-cross"></i></span>
         </div>
     </form>
@@ -90,11 +95,10 @@
         <div class="inner">
             <a class="offcanvas-toggle cats-toggle" href="#shop-categories" data-toggle="offcanvas"></a>
             <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
-            <a class="site-logo" href="index-1.html"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
+            <a class="site-logo" href="/"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
         </div>
     </div>
     <!-- End Logo -->
-    
     <!-- Start Nav Menu -->
     <nav class="site-menu">
         <ul>
@@ -122,8 +126,15 @@
                 </ul>
             </li>
             <li>
+                <a href="/homeword"><span>文章管理</span></a>
+            </li>
+            <li>
+                <a href="/article"><span>公告</span></a>
+            </li>
+            <li>
                 <a href="#"><span>关于我们</span></a>
             </li>
+
         </ul>
     </nav>
     <!-- End Nav Menu -->
@@ -131,9 +142,11 @@
     <div class="toolbar">
         <div class="inner">
             <div class="tools">
-                <div class="search"><i class="icon-search"></i></div>
+                <div class="search">
+                    <i class="icon-search"></i>
+                </div>
                 <!-- Start Account -->
-<div class="account">
+                <div class="account">
                     <a href="#"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">
@@ -145,16 +158,17 @@
                             </div>
                         </li>
                         <li><a href="/homepersonal">个人中心</a></li>
-                        <li><a href="/homeorder">我的订单</a></li>
-                        <li><a href="/homeorder/create">我的收藏</a></li>
+                        <li><a href="/homedetail">我的订单</a></li>
+                        <li><a href="/homewish">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
                         <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
                 </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
+                
                 <div class="cart">
-                    <a href="#"></a>
+                    <a href="/homecart"></a>
                     <i class="icon-bag"></i>
                     <span class="count">3</span>
                     <span class="subtotal">$1920</span>
@@ -213,7 +227,6 @@
     </div>
     <!-- End Toolbar -->
 </header>
-
 @section('main')
 @show
 <!-- End NavBar -->

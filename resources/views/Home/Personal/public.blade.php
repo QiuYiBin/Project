@@ -37,7 +37,12 @@
        </div> 
        <div class="user-info"> 
         <div class="user-avatar" >
-         <img src="/Uploads/User/{{session('userinfo')['pic']}}" style="height: 110px" alt="用户" />
+          @if (session('userinfo')['pic'] != null)
+         <img src= "/Uploads/User/{{session('userinfo')['pic']}}" 
+         style="height: 110px" alt="用户" />
+          @else
+          <img src= "/Uploads/ylh.jpg" style="height: 110px" alt="用户" />
+          @endif
         </div> 
         <div class="user-data"> 
          <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{session('userinfo')['name']}}</font></font></h4>
@@ -46,9 +51,9 @@
       </aside> 
       <nav class="list-group"> 
        <a class="list-group-item" href="/homepersonal"><i class="icon-head"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></a> 
-       <a class="list-group-item with-badge" href="/homeorder"><i class="icon-bag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
+       <a class="list-group-item with-badge" href="/homedetail"><i class="icon-bag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
        <a class="list-group-item" href="/homeaddres"><i class="icon-map"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的地址</font></font></a> 
-       <a class="list-group-item with-badge" href="/homeorder/create"><i class="icon-heart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的心愿单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
+       <a class="list-group-item with-badge" href="/homewish"><i class="icon-heart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的心愿单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
        <a class="list-group-item with-badge" href="/homecoupon"><i class="icon-tag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的优惠卷</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
       </nav> 
      </div> 

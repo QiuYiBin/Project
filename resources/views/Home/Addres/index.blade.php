@@ -126,7 +126,12 @@
                             </font>
                             <div style="float:right;margin-top: -38px; "> 
                               <input type="hidden" name="id" value="{{$value->id}}">
-                              <input class="btn btn-danger btn-sm del" value="删除">
+                              @if($value->status == 1)
+                              <span class="btn btn-success btn-sm" style="width: 100px">默认</span>
+                              @else
+                              <a class="btn btn-success btn-sm" style="width: 100px" href="/homeaddres/{{$value->id}}">设为默认</a>
+                              @endif
+                              <input class="btn btn-danger btn-sm del" style="width: 100px" value="删除">
                             </div>
                         </div> 
                         @endforeach
