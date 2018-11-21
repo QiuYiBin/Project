@@ -27,9 +27,9 @@ class Adver extends FormRequest
             'name'=>'required|unique:bro_advertisement',
             'url'=>'required|url',
             'status'=>'required',
-            'pic'=>'required',
+            'pic'=>'required',  
             'title'=>'required',
-            'search'=>'required'
+            
         ];
     }
 
@@ -37,13 +37,13 @@ class Adver extends FormRequest
         return[
             'name.required'=>'用户名不能为空',
             // 'name.regex'=>'用户名必须为4-8位的任意数字字母下划线',
-            'name.unique'=>'用户名重复',
+            'name.unique'=>'用户名不能重复',
             'url.required'=>'请填写url地址',
             'url.url'=>'请填写有效的url地址',
             'status.required'=>'请选择状态',
             'pic.required'=>'请选择上传图片',
             'title.required'=>'请填写广告描述',
-            'search'=>'请输入要搜索的内容'
+            
             ];
     }
 }

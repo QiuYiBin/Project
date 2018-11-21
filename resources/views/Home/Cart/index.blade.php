@@ -21,11 +21,11 @@
        <td> 
          <input type="hidden" name="id" value="{{$row->id}}">
         <div class="product-item">
-         <a class="product-thumb" href="shop-single-1.html"><img src="/Uploads/Goods/{{$row->pic}}" alt="产品" /></a> 
+         <a class="product-thumb" href="/shopsingle/{{$row->gid}}"><img src="/Uploads/Goods/{{$row->pic}}" alt="产品" /></a> 
          <div class="product-info"> 
-          <h4 class="product-title"><a href="shop-single-1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$row->name}}</font></font></a></h4> 
+          <h4 class="product-title"><a href="/shopsingle/{{$row->gid}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$row->name}}</font></font></a></h4> 
           <div class="text-lg text-medium text-muted">
-           ￥{{$row->price}}
+          ￥{{$row->price}}
           </div> 
           <div>
            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可用性： </font></font>

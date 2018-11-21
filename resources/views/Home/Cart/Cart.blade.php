@@ -155,10 +155,11 @@
 						      ?>
         					<td class="btn-numbox">   	
         						<ul class="count" style="margin-left: 110px">
+        							
         				             <li id="num-jian" ids="{{$row->id}}" class="num-jian" money="{{$row->price}}">-</li>
         				             <li><input type="text" class="input-num" id="input-num" ids="{{$row->id}}" value="{{session('cart.'.$row->id)['num']}}"  money="{{$row->price}}" disabled /></li>
         				             <li id="num-jia" ids="{{$row->id}}" class="num-jia" money="{{$row->price}}">+</li>
-
+        				            	
         				         </ul>     
         					</td>          
 		                   	<td class="text-center text-lg text-medium" value="{{$row->store}}" id="kucun">{{$row->store}}</td>
@@ -194,7 +195,7 @@
             </div>
             @else
 	            <div class="column">
-	                <a class="btn btn-success" href="/Clearing" id="Checkout" disabled>结账</a>
+	                <a class="btn btn-success" href="" id="Checkout" disabled>结账</a>
 	            </div>
             @endif
         </div>
@@ -289,7 +290,10 @@
 	     			}
 	     		   });
 	     }else{	
-	     	return false;
+	     		
+	     			return false;   
+	     		
+
 	     }
      	
 
@@ -325,6 +329,8 @@
 	     	});	
 		}else{	
 			return false;
+			obj.val(1);
+			obj.changes();
 		}  	
      	
      });
@@ -343,8 +349,8 @@
             });
 		});	   	  
 
-		$("#Checkout").click(function(){	
-
+		$("#Checkout1").click(function(data){	
+			alert("111");
 		});
      
 </script>

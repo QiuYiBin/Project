@@ -94,6 +94,10 @@ class AdvertController extends Controller
     {
         // echo $id;
         $data=DB::table('bro_advertisement')->where('id','=',$id)->first();
+        if($data == null){
+            return redirect('/advert')->with('error','不要瞎改');
+        }
+
         return view('Admin.AdminAdvert.edit',['data'=>$data]);
     }
 
@@ -104,7 +108,7 @@ class AdvertController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Adver $request, $id)
     {
         // echo $id;
         $all=$request->except("_token","_method");

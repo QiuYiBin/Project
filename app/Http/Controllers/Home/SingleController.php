@@ -31,6 +31,7 @@ class SingleController extends Controller
             'imgs' => $imgs,
             'comment' => $comment
         );
+        
         return view('Home.Single.Single')->with($array);
     }
 

@@ -6,8 +6,8 @@
     <div class="col-lg-12">
     <section class="panel" style="margin-top: 45px;"> 
       <header class="panel-heading">
-        广告添加
-      </header> 
+        广告修改
+      </header>
       <div class="panel-body"> 
         <form class="form-horizontal" role="form" action="/advert/{{$data->id}}" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" value="{{$data->id}}">

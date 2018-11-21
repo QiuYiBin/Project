@@ -60,7 +60,7 @@ class RetrieveController extends Controller
         //发送邮件找回密码
         $res=$this->sendMail($info->id,$info->token,$email);
         if($res){
-            echo "重置密码的邮件已经发送成功,请登录邮箱重置密码";
+             echo '重置密码的邮件已经发送成功,请登录邮箱重置密码,5秒后返回首页!<meta http-equiv="refresh" content="5;url=/">';
         }
     }
     
