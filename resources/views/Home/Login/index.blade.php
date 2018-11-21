@@ -39,7 +39,7 @@
                         <div class="form-group"> 
                         <div class="col-md-12"> 
                         <label>验证码</label> 
-                        <img src="/code" onclick="this.src=this.src+'?a=1'">
+                        <img src="/codes" onclick="this.src=this.src+'?a=1'">
                          <div class="form-group" style="color:red">
                            @if(session('error3'))
                           {{session('error3')}}
