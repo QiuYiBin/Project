@@ -62,7 +62,7 @@ class WishController extends Controller
        $uid = $value->uid;
         // 商品id
        $gid = $value->gid;
-       // dd(session('id').$id);
+       // dd($uid.$gid);
        
        if ($uid.$gid != session('id').$id){
              // 查看商品详情

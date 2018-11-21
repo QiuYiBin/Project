@@ -172,4 +172,3 @@ Route::get("/Carinput","Home\CartController@Carinput");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::get('/curl','Home\IndexController@curl');
 
-
