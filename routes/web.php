@@ -118,20 +118,34 @@ Route::post("/reset","Home\PhoneController@reset");
 
 //前台中间件
 Route::group(["middleware"=>"home"],function(){
-// 商品详情
-Route::get('/shopsingle/{id}','Home\SingleController@index');
-// 个人中心
-Route::Resource('/homepersonal','Home\PersonalController');
-// 我的订单
-Route::Resource('/homeorder','Home\OrderController');
-// 我的地址
-Route::Resource('/homeaddres','Home\AddresController');
-// 地址Ajax
-Route::get('/homeaddresdel','Home\AddresController@del');
-// 添加地址发送请求
-Route::get('/homeaddress','Home\AddresController@ajax');
-// 我的优惠卷
-Route::Resource('/homecoupon','Home\CouponController');
+	// 商品详情
+	Route::get('/shopsingle/{id}','Home\SingleController@index');
+	// 个人中心
+	Route::Resource('/homepersonal','Home\PersonalController');
+	// 我的订单
+	Route::Resource('/homeorder','Home\OrderController');
+	// 我的地址
+	Route::Resource('/homeaddres','Home\AddresController');
+	// 地址Ajax
+	Route::get('/homeaddresdel','Home\AddresController@del');
+	// 添加地址发送请求
+	Route::get('/homeaddress','Home\AddresController@ajax');
+	// 我的优惠卷
+	Route::Resource('/homecoupon','Home\CouponController');
+	// 结算路由
+	Route::resource('/Clearing','Home\ClearingController');
+	// 结算处理路由
+	Route::post('/Clearings','Home\ClearingController@order');
+	// 订单页
+	Route::resource('/homedetail','Home\DetailController');
+	// 支付路由
+	Route::get('/pays','Home\ClearingController@pay');
+	// 支付成功返回路由
+	Route::get('/returnurl','Home\ClearingController@returnurl');
+	// 我的收藏
+	Route::resource('/homewish','Home\WishController');
+	// ajax删除收藏
+	Route::get('/homewishdel','Home\WishController@del');
 });
 
 
@@ -147,7 +161,6 @@ Route::resource('/homeword','Home\WordController');
 Route::resource('/homecart','Home\CartController');
 // 前台公告路由
 Route::resource("/article","Home\ArticleController");
-//加
 //ajax删除
 Route::get("/homecartdel","Home\CartController@del");
 //ajax商品加
@@ -155,21 +168,6 @@ Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
-// 结算路由
-Route::resource('/Clearing','Home\ClearingController');
-// 结算处理路由
-Route::post('/Clearings','Home\ClearingController@order');
-// 订单页
-Route::resource('/homedetail','Home\DetailController');
-// 支付路由
-Route::get('/pays','Home\ClearingController@pay');
-// 支付成功返回路由
-Route::get('/returnurl','Home\ClearingController@returnurl');
-// 支付完成范围路由
-
 Route::get('/curl','Home\IndexController@curl');
-// 我的收藏
-Route::resource('/homewish','Home\WishController');
-// ajax删除收藏
-Route::get('/homewishdel','Home\WishController@del');
+
 
