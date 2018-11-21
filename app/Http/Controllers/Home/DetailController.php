@@ -15,9 +15,13 @@ class DetailController extends Controller
      */
     // 订单方法
     public function index()
-    {
-        
-        return view('Home.Detail.index');
+    {   
+        $id=session('id');
+        $data = DB::table('bro_crder')->where('bro_crder.uid','=',$id)->get();
+        $res = DB::table('bro_crder')->join('bro_crderinfo','bro_crder.id','=','bro_crderinfo.oid')->where('bro_crder.uid','=',$id)->get();
+      
+        return view('Home.Detail.index')->with('data',$data)->with('res',$res);
+       
     }
 
     /**
@@ -49,7 +53,7 @@ class DetailController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
