@@ -31,6 +31,10 @@ class ClearingController extends Controller
             return back();
         }
 
+        if($goods == null){
+            return back();
+        }
+
         $num = count($goods);
 
         $array = array();
