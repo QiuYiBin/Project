@@ -1,8 +1,9 @@
 ﻿@extends('Home.Indexpublic.public')
 @section('main')
 <!DOCTYPE html>
-
-<html lang="cn" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths pc " style="" data-blockbyte-bs-uid="68809"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>订单管理</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,12 +19,15 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="always" name="referrer">
-    <link href="/Home/detail/vendor.css" rel="stylesheet">
-    <link href="/Home/detail/header.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/Home/detail/common_pc.css">
-    <link href="/Home/detail/index.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/Home/detail/order.css">
-    <body class="account-page">
+    <style type="text/css" media="screen">
+        .order-item-hd .order-operate .pay-btn {
+            height: 42px;
+        }
+    </style>
+</head>
+    <body style="width: 100%">
         <div class="user-bd" >
             @foreach($data as $row)
             <div class="user-content" style="margin-top: 50px;margin-left: 120px;" >
@@ -32,15 +36,37 @@
                 <div class="order-num" style="background: none;">订单号：
                     <span class="num">{{$row->orderid}}</span>
                 </div>
+                
                 <div class="order-operate">
-                    <span class="pay-btn">待发货</span>
-                    <a href="" class="pay-btn">确认收货</a>
+                    @if($row->status == 0)
+                        <form action="/Clearings" style="float: right" method="post">
+                            <input type="hidden" name="id" value="{{$row->id}}">
+                            {{csrf_field()}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">去支付</button>
+                        </form>
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">取消订单</button>
+                        </form>
+                    @elseif($row->status == 1)
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">取消订单</button>
+                        </form>
+                        <span class="pay-btn" style="margin-right: 10px">代发货</span>
+                    @elseif($row->status == 2)
+                        <a href="" class="pay-btn">确认收货</a>
+                        <span class="pay-btn" style="margin-right: 10px">已发货</span>
+                    @endif
                 </div>
+                
             </div>
         <div class="order-address-invoice">
             <div class="order-address hover" style="height: 115px;">
             <dl>
-                <dt><i class="i-edit" data-orderflow="10180826685320001" data-mobile="15012446028"></i></dt>
+                <dt>
                 <dd>
                     <ul data-province="44" data-city="4401" data-area="440104" data-street="440104005">
                         <li>收货人：<span>{{$row->linkname}}</span></li>
@@ -54,7 +80,7 @@
             </div>
             <div class="order-invoice hover" style="height: 115px;">
                 <dl>
-                    <dt><i class="i-edit" data-orderflow="10180826685320001" data-invoicetype="2"></i></dt>
+                    <dt></dt>
                         <dd>
                             <ul class="has-invoice">
                                 <li>发票类型：
@@ -76,8 +102,8 @@
         <div class="order-item-bd">
             <ul class="goods-list-box order-list-box">
                 <li class="list-head">
-                    <ul class="clearfix">
-                        <li class="tb-name"><span>商品</span></li>
+                    <ul class="clearfix" style="height: 40px;line-height: 40px">
+                        <li class="tb-name" ><span>商品</span></li>
                         <li class="tb-price">价格</li>
                         <li class="tb-number">数量</li>
                         <li class="tb-act">操作</li>
@@ -101,7 +127,7 @@
                             </li>
                             <li class="tb-price price">
                                 <div>
-                                    <p>¥{{$value->price}}</p>
+                                    <p style="margin-top: 16px">¥{{$value->price}}</p>
                                 </div>
                             </li>
                             <li class="tb-number">{{$value->gnum}}</li>
@@ -142,4 +168,4 @@
 </body>
 </html>
 @endsection
-@section('title','订单')
+@section('title','我的订单')

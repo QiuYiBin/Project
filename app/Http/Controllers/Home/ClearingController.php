@@ -120,101 +120,122 @@ class ClearingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 取消删除订单方法
     public function destroy($id)
     {
-        //
+    
+        if(\DB::table('bro_crder')->where('id','=',$id)->delete()){
+            
+            // 删除订单详情
+            \DB::table('bro_crderinfo')->where('oid','=',$id)->delete();
+            return back();
+        }
     }
 
     // 提交订单接收方法
     public function order(Request $request)
     {
-        // 获取用户id
-        $userid = session('id');
 
-        // 获取总金额
-        $total = $request->input('total');
+        if ($request->input('id')) {
 
-        // 随机生成订单号
-        $orderid = time().'666666';
+            $id = $request->input('id');
 
-        // 获取收货地址id
-        $addresid = $request->input('address');
+            // 查出商品的订单号
+            $data = DB::table('bro_crder')->where('id','=',$id)->first();
 
-        // 查出订单选中的地址信息
-        $addres = \DB::table('bro_useraddres')->where('id','=',$addresid)->first();
+            // 把查出的商品订单号赋值给变量
+            $orderid = $data->orderid;
 
-        // 拼接收货地址
-        $address = str_replace(',','',$addres->huo);
+        } else {
 
-        // 定义一个空数组存储订单信息
-        $crder = array();
-        $crder['uid'] = $userid;
-        $crder['linkname'] = $addres->name;
-        $crder['address'] = $address.$addres->adds;
-        $crder['tel'] = $addres->phone;
-        $crder['code'] = $addres->postcode;
-        $crder['total'] = $total;
-        $crder['status'] = 0;
-        $crder['orderid'] = $orderid;
-        $crder['ordertime'] = time();
-        $crder['paytime'] = time();
+            // 获取用户id
+            $userid = session('id');
 
-        // 开始处理订单详情
-        $goods = session('cart');
+            // 获取总金额
+            $total = $request->input('total');
 
-        $array = array();
+            // 随机生成订单号
+            $orderid = time().'666666';
 
-        // 查询出购物车的商品
-        foreach ($goods as $key => $value) {
+            // 获取收货地址id
+            $addresid = $request->input('address');
 
-            $array[$key] = \DB::table('bro_goods')->where('id','=',$value['id'])->first();
+            // 查出订单选中的地址信息
+            $addres = \DB::table('bro_useraddres')->where('id','=',$addresid)->first();
 
-            $array[$key]->num = $value['num'];
+            // 拼接收货地址
+            $address = str_replace(',','',$addres->huo);
 
-        }
+            // 定义一个空数组存储订单信息
+            $crder = array();
+            $crder['uid'] = $userid;
+            $crder['linkname'] = $addres->name;
+            $crder['address'] = $address.$addres->adds;
+            $crder['tel'] = $addres->phone;
+            $crder['code'] = $addres->postcode;
+            $crder['total'] = $total;
+            $crder['status'] = 0;
+            $crder['orderid'] = $orderid;
+            $crder['ordertime'] = time();
+            $crder['paytime'] = time();
 
-        $crderinfo = array();
-        
-        if ($id = DB::table('bro_crder')->insertGetId($crder)) {
+            // 开始处理订单详情
+            $goods = session('cart');
 
-            // 处理要插入的商品详情
-            foreach ($array as $value) {
+            $array = array();
 
-                $crderinfo['oid'] = $id;
+            // 查询出购物车的商品
+            foreach ($goods as $key => $value) {
 
-                $crderinfo['gid'] = $value->id;
+                $array[$key] = \DB::table('bro_goods')->where('id','=',$value['id'])->first();
 
-                $crderinfo['gname'] = $value->name;
+                $array[$key]->num = $value['num'];
 
-                $crderinfo['price'] = $value->price;
-
-                $crderinfo['gnum'] = $value->num;
-
-                $crderinfo['pic'] = $value->pic;
-
-                // 把商品详情的信息插入到表
-                \DB::table('bro_crderinfo')->insert($crderinfo);
             }
 
-            // 清空购物车
-            session()->forget('cart');
+            $crderinfo = array();
+            
+            if ($id = DB::table('bro_crder')->insertGetId($crder)) {
 
-            //商户订单号，商户网站订单系统中唯一订单号，必填
-            $out_trade_no = $orderid;
+                // 处理要插入的商品详情
+                foreach ($array as $value) {
 
-            //订单名称，必填
-            $subject = '商城订单';
+                    $crderinfo['oid'] = $id;
 
-            //付款金额，必填
-            $total_fee = '0.01';
+                    $crderinfo['gid'] = $value->id;
 
-            pay($out_trade_no,$subject,$total_fee);
-            // 跳转商品详情
-            // return redirect('/homedetail');
+                    $crderinfo['gname'] = $value->name;
 
-        }else{
-            return redirect('/')->with('error','提交失败');
+                    $crderinfo['price'] = $value->price;
+
+                    $crderinfo['gnum'] = $value->num;
+
+                    $crderinfo['pic'] = $value->pic;
+
+                    // 把商品详情的信息插入到表
+                    \DB::table('bro_crderinfo')->insert($crderinfo);
+                }
+
+                // 清空购物车
+                session()->forget('cart');
+
+            }else{
+                return redirect('/')->with('error','提交失败');
+            }
+
         }
+        
+
+        //商户订单号，商户网站订单系统中唯一订单号，必填
+        $out_trade_no = $orderid;
+
+        //订单名称，必填
+        $subject = '商城订单';
+
+        //付款金额，必填
+        $total_fee = '0.01';
+
+        pay($out_trade_no,$subject,$total_fee);
     }
 
 
@@ -229,6 +250,7 @@ class ClearingController extends Controller
 
         // 把状态赋值给数组
         $res['status'] = 1;
+        $res['paytime'] = time();
 
         // 写入到数据库
         if(DB::table('bro_crder')->where('orderid','=',$orderid)->update($res)){

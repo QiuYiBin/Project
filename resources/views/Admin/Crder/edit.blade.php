@@ -33,9 +33,7 @@
             <div class="col-md-3 col-xs-9"> 
               <select class="form-control m-bot15" name="status">
                 <option value="">--请选择--</option>
-                <option value="0" @if($link->status == 0) ? selected : '' @endif>未发货</option>
-                <option value="1" @if($link->status == 1) ? selected : '' @endif>已发货</option>
-                <option value="1" @if($link->status == 2) ? selected : '' @endif>已收货</option>
+                <option value="2">发货</option>
                 {{csrf_field()}}
                 {{method_field('PUT')}}
            </div> 
