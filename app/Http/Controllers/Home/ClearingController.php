@@ -19,7 +19,7 @@ class ClearingController extends Controller
         $id = session('id');
 
         // 先查询出当前用户拥有的收货地址
-        $addres = \DB::table('bro_useraddres')->where('user_id','=',$id)->get();
+        $addres = \DB::table('bro_useraddres')->where('user_id','=',$id)->OrderBy('id','asc')->get();
 
         if ($addres->isEmpty()){
             $addres = '';

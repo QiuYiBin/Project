@@ -43,7 +43,7 @@
          }
         input:checked+div{
         	width: 380px;
-        	height: 100px;
+        	height: 150px;
             border:2px solid rgb(235, 0, 40);
 
         }
@@ -139,15 +139,16 @@
 					@foreach($addres as $key=>$value)
                     <div class="col-4 padding-top-1x">
                     	<label>
-                    	<input type="radio" name="address" value="{{$value->id}}">
-                        <div class="custom-control custom-checkbox d-block">
-                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
-                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br>
-                              	收货人电话：{{$value->phone}}<br>
-                              	收货地址：{{$value->huo}}
-                              </font>
-                            </font>
-                        </div> 
+                    		<input type="radio" name="address" value="{{$value->id}}">
+	                        <div class="custom-control custom-checkbox d-block">
+	                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
+	                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br>
+	                              	收货人电话：{{$value->phone}}<br>
+	                              	收货地址：{{$value->huo}}
+	                              </font>
+	                            </font>
+	                            <input class="btn btn-danger del" value="删除" style="width: 100px">
+	                        </div> 
                         </label>
                         <hr class="padding-bottom-1x">
                     </div>
@@ -341,6 +342,26 @@
       // 将得到的数组直接赋值给隐藏域的value值即可
       $('input[name=huo]').val(arr);
     })
+
+    // ajax删除地址
+    $(".del").click(function(){
+        //获取id
+        id = $(this).parent().parent().find('input:first').val();
+        // console.log(id);
+        //获取删除数据所在的tr
+        s = $(this).parent().parent().parent();
+        //Ajax
+        $.get('/homeaddresdel',{id:id},function(data){
+            // alert(data);
+            if(data.msg == 1){  
+            //移除删除数据所在的tr 
+            s.remove(); 
+        }else{
+          //终止请求动作
+          request.abort();
+        }
+      	},'json')
+    });
 
 
     $('#tijiao').click(function(){
