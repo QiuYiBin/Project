@@ -167,6 +167,8 @@ Route::get("/homecartdel","Home\CartController@del");
 Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
+//ajax商品输入框
+Route::get("/Carinput","Home\CartController@Carinput");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::get('/curl','Home\IndexController@curl');
 
