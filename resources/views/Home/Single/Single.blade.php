@@ -67,21 +67,6 @@
                 <hr class="mt-30 mb-30">
                 <div class="d-flex flex-wrap justify-content-between mb-30">
                     <div class="entry-share">
-                        <span class="text-muted">分享:</span>
-                        <div class="share-links">
-                            <a class="social-button shape-circle sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
-                                <i class="socicon-facebook"></i>
-                            </a>
-                            <a class="social-button shape-circle sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
-                                <i class="socicon-twitter"></i>
-                            </a>
-                            <a class="social-button shape-circle sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-                                <i class="socicon-instagram"></i>
-                            </a>
-                            <a class="social-button shape-circle sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google +">
-                                <i class="socicon-googleplus"></i>
-                            </a>
-                        </div>
                     </div>
                     <form  method="post" action="/homecart">
                     <div class="sp-buttons mt-2 mb-2">
@@ -135,24 +120,6 @@
                     <form class="row" method="post">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="review_name">你的名字</label>
-                                <input class="form-control form-control-rounded" type="text" id="review_name" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review_email">你的邮件</label>
-                                <input class="form-control form-control-rounded" type="email" id="review_email" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review_subject">你的主题</label>
-                                <input class="form-control form-control-rounded" type="text" id="review_subject" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
                                 <label for="review_rating">你的价格</label>
                                 <select class="form-control form-control-rounded" id="review_rating">
                                     <option>5 星</option>
@@ -172,7 +139,6 @@
                         <div class="col-12 text-right">
                             <button class="btn btn-outline-primary" type="submit">提交 评论</button>
                         </div>
-                    </form>
                     <!-- End Review Form -->
                 </div>
             </div>

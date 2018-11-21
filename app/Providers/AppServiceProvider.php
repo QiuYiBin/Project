@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
 
  	//curl 方法 
     public function curl(){	
-    	$url= "http://v.juhe.cn/offset/index?key=e45f2aca8949224e0460861ff3fcddb2&lat=39.908700982285396&lng=116.3974965092&type=6";
+    	$url= $url="http://v.juhe.cn/exp/index?key=f82fae381a1321959700cf91f4110b21&com=jd&no=81771529983";
         $method = "get";
         $post = 0;
         $res = curlGet($url,$method,$post);
@@ -43,8 +43,7 @@ class AppServiceProvider extends ServiceProvider
         $cate = $this->getCatesBypid(0);
         $data1 = $this->curl();
         view()->share('cate',$cate);
-        view()->share('data1',$data1);
-        
+        view()->share('data1',$data1);       
     }
 
     /**

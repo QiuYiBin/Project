@@ -27,6 +27,10 @@ class ClearingController extends Controller
         // dd($addres);
         $goods = session('cart');
 
+        if($goods == null){
+            return back();
+        }
+
         $num = count($goods);
 
         $array = array();
