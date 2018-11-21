@@ -145,6 +145,12 @@ Route::resource('/Clearing','Home\ClearingController');
 Route::post('/Clearings','Home\ClearingController@order');
 // 订单页
 Route::resource('/homedetail','Home\DetailController');
+// 支付路由
+Route::get('/pays','Home\ClearingController@pay');
+// 支付成功返回路由
+Route::get('/returnurl','Home\ClearingController@returnurl');
+// 支付完成范围路由
+
 Route::get('/curl','Home\IndexController@curl');
 // 我的收藏
 Route::resource('/homewish','Home\WishController');

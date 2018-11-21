@@ -172,6 +172,7 @@ class ClearingController extends Controller
         $crderinfo = array();
         
         if ($id = DB::table('bro_crder')->insertGetId($crder)) {
+
             // 处理要插入的商品详情
             foreach ($array as $value) {
 
@@ -194,11 +195,42 @@ class ClearingController extends Controller
             // 清空购物车
             session()->forget('cart');
 
+            //商户订单号，商户网站订单系统中唯一订单号，必填
+            $out_trade_no = $orderid;
+
+            //订单名称，必填
+            $subject = '商城订单';
+
+            //付款金额，必填
+            $total_fee = '0.01';
+
+            pay($out_trade_no,$subject,$total_fee);
             // 跳转商品详情
-            return redirect('/homedetail');
+            // return redirect('/homedetail');
 
         }else{
             return redirect('/')->with('error','提交失败');
+        }
+    }
+
+
+    // 支付宝支付成功返回处理方法 
+    public function returnurl(Request $request)
+    {
+        // 获取订单id
+        $orderid = $request->input('out_trade_no');
+
+        // 根据返回的订单号找到订单修改支付状态
+        $data = DB::table('bro_crder')->select('orderid')->where('orderid','=',$orderid)->first();
+
+        // 把状态赋值给数组
+        $res['status'] = 1;
+
+        // 写入到数据库
+        if(DB::table('bro_crder')->where('orderid','=',$orderid)->update($res)){
+            return redirect('/homedetail');
+        }else{
+            echo '支付失败';
         }
     }
 }
