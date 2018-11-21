@@ -46,7 +46,7 @@
       </aside> 
       <nav class="list-group"> 
        <a class="list-group-item" href="/homepersonal"><i class="icon-head"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></a> 
-       <a class="list-group-item with-badge" href="/homeorder"><i class="icon-bag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
+       <a class="list-group-item with-badge" href="/homedetail"><i class="icon-bag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
        <a class="list-group-item" href="/homeaddres"><i class="icon-map"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的地址</font></font></a> 
        <a class="list-group-item with-badge" href="/homewish"><i class="icon-heart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的心愿单</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 
        <a class="list-group-item with-badge" href="/homecoupon"><i class="icon-tag"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的优惠卷</font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a> 

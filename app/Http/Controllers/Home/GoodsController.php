@@ -18,7 +18,8 @@ class GoodsController extends Controller
 
         $a=$request->input('search');
         $data=DB::table('bro_goods')->where('name','like',"%".$a."%")->where('status','=',0)->paginate(4);
-        if($a){
+
+        if(count($data)>0){
             return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]); 
         }else{
 
