@@ -138,6 +138,8 @@ Route::get("/homecartdel","Home\CartController@del");
 Route::get("/CarAdd","Home\CartController@CarAdd");
 //ajax商品减
 Route::get("/Carjian","Home\CartController@Carjian");
+//ajax商品输入框
+Route::get("/Carinput","Home\CartController@Carinput");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 // 结算路由
 Route::resource('/Clearing','Home\ClearingController');
@@ -150,3 +152,4 @@ Route::get('/curl','Home\IndexController@curl');
 Route::resource('/homewish','Home\WishController');
 // ajax删除收藏
 Route::get('/homewishdel','Home\WishController@del');
+

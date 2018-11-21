@@ -183,6 +183,22 @@ class CartController extends Controller
     	echo 1;
     }
 
+    public function Carinput(Request $request){	
+    	$id=$request->input('id');
+    	//获取session中的所有数据
+    	$shops = session('cart');
+    	//遍历数据
+    	foreach ($shops as $key => $value ){
+    		if ($value['id']==$id) {
+    			
+    			$shops[$key]['num']=$shops[$key]['num'];
+    		}
+    			
+    	}
+    	session(['cart'=>$shops]);
+    	echo 1;
+    }
+
    public function Carqingkong(Request $request)
    {	
    		$num = $request->input('num');
