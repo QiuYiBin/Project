@@ -132,48 +132,7 @@
             	</div>
            	<form action="/Clearings" method="post">
            		<!-- 添加收货地址 -->
-           		@if(!empty($address))
-            	<div class="address-form-panel show-address-form-panel" style="display: block;">
-            		<div class="add-address-form">
-            			<div class="address-form-box">
-            			<div class="name-phone clearfix">
-            				<span class="add-name normal-input-box">
-            					<input id="addAddressName" name="linkname" class="normal-input" autocomplete="off" type="text" placeholder="收货人">
-            					<span class="error-tip"></span>
-            				</span>
-            				<span class="add-phone normal-input-box">
-            					<input id="addAddressPhone" name="tel" class="normal-input" autocomplete="off" type="text" placeholder="手机">
-            					<span class="error-tip"></span>
-            				</span>
-            			</div>
-            			<div class="address-select-container clearfix">
-            				<div class="address-select-pc dropdown-2">
-            					<div id="address-auto" class="dropdown-toggle select-box">
-            						<span class="caret-2"></span>
-            					</div>
-            					<div class="dropdown-menu-2">
-            						<div class="address-menu-container">
-            							<div class="address-selected-list">
-            								<div class="address-item city hide"></div>
-            									<div class="address-item area hide"></div>
-            							</div>
-            						</div>
-            					</div>
-            				</div>
-            				<div class="address-detail">
-            						<div class="detail-input normal-input-box">
-            							<input id="addAddressDetail" name="address" class="normal-input double-width-input address-detail-input" autocomplete="off" type="text" placeholder="详细地址">
-            								<span class="error-tip"></span>
-            						</div>
-            				</div>
-            			</div>
-            			<!-- <div class="address-btns clearfix">
-            				<span id="submitAddAddress" class="save-btn">保存</span>
-            				<span id="cancelAddAddress" class="cancel-btn">取消</span>
-            			</div> -->
-            			</div>
-            		</div>
-            	</div>
+           		@if($addres == '')
             	<!-- 添加收货地址结束 -->
             	@else
 				<div class="row">
@@ -384,13 +343,13 @@
     })
 
 
- //    $('#tijiao').click(function(){
-	// 	$("input[name='address']").click(function(){
-	// 	if($(this).attr("checked")) {
- //            return false;
- //        }
-	// 	});
-	// });
+    $('#tijiao').click(function(){
+		$("input[name='address']").click(function(){
+			if($(this).attr("checked")) {
+	            return false;
+	        }
+		});
+	});
   </script>
 </html>
 @endsection

@@ -17,13 +17,14 @@ class ClearingController extends Controller
     {
         // 获取当前用户id
         $id = session('id');
+
         // 先查询出当前用户拥有的收货地址
         $addres = \DB::table('bro_useraddres')->where('user_id','=',$id)->get();
 
         if ($addres->isEmpty()){
             $addres = '';
         }
-
+        // dd($addres);
         $goods = session('cart');
 
         $num = count($goods);
