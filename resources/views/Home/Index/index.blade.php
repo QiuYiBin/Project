@@ -14,9 +14,9 @@
                             <div class="from-bottom">
                                 <img class="d-inline-block w-150 mb-4" src="/Home/images/hero-slider/logo02.png" alt="Puma">
                                 <div class="h2 text-body text-normal mb-2 pt-1">{{$value->name}}</div>
-                                <div class="h2 text-body text-normal mb-4 pb-1">starting at <span class="text-bold">$200</span></div>
+                                <div class="h2 text-body text-normal mb-4 pb-1">小米 手机<span class="text-bold">2000元起</span></div>
                             </div>
-                            <a class="btn btn-primary scale-up delay-1" href="{{$value->url}}" target="_blank">Shop Now</a>
+                            <a class="btn btn-primary scale-up delay-1" href="{{$value->url}}" target="_blank">现在去购物</a>
                         </div>
                         <div class="col-md-6 padding-bottom-2x mb-3">
                             <img class="d-block mx-auto" src="/Uploads/Slider/{{$value->pic}}" alt="Puma Backpack">
@@ -39,17 +39,21 @@
             @foreach($data as $row)
             <div class="grid-item">
                 <div class="product-card">
-                    <a class="product-thumb" href="shop-single-3.html">
+                    <a class="product-thumb" href="/shopsingle/{{$row->id}}">
                         <img src="/Uploads/Goods/{{$row->pic}}" alt="Product" style="height:160px;">
                     </a>
                     <h3 class="product-title"><a href="shop-single-3.html">{{$row->name}}</a></h3>
                     <h4 class="product-price">{{$row->price}}</h4>
                     <div class="product-buttons">
                         <div class="product-buttons">
-                            <a href="/homewish/{{$row->id}}"><button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢">
-                                <i class="icon-heart"></i></a>
-                            </button>
-                            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">添加到购物车</button>
+                            <a  class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢" href="/homewish/{{$row->id}}">
+                                <i class="icon-heart" style="margin-top: 8px;"></i></a>
+                            <form  method="post" action="/homecart" style="display:inline-block;">
+                            <button class="btn btn-outline-primary btn-sm " data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" style="margin-top: 8px">添加到购物车</button>
+                            
+                            <input type="hidden" name="id" value="{{$row->id}}">
+                            {{csrf_field()}}
+                            </form>
                         </div>
                     </div>
                 </div>
