@@ -122,23 +122,34 @@
      <div class="gutter-sizer"></div> 
      <div class="grid-sizer"></div> 
      <!-- Start Product #1 -->
-     
+     @if(count($data))
      @foreach($data as $row)
      <div class="grid-item"> 
-      <div class="product-card"> 
+      <div class="product-card">
        <a class="product-thumb" href="/shopsingle/{{$row->id}}"><img src="/Uploads/Goods/{{$row->pic}}" style="width:200px;height:150px" alt="Product" /> </a> 
        <h3 class="product-title"><a href="#">{{$row->name}}</a></h3> 
        <h4 class="product-price"> 
         <del>
          {{($row->price)+100}}
         </del>{{$row->price}}</h4> 
-       <div class="product-buttons"> 
-        <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"> <i class="icon-heart"></i> </button> 
-        <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">添加到购物车</button> 
+       <div class="product-buttons">
+        <a  class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢" href="/homewish/{{$row->id}}">
+        <i class="icon-heart" style="margin-top: 8px;"></i></a>
+        <form  method="post" action="/homecart" style="display:inline-block;">
+        <button class="btn btn-outline-primary btn-sm " data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" style="margin-top: 8px">添加到购物车</button>
+        
+        <input type="hidden" name="id" value="{{$row->id}}">
+        {{csrf_field()}}
+        </form> 
        </div> 
       </div> 
      </div>
     @endforeach
+    @else
+    <div class="product-card" style="height:200px;padding-top:100px">
+    <center><h1>暂无数据</h1></center>
+    </div>
+    @endif
      <!-- End Product #1 --> 
      <!-- Start Product #2 --> 
      <!-- End Product #12 --> 
