@@ -42,8 +42,9 @@
         <td class="numeric">{{$value->gname}}</td> 
         <td class="numeric">{{$value->price}}</td> 
         <td class="numeric">{{$value->gnum}}</td> 
-        <td class="numeric">{{$value->pic}}</td> 
-
+        <td class="numeric">
+        <img src="/Uploads/Goods/{{$value->pic}}" alt="" width="100">
+          </td> 
       </tr>
       @endforeach
       </tbody> 

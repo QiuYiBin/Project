@@ -65,7 +65,7 @@
     @if(session('username'))
        <div style="line-height: 39px;float: right;"> 
         <a href="#">欢迎{{session('username')}}</a>
-        <a href="login/create"></i>退出</a>
+        <a href="/homelogin/create"></i>退出</a>
         </div>
     @else
         <div style="line-height: 39px;float: right;">

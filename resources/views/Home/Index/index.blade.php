@@ -1,6 +1,6 @@
 ﻿@extends('Home.Indexpublic.public')
 @section('main')
-<script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
+ <script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
 <div class="offcanvas-wrapper">
     <!-- Start Main Slider -->
     <div class="hero-slider home-1-hero">
@@ -44,9 +44,9 @@
                     </a>
                     <h3 class="product-title"><a href="shop-single-3.html">{{$row->name}}</a></h3>
                     <h4 class="product-price">{{$row->price}}</h4>
-                    <div class="product-buttons">
+                    <div class="product-buttons">   
                         <div class="product-buttons">
-                            <a  class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" href="javascript:void(0)" onclick="fun({{$row->id}})">
+                            <a  class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="我喜欢" href="/homewish/{{$row->id}}" >
                                 <i class="icon-heart" style="margin-top: 8px;"></i></a>
                             <form  method="post" action="/homecart" style="display:inline-block;">
                             <button class="btn btn-outline-primary btn-sm " data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" style="margin-top: 8px">添加到购物车</button>
@@ -125,6 +125,13 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        // function fun($dd){
+        //     $.get("/homewishdel",{id:id},function(dd){
+        //         alert(dd);
+        //     });
+        // }
+    </script>
     <!-- End Services -->
 </div>
 </div>

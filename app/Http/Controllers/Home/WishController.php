@@ -54,18 +54,12 @@ class WishController extends Controller
     // 添加我的收藏
     public function show($id)
     {
-       $wish = DB::table('bro_wish')->get();
-       foreach ($wish as $key => $value) {
-       }
-      
-        // 用户id
-       $uid = $value->uid;
-        // 商品id
-       $gid = $value->gid;
-       // dd($uid.$gid);
-       
-       if ($uid.$gid != session('id').$id){
-             // 查看商品详情
+        $uid = session('id');
+        //查出当前用户的所有收藏过的商品信息
+        $wish = DB::table('bro_wish')->where('uid','=',$uid)->get();
+        // dd($wish);
+        if($wish->isEmpty()){
+            // 查看商品详情
             $data = DB::table('bro_goods')->select('name','id','status','pic','price')->where('id','=',$id)->first();
             $data->uid = session('id');
             $data->gid = $data->id;
@@ -75,12 +69,29 @@ class WishController extends Controller
                 if(DB::table('bro_wish')->insert($res)){
                     return redirect('/homewish')->with('success','收藏');
                 }
-
         }else{
-            return back()->with('error','已收藏');
-        }
-       
 
+            foreach ($wish as $value) {
+                // 遍历当前用户的所有商品id
+                $gid[] = $value->gid;             
+            }
+            //判断当前用户商品id和传递过来的商品id 如果数组里有则已收藏 若没添加收藏
+            if (in_array($id,$gid)){
+                return redirect('/homewish')->with('error','已收藏');
+             
+            }else{
+                // 查看商品详情
+                $data = DB::table('bro_goods')->select('name','id','status','pic','price')->where('id','=',$id)->first();
+                $data->uid = session('id');
+                $data->gid = $data->id;
+                $res = (array)($data);
+                unset($res['id']);
+                // 开始添加操作
+                if(DB::table('bro_wish')->insert($res)){
+                    return redirect('/homewish')->with('success','收藏');
+                    }
+            }       
+       }
     }
 
     /**
@@ -122,6 +133,7 @@ class WishController extends Controller
     {
         // 获取参数id
         $id = $request->input('id');
+        // dd($id);
         // 删除操作
         if(DB::table("bro_wish")->where("id","=",$id)->delete()){
             //json 格式
@@ -130,5 +142,7 @@ class WishController extends Controller
             return response()->json(['msg'=>0]);
         }
     }
+
+  
     
 }

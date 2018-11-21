@@ -131,6 +131,7 @@ class PhoneController extends Controller
             echo 2;
         }
     }
+
    public function code(Request $request){
        //获取输入的校验码
         $code=isset($_GET['code'])?$_GET['code']:'';
