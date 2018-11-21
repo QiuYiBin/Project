@@ -57,13 +57,14 @@ class WishController extends Controller
        $wish = DB::table('bro_wish')->get();
        foreach ($wish as $key => $value) {
        }
-       //商品id
-       $gid = $value->gid;
-       // dd($gid);
-       //用户id
+      
+        // 用户id
        $uid = $value->uid;
-       dd($uid);
-       if ($gid != $id){
+        // 商品id
+       $gid = $value->gid;
+       // dd(session('id').$id);
+       
+       if ($uid.$gid != session('id').$id){
              // 查看商品详情
             $data = DB::table('bro_goods')->select('name','id','status','pic','price')->where('id','=',$id)->first();
             $data->uid = session('id');
