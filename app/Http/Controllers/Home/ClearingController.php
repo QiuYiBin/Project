@@ -24,8 +24,12 @@ class ClearingController extends Controller
         if ($addres->isEmpty()){
             $addres = '';
         }
-        // dd($addres);
+
         $goods = session('cart');
+        
+        if($goods == null){
+            return back();
+        }
 
         $num = count($goods);
 
