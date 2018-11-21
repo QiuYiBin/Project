@@ -68,7 +68,7 @@
         </div>
     @else
         <div style="line-height: 39px;float: right;">
-        <a href="/login">登陆</a>
+        <a href="/homelogin">登陆</a>
         <a href="/register">注册</a>
         </div>
     @endif
@@ -120,9 +120,6 @@
                     @endforeach
                     @endif
                 </ul>
-            </li>
-            <li>
-                <a href="/"><span>友情链接</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>

@@ -28,7 +28,9 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Library/Upload.php"
+            "app/Library/Upload.php",
+            "app/Library/helper.php",
+            "app/Library/Ucpaas.php"
         ]
     },
     "autoload-dev": {
