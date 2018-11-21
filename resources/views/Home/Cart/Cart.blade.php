@@ -129,7 +129,8 @@
                             </th>
                         </tr>
                     </thead>
-                    @if(!empty($data))                    
+                    @if(!empty($data))
+
                     <tbody>
                         @foreach($data as $row)
                         <tr>
@@ -155,7 +156,7 @@
         					<td class="btn-numbox">   	
         						<ul class="count" style="margin-left: 110px">
         				             <li id="num-jian" ids="{{$row->id}}" class="num-jian" money="{{$row->price}}">-</li>
-        				             <li><input type="text" class="input-num" id="input-num" ids="{{$row->id}}" value="{{session('cart.'.$row->id)['num']}}"  money="{{$row->price}}" disabled/></li>
+        				             <li><input type="text" class="input-num" id="input-num" ids="{{$row->id}}" value="{{session('cart.'.$row->id)['num']}}"  money="{{$row->price}}" disabled /></li>
         				             <li id="num-jia" ids="{{$row->id}}" class="num-jia" money="{{$row->price}}">+</li>
 
         				         </ul>     
@@ -187,9 +188,15 @@
             <div class="column">
                 <a class="btn btn-outline-secondary" href="/goods/0"><i class="icon-arrow-left"></i>&nbsp;回到购物</a>
             </div>
+            @if(!empty($data))
             <div class="column">
-                <a class="btn btn-success" href="/Clearing">结账</a>
+                <a class="btn btn-success" href="/Clearing" id="Checkout">结账</a>
             </div>
+            @else
+	            <div class="column">
+	                <a class="btn btn-success" href="/Clearing" id="Checkout" disabled>结账</a>
+	            </div>
+            @endif
         </div>
         <!-- End Shopping Cart -->
     </div>
@@ -329,10 +336,16 @@
             $.get('/Carqingkong',{num:num},function(data){  
                 if(data){   
                     tbody.remove();
+                    tot=Number($("#heji").html());
+			     	tot =0;
+			     	$("#heji").html(tot);
                 }
             });
 		});	   	  
 
+		$("#Checkout").click(function(){	
+
+		});
      
 </script>
 
