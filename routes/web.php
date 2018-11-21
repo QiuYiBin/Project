@@ -150,3 +150,4 @@ Route::get('/curl','Home\IndexController@curl');
 Route::resource('/homewish','Home\WishController');
 // ajax删除收藏
 Route::get('/homewishdel','Home\WishController@del');
+
