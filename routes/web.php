@@ -91,6 +91,7 @@ Route::resource('/','Home\IndexController');
 Route::resource('/register','Home\RegisterController');
 //验证码
 Route::get("/codes","Home\RegisterController@codes");
+
 //激活用户
 Route::get("/activation","Home\RegisterController@activation");
 //登陆
