@@ -33,6 +33,8 @@ class LoginController extends Controller
     {
         //退出
         $request->session()->pull('username');
+
+        session()->forget('id');
         //跳转
         return redirect("/");
     }
