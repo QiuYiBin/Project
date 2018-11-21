@@ -174,4 +174,3 @@ Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::get('/curl','Home\IndexController@curl');
 
-

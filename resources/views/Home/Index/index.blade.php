@@ -13,9 +13,8 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center hidden-md-down">
                             <div class="from-bottom">
-                                <img class="d-inline-block w-150 mb-4" src="/Home/images/hero-slider/logo02.png" alt="Puma">
+                                <!-- <img class="d-inline-block w-150 mb-4" src="/Home/images/hero-slider/logo02.png" alt="Puma"> -->
                                 <div class="h2 text-body text-normal mb-2 pt-1">{{$value->name}}</div>
-                                <div class="h2 text-body text-normal mb-4 pb-1">小米 手机<span class="text-bold">2000元起</span></div>
                             </div>
                             <a class="btn btn-primary scale-up delay-1" href="{{$value->url}}" target="_blank">现在去购物</a>
                         </div>
@@ -66,7 +65,7 @@
     <!-- Start Featured Products -->
     <section class="container padding-top-3x padding-bottom-3x">
         <h3 class="text-center mb-30">广告列表</h3>
-        <div class="owl-carousel" data-owl-carousel='{"nav": false, "dots": false, "margin": 30, "loop": true, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }'>
+        <div class="owl-carousel" data-owl-carousel='{"nav": false, "dots": false, "margin": 30, "loop": true, "autoplay": true, "autoplayTimeout": 2000, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }'>
             <!-- Start Product #1 -->
             @foreach($advert as $row)
             <div class="grid-item" class="d-block w-110 opacity-75 m-auto">
@@ -88,7 +87,7 @@
     <section class="bg-faded padding-top-3x padding-bottom-3x">
         <div class="container">
             <h3 class="text-center mb-30">Popular Brands</h3>
-            <div class="owl-carousel" data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2}, "470":{"items":3},"630":{"items":4},"991":{"items":5},"1200":{"items":6}} }'>
+            <div class="owl-carousel" data-owl-carousel='{ "nav": false, "dots": false, "loop": true, "autoplay": false, "autoplayTimeout": 4000, "responsive": {"0":{"items":2}, "470":{"items":3},"630":{"items":4},"991":{"items":5},"1200":{"items":6}} }'>
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/01.png" alt="Brands">
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/02.png" alt="Brands">
                 <img class="d-block w-110 opacity-75 m-auto" src="/Home/images/brands/03.png" alt="Brands">
@@ -136,5 +135,12 @@
     <!-- End Services -->
 </div>
 </div>
+<script>
+    // function fun(dd){
+    //     $.get("/homewishdel",{dd:dd},function(tes){
+    //         alert(tes);
+    //     });
+    // }
+</script>
 @endsection
 @section('title','首页')
