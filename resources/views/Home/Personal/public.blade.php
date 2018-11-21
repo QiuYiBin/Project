@@ -37,7 +37,12 @@
        </div> 
        <div class="user-info"> 
         <div class="user-avatar" >
-         <img src="/Uploads/User/{{session('userinfo')['pic']}}" style="height: 110px" alt="用户" />
+          @if (session('userinfo')['pic'] != null)
+         <img src= "/Uploads/User/{{session('userinfo')['pic']}}" 
+         style="height: 110px" alt="用户" />
+          @else
+          <img src= "/Uploads/ylh.jpg" style="height: 110px" alt="用户" />
+          @endif
         </div> 
         <div class="user-data"> 
          <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{session('userinfo')['name']}}</font></font></h4>
