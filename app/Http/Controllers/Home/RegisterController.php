@@ -99,7 +99,7 @@ class RegisterController extends Controller
         // 获取验证码
         $vcode=$request->input('vcode');
         //获取存储在session的验证码
-        $fcode=session('fcode');
+        $fcode=session('vcode');
         //获取密码
         $password=$request->input('password');
         //获取确定密码
