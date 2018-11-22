@@ -21,16 +21,13 @@ class AppServiceProvider extends ServiceProvider
     }
 
  	//curl 方法 
-    // public function curl(){	
-    // 	$url= $url="http://v.juhe.cn/exp/index?key=f82fae381a1321959700cf91f4110b21&com=jd&no=81771529983";
-    //     $method = "get";
-    //     $post = 0;
-    //     $res = curlGet($url,$method,$post);
-    //     $data1 = json_decode($res,true);
-    //     //echo "<pre>";
-    //     //print_r($data);
-    //     return $data1;
-    // }
+     public function curl(){	
+    	$url=$url="http://v.juhe.cn/toutiao/index?type=top&key=2435a130515f537461a7d7eb200ba8b9";
+    	$method="get";
+    	$post=0;	
+    	$res=curlGet($url,$method,$post);
+    	$data=json_decode($res,true);
+     }
 
     
     /**
@@ -41,9 +38,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $cate = $this->getCatesBypid(0);
-        // $data1 = $this->curl();
+        $data1 = $this->curl();
         view()->share('cate',$cate);
-        // view()->share('data1',$data1);       
+        view()->share('data1',$data1);
+               
     }
 
     /**

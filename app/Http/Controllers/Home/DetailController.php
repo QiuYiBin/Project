@@ -130,7 +130,8 @@ class DetailController extends Controller
     public function destroy($id)
     {
         //
-    }
+
+    }	
 
     // 评论图片上传
     public function upload(Request $request)
