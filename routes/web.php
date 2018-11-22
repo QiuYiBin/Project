@@ -168,5 +168,6 @@ Route::get("/CarAdd","Home\CartController@CarAdd");
 Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::get('/curl','Home\IndexController@curl');
-
+//curl 使用
+Route::get('/curl','Home\DetailController@curl');
 
