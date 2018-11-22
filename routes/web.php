@@ -90,7 +90,7 @@ Route::resource('/','Home\IndexController');
 //注册
 Route::resource('/register','Home\RegisterController');
 //验证码
-Route::get("/code","Home\RegisterController@code");
+Route::get("/codes","Home\RegisterController@codes");
 //激活用户
 Route::get("/activation","Home\RegisterController@activation");
 //登陆
@@ -117,7 +117,6 @@ Route::get("/code","Home\PhoneController@code");
 Route::resource("/phones","Home\PhoneController");
 //处理重置密码数据
 Route::post("/reset","Home\PhoneController@reset");
-
 //前台中间件
 Route::group(["middleware"=>"home"],function(){
 	// 个人中心

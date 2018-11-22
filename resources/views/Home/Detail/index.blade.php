@@ -1,4 +1,4 @@
-﻿@extends('Home.Indexpublic.public')
+@extends('Home.Indexpublic.public')
 @section('main')
 <!DOCTYPE html>
 <html lang="cn">
