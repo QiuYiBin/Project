@@ -16,5 +16,6 @@ class VerifyCsrfToken extends Middleware
         'http://www.project.com/slider/upload',
         'http://www.project.com/admingoods/upload',
         'http://www.project.com/admingoods/uploads',
+        'http://www.project.com/homedetail/upload',
     ];
 }

@@ -51,12 +51,14 @@ class RetrieveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //
     public function store(Request $request)
     {
         $email=$request->input('email');
         // echo $email;\
        //获取数据库的数据
         $info=DB::table("bro_user")->where("email",'=',$email)->first();
+        // dd($info);
         //发送邮件找回密码
         $res=$this->sendMail($info->id,$info->token,$email);
         if($res){
@@ -82,17 +84,28 @@ class RetrieveController extends Controller
         // echo "this is doreset";
        $id=$request->input('id');
        $password=$request->input('password');
-       $repassword=$request->input('ressword');
-       if($password != $repassword){
-        return back()->with('error','两次密码不一致');
-       }
         $data['password']=Hash::make($request->input('password'));
-        // dd($data);
         $data['token']=rand(1,10000);
         //执行密码修改
         if(DB::table("bro_user")->where("id",'=',$id)->update($data)){
-            return redirect("/logindex");
+            return view("Home.Phone.deit");
         }
+    }
+     //判断输入邮箱是否存在
+    public function email(Request $request){
+        // 获取ajax参数
+        $emails = $request->input('email');
+        // 查询数据
+        $phones = DB::table('bro_user')->where('email','=',$emails)->first();
+        // dd($phones);
+        // 判断是否有数据
+        if($phones){
+            echo 1;
+        }else{
+            echo 2;
+        }
+    
+
     }
     /**
      * Display the specified resource.
@@ -125,7 +138,7 @@ class RetrieveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "this is update";
+        // echo "this is update";
     }
 
     /**

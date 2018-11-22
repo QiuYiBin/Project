@@ -126,7 +126,7 @@
 			$('#err_name').css('color','#f00').html('网站名称不能为空，长度在1-20位字符之间');
 		return false;
 		}else{
-			$('#err_name').html('');
+			$('#err_name').css('color','#00FF00').html('网站名可用');
 			return true;
 		}
 		return true;
@@ -138,7 +138,7 @@
  		$('#err_url').css('color','#f00').html('网址格式不正确');
 	 	return false;
 	 }else{
-	 	$('#err_url').css('color','#666').html('网址可用');
+	 	$('#err_url').css('color','#00FF00').html('网址可用');
 	 	return true;
 	 }
 	 	return true;
@@ -151,7 +151,7 @@
 	 	$('#err_email').css('color','#f00').html('邮箱格式不正确');
 	 	return false;
 	 }else{
-	 	$('#err_email').css('color','#666').html('邮箱可用');
+	 	$('#err_email').css('color','#00FF00').html('邮箱可用');
 	 	 return true
 	 }
 	 	 return true

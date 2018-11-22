@@ -43,6 +43,7 @@
     </div>
 </div>
 <script type="text/javascript">
+  // alert($);
     // 第一级别获取
     $.get('/homeaddress',{upid:0},function(result){
       // console.log(result);
@@ -127,10 +128,11 @@
                             <div style="float:right;margin-top: -38px; "> 
                               <input type="hidden" name="id" value="{{$value->id}}">
                               @if($value->status == 0)
-                              <a class="btn btn-success btn-sm" style="width: 100px" href="/homeaddres/{{$value->id}}">设为默认</a>
+                              <a class="btn btn-success btn-sm" style="width: 100px" href="/homeaddres/{{$value->id}}" >设为默认</a>
                               @else
                               <span class="btn btn-success btn-sm" style="width: 100px">默认</span>
                               @endif
+                              <a class="btn btn-info btn-sm" style="width: 100px" href="/homeaddres/{{$value->id}}/edit">修改</a>
                               <input class="btn btn-danger btn-sm del" style="width: 100px" value="删除">
                             </div>
                         </div> 

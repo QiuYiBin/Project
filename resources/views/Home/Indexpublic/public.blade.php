@@ -26,6 +26,7 @@
     <link rel="stylesheet" media="screen" href="/Home/css/izitoast.css">
     <!-- Main Style CSS -->
     <link rel="stylesheet" media="screen" href="/Home/css/style.css">
+
     <style>
         .item_submit
         {
@@ -40,6 +41,7 @@
         font-size:15px;
         }
 </style>
+    <script src="/Home/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <!-- Start Shop Category Menu -->
@@ -173,7 +175,7 @@
                         <li><a href="/homedetail">我的订单</a></li>
                         <li><a href="/homewish">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
+                        <li><a href="/homelogin/create"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
                 </div> 
                 <!-- End Account -->
@@ -288,7 +290,7 @@
     <!-- Modernizr JS -->
     <script src="/Home/js/modernizr.min.js"></script>
     <!-- JQuery JS -->
-    <script src="/Home/js/jquery.min.js"></script>
+    <!-- <script src="/Home/js/jquery.min.js"></script> -->
     <!-- Popper JS -->
     <script src="/Home/js/popper.min.js"></script>
     <!-- Bootstrap JS -->

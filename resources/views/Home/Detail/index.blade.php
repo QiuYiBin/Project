@@ -1,10 +1,9 @@
-﻿@extends('Home.Indexpublic.public')
+@extends('Home.Indexpublic.public')
 @section('main')
 <!DOCTYPE html>
 <html lang="cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>订单管理</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -55,10 +54,19 @@
                             {{method_field('DELETE')}}
                             <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">取消订单</button>
                         </form>
-                        <span class="pay-btn" style="margin-right: 10px">代发货</span>
+                        <span class="pay-btn" style="margin-right: 10px">待发货</span>
                     @elseif($row->status == 2)
-                        <a href="" class="pay-btn">确认收货</a>
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('PUT')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">确认收货</button>
+                        </form>
                         <span class="pay-btn" style="margin-right: 10px">已发货</span>
+                    @elseif($row->status == 3)
+                        <form action="/homecomment/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">待评价</button>
+                        </form>
                     @endif
                 </div>
                 
@@ -140,6 +148,7 @@
             </ul>
             <div class="tb-ft">
                 <ul>
+                	
                     <li class="total"><span>商品总金额：</span>¥{{$row->total}}</li>
                     <li class="cunpon"><span>优惠金额：</span>- ¥0</li>
                     <li class="shipping"><span>运费：</span>+ ¥0</li>
@@ -148,7 +157,13 @@
             </div>
         </div>
     </div>
+    
+	
+    
     @endforeach
+	
+    
+
     <!-- 
     <div class="has-no-order">
         <div class="order-item-hd"></div>
@@ -164,7 +179,6 @@
 </div>
 </div>
 </div>
-    
 </body>
 </html>
 @endsection

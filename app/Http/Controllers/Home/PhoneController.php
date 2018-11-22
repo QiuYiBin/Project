@@ -49,19 +49,13 @@ class PhoneController extends Controller
         $phone=$request->input("phone");
         // dd($phone);
         $password=$request->input("password");
-
-        $repassword=$request->input("repassword");
-        // dd($repassword);
-        if($password != $repassword){
-           return back()->with("error10","两次密码不一致");
-        }else{
-            $data['password']=Hash::make($request->input('password'));
-            if(DB::table('bro_user')->where('phone','=',$phone)->update($data)){
+        $data['password']=Hash::make($request->input('password'));
+        if(DB::table('bro_user')->where('phone','=',$phone)->update($data)){
                 return view("Home.Phone.deit");
-            }else{
+         }else{
                 echo '重置密码失败,5秒后返回!<meta http-equiv="refresh" content="5;url=/retrieve">';
             }
-        }
+        
         
 
     } 
