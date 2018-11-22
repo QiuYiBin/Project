@@ -56,15 +56,11 @@ class DetailController extends Controller
 
         $data = $request->except('_token','oid');
 
-        if($request->hasFile('img')){	
-        	echo 666;
-        }
-        dd($data);
         // 如果没有图片上传
         if($data['img'] == null){	
         	unset($data['img']);
         }
-        
+
         // 获取当前时间
         $time = date('Y-m-d H:i:s',time());
   		

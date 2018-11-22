@@ -337,7 +337,7 @@
                         <div class="form-inline">
                             <input class="form-control" type="text" id="phone" placeholder="请输入你的手机号" name="phone" pattern="^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$" oninvalid="setCustomValidity('请输入正确的手机号码');"
                 oninput="setCustomValidity('');" required ><p id="err_phone" style="font-size:13px"></p>
-                            <button class="btn btn-primary" type="button" id="bt">获取验证码</button>
+                            <button class="btn btn-primary"  type="button" id="bt">获取验证码</button>
                         </div>
                         
                     </div>
@@ -433,8 +433,12 @@
             }
         });
     });
+
    // 获取校验码点击按钮
      $('#bt').click(function(){
+        if(flag === false){
+             return false;
+        }
         o=$(this);
         // alert(2);
         // 获取手机号
@@ -442,6 +446,7 @@
         // alert(p);
         $.get('/phone',{p:p},function(data){
         // 获取验证码之后
+        console.log(data);
          //判断
         if(data.code==000000){
         //使按钮倒计时
