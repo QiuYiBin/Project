@@ -47,7 +47,25 @@ class SliderController extends Controller
     {
         // 设置闪存
         $request->flashOnly('name','url');
+
         $data = $request->except('_token');
+
+        if($request->hasFile('pic')){
+            // 初始化名字
+            $name = date('Ymd',time()).mt_rand(1,10000);
+
+            // 获取上传文件后缀
+            $ext=$request->file("pic")->getClientOriginalExtension();
+
+            // 拼接文件名和后缀
+            $names = $name.'.'.$ext;
+
+            // 
+            $request->file("pic")->move("./Uploads/Slider/",$names);
+
+            $data['pic'] = $names;
+
+        }
 
         if(DB::table('bro_carousel')->insert($data)){
             return redirect('/slider')->with('success','添加成功');
@@ -93,21 +111,48 @@ class SliderController extends Controller
     {
         
         $data = $request->except('_token','_method');
+
         // 获取之前的老图片
         $oldpic = $data['oldpic'];
+
+        // var_dump($oldpic);
+
         // 删除没用的字段
         unset($data['oldpic']);
+
         // 拼接删除路径
         $path = 'Uploads/Slider/'.$oldpic;
 
-        if($data['pic'] == null){
-            $res = DB::table('bro_carousel')->where('id','=',$id)->first();
-            $data['pic'] = $res->pic;  
+        if($request->hasFile('pic')){
+
+            // 初始化名字
+            $name = date('Ymd',time()).mt_rand(1,10000);
+
+            // 获取上传文件后缀
+            $ext=$request->file("pic")->getClientOriginalExtension();
+
+            // 拼接文件名和后缀
+            $names = $name.'.'.$ext;
+ 
+            $request->file("pic")->move("./Uploads/Slider/",$names);
+
+            $data['pic'] = $names;
+
+        }else{
+            $data['pic'] = $oldpic;
         }
+
+        // dd($data);
         if(DB::table('bro_carousel')->where('id','=',$id)->update($data)){
+
             if($data['pic'] != $oldpic){
-                unlink($path);
+
+                if (file_exists('./Uploads/Slider/'.$oldpic)) {
+                    unlink($path);
+                }
+
             }
+            
             return redirect('/slider')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败，请至少修改一个！','id',$id);
@@ -134,28 +179,6 @@ class SliderController extends Controller
         
 
     }
-
-    // 文件上传方法
-    public function upload(Request $request)
-    {
-        $file = $request->file('Filedata');
-        // 判断目录是否存在
-        $dir = $request->input('file');
-        if (!file_exists('./Uploads/'.$dir.'')) {
-            mkdir('./Uploads/'.$dir.'');
-        }
-        // 判断上传的文件是否有效
-        if ($file->isValid()) {
-            // 获取后缀
-            $ext = $file->getClientOriginalExtension();
-            // 生成新的文件名
-            $newFile = time().rand().'.'.$ext;
-            // 移动到指定目录
-            $request->file('Filedata')->move('./Uploads/Slider/',$newFile);
-            echo $newFile;
-        }
-    }
-
 
     // Ajax删除
     public function ajaxdel(Request $request)

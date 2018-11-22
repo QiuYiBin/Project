@@ -37,11 +37,7 @@
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">图片</label> 
               <div class="col-md-3 col-xs-9">
-                <input name="pics" id="uploads" type="file" />
-                <div id="main" >
-
-                </div> 
-                <input type="hidden" name="pic" id="imgs">
+                <input name="pic" id="uploads" type="file" />
               </div>
           </div>
           <input type="hidden" name="oldpic" value="{{$data->pic}}">
@@ -67,52 +63,5 @@
     </section>
   </div>
  </body>
- <script type="text/javascript">
-   // 当所有html代码加载完毕
-    $(function() {
-      // 声明字符串
-      var img = '';
-      $('#uploads').uploadify({
-        // 设置文本
-        'buttonText' : '图片上传',
-        // 设置文本传输数据
-        'formDate' : { 
-          '_token' : '{{csrf_field()}}',
-          'file' : 'Slider'
-        },
-        // 上传的flash动画
-        'swf' : '/Uploadify/uploadify.swf',
-        // 文件上传的地址(路由)
-        'uploader' : '/slider/upload',
-        // 设置文件上传格式
-        'fileTypeExts': '*.gif; *.jpg; *.png; *.bmp',
-        // 当文件上传成功
-        'onUploadSuccess' : function(file, data, response) {
-          // 拼接图片
-          imgs = '<img width="200" src="/Uploads/Slider/'+data+'">';
-          // 显示图片
-          $('#main').html(imgs);
-          // 隐藏传递数据
-          $('#imgs').val(data);
-        },
-        'onSelectError': function (file, errorCode, errorMsg) {
-          switch (errorCode) {
-              case -100:
-                  alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
-                  break;
-              case -110:
-                  alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
-                  break;
-              case -120:
-                  alert("文件 [" + file.name + "] 大小异常！");
-                  break;
-              case -130:
-                  alert("文件 [" + file.name + "] 类型不正确！");
-                  break;
-          }
-      },
-      });
-    });
-</script>
 @endsection
 @section('title','添加轮播图')
