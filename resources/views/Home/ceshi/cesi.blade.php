@@ -1,7 +1,9 @@
 @extends('Home.Indexpublic.public')
 @section('main')
 					
-                    
+ <head>
+ 
+ </head>                   
                     
  <div style="width:800px;height:auto;margin:auto">
  	@foreach($article as $row)                
@@ -26,7 +28,12 @@
 	    <div class="form-group">
 	        <label for="review_text">评论 </label>
 	        <textarea name="text[]" class="form-control form-control-rounded" id="review_text" rows="8"></textarea>
-	        晒图：<input type="file" name="img[]" style="margin-top:20px">
+	        晒图：
+	        <input name="picss" id="uploadss" type="file" />
+            <div id="mains" >
+
+            </div> 
+            <input type="hidden" name="imgs" id="imgss"> 
 	    </div>
 	</div>
 	{{csrf_field()}}

@@ -55,7 +55,7 @@ class DetailController extends Controller
     	$oid = $request->input('oid');
 
         $data = $request->except('_token','oid');
-
+        dd($data);
         // 如果没有图片上传
         if($data['img'] == null){	
         	unset($data['img']);
@@ -74,9 +74,11 @@ class DetailController extends Controller
      			$array[$k]['uid'] = $id;
      		}
         }
+
        	foreach($array as $arr){
        		\DB::table('bro_comment')->insert($arr);
        	}
+
        	// 修改订单状态
        	$res['status'] = 4;
        	
@@ -128,5 +130,27 @@ class DetailController extends Controller
     public function destroy($id)
     {
         //
+
     }	
+
+    // 评论图片上传
+    public function upload(Request $request)
+    {
+        $file = $request->file('Filedata');
+        // 判断目录是否存在
+        $dir = $request->input('file');
+        if (!file_exists('./Uploads/'.$dir.'')) {
+            mkdir('./Uploads/'.$dir.'');
+        }
+        // 判断上传的文件是否有效
+        if ($file->isValid()) {
+            // 获取后缀
+            $ext = $file->getClientOriginalExtension();
+            // 生成新的文件名
+            $newFile = time().rand().'.'.$ext;
+            // 移动到指定目录
+            $request->file('Filedata')->move('./Uploads/Comment/',$newFile);
+            echo $newFile;
+        }
+    }
 }

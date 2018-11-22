@@ -24,7 +24,7 @@
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">地址</label> 
               <div class="col-md-3 col-xs-9"> 
-                <input class="form-control" name="url" id="inputEmail1" type="text" placeholder="请输入URL地址" value="{{old('url')}}"/> 
+                <input class="form-control" name="url" value="http://" id="inputEmail1" type="text" placeholder="请输入URL地址" value="{{old('url')}}"/> 
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
@@ -36,11 +36,7 @@
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">图片</label> 
               <div class="col-md-3 col-xs-9"> 
-                <input name="pics" id="uploads" type="file" />
-                <div id="main" >
-
-                </div> 
-                <input type="hidden" name="pic" id="imgs">
+                <input name="pic" id="uploads" type="file" /> 
               </div>
           </div>
           <div class="form-group" style="margin-top: 40px"> 
@@ -65,6 +61,7 @@
   </div>
  </body>
  <script type="text/javascript">
+    // data = data.substr(1); 
    // 当所有html代码加载完毕
     $(function() {
       // 声明字符串
@@ -85,8 +82,9 @@
         'fileTypeExts': '*.gif; *.jpg; *.png; *.bmp',
         // 当文件上传成功
         'onUploadSuccess' : function(file, data, response) {
+          var newdata  = data.split('_')[1];
           // 拼接图片
-          imgs = '<img width="200" src="/Uploads/Slider/'+data+'">';
+          imgs = '<img width="200" src="/Uploads/Slider/'+newdata+'">';
           // 显示图片
           $('#main').html(imgs);
           // 隐藏传递数据

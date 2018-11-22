@@ -26,6 +26,7 @@
     <link rel="stylesheet" media="screen" href="/Home/css/izitoast.css">
     <!-- Main Style CSS -->
     <link rel="stylesheet" media="screen" href="/Home/css/style.css">
+    <script src="/Home/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <!-- Start Shop Category Menu -->
@@ -273,7 +274,7 @@
     <!-- Modernizr JS -->
     <script src="/Home/js/modernizr.min.js"></script>
     <!-- JQuery JS -->
-    <script src="/Home/js/jquery.min.js"></script>
+    <!-- <script src="/Home/js/jquery.min.js"></script> -->
     <!-- Popper JS -->
     <script src="/Home/js/popper.min.js"></script>
     <!-- Bootstrap JS -->
