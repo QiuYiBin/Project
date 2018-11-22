@@ -63,20 +63,16 @@
     <div class="container padding-top-1x padding-bottom-3x">
         <div class="row">
             <div class="col-md-6">
-                <form class="login-box" action="/doreset" method="post">
-                    <h4 class="margin-bottom-1x">修改密码</h4>
+                <form class="login-box" action="/doreset" id="fr" method="post">
+                    <h4 class="margin-bottom-1x">重置密码</h4>
                     <div class="form-group input-group">
-                        <input class="form-control" type="password" name="password" placeholder="请填写新密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
+                        <input class="form-control" type="password" id="rd" name="password" placeholder="请填写新密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
                 oninput="setCustomValidity('');" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                <p id="err_password" style="font-size:13px"></p>
                 {{csrf_field()}}
-                 <div class="form-group" style="color:red">
-                           @if(session('error'))
-                          {{session('error')}}
-                           @endif
-                         </div>
                     </div>
                     <div class="form-group input-group">
-                        <input class="form-control" type="password" name="ressword" placeholder="确认密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
+                        <input class="form-control" type="password" id="rw" name="ressword" placeholder="确认密码" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$" oninvalid="setCustomValidity('请输入8-16位的数字和字母');"
                 oninput="setCustomValidity('');" required><span class="input-group-addon"><i class="icon-lock"></i></span>
                  </div>
                  <input type="hidden" name="id" value="{{$id}}">
@@ -98,6 +94,7 @@
 <!-- End Back To Top -->
 <div class="site-backdrop"></div>
 <!-- Modernizr JS -->
+<script src="/home/js/jquery-1.8.3.min.js"></script>
 <script src="/Home/js/modernizr.min.js"></script>
 <!-- JQuery JS -->
 <script src="/Home/js/jquery.min.js"></script>
@@ -126,4 +123,32 @@
 <!-- Main JS -->
 <script src="/Home/js/script.js"></script><script src="/Home/js/custom.js"></script>
 </body>
+<script type="text/javascript">
+    e=false;
+    // alert(1);
+     $('#rd').blur(function(){
+        // alert(1);
+        $rd=$(this).val();
+        $("#err_password").css("color",'#f66').html('');
+     });
+
+     $('#rw').blur(function(){
+        $rw=$(this).val();
+        // alert($rw);
+        if($rw === $rd ){
+            e= true;
+        }else{
+            $("#err_password").css("color",'#f66').html("两次密码不一致");
+            e= false;
+        }
+     });
+     
+     $('#fr').submit(function(){
+        if(e === true){
+            return true;
+        }else{
+            return false;
+        }
+     });
+</script>
 </html>

@@ -90,7 +90,7 @@ Route::resource('/','Home\IndexController');
 //注册
 Route::resource('/register','Home\RegisterController');
 //验证码
-Route::get("/code","Home\RegisterController@code");
+Route::get("/codes","Home\RegisterController@codes");
 //激活用户
 Route::get("/activation","Home\RegisterController@activation");
 //登陆
@@ -105,6 +105,8 @@ Route::resource("/retrieve","Home\RetrieveController");
 Route::get("/rtion","Home\RetrieveController@activation");
 //
 Route::post("/doreset","Home\RetrieveController@doreset");
+//ajax密码找回判断邮箱是否存在
+Route::get("/email","Home\RetrieveController@email");
 //密码找回之手机找回
 Route::get("/phone","Home\PhoneController@phone");
 //验证手机号是否存在
@@ -115,13 +117,10 @@ Route::get("/code","Home\PhoneController@code");
 Route::resource("/phones","Home\PhoneController");
 //处理重置密码数据
 Route::post("/reset","Home\PhoneController@reset");
-
 //前台中间件
 Route::group(["middleware"=>"home"],function(){
 	// 个人中心
 	Route::Resource('/homepersonal','Home\PersonalController');
-	// 我的订单
-	Route::Resource('/homeorder','Home\OrderController');
 	// 我的地址
 	Route::Resource('/homeaddres','Home\AddresController');
 	// 地址Ajax
@@ -146,11 +145,9 @@ Route::group(["middleware"=>"home"],function(){
 	Route::resource('/homewish','Home\WishController');
 	// ajax删除收藏
 	Route::get('/homewishdel','Home\WishController@del');
-	// 商品详情
-	Route::get('/shopsingle/{id}','Home\SingleController@index');
-	//
-
 });
+// 商品详情
+Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
 // 友情链接
