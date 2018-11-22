@@ -31,10 +31,6 @@ class ClearingController extends Controller
             return back();
         }
 
-        if($goods == null){
-            return back();
-        }
-
         $num = count($goods);
 
         $array = array();
@@ -115,7 +111,12 @@ class ClearingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $data['status'] = 3;
+
+        if(\DB::table('bro_crder')->where('id','=',$id)->update($data)){
+            return back();
+        };
     }
 
     /**

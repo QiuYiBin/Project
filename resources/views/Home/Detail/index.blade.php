@@ -55,10 +55,20 @@
                             {{method_field('DELETE')}}
                             <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">取消订单</button>
                         </form>
-                        <span class="pay-btn" style="margin-right: 10px">代发货</span>
+                        <span class="pay-btn" style="margin-right: 10px">待发货</span>
                     @elseif($row->status == 2)
-                        <a href="" class="pay-btn">确认收货</a>
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('PUT')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">确认收货</button>
+                        </form>
                         <span class="pay-btn" style="margin-right: 10px">已发货</span>
+                    @else
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('PUT')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">待评价</button>
+                        </form>
                     @endif
                 </div>
                 
