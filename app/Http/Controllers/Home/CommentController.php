@@ -15,6 +15,7 @@ class CommentController extends Controller
      */
     public function index($id)
     {
+    	//加载模板
     	
     }
 
