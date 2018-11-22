@@ -1,6 +1,7 @@
 @extends('Home.Indexpublic.public')
 @section('main')
 	@foreach($comment as $value)
+	<form action="/homecomment/{id}" method="get">
 	<div class="comment">
                         <div class="comment-author-ava"><img src="/Home/images/reviews/01.jpg" alt="Review Author"></div>
                         <div class="comment-body">
@@ -14,10 +15,10 @@
                             <div class="comment-footer"><span class="comment-meta">{{$value->username}}</span></div>
                         </div>
                     </div>
-                    @endforeach
-                    @else
+                    
+                   
                     <center>暂无评价哦~~~</center>
-                    @endif
+                    
                     <!-- End Review #1 -->
                     <!-- Start Review Form -->
                     <h5 class="mb-30 padding-top-1x">离开评论</h5>
@@ -43,6 +44,7 @@
                         <div class="col-12 text-right">
                             <button class="btn btn-outline-primary" type="submit">提交 评论</button>
                         </div>
+                  </form>
                @endforeach
  @endsection
 @section('title','商品详情')
