@@ -125,20 +125,17 @@ class PersonalController extends Controller
             // dd($data);
             //执行数据库的修改
             if(DB::table("bro_username")->where("id","=",$id)->update($data)){
-                    //删除原图
-                    unlink('./Uploads/User/'.$info->pic);
-                    return  back()->with('success',"成功,你的个人资料已更新");
-                }else{  
-                    return back()->with('error',"失败,你的个人资料新更新失败",'id',$id);
-                    }   
-
+                //删除原图
+                unlink('./Uploads/User/'.$info->pic);
+                return  back()->with('success',"成功,你的个人资料已更新");
+            }
         }else{
             //没有图片修改
              if(DB::table("bro_username")->where("id","=",$id)->update($data)){
-                    return  back()->with('success',"成功,你的个人资料已更新");
-                }else{
-                    return back()->with('error',"失败,你的个人资料新更新失败",'id',$id);
-                }   
+                return  back()->with('success',"成功,你的个人资料已更新");
+            }else{
+                return  back()->with('error',"失败,你的个人资料更新失败");
+            }
         }
         // dd($data);
         // if(DB::table("bro_username")->where("id","=",$id)->update($data)){
