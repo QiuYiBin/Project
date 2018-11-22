@@ -59,13 +59,8 @@
             <td class="numeric">{{$row->total}}</td> 
             <td class="numeric">{{$row->status}}</td> 
             <td class="numeric">{{$row->orderid}}</td>
-            
-           <td class=""><a href="/crder/{{$row->id}}/edit" class="btn btn-warning">修改</a>| 
-            <form action="/crder/{{$row->id}}" class="form-group" method="post"> 
-             <button type="submit" class="btn btn-danger">删除</button> 
-             {{ method_field('DELETE') }}
              {{csrf_field()}}
-            </form> 
+           <td class=""><a href="/crder/{{$row->id}}/edit" class="btn btn-warning">修改</a> 
           </td>
           <td class="numeric"><a href="/details/{{$row->id}}" class="btn btn-info">查看订单详情</a></td>
           </tr>

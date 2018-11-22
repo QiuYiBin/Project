@@ -1,5 +1,6 @@
 @extends('Home.Indexpublic.public')
 @section('main')
+<script src="/home/js/jquery-1.8.3.min.js"></script>
 <div class="offcanvas-wrapper">
     <div class="container padding-top-1x padding-bottom-3x">
         <div style="margin: 0 auto;width: 700px;margin-top: 100px">
@@ -92,5 +93,8 @@
     </div>
     <!-- End Footer -->
 </div>
+<script type="text/javascript">
+  
+</script>
 @endsection
 @section('title','注册')

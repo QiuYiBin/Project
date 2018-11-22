@@ -106,6 +106,8 @@ Route::resource("/retrieve","Home\RetrieveController");
 Route::get("/rtion","Home\RetrieveController@activation");
 //
 Route::post("/doreset","Home\RetrieveController@doreset");
+//ajax密码找回判断邮箱是否存在
+Route::get("/email","Home\RetrieveController@email");
 //密码找回之手机找回
 Route::get("/phone","Home\PhoneController@phone");
 //验证手机号是否存在
