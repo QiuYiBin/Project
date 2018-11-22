@@ -11,7 +11,6 @@ use Hash;
 use DB;
 //导入三方类
 use Gregwar\Captcha\CaptchaBuilder;
-use App\Http\Requests\RegisterUserinsert;
 class RegisterController extends Controller
 {
     /**
@@ -93,7 +92,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterUserinsert $request)
+    public function store(Request $request)
     { 
         $request->flashOnly('username','phone','email');
         // 获取验证码
@@ -129,7 +128,48 @@ class RegisterController extends Controller
         }
 
     }
+     //检测用户是否存在
+    public function yonghu(Request $request){
+        // return 1;
+        $username = $request->input('h');
+        // 查询数据
+        $names = DB::table('bro_user')->where('username','=',$username)->first();
+        // dd($phones);
+        // 判断是否有数据
+        if($names){
+            echo 1;
+        }else{
+            echo 2;
+        }
 
+    }
+   //检测手机是否存在
+    public function phone(Request $request){
+        $phones = $request->input('j');
+        // 查询数据
+        $phoness = DB::table('bro_user')->where('phone','=',$phones)->first();
+        // dd($phones);
+        // 判断是否有数据
+        if($phoness){
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
+   
+   //验证邮箱是否存在
+    public function email(Request $request){
+        $emails = $request->input('x');
+        // 查询数据
+        $emailss = DB::table('bro_user')->where('email','=',$emails)->first();
+        // dd($phones);
+        // 判断是否有数据
+        if($emailss){
+            echo 1;
+        }else{
+            echo 2;
+        }
+    }
     /**
      * Display the specified resource.
      *

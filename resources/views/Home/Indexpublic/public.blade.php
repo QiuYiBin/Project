@@ -159,7 +159,7 @@
                         <li><a href="/homedetail">我的订单</a></li>
                         <li><a href="/homewish">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
+                        <li><a href="/homelogin/create"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
                 </div> 
                 <!-- End Account -->
