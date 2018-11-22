@@ -119,7 +119,6 @@ Route::post("/reset","Home\PhoneController@reset");
 
 //前台中间件
 Route::group(["middleware"=>"home"],function(){
-	
 	// 个人中心
 	Route::Resource('/homepersonal','Home\PersonalController');
 	// 我的订单
@@ -146,11 +145,7 @@ Route::group(["middleware"=>"home"],function(){
 	Route::resource('/homewish','Home\WishController');
 	// ajax删除收藏
 	Route::get('/homewishdel','Home\WishController@del');
-
 });
-// 晒单路由 
-Route::resource("/homecomment",'Home\CommentController');
-
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
 // 商品详情
