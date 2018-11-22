@@ -89,6 +89,12 @@ Route::group(['middleware'=>'login'],function(){
 Route::resource('/','Home\IndexController');
 //注册
 Route::resource('/register','Home\RegisterController');
+//ajxa验证用户是否存在
+Route::get('/yh',"Home\RegisterController@yonghu");
+//ajax验证手机是否存在
+Route::get("/sj","Home\RegisterController@phone");
+//ajax验证邮箱是否存在
+Route::get('yx',"Home\RegisterController@email");
 //验证码
 Route::get("/codes","Home\RegisterController@codes");
 //激活用户
