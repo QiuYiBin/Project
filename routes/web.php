@@ -135,7 +135,7 @@ Route::group(["middleware"=>"home"],function(){
 	Route::post('/Clearings','Home\ClearingController@order');
 	// 订单页
 	Route::resource('/homedetail','Home\DetailController');
-	//商品评价
+	// 商品评价
 	Route::post('/homecomment/{id}','Home\DetailController@create');
 	// 支付路由
 	Route::get('/pays','Home\ClearingController@pay');
@@ -145,6 +145,8 @@ Route::group(["middleware"=>"home"],function(){
 	Route::resource('/homewish','Home\WishController');
 	// ajax删除收藏
 	Route::get('/homewishdel','Home\WishController@del');
+	// 评论图片上传
+	Route::any('/homedetail/upload','Home\DetailController@upload');
 });
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
