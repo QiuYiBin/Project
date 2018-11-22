@@ -1,4 +1,4 @@
-@extends('Admin.AdminPublic.public')
+﻿@extends('Admin.AdminPublic.public')
 @section('main')
 <html>
   <meta charset="utf-8">
