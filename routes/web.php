@@ -122,8 +122,6 @@ Route::post("/reset","Home\PhoneController@reset");
 Route::group(["middleware"=>"home"],function(){
 	// 个人中心
 	Route::Resource('/homepersonal','Home\PersonalController');
-	// 我的订单
-	Route::Resource('/homeorder','Home\OrderController');
 	// 我的地址
 	Route::Resource('/homeaddres','Home\AddresController');
 	// 地址Ajax
@@ -148,11 +146,9 @@ Route::group(["middleware"=>"home"],function(){
 	Route::resource('/homewish','Home\WishController');
 	// ajax删除收藏
 	Route::get('/homewishdel','Home\WishController@del');
-	// 商品详情
-	Route::get('/shopsingle/{id}','Home\SingleController@index');
-	//
-
 });
+// 商品详情
+Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
 // 友情链接
