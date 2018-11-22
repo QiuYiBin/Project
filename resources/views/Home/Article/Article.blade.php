@@ -12,7 +12,7 @@
             </div>
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="index-1.html">Home</a>
+                    <li><a href="/">Home</a>
                     </li>
                     <li class="separator">&nbsp;</li>
                     <li>公告</li>

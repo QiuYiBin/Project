@@ -9,8 +9,8 @@
 
   <title>404 Page</title>
 
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet">
+  <link href="/Admin/css/style.css" rel="stylesheet">
+  <link href="/Admin/css/style-responsive.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -26,9 +26,9 @@
 
         <section class="error-wrapper text-center">
             <h1><img alt="" src="images/404-error.png"></h1>
-            <h2>page not found</h2>
-            <h3>We Couldn’t Find This Page</h3>
-            <a class="back-btn" href="index.html"> Back To Home</a>
+            <h2>找不到页面</h2>
+            <h3>请点击返回</h3>
+            <a class="back-btn" href="/"> Back To Home</a>
         </section>
 
     </div>
