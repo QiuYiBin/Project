@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 	<html lang="cn" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths pc " style="" data-blockbyte-bs-uid="23468">
 	<head>
-		<script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="/Home/Clearing/style1503546983737.css">
 	<meta name="keywords" content="一加手机，1+手机，一加手机官网商城,一加商城,1+手机商城,1+商城,一加智能手机商城">
@@ -31,6 +30,10 @@
 	<link href="/Home/Clearing/vendor.css" rel="stylesheet">
 	<link href="/Home/Clearing/index.css" rel="stylesheet">
 	<link rel="stylesheet" href="/Home/Clearing/header.css">
+   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
+ 
 	<!-- <link rel="stylesheet" type="text/css" href="./View/orders/orders/common_pc.css"> -->
 	 <link rel="stylesheet" type="text/css" href="/Home/Clearing/order.css">
 	<link charset="utf-8" rel="stylesheet" href="/Home/Clearing/nc.css" disabled=""><style>@charset "utf-8";
@@ -42,14 +45,12 @@
 
          }
         input:checked+div{
-        	width: 380px;
-        	height: 150px;
+        	width: 346px;
+        	height: 155px;
             border:2px solid rgb(235, 0, 40);
 
         }
-		
 		input{-webkit-appearance:none;}
-
 	</style>
 </head>
 <body class="account-page" style="visibility: visible;">
@@ -64,7 +65,7 @@
 	          <button class="close" data-dismiss="modal">&times;</button>
 	        </div>
 	        <div class="modal-body">
-	          <form action="/Clearing" method="post" enctype="multipart/form-data">
+	          <form action="/Clearing" method="post" enctype="multipart/form-data" id="updateform">
 	            <div class="form-group">
 	              <label>收件人:</label>
 	              <input type="text"  name="name" class="form-control" placeholder="请输入正常的收件人" >
@@ -89,7 +90,7 @@
 	              <input type="text" name="adds" class="form-control">
 	            </div>
 	            {{csrf_field()}}
-	            <button type="submit" id="tijiao" class="btn btn-success">提交</button>
+	            <button type="submit" class="btn btn-success">提交</button>
 	          </form>
 	        </div>
 	        <div class="modal-footer">
@@ -99,6 +100,70 @@
 	    </div>
 	</div>
 	<!-- 模态框结束 -->
+  <script type="text/javascript">
+      var form = $('#updateform');
+      $(document).ready(function () {
+        form.bootstrapValidator({
+            message: '输入值不合法',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    message: '收件人不合法',
+                    validators: {
+                        notEmpty: {
+                            message: '收件人不能为空'
+                        },
+                        stringLength: {
+                            min: 2,
+                            max: 30,
+                            message: '请输入2到30个字符'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\. \u4e00-\u9fa5 ]+$/,
+                            message: '收件人只能由字母、数字、点、下划线和汉字组成 '
+                        }
+                    }
+                }
+                , phone: {
+                    validators: {
+                        notEmpty: {
+                            message: '手机号不能为空'
+                        },
+                        regexp: {
+                            regexp: /^1[34578]\d{9}$/,
+                            message: '手机号码格式错误'
+                        }
+                    }
+                }, postcode: {
+                    validators: {
+                        regexp: {
+                            regexp: /^1[34578]\d{9}$/,
+                            message: '手机号码格式错误'
+                        }
+                    }
+                }, adds: {
+                    validators: {
+                        notEmpty: {
+                            message: '地址不能为空'
+                        }, stringLength: {
+                            min: 5,
+                            max: 60,
+                            message: '请输入5到60个字符'
+                        }
+                    }
+                }
+            }
+        });
+    });
+    $("#tijiao").click(function () {
+        //进行表单验证
+        var bv = form.data('bootstrapValidator');
+    });
+  </script>
 <div id="op-wrap">
     <div id="op-aside"></div>
     <div id="op-wrap-mask"></div>
@@ -135,11 +200,11 @@
            		@if($addres == '')
             	<!-- 添加收货地址结束 -->
             	@else
-				<div class="row">
+				    <div class="row">
 					@foreach($addres as $key=>$value)
                     <div class="col-4 padding-top-1x">
                     	<label>
-                    		<input type="radio" name="address" value="{{$value->id}}" @if($value->status == 1) checked @endif>
+                    		<input type="radio" id="addres" name="address" value="{{$value->id}}" @if($value->status == 1) checked @endif>
 	                        <div class="custom-control custom-checkbox d-block">
 	                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
 	                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br>
@@ -157,8 +222,6 @@
                 </div>
             	@endif
             	<button class="btn btn-success" data-toggle="modal" data-target="#mymodal" type="button">+添加收货地址</button>
-                    
-					
             </div>
         </div>
            
@@ -265,7 +328,7 @@
 		                    </div>
 		                    <div class="right">
 		                        <p class="total-pay">应付总额：<em>¥ {{$money}}</em></p>
-		                        <button type="submit" class="submit-order-btn">提交订单</button>
+		                        <button type="submit" class="submit-order-btn" id="tijiao">提交订单</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -295,7 +358,8 @@
 
     // 其他级别内容
     // live事件委派，可以帮助将动态生成的内容只要选择器相同就可以有相应的事件
-    $('select').live('change',function(){
+    // $('select').live('change',function(){
+    $('body').on('change','select',function(){
       // 将当期的对象存储起来
       obj = $(this);
       // 通过id来查找下一个
@@ -345,32 +409,40 @@
 
     // ajax删除地址
     $(".del").click(function(){
+
         //获取id
         id = $(this).parent().parent().find('input:first').val();
-        // console.log(id);
+
         //获取删除数据所在的tr
         s = $(this).parent().parent().parent();
-        //Ajax
-        $.get('/homeaddresdel',{id:id},function(data){
-            // alert(data);
-            if(data.msg == 1){  
-            //移除删除数据所在的tr 
-            s.remove(); 
-        }else{
-          //终止请求动作
-          request.abort();
+
+        if(confirm("确实要删除吗？")){
+            $.get('/homeaddresdel',{id:id},function(data){
+
+                if(data.msg == 1){  
+                    //移除删除数据所在的tr 
+                    s.remove(); 
+                }else{
+                    //终止请求动作
+                    request.abort();
+                }
+            },'json')
+        }else {
+            
         }
-      	},'json')
     });
 
 
     $('#tijiao').click(function(){
-		$("input[name='address']").click(function(){
-			if($(this).attr("checked")) {
-	            return false;
-	        }
-		});
+		if($('#addres').is(':checked')){ 
+            return true;
+        }else{
+            alert('请选择一个收货地址') 
+            return false;
+        }
+        
 	});
+
   </script>
 </html>
 @endsection
