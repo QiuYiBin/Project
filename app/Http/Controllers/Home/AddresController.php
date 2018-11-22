@@ -83,6 +83,14 @@ class AddresController extends Controller
      */
     public function edit($id)
     {
+        //获取需要修改的数据 查询单条数据 
+        $admin=DB::table("bro_useraddres")->where("id","=",$id)->first();
+       
+        if($admin == null){
+            return redirect('/homeaddres')->with('error','不要瞎改');
+        }
+        //加载模板 分配数据
+        return view("Home.Addres.edit")->with('admin',$admin);
 
     }
 
@@ -95,7 +103,18 @@ class AddresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        // 获取全部参数
+        // dd($request->all());
+        // 干掉两个没用的字段
+        $data=$request->except(['_token','_method']);
+        //dd($data);
+        //执行修改操作
+        if(DB::table("bro_useraddres")->where("id","=",$id)->update($data)){
+            return redirect("/homeaddres")->with('success','修改成功');
+        }else{  
+            return back()->with('error',"修改失败",'id',$id);
+        }
     }
 
     /**

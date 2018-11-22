@@ -67,7 +67,7 @@ class WishController extends Controller
             unset($res['id']);
                 // 开始添加操作
                 if(DB::table('bro_wish')->insert($res)){
-                    return redirect('/homewish')->with('success','收藏');
+                    return redirect('/homewish')->with('success','已收藏');
                 }
         }else{
 
@@ -77,7 +77,7 @@ class WishController extends Controller
             }
             //判断当前用户商品id和传递过来的商品id 如果数组里有则已收藏 若没添加收藏
             if (in_array($id,$gid)){
-                return redirect('/homewish')->with('error','已收藏');
+                return redirect('/homewish')->with('error','已收藏过');
              
             }else{
                 // 查看商品详情
@@ -88,7 +88,7 @@ class WishController extends Controller
                 unset($res['id']);
                 // 开始添加操作
                 if(DB::table('bro_wish')->insert($res)){
-                    return redirect('/homewish')->with('success','收藏');
+                    return redirect('/homewish')->with('success','已收藏');
                     }
             }       
        }
