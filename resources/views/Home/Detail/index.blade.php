@@ -148,6 +148,7 @@
             </ul>
             <div class="tb-ft">
                 <ul>
+                	
                     <li class="total"><span>商品总金额：</span>¥{{$row->total}}</li>
                     <li class="cunpon"><span>优惠金额：</span>- ¥0</li>
                     <li class="shipping"><span>运费：</span>+ ¥0</li>
@@ -156,7 +157,13 @@
             </div>
         </div>
     </div>
+    
+	
+    
     @endforeach
+	
+    
+
     <!-- 
     <div class="has-no-order">
         <div class="order-item-hd"></div>
@@ -172,7 +179,6 @@
 </div>
 </div>
 </div>
-    
 </body>
 </html>
 @endsection

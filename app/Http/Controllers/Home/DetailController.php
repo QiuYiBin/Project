@@ -128,5 +128,5 @@ class DetailController extends Controller
     public function destroy($id)
     {
         //
-    }
+    }	
 }

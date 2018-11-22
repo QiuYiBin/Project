@@ -23,6 +23,7 @@
 		echo $ucpass->SendSms($appid,$templateid,$param,$mobile,$uid);
 	}
 
+	
 	function curlGet($url,$method,$post_data=0){
 		//初始化curl
 		$ch=curl_init();
@@ -43,6 +44,7 @@
 		//关闭curl
 		curl_close($ch);
 		return $res;
+		
 	}
 
 	function pay($out_trade_no,$subject,$total_fee)
