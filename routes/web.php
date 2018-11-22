@@ -90,7 +90,7 @@ Route::resource('/','Home\IndexController');
 //注册
 Route::resource('/register','Home\RegisterController');
 //验证码
-Route::get("/codes","Home\RegisterController@codes");
+Route::get("/code","Home\RegisterController@code");
 //激活用户
 Route::get("/activation","Home\RegisterController@activation");
 //登陆
@@ -118,9 +118,10 @@ Route::post("/reset","Home\PhoneController@reset");
 
 //前台中间件
 Route::group(["middleware"=>"home"],function(){
-	
 	// 个人中心
 	Route::Resource('/homepersonal','Home\PersonalController');
+	// 我的订单
+	Route::Resource('/homeorder','Home\OrderController');
 	// 我的地址
 	Route::Resource('/homeaddres','Home\AddresController');
 	// 地址Ajax
@@ -135,6 +136,8 @@ Route::group(["middleware"=>"home"],function(){
 	Route::post('/Clearings','Home\ClearingController@order');
 	// 订单页
 	Route::resource('/homedetail','Home\DetailController');
+	//商品评价
+	Route::post('/homecomment/{id}','Home\DetailController@create');
 	// 支付路由
 	Route::get('/pays','Home\ClearingController@pay');
 	// 支付成功返回路由
@@ -143,15 +146,13 @@ Route::group(["middleware"=>"home"],function(){
 	Route::resource('/homewish','Home\WishController');
 	// ajax删除收藏
 	Route::get('/homewishdel','Home\WishController@del');
+	// 商品详情
+	Route::get('/shopsingle/{id}','Home\SingleController@index');
+	//
 
 });
-// 晒单路由 
-Route::resource("/homecomment",'Home\CommentController');
-
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
-// 商品详情
-Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 友情链接
 Route::resource('/friendship','Home\FriendshipController');
 // 广告列表
@@ -170,4 +171,5 @@ Route::get("/CarAdd","Home\CartController@CarAdd");
 Route::get("/Carjian","Home\CartController@Carjian");
 Route::get("/Carqingkong","Home\CartController@Carqingkong");
 Route::get('/curl','Home\IndexController@curl');
+
 
