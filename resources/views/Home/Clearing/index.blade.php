@@ -139,7 +139,7 @@
 					@foreach($addres as $key=>$value)
                     <div class="col-4 padding-top-1x">
                     	<label>
-                    		<input type="radio" name="address" value="{{$value->id}}">
+                    		<input type="radio" name="address" value="{{$value->id}}" @if($value->status == 1) checked @endif>
 	                        <div class="custom-control custom-checkbox d-block">
 	                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
 	                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br>

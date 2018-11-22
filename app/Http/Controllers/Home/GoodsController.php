@@ -164,4 +164,5 @@ class GoodsController extends Controller
     {
         //
     }
+
 }

@@ -89,10 +89,9 @@ class LoginController extends Controller
         $request->flashOnly('username');
         // 获取验证码
         $vcode = $request->input('vcode');
-        // dd($vcode);
+        //dd($vcode);
         //获取存储在session的验证码
-        $fcode=session('fcode');
-        // dd($fcode);
+        $fcode=session('vcode');
         if($vcode != $fcode){
             return back()->with('error1','输入的验证码有误');
         }else{
@@ -121,7 +120,10 @@ class LoginController extends Controller
              }
          }
     }
+    
+    public function codess(){
 
+    }
     /**
      * Display the specified resource.
      *

@@ -1,11 +1,11 @@
-<div class="topbar-column"><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@section('title')</title>
+    <title>@yield('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -65,7 +65,7 @@
     @if(session('username'))
        <div style="line-height: 39px;float: right;"> 
         <a href="#">欢迎{{session('username')}}</a>
-        <a href="login/create"></i>退出</a>
+        <a href="/homelogin/create"></i>退出</a>
         </div>
     @else
         <div style="line-height: 39px;float: right;">
@@ -155,7 +155,7 @@
                             </div>
                         </li>
                         <li><a href="/homepersonal">个人中心</a></li>
-                        <li><a href="/homeorder">我的订单</a></li>
+                        <li><a href="/homedetail">我的订单</a></li>
                         <li><a href="/homewish">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
                         <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>

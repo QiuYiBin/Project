@@ -7,7 +7,6 @@
      <div class="column"> 
       <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个人中心</font></font></h1> 
      </div> 
-
      <div class="column"> 
       <ul class="breadcrumbs"> 
        <li><a href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a></li> 
@@ -18,6 +17,18 @@
     </div> 
    </div> 
    <!-- End Page Title -->
+    <!-- 收藏成功样式 -->
+    @if(session('success'))
+   <div class="alert alert-success alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
+    <p><i class="fa fa-bell"></i>{{session('success')}}</p>
+    </div>
+    @endif
+    <!-- 已收藏 失败样式 -->
+     @if(session('error'))
+    <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
+            <p><i class="fa fa-bell"></i> {{session('error')}}</p>
+        </div>
+    @endif
     <!-- 校验失败提示   -->
     @if (count($errors) > 0)
     <div class="alert alert-danger alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>

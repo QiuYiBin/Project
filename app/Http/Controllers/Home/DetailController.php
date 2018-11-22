@@ -16,8 +16,13 @@ class DetailController extends Controller
     // 订单方法
     public function index()
     {   
+        // 获取id
         $id=session('id');
-        $data = DB::table('bro_crder')->where('bro_crder.uid','=',$id)->get();
+
+        // 每个用户的订单
+        $data = DB::table('bro_crder')->where('bro_crder.uid','=',$id)->orderBy('id','asc')->get();
+
+        // 显示每个订单下面的商品
         $res = DB::table('bro_crder')->join('bro_crderinfo','bro_crder.id','=','bro_crderinfo.oid')->where('bro_crder.uid','=',$id)->get();
       
         return view('Home.Detail.index')->with('data',$data)->with('res',$res);
