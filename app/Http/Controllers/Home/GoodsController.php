@@ -111,8 +111,8 @@ class GoodsController extends Controller
         
 
         
-        if($id==0){
-            $data=DB::table('bro_goods')->paginate(4);
+        if($id=='0'){
+            $data=DB::table('bro_goods')->where('status','0')->paginate(4);
 
         }else{
 
@@ -125,7 +125,7 @@ class GoodsController extends Controller
              }
              $cates[] = $id;
             // dd($cates);
-             $data = DB::table('bro_goods')->whereIn('cates_id',$cates)->paginate(4);
+             $data = DB::table('bro_goods')->where('status','0')->whereIn('cates_id',$cates)->paginate(4);
              
         }
             return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]); 
@@ -163,6 +163,12 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function all(Request $request)
+    {
+        $data=DB::table('bro_goods')->where('status','0')->paginate(4);
+        return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]);
     }
 
 }

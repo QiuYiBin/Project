@@ -154,6 +154,11 @@ Route::group(["middleware"=>"home"],function(){
 	// 评论图片上传
 	Route::any('/homedetail/upload','Home\DetailController@upload');
 });
+// 晒单路由 
+Route::resource("/homecomment",'Home\CommentController');
+// 商品列表
+Route::resource('/goods','Home\GoodsController');
+Route::get('/goodsall','Home\GoodsController@all');
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
 // 商品列表

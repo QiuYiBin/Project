@@ -9,9 +9,12 @@
   <body>
     <div class="col-lg-12">
     <section class="panel" style="margin-top: 45px;"> 
-      <header class="panel-heading">
-        文章管理
+      <header class="panel-heading" style="float:right">
+        文章修改
       </header> 
+      <div class="btn-group" style="margin-top: 10px;margin-left: 10px;">
+       <a href="/word"><button class="btn btn-primary" id="editable-sample_new"><<&nbsp;&nbsp;文章列表</button></a>
+      </div> 
       <div class="panel-body"> 
         <form class="form-horizontal" role="form" action="/word/{{$data1->id}}" method="post" enctype="multipart/form-data"> 
           <div class="form-group" style="margin-top: 40px"> 
