@@ -120,7 +120,7 @@
                     <form class="row" method="post">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="review_rating">你的评价</label>
+                                <label for="review_rating">你的价格</label>
                                 <select class="form-control form-control-rounded" id="review_rating">
                                     <option>5 星</option>
                                     <option>4 星</option>

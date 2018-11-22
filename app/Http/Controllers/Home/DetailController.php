@@ -34,9 +34,11 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+    	
+       	$article=DB::table("bro_crderinfo")->where('oid','=',$id)->get();
+        return view('Home.ceshi.cesi',['article'=>$article]);
     }
 
     /**
@@ -47,7 +49,44 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+    	$id = session('id');
+
+    	$oid = $request->input('oid');
+
+        $data = $request->except('_token','oid');
+
+        if($request->hasFile('img')){	
+        	echo 666;
+        }
+        dd($data);
+        // 如果没有图片上传
+        if($data['img'] == null){	
+        	unset($data['img']);
+        }
+        
+        // 获取当前时间
+        $time = date('Y-m-d H:i:s',time());
+  		
+  		$array = array();
+
+        foreach($data as $key=>$value)
+        {	
+     		foreach ($value as $k => $v) {
+     			$array[$k][$key] = $v;
+     			$array[$k]['time'] = $time;
+     			$array[$k]['uid'] = $id;
+     		}
+        }
+       	foreach($array as $arr){
+       		\DB::table('bro_comment')->insert($arr);
+       	}
+       	// 修改订单状态
+       	$res['status'] = 4;
+       	
+       	if(\DB::table('bro_crder')->where('id','=',$oid)->update($res)){
+       		return redirect('/homedetail');
+       	}
     }
 
     /**
