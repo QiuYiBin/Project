@@ -1,4 +1,4 @@
-﻿@extends('Home.Personal.public')
+@extends('Home.Personal.public')
 @section('right')
   @if($data == '')
     <div class="col-lg-8"> 

@@ -1,4 +1,4 @@
-﻿@extends('Home.Indexpublic.public')
+@extends('Home.Indexpublic.public')
 @section('main')
  <script type="text/javascript" src="/Home/js/jquery-1.8.3.min.js"></script>
 <div class="offcanvas-wrapper">
