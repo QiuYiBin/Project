@@ -26,6 +26,20 @@
     <link rel="stylesheet" media="screen" href="/Home/css/izitoast.css">
     <!-- Main Style CSS -->
     <link rel="stylesheet" media="screen" href="/Home/css/style.css">
+    <style>
+        .item_submit
+        {
+        background-color:#fff;
+        border: 1px solid #e1e7ec;
+        width:40px;
+        height:40px;
+        border-radius:40px;
+        outline:none;
+        color:#000;
+        cursor:pointer;
+        font-size:15px;
+        }
+</style>
 </head>
 <body>
 <!-- Start Shop Category Menu -->
@@ -79,10 +93,10 @@
 <header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
     <form class="site-search" action="/goods" method="get">
-        <input type="text" name="search" placeholder="请输入关键词">
+        <input type="text" name="search" placeholder="请输入搜索内容">
         <div class="search-tools">
-            <!-- <button class="close-search">&nbsp;搜索&nbsp;</button> -->
-            <input type="submit" value="搜索">
+            <button class="item_submit">&nbsp;<i class="icon-search"></i>&nbsp;</button>
+            <!-- <input type="submit" class="item_submit" value="Go"> -->
             <span class="close-search"><i class="icon-cross"></i></span>
         </div>
     </form>
@@ -104,7 +118,8 @@
                 
             </li>
             <li>
-                <a href="/goods/{{0}}"><span>购物</span></a>
+                
+                <a href="/goodsall" mehtod="post"><span>购物</span></a>
                 <ul class="sub-menu">
                     @if(count($cate))
                     @foreach($cate as $value)

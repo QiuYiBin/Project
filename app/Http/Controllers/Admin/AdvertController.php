@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\Adver;
+use App\Http\Requests\Adveredit;
 class AdvertController extends Controller
 {
     /**
@@ -95,7 +96,7 @@ class AdvertController extends Controller
         // echo $id;
         $data=DB::table('bro_advertisement')->where('id','=',$id)->first();
         if($data == null){
-            return redirect('/advert')->with('error','不要瞎改');
+            return redirect('/advert')->with('error','别乱来');
         }
 
         return view('Admin.AdminAdvert.edit',['data'=>$data]);
@@ -108,7 +109,7 @@ class AdvertController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Adver $request, $id)
+    public function update(Adveredit $request, $id)
     {
         // echo $id;
         $all=$request->except("_token","_method");
@@ -126,7 +127,7 @@ class AdvertController extends Controller
         if(DB::table('bro_advertisement')->where('id','=',$id)->update($all)){
             return redirect('/advert')->with('success','修改成功');
         }else{
-            return back()->with('error','修改成功');
+            return back()->with('error','修改失败');
         }
     }
 

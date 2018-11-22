@@ -103,18 +103,12 @@
      <div class="column"> 
       <div class="shop-sorting"> 
        <label for="sorting">排序方式:</label> 
-       <select class="form-control" id="sorting"> <option>Item Popularity</option> <option>Avarage Rating</option> <option>Low - High Price</option> <option>High - Low Price</option> <option>Name A - Z Order</option> <option>Name Z - A Order</option> </select>
+       <select class="form-control" id="sorting"><option><a href="/">热门商品</a></option><option>低-低价</option> <option>高-高价</option></select>
        <span class="text-muted">显示: </span>
-       <span> 1 - 12项</span> 
+       <span> 1 - 4项</span> 
       </div> 
-     </div> 
-     <div class="column"> 
-      <div class="shop-view"> 
-       <a class="grid-view active" href="shop-grid-1.html"> <span></span> <span></span> <span></span> </a> 
-       <a class="list-view" href="shop-list-1.html"> <span></span> <span></span> <span></span> </a> 
-      </div> 
-     </div> 
-    </div> 
+     </div>
+    </div>
     <!-- End Toolbar --> 
     <!-- Start Products Grid --> 
 
