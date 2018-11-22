@@ -20,6 +20,7 @@ class GoodsController extends Controller
         $name = $request->input('name');
         $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(10);
         $count = DB::table('bro_goods')->count();
+        
         return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all())->with('count',$count);
     }
 
@@ -72,6 +73,14 @@ class GoodsController extends Controller
     public function show($id)
     {
         //
+        $res = \DB::table('bro_goods')->where('id','=',$id)->first();
+        if($res == null){
+            return redirect('/admingoods')->with('error','不要瞎改');
+        }
+        // 获取商品小图片
+        $imgs = explode(',',$res->imgs);
+
+        return view('Admin.AdminGoods.show')->with('res',$res)->with('imgs',$imgs);
     }
 
     /**
@@ -114,8 +123,13 @@ class GoodsController extends Controller
         if($data['pic'] == null){
             unset($data['pic']);
         }else{
+
             $pic = DB::table('bro_goods')->select('bro_goods.pic')->where('id','=',$id)->first();
-            unlink('./Uploads/Goods/'.$pic->pic);
+            // 先判断文件是否存在，存在则删除
+            if (file_exists('./Uploads/Goods/'.$pic->pic)) {
+                unlink('./Uploads/Goods/'.$pic->pic);
+            }
+            
         }
 
         if($data['imgs'] == null){
@@ -123,9 +137,15 @@ class GoodsController extends Controller
         }else{
             // 先获取之前的小图片
             $imgs = DB::table('bro_goods')->where('id','=',$id)->first();
+
             $del = explode(',',$imgs->imgs);
+
             foreach($del as $value){
-                unlink('./Uploads/Goods/'.$value);
+
+                if (file_exists('./Uploads/Goods/'.$value)) {
+                    unlink('./Uploads/Goods/'.$value);
+                }
+                
             }
         }
         
@@ -149,9 +169,13 @@ class GoodsController extends Controller
         // 获取要删除的小图片
         $imgs = explode(',',$pic->imgs);
         if(DB::table('bro_goods')->where('id','=',$id)->delete()){
-            unlink('./Uploads/Goods/'.$pic->pic);
+            if (file_exists('./Uploads/Goods/'.$pic->pic)) {
+                unlink('./Uploads/Goods/'.$pic->pic);
+            }
             foreach ($imgs as $value) {
-                unlink('./Uploads/Goods/'.$value);     
+                if (file_exists('./Uploads/Goods/'.$value)) {
+                    unlink('./Uploads/Goods/'.$value);
+                }    
             }
             return redirect('/admingoods')->with('success','删除成功');
         }else{

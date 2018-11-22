@@ -44,7 +44,6 @@ class CouponController extends Controller
     //处理添加数据
     public function store(Coupon $request)
     {
-
         $data = $request->except(['_token']);
         
         if(DB::table("bro_coupon")->insert($data)){

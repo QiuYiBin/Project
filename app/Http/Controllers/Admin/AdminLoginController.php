@@ -46,6 +46,10 @@ class AdminLoginController extends Controller
         //根据输入的用户名获取用户信息
         //检测用户名是有有误
         $info=DB::table("bro_users")->where("name",'=',$request->input('name'))->first();
+        
+        if ($info == null) {
+        	return back()->with('error','没有这个用户');
+        }
         //检测是否被禁用
         if($info->status==0){
         	//检测密码

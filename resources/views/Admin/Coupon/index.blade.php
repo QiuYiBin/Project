@@ -60,6 +60,7 @@
           <div class="dataTables_paginate paging_full_numbers" id="pages" style="float:right;">
             {{$coupon->appends($request)->render()}} 
           </div> 
+
          </div>
           <div class="dataTables_info" id="editable-sample_info">共{{$count}}条数据</div> 
         </div> 

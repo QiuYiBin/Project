@@ -26,7 +26,9 @@
   <link href="/Admin/css/style.css" rel="stylesheet">
   <link href="/Admin/css/style-responsive.css" rel="stylesheet">
     <!-- Placed js at the end of the document so the pages load faster -->
+
   <script src="/Admin/js/jquery-1.10.2.min.js"></script>
+
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="/Admin/js/html5shiv.js"></script>
@@ -92,17 +94,6 @@
                         <li><a href="/admincates/create">添加分类</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="grids.html"> Grids</a></li>
-                        <li><a href="gallery.html"> Media Gallery</a></li>
-                        <li><a href="calendar.html"> Calendar</a></li>
-                        <li><a href="tree_view.html"> Tree View</a></li>
-                        <li><a href="nestable.html"> Nestable</a></li>
-
-                    </ul>
-                </li>
-
                 <li class="menu-list"><a href=""><i class="fa fa-bullhorn"></i> <span>公告管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/adminarticle/create">公告添加</a></li>
@@ -126,20 +117,35 @@
                         <li><a href="/slider">轮播图列表</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href="#"><i class="fa fa-jpy"></i> <span>订单管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/crder">订单列表</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href=""><i class="fa fa-paperclip"></i> <span>友情链接</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/link">链接详情</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-list"><a href="#"><i class="fa fa-bookmark-o"></i> <span>优惠券</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/coupon/create">添加优惠券</a></li>
                         <li><a href="/coupon">优惠券详情表</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href=""><i class="fa fa-bullhorn"></i> <span>广告管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/advert">广告列表</a></li>
+                        <li><a href="/advert/create">广告添加</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="#"><i class="fa fa-file-text"></i> <span>文章管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/word">文章列表</a></li>   
+                        <li><a href="/word/create">添加文章</a></li>
                     </ul>
                 </li>
                 <li><a href="/adminlogin"><i class="fa fa-power-off"></i> <span>注销</span></a></li>
@@ -368,6 +374,7 @@
 
     <!--Dashboard Charts-->
     <script src="/Admin/js/dashboard-chart-init.js"></script>
+
 
     @section('js')
     @show

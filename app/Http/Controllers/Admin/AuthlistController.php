@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 //导入模型类Users
 use App\Models\Authlist;
+// 导入校验类
+use App\Http\Requests\Authlists;
 class AuthlistController extends Controller
 {
     /**
@@ -74,7 +76,7 @@ class AuthlistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Authlists $request)
     {
         //获取所有数据
         // dd($request->except(['_token']));
@@ -123,7 +125,7 @@ class AuthlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Authlists $request, $id)
     {
         // echo $id;
         // //获取参数
@@ -156,8 +158,7 @@ class AuthlistController extends Controller
      public function del(Request $request){
         //获取参数id
         $id = $request->input('id');
-        
-        
+    
         if(DB::table("bro_node")->where("id","=",$id)->delete()){
             //json格式
             return json_encode(['msg'=>1]);;

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>@section('title')</title>
+    <title>@yield('title')</title>
     <!-- Mobile Specific Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
@@ -38,14 +38,13 @@
             @foreach($cate as $value)
             <li class="has-children">
                 <span>
-                    <a href="shop-categories-1.html">{{$value->name}}</a>
+                    <a href="/goods/{{$value->id}}">{{$value->name}}</a>
                     <span class="sub-menu-toggle"></span>
                 </span>
-                
                 <ul class="offcanvas-submenu">
                     @if(count($value->dev))
                     @foreach($value->dev as $rows)
-                    <li><a href="shop-grid-1.html">{{$rows->name}}</a></li>
+                    <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                     @endforeach
                     @endif
                 </ul> 
@@ -56,21 +55,34 @@
 </div>
 <!-- End Shop Category Menu -->
 <!-- Start TopBar -->
-<div class="topbar" style="margin-top: -20px">
+<div class="topbar" style="">
+	
+
     <div class="topbar-column">
-        <a class="hidden-md-down" href="#"><i class="fa fa-phone"></i>&nbsp;+131 8888 8888</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-envelope-o"></i>&nbsp;haikyzhenjiuyixia@qq.com</a>
-        <a class="hidden-md-down" href="#"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;广州</a>
+    	
     </div>
+    
+    @if(session('username'))
+       <div style="line-height: 39px;float: right;"> 
+        <a href="#">欢迎{{session('username')}}</a>
+        <a href="/homelogin/create"></i>退出</a>
+        </div>
+    @else
+        <div style="line-height: 39px;float: right;">
+        <a href="/homelogin">登陆</a>
+        <a href="/register">注册</a>
+        </div>
+    @endif
 </div>
 <!-- End TopBar -->
 <!-- Start NavBar -->
-<header class="navbar navbar-sticky">
+<header class="navbar navbar-sticky" style="min-height:80px;margin-bottom:0px">
     <!-- Start Search -->
-    <form class="site-search" method="get">
-        <input type="text" name="site_search" placeholder="Type to search...">
+    <form class="site-search" action="/goods" method="get">
+        <input type="text" name="search" placeholder="请输入关键词">
         <div class="search-tools">
-            <span class="clear-search">Clear</span>
+            <!-- <button class="close-search">&nbsp;搜索&nbsp;</button> -->
+            <input type="submit" value="搜索">
             <span class="close-search"><i class="icon-cross"></i></span>
         </div>
     </form>
@@ -80,7 +92,7 @@
         <div class="inner">
             <a class="offcanvas-toggle cats-toggle" href="#shop-categories" data-toggle="offcanvas"></a>
             <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
-            <a class="site-logo" href="index-1.html"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
+            <a class="site-logo" href="/"><img src="/Home/images/logo/logo.png" alt="Inspina"></a>
         </div>
     </div>
     <!-- End Logo -->
@@ -92,16 +104,16 @@
                 
             </li>
             <li>
-                <a href="#"><span>购物</span></a>
+                <a href="/goods/{{0}}"><span>购物</span></a>
                 <ul class="sub-menu">
                     @if(count($cate))
                     @foreach($cate as $value)
                     <li class="has-children">
-                        <a href="#"><span>{{$value->name}}</span></a>
+                        <a href="/goods/{{$value->id}}"><span>{{$value->name}}</span></a>
                         @if(count($value->dev))
                         <ul class="sub-menu">
                             @foreach($value->dev as $rows)
-                            <li><a href="shop-categories-1.html">{{$rows->name}}</a></li>
+                            <li><a href="/goods/{{$rows->id}}">{{$rows->name}}</a></li>
                             @endforeach
                         </ul>
                          @endif
@@ -111,11 +123,15 @@
                 </ul>
             </li>
             <li>
-                <a href="/homecates"><span>友情链接</span></a>
+                <a href="/homeword"><span>文章管理</span></a>
+            </li>
+            <li>
+                <a href="/article"><span>公告</span></a>
             </li>
             <li>
                 <a href="#"><span>关于我们</span></a>
             </li>
+
         </ul>
     </nav>
     <!-- End Nav Menu -->
@@ -123,7 +139,9 @@
     <div class="toolbar">
         <div class="inner">
             <div class="tools">
-                <div class="search"><i class="icon-search"></i></div>
+                <div class="search">
+                    <i class="icon-search"></i>
+                </div>
                 <!-- Start Account -->
                 <div class="account">
                     <a href="#"></a><i class="icon-head"></i>
@@ -133,72 +151,21 @@
                                 <img src="/Home/images/account/user-ava-sm.jpg" alt="Tony Stark">
                             </div>
                             <div class="user-info">
-                                <h6 class="user-name">Tony Stark</h6>
-                                <span class="text-xs text-muted">530 Reward Points</span>
+                                <h6 class="user-name">Admin</h6>
                             </div>
                         </li>
-                        <li><a href="account-profile.html">My Profile</a></li>
-                        <li><a href="account-orders.html">My Orders</a></li>
-                        <li><a href="account-wishlist.html">My Wishlist</a></li>
+                        <li><a href="/homepersonal">个人中心</a></li>
+                        <li><a href="/homedetail">我的订单</a></li>
+                        <li><a href="/homewish">我的收藏</a></li>
                         <li class="sub-menu-separator"></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Sign Out</a></li>
+                        <li><a href="#"><i class="fa fa-lock"></i>退出</a></li>
                     </ul>
-                </div>
+                </div> 
                 <!-- End Account -->
                 <!-- Start Cart -->
                 <div class="cart">
-                    <a href="#"></a>
+                    <a href="/homecart"></a>
                     <i class="icon-bag"></i>
-                    <span class="count">3</span>
-                    <span class="subtotal">$1920</span>
-                    <div class="toolbar-dropdown">
-                        <div class="dropdown-product-item">
-                            <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                            <a class="dropdown-product-thumb" href="shop-single-1.html">
-                                <img src="/Home/images/cart-dropdown/01.jpg" alt="Product">
-                            </a>
-                            <div class="dropdown-product-info">
-                                <a class="dropdown-product-title" href="shop-single-1.html">Samsung Galaxy A8</a>
-                                <span class="dropdown-product-details">1 x $520</span>
-                            </div>
-                        </div>
-                        <div class="dropdown-product-item">
-                            <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                            <a class="dropdown-product-thumb" href="shop-single-2.html">
-                                <img src="/Home/images/cart-dropdown/02.jpg" alt="Product">
-                            </a>
-                            <div class="dropdown-product-info">
-                                <a class="dropdown-product-title" href="shop-single-2.html">Panasonic TX-32</a>
-                                <span class="dropdown-product-details">2 x $400</span>
-                            </div>
-                        </div>
-                        <div class="dropdown-product-item">
-                            <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                            <a class="dropdown-product-thumb" href="shop-single-3.html">
-                                <img src="/Home/images/cart-dropdown/03.jpg" alt="Product">
-                            </a>
-                            <div class="dropdown-product-info">
-                                <a class="dropdown-product-title" href="shop-single-3.html">Acer Aspire 15.6 i3</a>
-                                <span class="dropdown-product-details">1 x $600</span>
-                            </div>
-                        </div>
-                        <div class="toolbar-dropdown-group">
-                            <div class="column">
-                                <span class="text-lg">Total:</span>
-                            </div>
-                            <div class="column text-right">
-                                <span class="text-lg text-medium">$1920 </span>
-                            </div>
-                        </div>
-                        <div class="toolbar-dropdown-group">
-                            <div class="column">
-                                <a class="btn btn-sm btn-block btn-secondary" href="cart.html">View Cart</a>
-                            </div>
-                            <div class="column">
-                                <a class="btn btn-sm btn-block btn-success" href="checkout-address.html">Checkout</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- End Cart -->
             </div>
@@ -245,7 +212,7 @@
                     <section class="widget widget-links widget-light-skin">
                         <h3 class="widget-title">Our Services</h3>
                         <ul>
-                            <li><a href="#">Creative Web Design</a></li>
+                            <li><a href="/friendship">友情链接</a></li>
                             <li><a href="#">Full Responsive Front-End</a></li>
                             <li><a href="#">Compatible For All Browsers</a></li>
                             <li><a href="#">W3C Walidated Code</a></li>

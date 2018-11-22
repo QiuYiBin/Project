@@ -19,6 +19,7 @@ class LinkController extends Controller
     {
         $k = $request->input('keywords');
         // dd($k);
+
         $data = Link::where('name','like','%'.$k.'%')->paginate(10);
         $count = DB::table('bro_link')->count();
         return view("Admin.Link.index",['data'=>$data])->with('request',$request->all())->with('count',$count);

@@ -20,6 +20,7 @@ class CrderController extends Controller
         $k=$request->input("keywords");
         $k1=$request->input("keywordss");
 
+
         $data= Crder::where("linkname",'like',"%".$k."%")->where('orderid','like',"%".$k1."%")->paginate(10);
         $count = DB::table('bro_crder')->count();
         return view("Admin.Crder.index",['data'=>$data,'request'=>$request->all()])->with('count',$count);
@@ -67,7 +68,6 @@ class CrderController extends Controller
     //执行修改
     public function edit($id)
     {
-        $id = $id;
         $link = DB::table("bro_crder")->where("id",'=',$id)->first();
         // dd($link);
         return view("Admin.Crder.edit",['link'=>$link]);
@@ -88,10 +88,16 @@ class CrderController extends Controller
         // var_dump($request->all());
         $crder=$request->except('_token','_method');
         // dd($crder);
+        if($crder['linkname']== ''){
+            return back()->with('error','修改失败,名字不能为空');
+        };
         if($crder['address']== ''){
-            return back()->with('error','修改失败,不能为空');
+            return back()->with('error','修改失败,地址不能为空');
         };
         if($crder['tel']== ''){
+            return back()->with('error','修改失败,电话不能为空');
+        };
+        if($crder['status'] == ''){
             return back()->with('error','修改失败,不能为空');
         };
        if(DB::table("bro_crder")->where("id","=",$id)->update($crder)){

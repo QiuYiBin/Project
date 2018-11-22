@@ -17,7 +17,7 @@ class Crder extends Model
     //修改器
     public function getStatusAttribute($value)
     {
-       $status=[0=>'未发货',1=>'已发货',2=>'已收货'];
+       $status=[0=>'未发货',1=>'已付款',2=>'已发货',3=>'已收货',4=>'待评论',5=>'订单完成'];
         return $status[$value];
 
     }
