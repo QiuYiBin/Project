@@ -44,7 +44,7 @@
         <div class="form-group"> 
          <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">切换头像</font></font></label> 
          <br/>
-         <input class="form" type="file" name="pic"  value=""  required=""/> 
+         <input class="form" type="file" name="pic"  value="" > 
         </div> 
        </div>  
        <div class="col-12"> 
@@ -104,7 +104,7 @@
         <div class="form-group"> 
          <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新头像</font></font></label> 
          <br/>
-         <input class="form" type="file" name="pic"  value=""  required=""/> 
+         <input class="form" type="file" name="pic"  value=""  > 
         </div> 
        </div>  
        <div class="col-12"> 
@@ -113,7 +113,7 @@
          <div class="custom-control custom-checkbox d-block"> 
           <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="" />
          </div> 
-         <button class="btn btn-primary margin-right-none" "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></button> 
+         <button class="btn btn-primary margin-right-none" "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改</font></font></button> 
         </div> 
        </div>
        {{ method_field('PUT') }}
