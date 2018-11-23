@@ -117,6 +117,8 @@
         <div class="table-responsive shopping-cart">
             
             <table class="table">
+        		
+           
                     <thead>
                         <tr>
                             <th>产品名称</th>
@@ -154,7 +156,7 @@
 							
 						      ?>
         					<td class="btn-numbox">   	
-        						<ul class="count" style="margin-left: 110px">
+        						<ul class="count" style="margin-left: 110px" width="200px">
         							
         				             <li id="num-jian" ids="{{$row->id}}" class="num-jian" money="{{$row->price}}">-</li>
         				             <li><input type="text" class="input-num" id="input-num" ids="{{$row->id}}" value="{{session('cart.'.$row->id)['num']}}"  money="{{$row->price}}" disabled /></li>
