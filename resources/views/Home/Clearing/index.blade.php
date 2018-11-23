@@ -30,7 +30,7 @@
 	<link href="/Home/Clearing/vendor.css" rel="stylesheet">
 	<link href="/Home/Clearing/index.css" rel="stylesheet">
 	<link rel="stylesheet" href="/Home/Clearing/header.css">
-   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/Home/js/jquery-1.8.3.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
  

@@ -9,6 +9,7 @@ use Mail;
 //导入Hash
 use Hash;
 use DB;
+use URL;
 //导入三方类
 use Gregwar\Captcha\CaptchaBuilder;
 
@@ -19,8 +20,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('redirectPath', URL::previous());
         return view("Home.Login.index");
     }
 
@@ -86,6 +88,9 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {   
+
+         
+        
         $request->flashOnly('username');
         // 获取验证码
         $vcode = $request->input('vcode');
@@ -107,7 +112,12 @@ class LoginController extends Controller
                   if($row->status==0){
                     //将会员的信息存储在session里
                     session(['id'=>$row->id,'username'=>$row->username]);
-                    return redirect("/");
+
+                    $url = $request->session()->get('redirectPath');
+                    
+                    $request->session()->forget('redirectPath');
+
+                    return redirect($url);
                     // echo "登陆成功";
                 }else{
                     if($res=$this->sendMail($row->id,$row->token,$row->email)){

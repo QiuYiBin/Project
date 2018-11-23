@@ -66,7 +66,7 @@ class DetailController extends Controller
   		
   		$array = array();
 
-        // dd($data);
+        dd($data);
         foreach($data as $key=>$value)
         {	
      		foreach ($value as $k => $v) {
