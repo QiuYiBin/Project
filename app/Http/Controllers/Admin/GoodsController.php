@@ -18,7 +18,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         $name = $request->input('name');
-        $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->paginate(10);
+        $data = DB::table('bro_goods')->select('bro_goods.*','bro_cates.name as catesname')->where('bro_goods.name','like','%'.$name.'%')->join('bro_cates','bro_goods.cates_id','=','bro_cates.id')->orderBy('id','asc')->paginate(10);
         $count = DB::table('bro_goods')->count();
         
         return view('Admin.AdminGoods.index')->with('data',$data)->with('request',$request->all())->with('count',$count);

@@ -105,8 +105,6 @@
         autoFloatEnabled:false
       });
     });
-
-    
 </script>
 </html>
 @endsection
