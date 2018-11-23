@@ -114,7 +114,7 @@ class LoginController extends Controller
                     session(['id'=>$row->id,'username'=>$row->username]);
 
                     $url = $request->session()->get('redirectPath');
-                    
+                    // dd($url);
                     $request->session()->forget('redirectPath');
 
                     return redirect($url);

@@ -68,7 +68,7 @@ class DetailController extends Controller
   		
   		$array = array();
 
-        dd($data);
+        // dd($data);
         foreach($data as $key=>$value)
         {	
      		foreach ($value as $k => $v) {
@@ -78,6 +78,7 @@ class DetailController extends Controller
      		}
         }
 
+        // dd($array);
        	foreach($array as $arr){
        		\DB::table('bro_comment')->insert($arr);
        	}
