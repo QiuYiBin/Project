@@ -51,17 +51,72 @@ class GoodsController extends Controller
      */
     public function store(Goods $request)
     {        
-        // 移除不需要的字段
-        $data = $request->except('_token');
-        // dd($data);
-        if($data['cates_id'] == '0'){
-            return back()->with('error','请选择分类');
-        } 
+       // dd($request->all());
+       $data = $request->except('_token');
+
+       // 获取多文件上传
+       $files = $request->file('imgs');
+       
+       // 处理封面上传
+       if($request->hasFile('pic')){
+            // 初始化名字
+            $name = date('Ymd',time()).mt_rand(1,10000);
+
+            // 获取上传文件后缀
+            $ext=$request->file("pic")->getClientOriginalExtension();
+
+            // 拼接文件名和后缀
+            $names = $name.'.'.$ext;
+
+            // 
+            $request->file("pic")->move("./Uploads/Goods/",$names);
+
+            $data['pic'] = $names;
+
+        }
+
+        // 定义空数组来存储多图片文件名
+        $imgpath = array();
+
+        foreach($files as $key=>$value){
+            // 判断图片上传中是否出错
+            if (!$value->isValid()) {
+                exit("上传图片出错，请重试！");
+            }
+            // 此处防止没有多文件上传的情况
+            if(!empty($value)){
+                // 文件上传类型
+                $allowed_extensions = ["png", "jpg", "gif"];
+
+                if ($value->getClientOriginalExtension() && !in_array($value->getClientOriginalExtension(), $allowed_extensions)) {
+                    return back()->with('error','您只能上传PNG、JPG或GIF格式的图片！');
+                }
+                // 文件上传路径
+                $destinationPath = '/Uploads/Goods/';
+                // 上传文件后缀
+                $extension = $value->getClientOriginalExtension();
+                // 重命名   
+                $fileName = date('YmdHis').mt_rand(100,999).'.'.$extension;
+                // 保存图片 
+                $value->move(public_path().$destinationPath, $fileName); 
+
+                $imgpath[] = $fileName; 
+            }
+        }
+        $comma_separated = implode(',', $imgpath);
+        
+        $data['imgs'] = $comma_separated;
+
+        // 处理多图片上传
         if(DB::table('bro_goods')->insert($data)){
             return redirect('/admingoods')->with('success','添加成功');
         }else{
-            return back()->with('error','添加失败');
+            return redirect('/admingoods')->with('success','添加失败');
         }
+       
+       
+
+
     }
 
     /**
@@ -120,21 +175,67 @@ class GoodsController extends Controller
     {
         $data = $request->except('_token','_method');
 
-        if($data['pic'] == null){
-            unset($data['pic']);
-        }else{
+        // 获取多文件上传
+        $files = $request->file('imgs');
+
+        // 处理封面上传
+        if($request->hasFile('pic')){
+            // 初始化名字
+            $name = date('Ymd',time()).mt_rand(1,10000);
+
+            // 获取上传文件后缀
+            $ext=$request->file("pic")->getClientOriginalExtension();
+
+            // 拼接文件名和后缀
+            $names = $name.'.'.$ext;
+
+            // 
+            $request->file("pic")->move("./Uploads/Goods/",$names);
+
+            $data['pic'] = $names;
 
             $pic = DB::table('bro_goods')->select('bro_goods.pic')->where('id','=',$id)->first();
+
             // 先判断文件是否存在，存在则删除
             if (file_exists('./Uploads/Goods/'.$pic->pic)) {
                 unlink('./Uploads/Goods/'.$pic->pic);
             }
-            
+
         }
 
-        if($data['imgs'] == null){
-            unset($data['imgs']);
-        }else{
+        // 定义空数组来存储多图片文件名
+        $imgpath = array();
+
+        if($request->hasFile('imgs')){
+            foreach($files as $key=>$value){
+                // 判断图片上传中是否出错
+                if (!$value->isValid()) {
+                    exit("上传图片出错，请重试！");
+                }
+                // 此处防止没有多文件上传的情况
+                if(!empty($value)){
+                    // 文件上传类型
+                    $allowed_extensions = ["png", "jpg", "gif"];
+
+                    if ($value->getClientOriginalExtension() && !in_array($value->getClientOriginalExtension(), $allowed_extensions)) {
+                        return back()->with('error','您只能上传PNG、JPG或GIF格式的图片！');
+                    }
+                    // 文件上传路径
+                    $destinationPath = '/Uploads/Goods/';
+                    // 上传文件后缀
+                    $extension = $value->getClientOriginalExtension();
+                    // 重命名   
+                    $fileName = date('YmdHis').mt_rand(100,999).'.'.$extension;
+                    // 保存图片 
+                    $value->move(public_path().$destinationPath, $fileName); 
+
+                    $imgpath[] = $fileName; 
+                }
+            }
+            $comma_separated = implode(',', $imgpath);
+        
+            $data['imgs'] = $comma_separated;
+
             // 先获取之前的小图片
             $imgs = DB::table('bro_goods')->where('id','=',$id)->first();
 

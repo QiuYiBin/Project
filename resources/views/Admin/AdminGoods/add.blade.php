@@ -67,22 +67,13 @@
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">商品封面图</label> 
               <div class="col-md-3 col-xs-9"> 
-                <input name="pics" id="uploads" type="file" />
-                <div id="main" >
-
-                </div> 
-                <input type="hidden" name="pic" id="imgs">
+                <input name="pic" id="uploads" type="file" />
               </div> 
           </div>
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">商品多图片</label> 
               <div class="col-md-3 col-xs-12" style="width: 1000px"> 
-                <input name="picss" id="uploadss" type="file" />
-                <div id="mains" >
-
-                </div> 
-                <input type="hidden" name="imgs" id="imgss"> 
-              </div> 
+                <input name="imgs[]" id="uploadss" type="file" multiple />
           </div>
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputEmail1">详细信息</label> 
