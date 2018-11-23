@@ -2,10 +2,6 @@
 @section('main')
 <html>
   <head>
-    <!-- 引入文件上传css -->
-    <link rel="stylesheet" type="text/css" href="/Uploadify/uploadify.css">
-    <!-- 引入文件上传插件 -->
-    <script type="text/javascript" src="/Uploadify/jquery.uploadify.min.js"></script>
     <!-- 引入百度编辑器文件 -->
     <script type="text/javascript" charset="utf-8" src="/Ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/Ueditor/ueditor.all.min.js"> </script>
@@ -107,96 +103,6 @@
       });
       var ues = UE.getEditor('editors',{
         autoFloatEnabled:false
-      });
-      // 声明字符串
-      var imgs = '';
-      $('#uploads').uploadify({
-        // 设置文本
-        'buttonText' : '商品封面图',
-        // 设置文本传输数据
-        'formDate' : { 
-          '_token' : '{{csrf_field()}}',
-          'file' : 'Goods'
-        },
-        // 上传的flash动画
-        'swf' : '/Uploadify/uploadify.swf',
-        'auto': true,
-        // 文件上传的地址(路由)
-        'uploader' : '/admingoods/upload',
-        // 设置文件上传格式
-        'fileTypeExts': '*.gif; *.jpg; *.png; *.bmp',
-        // 当文件上传成功
-        'onUploadSuccess' : function(file, data, response) {
-          // 拼接图片
-          imgs = '<img width="200" src="/Uploads/Goods/'+data+'">';
-          // 显示图片
-          $('#main').html(imgs);
-          // 隐藏传递数据
-          $('#imgs').val(data);
-        },
-        'onSelectError': function (file, errorCode, errorMsg) {
-          switch (errorCode) {
-              case -100:
-                  alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
-                  break;
-              case -110:
-                  alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
-                  break;
-              case -120:
-                  alert("文件 [" + file.name + "] 大小异常！");
-                  break;
-              case -130:
-                  alert("文件 [" + file.name + "] 类型不正确！");
-                  break;
-          }
-      },
-      });
-      // 小图上传
-      // 声明字符串
-      var imgss = '';
-      var arr = [];
-      $('#uploadss').uploadify({
-        // 设置文本
-        'buttonText' : '商品小图片上传',
-        // 设置文本传输数据
-        'formDate' : { 
-          '_token' : '{{csrf_field()}}',
-          'file' : 'Goods'
-        },
-        // 上传的flash动画
-        'swf' : '/Uploadify/uploadify.swf',
-        // 文件上传的地址(路由)
-        'uploader' : '/admingoods/upload',
-        // 设置文件上传格式
-        'fileTypeExts': '*.gif; *.jpg; *.png; *.bmp',
-        // 当文件上传成功
-        'onUploadSuccess' : function(file, data, response) {
-          // 拼接图片
-          imgss += '<img width="200" src="/Uploads/Goods/'+data+'">';
-          // 显示图片
-          $('#mains').html(imgss);
-          // 把返回的全部文件名放进数组里面
-          arr.push(data);
-          // 隐藏传递数据 用逗号拼接
-          $('#imgss').val(arr.join(','));
-
-        },
-        'onSelectError': function (file, errorCode, errorMsg) {
-          switch (errorCode) {
-              case -100:
-                  alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
-                  break;
-              case -110:
-                  alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
-                  break;
-              case -120:
-                  alert("文件 [" + file.name + "] 大小异常！");
-                  break;
-              case -130:
-                  alert("文件 [" + file.name + "] 类型不正确！");
-                  break;
-          }
-        },
       });
     });
 
