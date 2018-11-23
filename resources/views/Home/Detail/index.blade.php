@@ -160,6 +160,9 @@
                     <li class="shipping"><span>运费：</span>+ ¥0</li>
                     <li class="amount"><span>订单金额：</span><em>¥{{$row->total}}</em></li>
                 </ul>
+                @foreach($result as $value)
+            	<h5>{{$value['context']}}</h5>
+           		@endforeach
             </div>
         </div>
     </div>
@@ -167,6 +170,8 @@
 	
     
     @endforeach
+
+          	
 	
     
 
