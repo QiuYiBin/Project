@@ -42,9 +42,10 @@
        </div> 
         <div class="col-md-6"> 
         <div class="form-group"> 
-         <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">切换头像</font></font></label> 
+         <label for="account-confirm-pass"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" >切换头像</font></font></label> 
          <br/>
-         <input class="form" type="file" name="pic"  value="" > 
+         <input class="form" type="file" name="pic"  value=""
+         required=""/ > 
         </div> 
        </div>  
        <div class="col-12"> 
