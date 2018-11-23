@@ -432,10 +432,10 @@
 
 
     $('#tijiao').click(function(){
-		if($('#addres').is(':checked')){ 
+		if($('#addres').is(':checked')){
             return true;
         }else{
-            alert('请选择一个收货地址') 
+            alert('请选择一个收货地址'); 
             return false;
         }
         

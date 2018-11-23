@@ -55,7 +55,7 @@ class AdminLoginController extends Controller
         	//检测密码
             	if(Hash::check($request->input('password'),$info->password)){	
                 //把用户信息写入session
-                session(['id'=>$info->id]);
+                // session(['id'=>$info->id]);
                 session(['name'=>$info->name]);
                 //1.获取登录后台用户所有的权限信息
                     $sql="select n.name,n.mname,n.aname from bro_user_role as ur,bro_role_node as rn,bro_node as n  where ur.rid=rn.rid and rn.nid=n.id and uid={$info->id}";

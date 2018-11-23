@@ -19,9 +19,11 @@ class DetailController extends Controller
         // 获取id
         $id=session('id');
 
+        // dd($id);
+
         // 每个用户的订单
         $data = DB::table('bro_crder')->where('bro_crder.uid','=',$id)->orderBy('id','asc')->get();
-
+        // dd($data);
         // 显示每个订单下面的商品
         $res = DB::table('bro_crder')->join('bro_crderinfo','bro_crder.id','=','bro_crderinfo.oid')->where('bro_crder.uid','=',$id)->get();
       
@@ -133,25 +135,4 @@ class DetailController extends Controller
         //
 
     }	
-
-    // 评论图片上传
-    public function upload(Request $request)
-    {
-        $file = $request->file('Filedata');
-        // 判断目录是否存在
-        $dir = $request->input('file');
-        if (!file_exists('./Uploads/'.$dir.'')) {
-            mkdir('./Uploads/'.$dir.'');
-        }
-        // 判断上传的文件是否有效
-        if ($file->isValid()) {
-            // 获取后缀
-            $ext = $file->getClientOriginalExtension();
-            // 生成新的文件名
-            $newFile = time().rand().'.'.$ext;
-            // 移动到指定目录
-            $request->file('Filedata')->move('./Uploads/Comment/',$newFile);
-            echo $newFile;
-        }
-    }
 }
