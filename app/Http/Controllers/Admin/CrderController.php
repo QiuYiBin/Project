@@ -23,6 +23,7 @@ class CrderController extends Controller
 
         $data= Crder::where("linkname",'like',"%".$k."%")->where('orderid','like',"%".$k1."%")->orderBy('id','asc')->paginate(9);
         $res = DB::table('bro_crder')->join('bro_user','bro_user.id','=','bro_crder.uid')->get();
+        // dd($res);
         $count = DB::table('bro_crder')->count();
         return view("Admin.Crder.index",['data'=>$data,'request'=>$request->all()])->with('count',$count)->with('res',$res);
 

@@ -26,8 +26,13 @@ class DetailController extends Controller
         // dd($data);
         // 显示每个订单下面的商品
         $res = DB::table('bro_crder')->join('bro_crderinfo','bro_crder.id','=','bro_crderinfo.oid')->where('bro_crder.uid','=',$id)->get();
-      
-        return view('Home.Detail.index')->with('data',$data)->with('res',$res);
+        $url="http://www.kuaidi100.com/query?type=yuantong&postid=802935726368749732";
+        $method="get";
+        $post=0;
+        $res1=curlGet($url,$method,$post);
+        $data1=json_decode($res1,true);
+        $result = $data1['data'];
+        return view('Home.Detail.index')->with('data',$data)->with('result',$result)->with('res',$res);
        
     }
 
