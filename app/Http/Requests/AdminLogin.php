@@ -27,7 +27,7 @@ class AdminLogin extends FormRequest
     {
         return [
             //required 数据不能为空规则  regex 正则规则  unique唯一规则 bro_user操作的数据表  same一致规则
-            'name'=>'required|regex:/\w{4,8}/',
+            'name'=>'required||max:8|min:4',
             'password'=>'required|regex:/\w{6,18}/',
             'captcha' => 'required|captcha',
         ];
@@ -37,7 +37,8 @@ class AdminLogin extends FormRequest
     public function messages(){
         return [
             'name.required'=>'用户名不能为空',
-            'name.regex'=>'用户名必须为4-8位任意的数字字母下划线',
+             'name.max'=>'管理员名最大为8位',
+            'name.min'=>'管理员名最少为4位',
             'password.required'=>'密码不能为空',
             'password.regex'=>'密码必须为8-18位任意的数字字母下划线',
         ];
