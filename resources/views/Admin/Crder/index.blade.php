@@ -48,10 +48,10 @@
            </tr> 
          </thead> 
          <tbody class=".table-striped">
-          @foreach($data as $row) 
+          @foreach($data as $key=>$row) 
           <tr class="odd"> 
-            <td class="numeric">{{$row->id}}</td> 
-            <td class="numeric">{{$row->uid}}</td>
+            <td class="numeric">{{$row->id}}</td>
+            <td class="numeric">{{$res[$key]->username}}</td>
             <td class="numeric">{{$row->linkname}}</td> 
             <td class="numeric">{{$row->address}}</td> 
             <td class="numeric">{{$row->tel}}</td> 

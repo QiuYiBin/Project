@@ -29,11 +29,7 @@
 	        <label for="review_text">评论 </label>
 	        <textarea name="text[]" class="form-control form-control-rounded" id="review_text" rows="8"></textarea>
 	        晒图：
-	        <input name="picss" id="uploadss" type="file" />
-            <div id="mains" >
-
-            </div> 
-            <input type="hidden" name="imgs" id="imgss"> 
+	        <input name="imgs" id="uploadss" type="file" />
 	    </div>
 	</div>
 	{{csrf_field()}}

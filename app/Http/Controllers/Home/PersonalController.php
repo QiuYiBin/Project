@@ -126,7 +126,10 @@ class PersonalController extends Controller
             //执行数据库的修改
             if(DB::table("bro_username")->where("id","=",$id)->update($data)){
                 //删除原图
-                unlink('./Uploads/User/'.$info->pic);
+                // 先判断文件是否存在，存在则删除
+                if (file_exists('./Uploads/User/'.$info->pic)) {
+                    unlink('./Uploads/User/'.$info->pic);
+                }
                 return  back()->with('success',"成功,你的个人资料已更新");
             }
         }else{

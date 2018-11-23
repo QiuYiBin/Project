@@ -55,10 +55,10 @@ class DetailController extends Controller
     	$oid = $request->input('oid');
 
         $data = $request->except('_token','oid');
-        dd($data);
+        // dd($data);
         // 如果没有图片上传
-        if($data['img'] == null){	
-        	unset($data['img']);
+        if($data['imgs'] == null){	
+        	unset($data['imgs']);
         }
 
         // 获取当前时间
@@ -66,6 +66,7 @@ class DetailController extends Controller
   		
   		$array = array();
 
+        // dd($data);
         foreach($data as $key=>$value)
         {	
      		foreach ($value as $k => $v) {

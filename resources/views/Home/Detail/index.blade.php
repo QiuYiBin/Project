@@ -67,6 +67,12 @@
                             {{csrf_field()}}
                             <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">待评价</button>
                         </form>
+                    @else
+                        <form action="/Clearing/{{$row->id}}" style="float: right" method="post">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">删除订单</button>
+                        </form>
                     @endif
                 </div>
                 
