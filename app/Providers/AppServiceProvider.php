@@ -19,16 +19,6 @@ class AppServiceProvider extends ServiceProvider
         }
         return $data;
     }
-
- 	//curl 方法 
-     // public function curl(){	
-    	// $url=$url="http://v.juhe.cn/toutiao/index?type=top&key=2435a130515f537461a7d7eb200ba8b9";
-    	// $method="get";
-    	// $post=0;	
-    	// $res=curlGet($url,$method,$post);
-    	// $data=json_decode($res,true);
-     // }
-
     
     /**
      * Bootstrap any application services.
@@ -38,9 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $cate = $this->getCatesBypid(0);
-        // $data1 = $this->curl();
         view()->share('cate',$cate);
-        // view()->share('data1',$data1);
                
     }
 

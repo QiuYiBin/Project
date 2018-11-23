@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 	<html lang="cn" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths pc " style="" data-blockbyte-bs-uid="23468">
 	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="/Home/Clearing/style1503546983737.css">
-	<meta name="keywords" content="一加手机，1+手机，一加手机官网商城,一加商城,1+手机商城,1+商城,一加智能手机商城">
-	<meta name="description" content="一加手机官网商城是一加科技旗下面向全国服务的电子商务平台官网，专业提供官方正品一加手机及1+手机配件，品质保证，欢迎在线购买！">
 	<!--[if lte IE 9]>
 	<meta http-equiv="refresh" content="0;url=https://www.oneplus.com/cn/upgrade/browser">
 	<script>location.href="https://www.oneplus.com/cn/upgrade/browser";</script>
 	<![endif]-->
-
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -30,10 +30,8 @@
 	<link href="/Home/Clearing/vendor.css" rel="stylesheet">
 	<link href="/Home/Clearing/index.css" rel="stylesheet">
 	<link rel="stylesheet" href="/Home/Clearing/header.css">
-  <script src="/Home/js/jquery-1.8.3.min.js"></script>
-  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
- 
+   <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrapValidator.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="./View/orders/orders/common_pc.css"> -->
 	 <link rel="stylesheet" type="text/css" href="/Home/Clearing/order.css">
 	<link charset="utf-8" rel="stylesheet" href="/Home/Clearing/nc.css" disabled=""><style>@charset "utf-8";
