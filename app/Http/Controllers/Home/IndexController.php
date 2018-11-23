@@ -23,7 +23,7 @@ class IndexController extends Controller
             'Slider' => $Slider,
             'advert' => $advert
         );
-        $sql = "select * from bro_goods order by sales desc limit 0,4";
+        $sql = "select * from bro_goods where status=0 order by sales desc limit 0,4";
         $data = DB::select($sql);
         // dd($data);
         return view('Home.Index.index')->with($array)->with('data',$data);
