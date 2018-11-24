@@ -28,6 +28,7 @@
                 <input class="form-control" name="tel" id="inputEmail1" type="text" value="{{$link->tel}}"/>
            </div> 
           </div>
+          @if($link->status == '1')
           <div class="form-group" style="margin-top: 40px"> 
             <label class="col-lg-2 col-sm-2 control-label" for="inputPassword1">状态</label> 
             <div class="col-md-3 col-xs-9"> 
@@ -38,6 +39,7 @@
                 {{method_field('PUT')}}
            </div> 
           </div>
+          @endif
           <div class="form-group" style="margin-top: 40px"> 
             <div class="col-lg-offset-2 col-lg-10"> 
               <button class="btn btn-primary" type="submit">修改</button>

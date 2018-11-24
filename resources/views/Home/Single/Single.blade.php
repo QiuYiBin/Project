@@ -142,7 +142,7 @@
                                         <h4 class="comment-title">商家</h4>
                                     </div>
                                     <p class="comment-text">{{$value->reply}}</p>
-                                    <div class="comment-footer"><span class="comment-meta">{{$value->time}}</span></div>
+                                    <div class="comment-footer"><span class="comment-meta">{{$value->replytime}}</span></div>
                                 </div>
                             </div>
                             @endif
