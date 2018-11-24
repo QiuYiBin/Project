@@ -33,12 +33,12 @@
                 <div class="product-gallery">
                     <div class="gallery-wrapper">
                     	@foreach($imgs as $key=>$value)
-                        <div class="gallery-item active"><a href="/Uploads/Goods/{{$value}}" data-hash="one{{$key}}" data-size="1000x667"></a></div>
+                        <div class="gallery-item active"><a href="/Uploads/Goods/{{$value}}" data-hash="one{{$key}}" data-size="700x667"></a></div>
                         @endforeach
                     </div>
-                    <div class="product-carousel owl-carousel">
+                    <div class="product-carousel owl-carousel owl-loaded owl-drag" style="">
                     	@foreach($imgs as $key=>$value)
-                        <div data-hash="one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product"></div>
+                        <div data-hash="one{{$key}}"><img src="/Uploads/Goods/{{$value}}" alt="Product" width="523px" height="200px"></div>
                         @endforeach
                     </div>
                     <ul class="product-thumbnails">
@@ -50,7 +50,7 @@
             </div>
             <!-- End Product Gallery -->
             <!-- Start Product Info -->
-            <div class="col-md-6 single-shop">
+            <!-- <div class="col-md-6 single-shop">
             	<div class="rating-stars">
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
@@ -58,11 +58,31 @@
                     <i class="icon-star filled"></i>
                     <i class="icon-star filled"></i>
                 </div>
-                <h2 class="padding-top-1x text-normal with-side">{{$data->name}}</h2>
+                <h2 class="padding-top-1x text-normal with-side"></h2>
+                <del class="text-muted text-normal">$899.00</del>
                 <span class="h2 d-block with-side">¥{{$data->price}}</span>
                 <p>{{$data->descr}}</p>
+            </div> -->
+            
+            <!-- 图片右边内容 -->
+            <div class="col-md-6 single-shop">
+                <div class="hidden-md-up"></div>
+                <div class="rating-stars">
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                    <i class="icon-star filled"></i>
+                </div>
+                <span class="text-muted align-middle">&nbsp;&nbsp;5 | 13 Customer Reviews</span>
+                <h1 class="padding-top-1x text-normal with-side" style="margin-top: 20px">{{$data->name}}</h1>
+                <span class="h2 d-block with-side" style="margin-top: 50px">
+                    <del class="text-muted text-normal">¥{{$data->price+100}}</del>
+                    &nbsp; ¥{{$data->price}}
+                </span>
+                <p style="margin-top: 50px">{{$data->descr}}</p> 
             </div>
-
+            <!-- 图片右边内容结束 -->
             <div class="col-md-12">
                 <hr class="mt-30 mb-30">
                 <div class="d-flex flex-wrap justify-content-between mb-30">
@@ -106,8 +126,26 @@
                                     <div class="rating-stars" style="color:#ffb74f">{{str_repeat("★",$value->start)}}{{str_repeat("☆",5-$value->start)}}</div>
                                 </div>
                             </div>
-                            <p class="comment-text">{{$value->text}}</p>
+                            <p class="comment-text">@if(!empty($value->text)) {{$value->text}} @else 该用户没有评价内容哦 @endif</p>
                             <div class="comment-footer"><span class="comment-meta">{{$value->username}}</span></div>
+                            @if($value->reply != null)
+                             <div class="comment-footer">
+                                <div class="column"><span class="comment-meta">{{$value->time}}</span></div>
+                                <div class="column">
+                                    <a class="reply-link" href="#"><i class="icon-reply"></i>商家回复</a>
+                                </div>
+                            </div>
+                            <div class="comment comment-reply">
+                                <div class="comment-author-ava"><img alt="Comment author" src="/Home/images/reviews/02.jpg"></div>
+                                <div class="comment-body">
+                                    <div class="comment-header">
+                                        <h4 class="comment-title">商家</h4>
+                                    </div>
+                                    <p class="comment-text">{{$value->reply}}</p>
+                                    <div class="comment-footer"><span class="comment-meta">{{$value->time}}</span></div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -116,30 +154,6 @@
                     @endif
                     <!-- End Review #1 -->
                     <!-- Start Review Form -->
-                    <h5 class="mb-30 padding-top-1x">离开评论</h5>
-                    <form class="row" method="post">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review_rating">你的价格</label>
-                                <select class="form-control form-control-rounded" id="review_rating">
-                                    <option>5 星</option>
-                                    <option>4 星</option>
-                                    <option>3 星</option>
-                                    <option>2 星</option>
-                                    <option>1 星</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="review_text">评论 </label>
-                                <textarea class="form-control form-control-rounded" id="review_text" rows="8" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-12 text-right">
-                            <button class="btn btn-outline-primary" type="submit">提交 评论</button>
-                        </div>
-                    <!-- End Review Form -->
                 </div>
             </div>
         </div>

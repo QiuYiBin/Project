@@ -103,6 +103,7 @@ class GoodsController extends Controller
                 $imgpath[] = $fileName; 
             }
         }
+        
         $comma_separated = implode(',', $imgpath);
         
         $data['imgs'] = $comma_separated;

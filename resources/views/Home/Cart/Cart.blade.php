@@ -77,6 +77,12 @@
             	text:center;
 
             }
+            .product-title {
+                max-width: 230px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
 	</style>
 	 <script type="text/javascript" src="/Admin/js/jquery-1.8.3.min.js"></script>
 	<html lang="zxx<head">
@@ -156,7 +162,7 @@
 							
 						      ?>
         					<td class="btn-numbox">   	
-        						<ul class="count" style="margin-left: 110px" width="200px">
+        						<ul class="count" style="margin-left: 110px;width:200px" >
         							
         				             <li id="num-jian" ids="{{$row->id}}" class="num-jian" money="{{$row->price}}">-</li>
         				             <li><input type="text" class="input-num" id="input-num" ids="{{$row->id}}" value="{{session('cart.'.$row->id)['num']}}"  money="{{$row->price}}" disabled /></li>

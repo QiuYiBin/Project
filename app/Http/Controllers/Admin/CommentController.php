@@ -21,8 +21,7 @@ class CommentController extends Controller
                     ->select("bro_comment.*","bro_goods.name","bro_goods.pic","bro_user.username")
                     ->join("bro_user","bro_user.id",'=','bro_comment.uid')
                     ->join("bro_goods","bro_goods.id",'=',"bro_comment.gid")
-                    ->get();
-        // dd($comment);
+                    ->orderBy('id','asc')->paginate(10);
         //加载模板
         return view("Admin.Comment.index",['comment'=>$comment]);
        
@@ -88,12 +87,20 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
          //获取参数
-        $data=$request->except(['_token','_method']);
-        // dd($data);
+        $data = $request->except(['_token','_method']);
+
+        $data['replytime'] = date('Y-m-d H:i:s',time());
+        
+        $data['status'] = 1;
+
         if(DB::table("bro_comment")->where("id","=",$id)->update($data)){
+
             return redirect("/comment")->with('success',"回复成功");
+
         }else{
+
             return  back()->with('error',"回复失败",'id',$id);
+            
         }
     }
 

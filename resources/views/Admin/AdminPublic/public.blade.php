@@ -380,4 +380,9 @@
     @show
 
     </body>
+    <script type="text/javascript">
+        window.setTimeout(function(){
+            $('[data-dismiss="alert"]').alert('close');
+        },3000);
+    </script>
 </html>

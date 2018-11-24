@@ -41,12 +41,14 @@
      
     </form> 
    </div>
-    <div>
-         <a href="/comment" class="btn btn-info" style="margin-top: 40px"><<评论列表</a>
-    </div> 
+      <header class="panel-heading" style="border-bottom: hidden; margin-top: 10px;">
+      <div>
+        <a href="/comment" class="btn btn-warning">&lt;&lt;<<评论列表</a>
+      </div>
+      </header> 
   </section>
   </div>  
  </body>
 </html>
 @endsection
-@section('title','后台查看评论')
+@section('title','查看评论')

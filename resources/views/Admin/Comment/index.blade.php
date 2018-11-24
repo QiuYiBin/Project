@@ -43,7 +43,7 @@
             <td class=""><img src="/Uploads/Goods/{{$row->pic}}" alt="" width="100"></td> 
             <td class="" style="color:#ffb74f">{{str_repeat("★",$row->start)}}{{str_repeat("☆",5-$row->start)}}</td>
             <td class="" >{{$row->time}}</td>
-            <td class="">{{$row->status == 0 ? '已评论' : '已删除'}}</td>
+            <td class="">{{$row->status == 0 ? '已评论' : '已回复'}}</td>
             <td class="">
               <a href="/comment/{{$row->id}}/edit" class="btn btn-warning">查看评论</a>
             </td>
@@ -52,7 +52,7 @@
           </tbody> 
          </table>
          <div style="float: right">
-          
+            {{$comment->render()}}
          </div>
          <div class="dataTables_info" id="editable-sample_info"></div> 
         </div> 
@@ -65,4 +65,4 @@
  </body>
 </html>
 @endsection
-@section('title','管理员列表')
+@section('title','评论列表')

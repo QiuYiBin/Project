@@ -24,9 +24,39 @@
         .order-item-hd .order-operate .pay-btn {
             height: 42px;
         }
+        .name-info{
+            max-width: 230px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #myModal
+        {
+            top: 300px;
+        }
     </style>
 </head>
     <body style="width: 100%">
+        <!-- 模态框开始 -->
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        @foreach($result as $value)
+                            <h5>{{$value['context']}}</h5>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <!-- 模态框结束 -->
         <div class="user-bd" >
             @foreach($data as $row)
             <div class="user-content" style="margin-top: 50px;margin-left: 120px;" >
@@ -61,7 +91,7 @@
                             {{method_field('PUT')}}
                             <button type="submit" class="pay-btn" style="margin-right: 10px;height: 40px">确认收货</button>
                         </form>
-                        <span class="pay-btn" style="margin-right: 10px">已发货</span>
+                        <button class="pay-btn" data-toggle="modal" data-target="#myModal" style="margin-right: 10px">查看物流</button>
                     @elseif($row->status == 3)
                         <form action="/homecomment/{{$row->id}}" style="float: right" method="post">
                             {{csrf_field()}}
@@ -130,7 +160,7 @@
                     <div class="main-goods">
                         <ul class="clearfix">
                             <li class="tb-name" data-item-id="2443064">
-                                <a href="" target="_blank">
+                                <a href="/shopsingle/{{$value->gid}}" target="_blank">
                                     <img class="goods-img" src="/Uploads/Goods/{{$value->pic}}">
                                 </a>
                                 <span class="name-info">
@@ -160,21 +190,12 @@
                     <li class="shipping"><span>运费：</span>+ ¥0</li>
                     <li class="amount"><span>订单金额：</span><em>¥{{$row->total}}</em></li>
                 </ul>
-                @foreach($result as $value)
-            	<h5>{{$value['context']}}</h5>
-           		@endforeach
+                
             </div>
         </div>
     </div>
     
-	
-    
     @endforeach
-
-          	
-	
-    
-
     <!-- 
     <div class="has-no-order">
         <div class="order-item-hd"></div>
@@ -185,7 +206,6 @@
                 </div>
             </div>
     </div> -->
-    
 </div>
 </div>
 </div>

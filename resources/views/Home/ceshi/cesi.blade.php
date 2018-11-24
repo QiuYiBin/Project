@@ -26,7 +26,7 @@
 
         .rating-stars .rating-stars-container .rating-star {
             display: inline-block;
-            font-size: 32px;
+            font-size: 20px;
             color: #555555;
             cursor: pointer;
             padding: 5px 10px;
@@ -44,19 +44,27 @@
  	</style>
 
  </head>                   
-                    
+  @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+                 
  <div style="width:800px;height:auto;margin:auto">
  	            
-	<form class="row" action="/homedetail" method="post" style="margin-top:80px">
+	<form class="row" action="/homedetail" method="post" style="margin-top:80px" enctype="multipart/form-data" >
 	@foreach($article as $key=>$row)
 	<div class="col-sm-6">
-	
 	<label for="review_text" style="width: 700px">商品名称：{{$row->gname}}</label>
-	<label for="review_text">商品图片：<img src="/Uploads/Goods/{{$row->pic}}" width="100px"></label><br />
-	<label for="review_text">你的评级</label>
+	<label for="review_text">商品图片：<img src="/Uploads/Goods/{{$row->pic}}" width="100px" style="margin-left: 10px"></label><br />
+	<label for="review_text" style="margin-top: 10px;">你的评级：</label>
 	    <div class="form-group">
 	            <div class="rating-stars block" id="rating">
-	                <input type="hidden" readonly class="form-control rating-value" name="start[{{$key}}]" id="rating-stars-value">
+	                <input type="hidden" readonly class="form-control rating-value" name="start[{{$key}}]" id="rating-stars-value" value="5">
 	                <div class="rating-stars-container">
 	                    <div class="rating-star">
 	                        <i class="fa fa-star"></i>
@@ -78,11 +86,11 @@
 	    </div>
 	</div>
 	<div class="col-12">
+		<label for="review_text">评论：</label>
 	    <div class="form-group">
-	        <label for="review_text">评论 </label>
-	        <textarea name="text[{{$key}}]" class="form-control form-control-rounded" id="review_text" rows="8"></textarea>
+	        <textarea name="text[{{$key}}]" class="form-control form-control-rounded" id="review_text" rows="8" style="margin-bottom: 30px"></textarea>
 	        晒图：
-	        <input name="imgs" id="uploadss" type="file" />
+	        <input name="imgs[{{$key}}][]" id="uploadss" type="file" multiple />
 	    </div>
 	</div>
 	{{csrf_field()}}
