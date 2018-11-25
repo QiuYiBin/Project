@@ -139,8 +139,8 @@
                 }, postcode: {
                     validators: {
                         regexp: {
-                            regexp: /^1[34578]\d{9}$/,
-                            message: '手机号码格式错误'
+                            regexp: /^[0-9]{6}$/,
+                            message: '邮编格式不正确'
                         }
                     }
                 }, adds: {
@@ -207,7 +207,7 @@
 	                            <font style="vertical-align: inherit; height: 30px;line-height: 30px">
 	                              <font style="vertical-align: inherit;">收货人：{{$value->name}}<br>
 	                              	收货人电话：{{$value->phone}}<br>
-	                              	收货地址：{{$value->huo}}
+	                              	收货地址：{{$value->huo.$value->adds}}
 	                              </font>
 	                            </font>
 	                            <input class="btn btn-danger del" value="删除" style="width: 100px">
@@ -347,7 +347,7 @@
       // 得到的数据数组内容，要遍历得到里面的每个对象
       for(var i = 0; i < result.length; i++){
         // console.log(result[i].name);
-        // 将得到的地址名称卸载option标签中
+        // 将得到的地址名称写在option标签中
         var info = $('<option value="'+result[i].id+'">'+result[i].name+'</option>');
         // 将得到的option标签放入到select对象中;
         $('#sid').append(info);

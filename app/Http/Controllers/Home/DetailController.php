@@ -72,9 +72,13 @@ class DetailController extends Controller
 
         // 定义空数组来存储多图片文件名
         $imgpath = array();
-        if($request->hasFile('imgs')){
+        
+        if($files != null){
             foreach($files as $keys=>$values){
+
                 foreach ($values as $keyss => $valuess) {
+                    // var_dump($keyss);
+                    // dd($valuess);
                     // 判断图片上传中是否出错
                     if (!$valuess->isValid()) {
                         exit("上传图片出错，请重试！");
@@ -88,24 +92,27 @@ class DetailController extends Controller
                             return back()->with('error','您只能上传PNG、JPG或GIF格式的图片！');
                         }
                         // 文件上传路径
-                        $destinationPath = '/Uploads/Goods/';
+                        $destinationPath = '/Uploads/Comment/';
                         // 上传文件后缀
                         $extension = $valuess->getClientOriginalExtension();
                         // 重命名   
                         $fileName = date('YmdHis').mt_rand(100,999).'.'.$extension;
+                        // dd($fileName);
                         // 保存图片 
                         $valuess->move(public_path().$destinationPath, $fileName); 
 
-                        $imgpath[$keys][$keyss] = $fileName; 
+                        $imgpath[$keys][$keyss] = $fileName;
+
                     }
                 }
                 
             }
-            
+
             foreach ($imgpath as $key => $value) {
                 $comma_separated[$key] = implode(',', $value);
             }
-            
+
+
             $data['imgs'] = $comma_separated;
         }
         
@@ -118,7 +125,6 @@ class DetailController extends Controller
      		}
         }
 
-        // dd($array);
        	foreach($array as $arr){
        		\DB::table('bro_comment')->insert($arr);
        	}

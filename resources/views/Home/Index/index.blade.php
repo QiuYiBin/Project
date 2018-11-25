@@ -4,7 +4,7 @@
 <div class="offcanvas-wrapper">
     <!-- Start Main Slider -->
     <div class="hero-slider home-1-hero">
-        <div class="owl-carousel large-controls dots-inside" data-owl-carousel='{"nav": true, "dots": true, "loop": true, "autoplay": true, "autoplayTimeou": 7000}'>
+        <div class="owl-carousel large-controls dots-inside" data-owl-carousel='{"nav": true, "dots": true, "loop": true, "autoplay": true, "autoplayTimeou": 5000}'>
             <!-- Start Slide #1 -->
             @if($Slider != '')
             @foreach($Slider as $value)
@@ -16,7 +16,7 @@
                                 <!-- <img class="d-inline-block w-150 mb-4" src="/Home/images/hero-slider/logo02.png" alt="Puma"> -->
                                 <div class="h2 text-body text-normal mb-2 pt-1">{{$value->name}}</div>
                             </div>
-                            <a class="btn btn-primary scale-up delay-1" href="{{$value->url}}" target="_blank">现在去购物</a>
+                            <a class="btn btn-primary scale-up delay-1" href="{{$value->url}}" target="_blank">点击跳转</a>
                         </div>
                         <div class="col-md-6 padding-bottom-2x mb-3">
                             <img class="d-block mx-auto" src="/Uploads/Slider/{{$value->pic}}" alt="Puma Backpack">

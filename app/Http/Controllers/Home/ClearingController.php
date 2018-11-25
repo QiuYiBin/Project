@@ -74,6 +74,10 @@ class ClearingController extends Controller
 
         }
 
+        // 去掉没用的逗号
+        $data['huo'] = str_replace(',','',$data['huo']);
+        
+        // 执行添加
         DB::table('bro_useraddres')->insert($data);
 
         return back();
@@ -115,6 +119,16 @@ class ClearingController extends Controller
         
         $data['status'] = 3;
 
+        // 根据id获取订单详情
+        $res = DB::table('bro_crder')->select('gid','gnum')->join('bro_crderinfo','bro_crder.id','=','bro_crderinfo.oid')->where('bro_crder.id','=',$id)->get();
+        
+        foreach($res as $value){
+            var_dump($value);
+            // 对指定的商品进行累加
+            DB::table('bro_goods')->where('id','=',$value->gid)->increment('sales',$value->gnum);
+            DB::table('bro_goods')->where('id','=',$value->gid)->decrement('store',$value->gnum);
+        }
+        
         if(\DB::table('bro_crder')->where('id','=',$id)->update($data)){
             return back();
         };
@@ -248,11 +262,8 @@ class ClearingController extends Controller
     // 支付宝支付成功返回处理方法 
     public function returnurl(Request $request)
     {
-        // 获取订单id
+        // 获取订单号
         $orderid = $request->input('out_trade_no');
-
-        // 根据返回的订单号找到订单修改支付状态
-        $data = DB::table('bro_crder')->select('orderid')->where('orderid','=',$orderid)->first();
 
         // 把状态赋值给数组
         $res['status'] = 1;
