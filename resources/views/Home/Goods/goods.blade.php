@@ -78,6 +78,11 @@
     </style>
  </head>
   <script src="/Home/js/jquery-1.8.3.min.js"></script>
+  <script>
+   
+     
+    
+ </script>
  <body>
   <div class="offcanvas-wrapper"> 
    <!-- Start Page Title --> 
@@ -98,12 +103,17 @@
    <!-- End Page Title --> 
    <!-- Start Page Content --> 
    <div class="container padding-top-1x padding-bottom-3x"> 
-    <!-- Start Toolbar --> 
-    <div class="shop-toolbar mb-30"> 
+    <!-- Start Toolbar -->  
+    <div class="shop-toolbar mb-30">
      <div class="column"> 
       <div class="shop-sorting"> 
        <label for="sorting">排序方式:</label> 
-       <select class="form-control" id="sorting"><option><a href="/">热门商品</a></option><option>低-低价</option> <option>高-高价</option></select>
+       <select class="form-control" id="sorting" onchange="window.location=this.value;">
+          <option>请选择</option>
+          <option value="/goods/0/edit" class="sales">热门商品</option>
+          <option value="/goods/1/edit" class="asc">低-高价</option>
+          <option value="/goods/2/edit" class="desc">高-低价</option>
+       </select>
        <span class="text-muted">显示: </span>
        <span> 1 - 4项</span> 
       </div> 
@@ -135,7 +145,7 @@
         <input type="hidden" name="id" value="{{$row->id}}">
         {{csrf_field()}}
         </form> 
-       </div> 
+       </div>
       </div> 
      </div>
     @endforeach
@@ -163,12 +173,6 @@
   </div>
  </body>
 </html>
-<script>
-    // function fun (page){
-    //   $.get('/goods',{page:page},function(pages){
-    //     $('#uid').html(pages);
-    //   });
-    // }
-</script>
+
 @endsection
 @section('title','商品列表')

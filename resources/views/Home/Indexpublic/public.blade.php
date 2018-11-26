@@ -42,7 +42,9 @@
         }
 </style>
     <script src="/Home/js/jquery-1.8.3.min.js"></script>
+    
 </head>
+  
 <body>
 <!-- Start Shop Category Menu -->
 <div class="offcanvas-container" id="shop-categories">

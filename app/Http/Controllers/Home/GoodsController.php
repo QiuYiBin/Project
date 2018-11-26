@@ -14,6 +14,7 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
+        dd(11);
         if(empty($request->input('search'))){ return back();}
 
         $a=$request->input('search');
@@ -108,26 +109,16 @@ class GoodsController extends Controller
         //      }
         // }
         //     return view('Home.Goods.goods',['arr'=>$arr,'data'=>$data]);
-        
 
         
-        if($id=='0'){
-            $data=DB::table('bro_goods')->where('status','0')->paginate(4);
-
-        }else{
-
+        
             $res = DB::table('bro_cates')->where('path','like','0,'.$id)->get();
-            // dd($res);
              $cates = array();
              foreach ($res as $key => $value) {
                  $cates[] = $value->id;
-
              }
              $cates[] = $id;
-            // dd($cates);
-             $data = DB::table('bro_goods')->where('status','0')->whereIn('cates_id',$cates)->paginate(4);
-             
-        }
+             $data = DB::table('bro_goods')->where('status','0')->whereIn('cates_id',$cates)->paginate(4);  
             return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]); 
     }
 
@@ -137,9 +128,22 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        
+
+        if($id=='0'){
+           
+             $data = DB::table('bro_goods')->where('status','0')->orderBy('sales','desc')->paginate(4);  
+        }elseif($id=='1'){
+
+             $data = DB::table('bro_goods')->where('status','0')->orderBy('price','asc')->paginate(4);  
+        }elseif($id=='2'){
+
+             $data = DB::table('bro_goods')->where('status','0')->orderBy('price','desc')->paginate(4);  
+        }
+
+            return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]);
     }
 
     /**
@@ -167,8 +171,10 @@ class GoodsController extends Controller
 
     public function all(Request $request)
     {
+
         $data=DB::table('bro_goods')->where('status','0')->paginate(4);
         return view('Home.Goods.goods',['request'=>$request->all(),'data'=>$data]);
     }
 
+    
 }
