@@ -47,7 +47,7 @@
 <!-- Start Shop Category Menu -->
 <div class="offcanvas-container" id="shop-categories">
     <div class="offcanvas-header">
-        <h3 class="offcanvas-title">Shop Categories</h3>
+        <h3 class="offcanvas-title">商品类别</h3>
     </div>
     <nav class="offcanvas-menu">
         <ul class="menu">
@@ -193,7 +193,6 @@
 @section('main')
 @show
 <!-- End NavBar -->
-<!-- Start Footer -->
 <footer class="site-footer">
         <div class="container">
             <!-- Start Footer Info -->
@@ -201,13 +200,13 @@
                 <!-- Start Contact Info -->
                 <div class="col-lg-3 col-md-6">
                     <section class="widget widget-light-skin">
-                        <h3 class="widget-title">Inspina Contact Info</h3>
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inspina联系信息</font></font></h3>
                         <p class="text-white"><i class="fa fa-phone"></i> +1 888 888 8888</p>
                         <p class="text-white"><i class="fa fa-envelope-o"></i> info@yoursite.com</p>
-                        <p class="text-white"><i class="fa fa-map-marker"></i> 221B Baker Street, London, UK</p>
+                        <p class="text-white"><i class="fa fa-map-marker"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 221B Baker Street，London，UK</font></font></p>
                         <ul class="list-unstyled text-sm text-white">
-                            <li><span class="opacity-50">Mon - Fri: </span>09:00 - 18:00</li>
-                            <li><span class="opacity-50">Sat - Sun: </span>10.00 - 15:00</li>
+                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周一至周五：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 09：00-18 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00</font></font></li>
+                            <li><span class="opacity-50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">周六至周日：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 10 </font><span class="opacity-50"><font style="vertical-align: inherit;">：</font></span><font style="vertical-align: inherit;"> 00-15：00</font></font></li>
                         </ul>
                         <a class="social-button shape-circle sb-facebook sb-light-skin" href="#">
                             <i class="socicon-facebook"></i>
@@ -227,15 +226,15 @@
                 <!-- Start Mobile Apps -->
                 <div class="col-lg-3 col-md-6">
                     <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title">Our Services</h3>
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的服务</font></font></h3>
                         <ul>
                             <li><a href="/friendship">友情链接</a></li>
-                            <li><a href="#">Full Responsive Front-End</a></li>
-                            <li><a href="#">Compatible For All Browsers</a></li>
-                            <li><a href="#">W3C Walidated Code</a></li>
-                            <li><a href="#">Amazing Supper Ideas</a></li>
-                            <li><a href="#">50+ Different Pages</a></li>
-                            <li><a href="#">Tested on Multiple Devices</a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完全响应的前端</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兼容所有浏览器</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">W3C Walidated Code</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">惊人的晚餐想法</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">50多个不同的页面</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在多个设备上测试</font></font></a></li>
                         </ul>
                     </section>
                 </div>
@@ -243,15 +242,15 @@
                 <!-- Start About Us -->
                 <div class="col-lg-3 col-md-6">
                     <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title">About Us</h3>
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></h3>
                         <ul>
-                            <li><a href="#">Our Company</a></li>
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Our Products</a></li>
-                            <li><a href="#">Our Clients</a></li>
-                            <li><a href="#">Our Testimonials</a></li>
-                            <li><a href="#">24/7 Support</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们公司</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的队伍</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的产品</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的客户</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的推荐</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全天候支持</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a></li>
                         </ul>
                     </section>
                 </div>
@@ -259,15 +258,15 @@
                 <!-- Start Account Info -->
                 <div class="col-lg-3 col-md-6">
                     <section class="widget widget-links widget-light-skin">
-                        <h3 class="widget-title">Account Info</h3>
+                        <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐户信息</font></font></h3>
                         <ul>
-                            <li><a href="#">My Shopping Cart</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="#">My Tickets</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Order Tracking</a></li>
-                            <li><a href="#">Single Tickets</a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的购物车</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的收藏</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的简历</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的门票</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单跟踪</font></font></a></li>
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单票</font></font></a></li>
                         </ul>
                     </section>
                 </div>
@@ -276,11 +275,10 @@
             <!-- End Footer Info -->
             <hr class="hr-light">
             <!-- Start Copyright -->
-            <p class="footer-copyright text-center">© 2018 Inspina | All rights <a href="http://www.17sucai.com/">Reserved</a></p>
+            <p class="footer-copyright text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©2018 Inspina | </font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;">保留</font></a><font style="vertical-align: inherit;">所有权利</font></font><a href="http://www.17sucai.com/"><font style="vertical-align: inherit;"></font></a></p>
             <!-- End Copyright -->
         </div>
     </footer>
-    <!-- End Footer -->
     <!-- Start Back To Top -->
     <a class="scroll-to-top-btn" href="#">
         <i class="icon-arrow-up"></i>
