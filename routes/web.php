@@ -156,6 +156,7 @@ Route::group(["middleware"=>"home"],function(){
 });
 // 商品列表
 Route::resource('/goods','Home\GoodsController');
+//商品购物列表
 Route::get('/goodsall','Home\GoodsController@all');
 // 商品详情
 Route::get('/shopsingle/{id}','Home\SingleController@index');
